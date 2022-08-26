@@ -22,10 +22,17 @@ public class RoomNodeSO : ScriptableObject
         GUILayout.BeginArea(rect, style);
         EditorGUI.BeginChangeCheck();
 
-        int selected = roomNodeTypeList.list.FindIndex(x => x == roomNodeType);
-        int selection = EditorGUILayout.Popup("", selected, GetRoomNodeTypeToDisplay());
+        if (parentRoomNodeIdList.Count > 0 || roomNodeType.isEntrance)
+        {
+            EditorGUILayout.LabelField(roomNodeType.roomNodeTypeName);
+        }
+        else
+        {
+            int selected = roomNodeTypeList.list.FindIndex(x => x == roomNodeType);
+            int selection = EditorGUILayout.Popup("", selected, GetRoomNodeTypeToDisplay());
 
-        roomNodeType = roomNodeTypeList.list[selection];
+            roomNodeType = roomNodeTypeList.list[selection];
+        }
 
         if (EditorGUI.EndChangeCheck())
             EditorUtility.SetDirty(this);

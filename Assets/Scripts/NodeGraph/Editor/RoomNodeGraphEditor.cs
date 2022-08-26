@@ -236,6 +236,10 @@ public class RoomNodeGraphEditor : EditorWindow
 
     private void CreateRoomNode(object mousePosition)
     {
+        if (currentRoomNodeGraph.roomNodeList.Count == 0)
+        {
+            CreateRoomNode(new Vector2(200, 200), roomNodeTypeList.list.Find(x => x.isEntrance));
+        }
         CreateRoomNode(mousePosition, roomNodeTypeList.list.Find(x => x.isNone));
     }
 
