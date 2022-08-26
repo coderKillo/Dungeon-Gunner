@@ -10,6 +10,8 @@ public class RoomNodeGraphEditor : EditorWindow
     private RoomNodeTypeListSO roomNodeTypeList;
 
     private GUIStyle roomNodeStyle;
+    private GUIStyle roomNodeStyleSelected;
+
     private int nodePadding = 25;
     private int nodeBorder = 12;
     private float nodeWidth = 160f;
@@ -25,6 +27,12 @@ public class RoomNodeGraphEditor : EditorWindow
         roomNodeStyle.normal.textColor = Color.white;
         roomNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
         roomNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+
+        roomNodeStyleSelected = new GUIStyle();
+        roomNodeStyleSelected.normal.background = EditorGUIUtility.Load("node1 on") as Texture2D;
+        roomNodeStyleSelected.normal.textColor = Color.white;
+        roomNodeStyleSelected.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        roomNodeStyleSelected.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
 
         roomNodeTypeList = GameResources.Instance.roomNodeTypeList;
     }
@@ -126,7 +134,14 @@ public class RoomNodeGraphEditor : EditorWindow
     {
         foreach (RoomNodeSO node in currentRoomNodeGraph.roomNodeList)
         {
-            node.Draw(roomNodeStyle);
+            if (node.isSelected)
+            {
+                node.Draw(roomNodeStyleSelected);
+            }
+            else
+            {
+                node.Draw(roomNodeStyle);
+            }
         }
     }
 
@@ -169,6 +184,11 @@ public class RoomNodeGraphEditor : EditorWindow
                 {
                     ShowContextMenu(currentEvent.mousePosition);
                 }
+                else if (currentEvent.button == 0)
+                {
+                    ClearLineDrag();
+                    ClearSelectedRoomNodes();
+                }
                 break;
             case EventType.MouseDrag:
                 if (currentEvent.button == 1)
@@ -184,6 +204,19 @@ public class RoomNodeGraphEditor : EditorWindow
                 break;
             default:
                 break;
+        }
+    }
+
+    private void ClearSelectedRoomNodes()
+    {
+        foreach (var roomNode in currentRoomNodeGraph.roomNodeList)
+        {
+            if (roomNode.isSelected)
+            {
+                roomNode.isSelected = false;
+
+                GUI.changed = true;
+            }
         }
     }
 
