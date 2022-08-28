@@ -126,6 +126,16 @@ public class RoomNodeSO : ScriptableObject
 
     public bool AddChildRoomNode(string id)
     {
+        if (IsChildRoomValid(id))
+        {
+            childRoomNodeIdList.Add(id);
+            return true;
+        }
+        return false;
+    }
+
+    private bool IsChildRoomValid(string id)
+    {
         if (id == this.id)
         {
             return false;
@@ -136,7 +146,60 @@ public class RoomNodeSO : ScriptableObject
             return false;
         }
 
-        childRoomNodeIdList.Add(id);
+        if (parentRoomNodeIdList.Contains(id))
+        {
+            return false;
+        }
+
+        bool isConnectedBossRoomAlready = false;
+        foreach (var roomNode in roomNodeGraph.roomNodeList)
+        {
+            if (roomNode.roomNodeType.isBossRoom && roomNode.parentRoomNodeIdList.Count > 0)
+            {
+                isConnectedBossRoomAlready = true;
+            }
+        }
+
+        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isBossRoom && isConnectedBossRoomAlready)
+        {
+            return false;
+        }
+
+        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isNone)
+        {
+            return false;
+        }
+
+        if (roomNodeGraph.GetRoomNode(id).parentRoomNodeIdList.Count > 0)
+        {
+            return false;
+        }
+
+        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && roomNodeType.isCorridor)
+        {
+            return false;
+        }
+
+        if (!roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && !roomNodeType.isCorridor)
+        {
+            return false;
+        }
+
+        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && childRoomNodeIdList.Count > Settings.maxChildCorridors)
+        {
+            return false;
+        }
+
+        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isEntrance)
+        {
+            return false;
+        }
+
+        if (!roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && childRoomNodeIdList.Count > 0)
+        {
+            return false;
+        }
+
         return true;
     }
 

@@ -35,5 +35,14 @@ public class RoomNodeGraphSO : ScriptableObject
         }
     }
 
+    public RoomNodeSO GetRoomNode(string id)
+    {
+        if (roomNodeDictionary.TryGetValue(id, out RoomNodeSO roomNode))
+        {
+            return roomNode;
+        }
+        return null;
+    }
+
 #endif
 }
