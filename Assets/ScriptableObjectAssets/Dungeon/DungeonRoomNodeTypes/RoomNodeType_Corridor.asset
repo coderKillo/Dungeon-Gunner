@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoomNodeType_Corridor
   m_EditorClassIdentifier: 
   typeName: Corridor
+  style: 1
   displayInNodeGraphEditor: 1
   isCorridor: 1
   isCorridorNS: 0

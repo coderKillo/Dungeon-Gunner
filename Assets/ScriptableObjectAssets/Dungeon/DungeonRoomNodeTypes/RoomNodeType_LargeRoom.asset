@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoomNodeType_LargeRoom
   m_EditorClassIdentifier: 
   typeName: Large Room
+  style: 4
   displayInNodeGraphEditor: 1
   isCorridor: 0
   isCorridorNS: 0

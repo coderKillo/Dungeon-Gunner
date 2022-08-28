@@ -15,7 +15,7 @@ public class RoomNodeSO : ScriptableObject
 #if UNITY_EDITOR
     [HideInInspector] public Rect rect;
     [HideInInspector] public bool isLeftClickDragging;
-    [HideInInspector] public bool isSelected;
+    public bool isSelected;
 
     public void Draw(GUIStyle style)
     {
@@ -24,7 +24,9 @@ public class RoomNodeSO : ScriptableObject
 
         if (parentIdList.Count > 0 || type.isEntrance)
         {
-            EditorGUILayout.LabelField(type.typeName);
+            var textStyle = new GUIStyle();
+            textStyle.normal.textColor = Color.black;
+            EditorGUILayout.LabelField(type.typeName, textStyle);
         }
         else
         {

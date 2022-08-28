@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoomNodeType_ChestRoom
   m_EditorClassIdentifier: 
   typeName: Chest Room
+  style: 3
   displayInNodeGraphEditor: 1
   isCorridor: 0
   isCorridorNS: 0

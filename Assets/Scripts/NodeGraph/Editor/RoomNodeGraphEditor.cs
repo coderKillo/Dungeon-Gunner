@@ -9,8 +9,7 @@ public class RoomNodeGraphEditor : EditorWindow
     private RoomNodeSO currentRoomNode = null;
     private RoomNodeTypeListSO typeList;
 
-    private GUIStyle nodeStyle;
-    private GUIStyle nodeStyleSelected;
+    private GUIStyle defaultStyle;
 
     private int nodePadding = 25;
     private int nodeBorder = 12;
@@ -24,17 +23,11 @@ public class RoomNodeGraphEditor : EditorWindow
     {
         Selection.selectionChanged += InspectorSelectionChanged;
 
-        nodeStyle = new GUIStyle();
-        nodeStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
-        nodeStyle.normal.textColor = Color.white;
-        nodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
-        nodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
-
-        nodeStyleSelected = new GUIStyle();
-        nodeStyleSelected.normal.background = EditorGUIUtility.Load("node1 on") as Texture2D;
-        nodeStyleSelected.normal.textColor = Color.white;
-        nodeStyleSelected.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
-        nodeStyleSelected.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+        defaultStyle = new GUIStyle();
+        defaultStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
+        defaultStyle.normal.textColor = Color.white;
+        defaultStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+        defaultStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
 
         typeList = GameResources.Instance.roomNodeTypeList;
     }
@@ -152,14 +145,17 @@ public class RoomNodeGraphEditor : EditorWindow
     {
         foreach (RoomNodeSO node in currentGraph.nodeList)
         {
+            var style = new GUIStyle(defaultStyle);
+
+            string textureName = node.type.GetStyleTextureName();
             if (node.isSelected)
             {
-                node.Draw(nodeStyleSelected);
+                textureName += " on";
             }
-            else
-            {
-                node.Draw(nodeStyle);
-            }
+
+            style.normal.background = EditorGUIUtility.Load(textureName) as Texture2D;
+
+            node.Draw(style);
         }
     }
 

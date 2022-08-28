@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RoomNodeType_BossRoom
   m_EditorClassIdentifier: 
   typeName: Boss Room
+  style: 5
   displayInNodeGraphEditor: 1
   isCorridor: 0
   isCorridorNS: 0
