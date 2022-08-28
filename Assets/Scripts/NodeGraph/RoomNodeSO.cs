@@ -22,7 +22,7 @@ public class RoomNodeSO : ScriptableObject
         GUILayout.BeginArea(rect, style);
         EditorGUI.BeginChangeCheck();
 
-        if (parentIdList.Count > 0 || type.isEntrance)
+        if ((parentIdList.Count > 0 && !type.isNone) || type.isEntrance)
         {
             var textStyle = new GUIStyle();
             textStyle.normal.textColor = Color.black;
@@ -143,6 +143,11 @@ public class RoomNodeSO : ScriptableObject
             return false;
         }
 
+        if (type.isNone)
+        {
+            return false;
+        }
+
         if (childIdList.Contains(id))
         {
             return false;
@@ -153,21 +158,7 @@ public class RoomNodeSO : ScriptableObject
             return false;
         }
 
-        bool isConnectedBossRoomAlready = false;
-        foreach (var roomNode in graph.nodeList)
-        {
-            if (roomNode.type.isBossRoom && roomNode.parentIdList.Count > 0)
-            {
-                isConnectedBossRoomAlready = true;
-            }
-        }
-
-        if (graph.GetRoomNode(id).type.isBossRoom && isConnectedBossRoomAlready)
-        {
-            return false;
-        }
-
-        if (graph.GetRoomNode(id).type.isNone)
+        if (graph.GetRoomNode(id).type.isBossRoom && graph.GetRoomNode(id).parentIdList.Count > 0)
         {
             return false;
         }

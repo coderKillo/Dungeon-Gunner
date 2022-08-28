@@ -242,13 +242,27 @@ public class RoomNodeGraphEditor : EditorWindow
 
             if (roomNode != null)
             {
-                if (currentGraph.roomNodeToDrawLineFrom.AddChildRoomNode(roomNode.id))
-                {
-                    roomNode.AddParentRoomNode(currentGraph.roomNodeToDrawLineFrom.id);
-                }
+                linkRoomNode(currentGraph.roomNodeToDrawLineFrom, roomNode);
+            }
+            else
+            {
+                var halfMousePosition = Vector2.Lerp(currentGraph.roomNodeToDrawLineFrom.rect.position, currentEvent.mousePosition, 0.5f);
+                var corridor = CreateRoomNode(halfMousePosition, typeList.list.Find(x => x.isCorridor));
+                var newNode = CreateRoomNode(currentEvent.mousePosition, typeList.list.Find(x => x.isNone));
+
+                linkRoomNode(currentGraph.roomNodeToDrawLineFrom, corridor);
+                linkRoomNode(corridor, newNode);
             }
 
             ClearLineDrag();
+        }
+    }
+
+    private void linkRoomNode(RoomNodeSO parent, RoomNodeSO child)
+    {
+        if (parent.AddChildRoomNode(child.id))
+        {
+            child.AddParentRoomNode(parent.id);
         }
     }
 
@@ -290,7 +304,7 @@ public class RoomNodeGraphEditor : EditorWindow
         CreateRoomNode(mousePosition, typeList.list.Find(x => x.isNone));
     }
 
-    private void CreateRoomNode(object mousePositionObject, RoomNodeTypeSO roomNodeType)
+    private RoomNodeSO CreateRoomNode(object mousePositionObject, RoomNodeTypeSO roomNodeType)
     {
         Vector2 mousePosition = (Vector2)mousePositionObject;
         RoomNodeSO roomNode = ScriptableObject.CreateInstance<RoomNodeSO>();
@@ -303,5 +317,7 @@ public class RoomNodeGraphEditor : EditorWindow
         AssetDatabase.SaveAssets();
 
         currentGraph.LoadListToDictionary();
+
+        return roomNode;
     }
 }
