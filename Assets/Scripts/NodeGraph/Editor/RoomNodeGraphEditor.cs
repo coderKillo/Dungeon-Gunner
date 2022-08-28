@@ -246,9 +246,32 @@ public class RoomNodeGraphEditor : EditorWindow
             }
             else
             {
-                var halfMousePosition = Vector2.Lerp(currentGraph.roomNodeToDrawLineFrom.rect.position, currentEvent.mousePosition, 0.5f);
-                var corridor = CreateRoomNode(halfMousePosition, typeList.list.Find(x => x.isCorridor));
-                var newNode = CreateRoomNode(currentEvent.mousePosition, typeList.list.Find(x => x.isNone));
+                var direction = (currentEvent.mousePosition - currentGraph.roomNodeToDrawLineFrom.rect.center).normalized;
+
+                if (direction.x > 0.7)
+                {
+                    direction = Vector2.right;
+                }
+                else if (direction.x < -0.7)
+                {
+                    direction = Vector2.left;
+                }
+                else if (direction.y > 0.7)
+                {
+                    direction = Vector2.up;
+                }
+                else if (direction.y < -0.7)
+                {
+                    direction = Vector2.down;
+                }
+
+                direction.x *= nodeWidth * 1.2f;
+                direction.y *= nodeHeight * 1.2f;
+
+                Debug.Log(direction);
+
+                var corridor = CreateRoomNode(currentGraph.roomNodeToDrawLineFrom.rect.position + direction, typeList.list.Find(x => x.isCorridor));
+                var newNode = CreateRoomNode(currentGraph.roomNodeToDrawLineFrom.rect.position + direction * 2, typeList.list.Find(x => x.isNone));
 
                 linkRoomNode(currentGraph.roomNodeToDrawLineFrom, corridor);
                 linkRoomNode(corridor, newNode);
