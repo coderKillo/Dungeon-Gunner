@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RoomNodeType", menuName = "Scriptable Object/Dungeon/Room Node Type")]
 public class RoomNodeTypeSO : ScriptableObject
 {
-    public string roomNodeTypeName;
+    public string typeName;
     public bool displayInNodeGraphEditor = true;
     public bool isCorridor;
     public bool isCorridorNS;
@@ -15,7 +15,7 @@ public class RoomNodeTypeSO : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        HelperUtilities.ValidateCheckEmptyString(this, nameof(roomNodeTypeName), roomNodeTypeName);
+        HelperUtilities.ValidateCheckEmptyString(this, nameof(typeName), typeName);
     }
 #endif
 }

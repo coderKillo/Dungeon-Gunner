@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RoomNodeGraph", menuName = "Scriptable Object/Dungeon/Room Node Graph")]
 public class RoomNodeGraphSO : ScriptableObject
 {
-    [HideInInspector] public RoomNodeTypeListSO roomNodeTypeList;
-    [HideInInspector] public List<RoomNodeSO> roomNodeList = new List<RoomNodeSO>();
-    [HideInInspector] public Dictionary<string, RoomNodeSO> roomNodeDictionary = new Dictionary<string, RoomNodeSO>();
+    [HideInInspector] public RoomNodeTypeListSO typeList;
+    [HideInInspector] public List<RoomNodeSO> nodeList = new List<RoomNodeSO>();
+    [HideInInspector] public Dictionary<string, RoomNodeSO> nodeDictionary = new Dictionary<string, RoomNodeSO>();
 
     private void Awake()
     {
@@ -27,17 +27,17 @@ public class RoomNodeGraphSO : ScriptableObject
 
     public void LoadListToDictionary()
     {
-        roomNodeDictionary.Clear();
+        nodeDictionary.Clear();
 
-        foreach (var roomNode in roomNodeList)
+        foreach (var roomNode in nodeList)
         {
-            roomNodeDictionary.Add(roomNode.id, roomNode);
+            nodeDictionary.Add(roomNode.id, roomNode);
         }
     }
 
     public RoomNodeSO GetRoomNode(string id)
     {
-        if (roomNodeDictionary.TryGetValue(id, out RoomNodeSO roomNode))
+        if (nodeDictionary.TryGetValue(id, out RoomNodeSO roomNode))
         {
             return roomNode;
         }

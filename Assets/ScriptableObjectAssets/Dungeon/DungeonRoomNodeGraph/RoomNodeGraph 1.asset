@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: RoomNode
   m_EditorClassIdentifier: 
   id: d7ae4b04-4689-4ee4-b487-72e3b8e96177
-  parentRoomNodeIdList:
-  - 13200eb8-ad3a-40fa-b817-a298f3faf330
-  childRoomNodeIdList:
-  - a1599463-16cb-45fc-ad91-b8477ded7c4c
-  roomNodeGraph: {fileID: 11400000}
-  roomNodeType: {fileID: 11400000, guid: 63d7a335ea76829468fa2de24ddd8afd, type: 2}
-  roomNodeTypeList: {fileID: 11400000, guid: ce7688593d57fec43a959c909217ee49, type: 2}
+  parentIdList: []
+  childIdList: []
+  graph: {fileID: 0}
+  type: {fileID: 0}
+  typeList: {fileID: 0}
   rect:
     serializedVersion: 2
     x: 300
@@ -41,12 +39,11 @@ MonoBehaviour:
   m_Name: RoomNode
   m_EditorClassIdentifier: 
   id: 29787c6c-4676-4abf-8e46-1373d0031591
-  parentRoomNodeIdList: []
-  childRoomNodeIdList:
-  - 9e539e0e-1da2-4e29-8c7b-8be8b05a94e4
-  roomNodeGraph: {fileID: 11400000}
-  roomNodeType: {fileID: 11400000, guid: 22991a7851bd7c7479297f93d1d6665b, type: 2}
-  roomNodeTypeList: {fileID: 11400000, guid: ce7688593d57fec43a959c909217ee49, type: 2}
+  parentIdList: []
+  childIdList: []
+  graph: {fileID: 0}
+  type: {fileID: 11400000, guid: f8786474e2122ea4aaf53ec903ea1896, type: 2}
+  typeList: {fileID: 0}
   rect:
     serializedVersion: 2
     x: 230
@@ -68,12 +65,11 @@ MonoBehaviour:
   m_Name: RoomNode
   m_EditorClassIdentifier: 
   id: 13200eb8-ad3a-40fa-b817-a298f3faf330
-  parentRoomNodeIdList: []
-  childRoomNodeIdList:
-  - d7ae4b04-4689-4ee4-b487-72e3b8e96177
-  roomNodeGraph: {fileID: 11400000}
-  roomNodeType: {fileID: 11400000, guid: cfbb3835bae12fa4cb52dabae7c506ca, type: 2}
-  roomNodeTypeList: {fileID: 11400000, guid: ce7688593d57fec43a959c909217ee49, type: 2}
+  parentIdList: []
+  childIdList: []
+  graph: {fileID: 0}
+  type: {fileID: 0}
+  typeList: {fileID: 0}
   rect:
     serializedVersion: 2
     x: 373
@@ -94,14 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e32c50c32ba242af4f6e0350429a9, type: 3}
   m_Name: RoomNodeGraph 1
   m_EditorClassIdentifier: 
-  roomNodeTypeList: {fileID: 0}
-  roomNodeList:
-  - {fileID: -3978085279188295590}
-  - {fileID: 7227675120938187455}
-  - {fileID: 1825093573026281352}
-  - {fileID: -5186222537028435053}
-  - {fileID: 1419179378810369719}
-  - {fileID: -1432374883423328191}
+  typeList: {fileID: 0}
+  nodeList: []
   roomNodeToDrawLineFrom: {fileID: 0}
   linePosition: {x: 0, y: 0}
 --- !u!114 &1419179378810369719
@@ -117,13 +107,11 @@ MonoBehaviour:
   m_Name: RoomNode
   m_EditorClassIdentifier: 
   id: a1599463-16cb-45fc-ad91-b8477ded7c4c
-  parentRoomNodeIdList:
-  - 9e539e0e-1da2-4e29-8c7b-8be8b05a94e4
-  - d7ae4b04-4689-4ee4-b487-72e3b8e96177
-  childRoomNodeIdList: []
-  roomNodeGraph: {fileID: 11400000}
-  roomNodeType: {fileID: 11400000, guid: 1f9b2d3ffa28e6c4aa5e8fcb6d27795d, type: 2}
-  roomNodeTypeList: {fileID: 11400000, guid: ce7688593d57fec43a959c909217ee49, type: 2}
+  parentIdList: []
+  childIdList: []
+  graph: {fileID: 0}
+  type: {fileID: 0}
+  typeList: {fileID: 0}
   rect:
     serializedVersion: 2
     x: 524
@@ -145,12 +133,11 @@ MonoBehaviour:
   m_Name: RoomNode
   m_EditorClassIdentifier: 
   id: 351b0610-2a27-462c-b851-b18d61b535cf
-  parentRoomNodeIdList:
-  - 9e539e0e-1da2-4e29-8c7b-8be8b05a94e4
-  childRoomNodeIdList: []
-  roomNodeGraph: {fileID: 11400000}
-  roomNodeType: {fileID: 11400000, guid: 63d7a335ea76829468fa2de24ddd8afd, type: 2}
-  roomNodeTypeList: {fileID: 11400000, guid: ce7688593d57fec43a959c909217ee49, type: 2}
+  parentIdList: []
+  childIdList: []
+  graph: {fileID: 0}
+  type: {fileID: 0}
+  typeList: {fileID: 0}
   rect:
     serializedVersion: 2
     x: 792
@@ -172,14 +159,11 @@ MonoBehaviour:
   m_Name: RoomNode
   m_EditorClassIdentifier: 
   id: 9e539e0e-1da2-4e29-8c7b-8be8b05a94e4
-  parentRoomNodeIdList:
-  - 29787c6c-4676-4abf-8e46-1373d0031591
-  childRoomNodeIdList:
-  - 351b0610-2a27-462c-b851-b18d61b535cf
-  - a1599463-16cb-45fc-ad91-b8477ded7c4c
-  roomNodeGraph: {fileID: 11400000}
-  roomNodeType: {fileID: 11400000, guid: e9edca3fd3cf57b43a597fe6e2f8b50a, type: 2}
-  roomNodeTypeList: {fileID: 11400000, guid: ce7688593d57fec43a959c909217ee49, type: 2}
+  parentIdList: []
+  childIdList: []
+  graph: {fileID: 0}
+  type: {fileID: 0}
+  typeList: {fileID: 0}
   rect:
     serializedVersion: 2
     x: 468

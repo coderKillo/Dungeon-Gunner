@@ -6,11 +6,11 @@ using UnityEditor;
 public class RoomNodeSO : ScriptableObject
 {
     public string id;
-    public List<string> parentRoomNodeIdList = new List<string>();
-    public List<string> childRoomNodeIdList = new List<string>();
-    [HideInInspector] public RoomNodeGraphSO roomNodeGraph;
-    public RoomNodeTypeSO roomNodeType;
-    [HideInInspector] public RoomNodeTypeListSO roomNodeTypeList;
+    public List<string> parentIdList = new List<string>();
+    public List<string> childIdList = new List<string>();
+    [HideInInspector] public RoomNodeGraphSO graph;
+    public RoomNodeTypeSO type;
+    [HideInInspector] public RoomNodeTypeListSO typeList;
 
 #if UNITY_EDITOR
     [HideInInspector] public Rect rect;
@@ -22,16 +22,16 @@ public class RoomNodeSO : ScriptableObject
         GUILayout.BeginArea(rect, style);
         EditorGUI.BeginChangeCheck();
 
-        if (parentRoomNodeIdList.Count > 0 || roomNodeType.isEntrance)
+        if (parentIdList.Count > 0 || type.isEntrance)
         {
-            EditorGUILayout.LabelField(roomNodeType.roomNodeTypeName);
+            EditorGUILayout.LabelField(type.typeName);
         }
         else
         {
-            int selected = roomNodeTypeList.list.FindIndex(x => x == roomNodeType);
+            int selected = typeList.list.FindIndex(x => x == type);
             int selection = EditorGUILayout.Popup("", selected, GetRoomNodeTypeToDisplay());
 
-            roomNodeType = roomNodeTypeList.list[selection];
+            type = typeList.list[selection];
         }
 
         if (EditorGUI.EndChangeCheck())
@@ -41,13 +41,13 @@ public class RoomNodeSO : ScriptableObject
 
     private string[] GetRoomNodeTypeToDisplay()
     {
-        string[] roomArray = new string[roomNodeTypeList.list.Count];
+        string[] roomArray = new string[typeList.list.Count];
 
-        for (int i = 0; i < roomNodeTypeList.list.Count; i++)
+        for (int i = 0; i < typeList.list.Count; i++)
         {
-            if (roomNodeTypeList.list[i].displayInNodeGraphEditor)
+            if (typeList.list[i].displayInNodeGraphEditor)
             {
-                roomArray[i] = roomNodeTypeList.list[i].roomNodeTypeName;
+                roomArray[i] = typeList.list[i].typeName;
             }
         }
 
@@ -59,10 +59,10 @@ public class RoomNodeSO : ScriptableObject
         this.id = Guid.NewGuid().ToString();
         this.name = "RoomNode";
         this.rect = rect;
-        this.roomNodeGraph = nodeGraph;
-        this.roomNodeType = roomNodeType;
+        this.graph = nodeGraph;
+        this.type = roomNodeType;
 
-        roomNodeTypeList = GameResources.Instance.roomNodeTypeList;
+        typeList = GameResources.Instance.roomNodeTypeList;
     }
 
     public void ProcessEvents(Event currentEvent)
@@ -99,8 +99,8 @@ public class RoomNodeSO : ScriptableObject
 
     private void ProcessRightClickDownEvent(Event currentEvent)
     {
-        roomNodeGraph.roomNodeToDrawLineFrom = this;
-        roomNodeGraph.linePosition = currentEvent.mousePosition;
+        graph.roomNodeToDrawLineFrom = this;
+        graph.linePosition = currentEvent.mousePosition;
     }
 
     private void ProcessLeftClickDownEvent(Event currentEvent)
@@ -128,7 +128,7 @@ public class RoomNodeSO : ScriptableObject
     {
         if (IsChildRoomValid(id))
         {
-            childRoomNodeIdList.Add(id);
+            childIdList.Add(id);
             return true;
         }
         return false;
@@ -141,61 +141,61 @@ public class RoomNodeSO : ScriptableObject
             return false;
         }
 
-        if (childRoomNodeIdList.Contains(id))
+        if (childIdList.Contains(id))
         {
             return false;
         }
 
-        if (parentRoomNodeIdList.Contains(id))
+        if (parentIdList.Contains(id))
         {
             return false;
         }
 
         bool isConnectedBossRoomAlready = false;
-        foreach (var roomNode in roomNodeGraph.roomNodeList)
+        foreach (var roomNode in graph.nodeList)
         {
-            if (roomNode.roomNodeType.isBossRoom && roomNode.parentRoomNodeIdList.Count > 0)
+            if (roomNode.type.isBossRoom && roomNode.parentIdList.Count > 0)
             {
                 isConnectedBossRoomAlready = true;
             }
         }
 
-        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isBossRoom && isConnectedBossRoomAlready)
+        if (graph.GetRoomNode(id).type.isBossRoom && isConnectedBossRoomAlready)
         {
             return false;
         }
 
-        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isNone)
+        if (graph.GetRoomNode(id).type.isNone)
         {
             return false;
         }
 
-        if (roomNodeGraph.GetRoomNode(id).parentRoomNodeIdList.Count > 0)
+        if (graph.GetRoomNode(id).parentIdList.Count > 0)
         {
             return false;
         }
 
-        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && roomNodeType.isCorridor)
+        if (graph.GetRoomNode(id).type.isCorridor && type.isCorridor)
         {
             return false;
         }
 
-        if (!roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && !roomNodeType.isCorridor)
+        if (!graph.GetRoomNode(id).type.isCorridor && !type.isCorridor)
         {
             return false;
         }
 
-        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && childRoomNodeIdList.Count > Settings.maxChildCorridors)
+        if (graph.GetRoomNode(id).type.isCorridor && childIdList.Count > Settings.maxChildCorridors)
         {
             return false;
         }
 
-        if (roomNodeGraph.GetRoomNode(id).roomNodeType.isEntrance)
+        if (graph.GetRoomNode(id).type.isEntrance)
         {
             return false;
         }
 
-        if (!roomNodeGraph.GetRoomNode(id).roomNodeType.isCorridor && childRoomNodeIdList.Count > 0)
+        if (!graph.GetRoomNode(id).type.isCorridor && childIdList.Count > 0)
         {
             return false;
         }
@@ -210,12 +210,12 @@ public class RoomNodeSO : ScriptableObject
             return false;
         }
 
-        if (parentRoomNodeIdList.Contains(id))
+        if (parentIdList.Contains(id))
         {
             return false;
         }
 
-        parentRoomNodeIdList.Add(id);
+        parentIdList.Add(id);
         return true;
     }
 
