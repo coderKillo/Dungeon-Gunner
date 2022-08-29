@@ -225,6 +225,55 @@ public class RoomNodeGraphEditor : EditorWindow
     }
     #endregion
 
+    #region CONTEXT MENU
+    private void ShowContextMenu(Vector2 mousePosition)
+    {
+        GenericMenu menu = new GenericMenu();
+
+        menu.AddItem(new GUIContent("Create Room Node"), false, CreateRoomNode, mousePosition);
+        menu.AddSeparator("");
+        menu.AddItem(new GUIContent("Select All Room Nodes"), false, SelectAllRoomNodes);
+        menu.ShowAsContext();
+    }
+
+    private void CreateRoomNode(object mousePosition)
+    {
+        if (currentGraph.nodeList.Count == 0)
+        {
+            CreateRoomNode(new Vector2(200, 200), typeList.list.Find(x => x.isEntrance));
+        }
+        CreateRoomNode(mousePosition, typeList.list.Find(x => x.isNone));
+    }
+
+    private RoomNodeSO CreateRoomNode(object mousePositionObject, RoomNodeTypeSO roomNodeType)
+    {
+        Vector2 mousePosition = (Vector2)mousePositionObject;
+        RoomNodeSO roomNode = ScriptableObject.CreateInstance<RoomNodeSO>();
+
+        currentGraph.nodeList.Add(roomNode);
+
+        roomNode.Init(new Rect(mousePosition, new Vector2(nodeWidth, nodeHeight)), currentGraph, roomNodeType);
+
+        AssetDatabase.AddObjectToAsset(roomNode, currentGraph);
+        AssetDatabase.SaveAssets();
+
+        currentGraph.LoadListToDictionary();
+
+        return roomNode;
+    }
+
+    private void SelectAllRoomNodes()
+    {
+        foreach (var roomNode in currentGraph.nodeList)
+        {
+            roomNode.isSelected = true;
+
+        }
+        GUI.changed = true;
+    }
+    #endregion
+
+    #region HELPER
     private void ClearSelectedRoomNodes()
     {
         foreach (var roomNode in currentGraph.nodeList)
@@ -256,40 +305,6 @@ public class RoomNodeGraphEditor : EditorWindow
     private void DragConnectingLine(Vector2 delta)
     {
         currentGraph.linePosition += delta;
-    }
-
-    private void ShowContextMenu(Vector2 mousePosition)
-    {
-        GenericMenu menu = new GenericMenu();
-
-        menu.AddItem(new GUIContent("Create Room Node"), false, CreateRoomNode, mousePosition);
-        menu.ShowAsContext();
-    }
-
-    private void CreateRoomNode(object mousePosition)
-    {
-        if (currentGraph.nodeList.Count == 0)
-        {
-            CreateRoomNode(new Vector2(200, 200), typeList.list.Find(x => x.isEntrance));
-        }
-        CreateRoomNode(mousePosition, typeList.list.Find(x => x.isNone));
-    }
-
-    private RoomNodeSO CreateRoomNode(object mousePositionObject, RoomNodeTypeSO roomNodeType)
-    {
-        Vector2 mousePosition = (Vector2)mousePositionObject;
-        RoomNodeSO roomNode = ScriptableObject.CreateInstance<RoomNodeSO>();
-
-        currentGraph.nodeList.Add(roomNode);
-
-        roomNode.Init(new Rect(mousePosition, new Vector2(nodeWidth, nodeHeight)), currentGraph, roomNodeType);
-
-        AssetDatabase.AddObjectToAsset(roomNode, currentGraph);
-        AssetDatabase.SaveAssets();
-
-        currentGraph.LoadListToDictionary();
-
-        return roomNode;
     }
 
     private RoomNodeSO IsMouseOverRoomNode(Event currentEvent)
@@ -345,4 +360,5 @@ public class RoomNodeGraphEditor : EditorWindow
 
         return textureName;
     }
+    #endregion
 }
