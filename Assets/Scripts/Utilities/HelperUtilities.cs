@@ -41,4 +41,27 @@ public static class HelperUtilities
 
         return error;
     }
+
+    public static Vector2 RoundDirectionTo90Degree(Vector2 point1, Vector2 point2)
+    {
+        var direction = (point2 - point1).normalized;
+
+        if (direction.x > 0.7)
+        {
+            direction = Vector2.right;
+        }
+        else if (direction.x < -0.7)
+        {
+            direction = Vector2.left;
+        }
+        else if (direction.y > 0.7)
+        {
+            direction = Vector2.up;
+        }
+        else if (direction.y < -0.7)
+        {
+            direction = Vector2.down;
+        }
+        return direction;
+    }
 }

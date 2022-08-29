@@ -37,6 +37,7 @@ public class RoomNodeGraphEditor : EditorWindow
         Selection.selectionChanged -= InspectorSelectionChanged;
     }
 
+    #region EDITOR CALLBACKS
     private void InspectorSelectionChanged()
     {
         RoomNodeGraphSO roomNodeGraph = Selection.activeObject as RoomNodeGraphSO;
@@ -69,6 +70,7 @@ public class RoomNodeGraphEditor : EditorWindow
 
         return false;
     }
+    #endregion
 
     private void OnGUI()
     {
@@ -89,6 +91,7 @@ public class RoomNodeGraphEditor : EditorWindow
         }
     }
 
+    #region DRAW FUNCTIONS
     private void DrawRoomNodeConnections()
     {
         foreach (var roomNode in currentGraph.nodeList)
@@ -146,24 +149,19 @@ public class RoomNodeGraphEditor : EditorWindow
         foreach (RoomNodeSO node in currentGraph.nodeList)
         {
             var style = new GUIStyle(defaultStyle);
-
-            string textureName = node.type.GetStyleTextureName();
-            if (node.isSelected)
-            {
-                textureName += " on";
-            }
-
-            style.normal.background = EditorGUIUtility.Load(textureName) as Texture2D;
+            style.normal.background = EditorGUIUtility.Load(GetStyleTextureName(node)) as Texture2D;
 
             node.Draw(style);
         }
     }
+    #endregion
 
+    #region PROCESS FUNCTIONS
     private void ProcessEvents(Event currentEvent)
     {
         if (currentRoomNode == null || currentRoomNode.isLeftClickDragging == false)
         {
-            currentRoomNode = isMouseOverRoomNode(currentEvent);
+            currentRoomNode = IsMouseOverRoomNode(currentEvent);
         }
 
         if (currentRoomNode == null || currentGraph.roomNodeToDrawLineFrom != null)
@@ -176,50 +174,56 @@ public class RoomNodeGraphEditor : EditorWindow
         }
     }
 
-    private RoomNodeSO isMouseOverRoomNode(Event currentEvent)
-    {
-        foreach (var roomNode in currentGraph.nodeList)
-        {
-            if (roomNode.rect.Contains(currentEvent.mousePosition))
-            {
-                return roomNode;
-            }
-        }
-
-        return null;
-    }
-
     private void ProcessRoomNodeGraphEvents(Event currentEvent)
     {
-        switch (currentEvent.type)
+        switch (MouseEventHelper.GetEvent(currentEvent))
         {
-            case EventType.MouseDown:
-                if (currentEvent.button == 1)
-                {
-                    ShowContextMenu(currentEvent.mousePosition);
-                }
-                else if (currentEvent.button == 0)
-                {
-                    ClearLineDrag();
-                    ClearSelectedRoomNodes();
-                }
+            case MouseEvent.RightClickDown:
+                ShowContextMenu(currentEvent.mousePosition);
                 break;
-            case EventType.MouseDrag:
-                if (currentEvent.button == 1)
-                {
-                    ProcessRightMouseDragEvent(currentEvent);
-                }
+            case MouseEvent.LeftClickDown:
+                ClearLineDrag();
+                ClearSelectedRoomNodes();
                 break;
-            case EventType.MouseUp:
-                if (currentEvent.button == 1)
-                {
-                    ProcessRightMouseUpEvent(currentEvent);
-                }
+            case MouseEvent.RightClickDrag:
+                ProcessRightMouseDragEvent(currentEvent);
+                break;
+            case MouseEvent.RightClickUp:
+                ProcessRightMouseUpEvent(currentEvent);
                 break;
             default:
                 break;
         }
     }
+
+    private void ProcessRightMouseUpEvent(Event currentEvent)
+    {
+        if (currentGraph.roomNodeToDrawLineFrom != null)
+        {
+            var roomNode = IsMouseOverRoomNode(currentEvent);
+
+            if (roomNode != null)
+            {
+                LinkRoomNode(currentGraph.roomNodeToDrawLineFrom, roomNode);
+            }
+            else
+            {
+                AutoCreateCorridorAndRoom(HelperUtilities.RoundDirectionTo90Degree(currentGraph.roomNodeToDrawLineFrom.rect.center, currentEvent.mousePosition));
+            }
+
+            ClearLineDrag();
+        }
+    }
+
+    private void ProcessRightMouseDragEvent(Event currentEvent)
+    {
+        if (currentGraph.roomNodeToDrawLineFrom != null)
+        {
+            DragConnectingLine(currentEvent.delta);
+            GUI.changed = true;
+        }
+    }
+    #endregion
 
     private void ClearSelectedRoomNodes()
     {
@@ -234,54 +238,7 @@ public class RoomNodeGraphEditor : EditorWindow
         }
     }
 
-    private void ProcessRightMouseUpEvent(Event currentEvent)
-    {
-        if (currentGraph.roomNodeToDrawLineFrom != null)
-        {
-            var roomNode = isMouseOverRoomNode(currentEvent);
-
-            if (roomNode != null)
-            {
-                linkRoomNode(currentGraph.roomNodeToDrawLineFrom, roomNode);
-            }
-            else
-            {
-                var direction = (currentEvent.mousePosition - currentGraph.roomNodeToDrawLineFrom.rect.center).normalized;
-
-                if (direction.x > 0.7)
-                {
-                    direction = Vector2.right;
-                }
-                else if (direction.x < -0.7)
-                {
-                    direction = Vector2.left;
-                }
-                else if (direction.y > 0.7)
-                {
-                    direction = Vector2.up;
-                }
-                else if (direction.y < -0.7)
-                {
-                    direction = Vector2.down;
-                }
-
-                direction.x *= nodeWidth * 1.2f;
-                direction.y *= nodeHeight * 1.2f;
-
-                Debug.Log(direction);
-
-                var corridor = CreateRoomNode(currentGraph.roomNodeToDrawLineFrom.rect.position + direction, typeList.list.Find(x => x.isCorridor));
-                var newNode = CreateRoomNode(currentGraph.roomNodeToDrawLineFrom.rect.position + direction * 2, typeList.list.Find(x => x.isNone));
-
-                linkRoomNode(currentGraph.roomNodeToDrawLineFrom, corridor);
-                linkRoomNode(corridor, newNode);
-            }
-
-            ClearLineDrag();
-        }
-    }
-
-    private void linkRoomNode(RoomNodeSO parent, RoomNodeSO child)
+    private void LinkRoomNode(RoomNodeSO parent, RoomNodeSO child)
     {
         if (parent.AddChildRoomNode(child.id))
         {
@@ -294,15 +251,6 @@ public class RoomNodeGraphEditor : EditorWindow
         currentGraph.roomNodeToDrawLineFrom = null;
         currentGraph.linePosition = Vector2.zero;
         GUI.changed = true;
-    }
-
-    private void ProcessRightMouseDragEvent(Event currentEvent)
-    {
-        if (currentGraph.roomNodeToDrawLineFrom != null)
-        {
-            DragConnectingLine(currentEvent.delta);
-            GUI.changed = true;
-        }
     }
 
     private void DragConnectingLine(Vector2 delta)
@@ -342,5 +290,59 @@ public class RoomNodeGraphEditor : EditorWindow
         currentGraph.LoadListToDictionary();
 
         return roomNode;
+    }
+
+    private RoomNodeSO IsMouseOverRoomNode(Event currentEvent)
+    {
+        foreach (var roomNode in currentGraph.nodeList)
+        {
+            if (roomNode.rect.Contains(currentEvent.mousePosition))
+            {
+                return roomNode;
+            }
+        }
+
+        return null;
+    }
+
+    private void AutoCreateCorridorAndRoom(Vector2 direction)
+    {
+        direction.x *= nodeWidth * 1.2f;
+        direction.y *= nodeHeight * 1.2f;
+
+        var corridor = CreateRoomNode(currentGraph.roomNodeToDrawLineFrom.rect.position + direction, typeList.list.Find(x => x.isCorridor));
+        var newNode = CreateRoomNode(currentGraph.roomNodeToDrawLineFrom.rect.position + direction * 2, typeList.list.Find(x => x.isNone));
+
+        LinkRoomNode(currentGraph.roomNodeToDrawLineFrom, corridor);
+        LinkRoomNode(corridor, newNode);
+    }
+
+    private string GetStyleTextureName(RoomNodeSO node)
+    {
+        string textureName = "node5";
+
+        if (node.type.isNone)
+        {
+            textureName = "node1";
+        }
+        else if (node.type.isBossRoom)
+        {
+            textureName = "node6";
+        }
+        else if (node.type.isCorridor || node.type.isCorridorEW || node.type.isCorridorNS)
+        {
+            textureName = "node2";
+        }
+        else if (node.type.isEntrance)
+        {
+            textureName = "node3";
+        }
+
+        if (node.isSelected)
+        {
+            textureName += " on";
+        }
+
+        return textureName;
     }
 }

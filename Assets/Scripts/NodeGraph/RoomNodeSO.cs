@@ -69,29 +69,19 @@ public class RoomNodeSO : ScriptableObject
 
     public void ProcessEvents(Event currentEvent)
     {
-        switch (currentEvent.type)
+        switch (MouseEventHelper.GetEvent(currentEvent))
         {
-            case EventType.MouseDown:
-                if (currentEvent.button == 0)
-                {
-                    ProcessLeftClickDownEvent(currentEvent);
-                }
-                if (currentEvent.button == 1)
-                {
-                    ProcessRightClickDownEvent(currentEvent);
-                }
+            case MouseEvent.LeftClickDown:
+                ProcessLeftClickDownEvent(currentEvent);
                 break;
-            case EventType.MouseUp:
-                if (currentEvent.button == 0)
-                {
-                    ProcessLeftClickUpEvent(currentEvent);
-                }
+            case MouseEvent.RightClickDown:
+                ProcessRightClickDownEvent(currentEvent);
                 break;
-            case EventType.MouseDrag:
-                if (currentEvent.button == 0)
-                {
-                    ProcessLeftClickDragEvent(currentEvent);
-                }
+            case MouseEvent.LeftClickUp:
+                ProcessLeftClickUpEvent(currentEvent);
+                break;
+            case MouseEvent.LeftClickDrag:
+                ProcessLeftClickDragEvent(currentEvent);
                 break;
 
             default:
