@@ -202,5 +202,25 @@ public class RoomNodeSO : ScriptableObject
         return true;
     }
 
+    public bool RemoveParentRoomNode(string id)
+    {
+        if (parentIdList.Contains(id))
+        {
+            parentIdList.Remove(id);
+            return true;
+        }
+        return false;
+    }
+
+    public bool RemoveChildRoomNode(string id)
+    {
+        if (childIdList.Contains(id))
+        {
+            childIdList.Remove(id);
+            return true;
+        }
+        return false;
+    }
+
 #endif
 }
