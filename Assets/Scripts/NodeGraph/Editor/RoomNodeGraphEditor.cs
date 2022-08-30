@@ -20,6 +20,12 @@ public class RoomNodeGraphEditor : EditorWindow
     private float connectLineWith = 3f;
     private float connectLineArrowSize = 6f;
 
+    private Vector2 graphOffset;
+    private Vector2 graphDrag;
+
+    private const float gridLarge = 100f;
+    private const float gridSmall = 25f;
+
     private void OnEnable()
     {
         Selection.selectionChanged += InspectorSelectionChanged;
@@ -77,6 +83,9 @@ public class RoomNodeGraphEditor : EditorWindow
     {
         if (currentGraph != null)
         {
+            DrawBackGroundGrid(gridSmall, 0.2f, Color.gray);
+            DrawBackGroundGrid(gridLarge, 0.3f, Color.gray);
+
             DrawDraggedLine();
 
             ProcessEvents(Event.current);
@@ -155,11 +164,41 @@ public class RoomNodeGraphEditor : EditorWindow
             node.Draw(style);
         }
     }
+
+    private void DrawBackGroundGrid(float gridSize, float gridOpacity, Color gridColor)
+    {
+        int verticalLineCount = Mathf.CeilToInt((position.width + gridSize) / gridSize);
+        int horizontalLineCount = Mathf.CeilToInt((position.height + gridSize) / gridSize);
+
+        Handles.color = new Color(gridColor.r, gridColor.g, gridColor.b, gridOpacity);
+
+        graphOffset += graphDrag * 0.5f;
+
+        Vector3 gridOffset = new Vector3(graphOffset.x % gridSize, graphOffset.y % gridSize, 0);
+
+        for (int i = 0; i < verticalLineCount; i++)
+        {
+            Vector3 start = new Vector3(gridSize * i, -gridSize, 0) + gridOffset;
+            Vector3 end = new Vector3(gridSize * i, position.height, 0) + gridOffset;
+            Handles.DrawLine(start, end);
+        }
+
+        for (int i = 0; i < horizontalLineCount; i++)
+        {
+            Vector3 start = new Vector3(-gridSize, gridSize * i, 0) + gridOffset;
+            Vector3 end = new Vector3(position.width, gridSize * i, 0) + gridOffset;
+            Handles.DrawLine(start, end);
+        }
+
+        Handles.color = Color.white;
+    }
     #endregion
 
     #region PROCESS FUNCTIONS
     private void ProcessEvents(Event currentEvent)
     {
+        graphDrag = Vector2.zero;
+
         if (currentRoomNode == null || currentRoomNode.isLeftClickDragging == false)
         {
             currentRoomNode = IsMouseOverRoomNode(currentEvent);
@@ -186,6 +225,9 @@ public class RoomNodeGraphEditor : EditorWindow
                 ClearLineDrag();
                 ClearSelectedRoomNodes();
                 break;
+            case MouseEvent.LeftClickDrag:
+                ProcessLeftMouseDragEvent(currentEvent.delta);
+                break;
             case MouseEvent.RightClickDrag:
                 ProcessRightMouseDragEvent(currentEvent);
                 break;
@@ -195,6 +237,18 @@ public class RoomNodeGraphEditor : EditorWindow
             default:
                 break;
         }
+    }
+
+    private void ProcessLeftMouseDragEvent(Vector2 dragDelta)
+    {
+        graphDrag = dragDelta;
+
+        foreach (var node in currentGraph.nodeList)
+        {
+            node.rect.position += dragDelta;
+        }
+
+        GUI.changed = true;
     }
 
     private void ProcessRightMouseUpEvent(Event currentEvent)
