@@ -286,6 +286,7 @@ public class RoomNodeGraphEditor : EditorWindow
         GenericMenu menu = new GenericMenu();
 
         menu.AddItem(new GUIContent("Create Room Node"), false, CreateRoomNode, mousePosition);
+        menu.AddItem(new GUIContent("Create Entrance"), false, CreateEntrance);
         menu.AddSeparator("");
         menu.AddItem(new GUIContent("Select All Room Nodes"), false, SelectAllRoomNodes);
         menu.AddSeparator("");
@@ -294,12 +295,13 @@ public class RoomNodeGraphEditor : EditorWindow
         menu.ShowAsContext();
     }
 
+    private void CreateEntrance()
+    {
+        CreateRoomNode(new Vector2(200, 200), typeList.list.Find(x => x.isEntrance));
+    }
+
     private void CreateRoomNode(object mousePosition)
     {
-        if (currentGraph.nodeList.Count == 0)
-        {
-            CreateRoomNode(new Vector2(200, 200), typeList.list.Find(x => x.isEntrance));
-        }
         CreateRoomNode(mousePosition, typeList.list.Find(x => x.isNone));
     }
 

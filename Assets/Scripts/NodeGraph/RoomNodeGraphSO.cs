@@ -9,6 +9,7 @@ public class RoomNodeGraphSO : ScriptableObject
     [HideInInspector] public List<RoomNodeSO> nodeList = new List<RoomNodeSO>();
     [HideInInspector] public Dictionary<string, RoomNodeSO> nodeDictionary = new Dictionary<string, RoomNodeSO>();
 
+#if UNITY_EDITOR
     private void Awake()
     {
         LoadListToDictionary();
@@ -18,9 +19,6 @@ public class RoomNodeGraphSO : ScriptableObject
     {
         LoadListToDictionary();
     }
-
-
-#if UNITY_EDITOR
 
     [HideInInspector] public RoomNodeSO roomNodeToDrawLineFrom = null;
     [HideInInspector] public Vector2 linePosition;
