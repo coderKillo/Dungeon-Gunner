@@ -8,7 +8,7 @@ public class RoomTemplateSO : ScriptableObject
     [HideInInspector] public string guid;
 
     [Space(10)]
-    [Header("Room Prefab")]
+    [Header("ROOM PREFAB")]
 
     [Tooltip("The gameobject prefab for the room (this will contain all the tilemaps for the room and environment game objects")]
 
@@ -18,7 +18,7 @@ public class RoomTemplateSO : ScriptableObject
 
 
     [Space(10)]
-    [Header("Room Configuration")]
+    [Header("ROOM CONFIGURATION")]
 
     [Tooltip("The room node type SO. The room node types correspond to the room nodes used in the room node graph.  The exceptions being with corridors.  In the room node graph there is just one corridor type 'Corridor'.  For the room templates there are 2 corridor node types - CorridorNS and CorridorEW.")]
     public RoomNodeTypeSO roomNodeType;

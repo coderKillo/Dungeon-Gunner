@@ -7,7 +7,7 @@ public class Doorway
     public Orientation orientation;
     public GameObject doorPrefab;
 
-    [Header("Information For Override Unused Doorways")]
+    [Header("INFORMATION FOR OVERRIDE UNUSED DOORWAYS")]
     [Tooltip("The Upper Left Position To Start Copying From")]
     public Vector2Int doorwayStartCopyPosition;
     [Tooltip("The width of tiles in the doorway to copy over")]

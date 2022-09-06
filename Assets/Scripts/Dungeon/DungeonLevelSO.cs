@@ -6,15 +6,15 @@ using UnityEngine;
 public class DungeonLevelSO : ScriptableObject
 {
     [Space(10)]
-    [Header("Basic Level Details")]
+    [Header("BASIC LEVEL DETAILS")]
     public string levelName;
 
     [Space(10)]
-    [Header("Room Templates For Level")]
+    [Header("ROOM TEMPLATES FOR LEVEL")]
     public List<RoomTemplateSO> roomTemplateList;
 
     [Space(10)]
-    [Header("Room Graphs For Level")]
+    [Header("ROOM GRAPHS FOR LEVEL")]
     public List<RoomNodeGraphSO> roomNodeGraphList;
 
 #if UNITY_EDITOR
