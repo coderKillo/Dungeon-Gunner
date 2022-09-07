@@ -21,4 +21,8 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("DUNGEON")]
     public RoomNodeTypeListSO roomNodeTypeList;
+
+    [Space(10)]
+    [Header("MATERIALS")]
+    public Material dimmedMaterial;
 }
