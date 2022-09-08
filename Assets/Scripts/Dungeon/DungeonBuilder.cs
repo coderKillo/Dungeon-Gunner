@@ -10,8 +10,17 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 {
     #region HEADER
     public Dictionary<string, Room> roomDictionary = new Dictionary<string, Room>();
+    public Room GetRoom(string id)
+    {
+        return roomDictionary.TryGetValue(id, out Room room) ? room : null;
+    }
 
     private Dictionary<string, RoomTemplateSO> templateDictionary = new Dictionary<string, RoomTemplateSO>();
+    public RoomTemplateSO GetRoomTemplate(string id)
+    {
+        return templateDictionary.TryGetValue(id, out RoomTemplateSO template) ? template : null;
+    }
+
     private List<RoomTemplateSO> templateList = new List<RoomTemplateSO>();
     private RoomNodeTypeListSO typeList;
     private bool buildSuccessful;
@@ -24,26 +33,6 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         typeList = GameResources.Instance.roomNodeTypeList;
 
         GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 1f);
-    }
-
-    public RoomTemplateSO GetRoomTemplate(string id)
-    {
-        if (templateDictionary.TryGetValue(id, out RoomTemplateSO template))
-        {
-            return template;
-        }
-
-        return null;
-    }
-
-    public Room GetRoom(string id)
-    {
-        if (roomDictionary.TryGetValue(id, out Room room))
-        {
-            return room;
-        }
-
-        return null;
     }
 
     public bool GenerateDungeon(DungeonLevelSO dungeonLevel)
@@ -59,7 +48,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         {
             buildAttempts++;
 
-            var graph = dungeonLevel.roomNodeGraphList[UnityEngine.Random.Range(0, dungeonLevel.roomNodeGraphList.Count)];
+            var graph = GetRandomGraph(dungeonLevel.roomNodeGraphList);
 
             buildSuccessful = false;
             int rebuildAttemptsForGraph = 0;
@@ -83,19 +72,39 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         return buildSuccessful;
     }
 
-    private void InstantiateRoomGameObjects()
+    private void LoadRoomTemplateIntoDictionary()
     {
+        templateDictionary.Clear();
+
+        foreach (var template in templateList)
+        {
+            if (!templateDictionary.ContainsKey(template.guid))
+            {
+                templateDictionary.Add(template.guid, template);
+            }
+            else
+            {
+                Debug.Log("Duplicate Room Template Key in " + templateList);
+            }
+        }
+    }
+
+    private void ClearDungeon()
+    {
+        if (roomDictionary.Count <= 0)
+        {
+            return;
+        }
+
         foreach (var room in roomDictionary.Values)
         {
-            var roomPosition = new Vector3(room.lowerBound.x - room.templateLowerBound.x, room.lowerBound.y - room.templateLowerBound.y);
-            var roomGameObject = GameObject.Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
-
-            var instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
-            instantiatedRoom.room = room;
-            instantiatedRoom.Initialize(roomGameObject);
-
-            room.instantiatedRoom = instantiatedRoom;
+            if (room.instantiatedRoom != null)
+            {
+                Destroy(room.instantiatedRoom.gameObject);
+            }
         }
+
+        roomDictionary.Clear();
     }
 
     private bool BuildRandomDungeon(RoomNodeGraphSO graph)
@@ -111,20 +120,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
         roomNodeQueue.Enqueue(entranceNode);
 
-        bool roomOverlap = false;
-        roomOverlap = ProcessRoomNodeQueue(graph, roomNodeQueue, roomOverlap);
-
-        if (roomNodeQueue.Count > 0 || roomOverlap)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private bool ProcessRoomNodeQueue(RoomNodeGraphSO graph, Queue<RoomNodeSO> roomNodeQueue, bool roomOverlap)
-    {
-        while (roomNodeQueue.Count > 0 && !roomOverlap)
+        while (roomNodeQueue.Count > 0)
         {
             var roomNode = roomNodeQueue.Dequeue();
 
@@ -136,7 +132,6 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
             if (roomNode.type.isEntrance)
             {
                 var roomTemplate = GetRandomTemplate(roomNode.type);
-
                 var room = CreateRoomFromTemplate(roomTemplate, roomNode);
                 room.isPositioned = true;
 
@@ -146,46 +141,46 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
             {
                 var parentRoom = roomDictionary[roomNode.parentIdList[0]];
 
-                roomOverlap = !CanPlaceRoom(roomNode, parentRoom);
-            }
-        }
+                while (true)
+                {
+                    var parentDoorway = GetRandomUnconnectedDoorway(parentRoom.doorwayList);
+                    if (parentDoorway == null)
+                    {
+                        return false;
+                    }
 
-        return roomOverlap;
-    }
+                    var roomTemplate = GetRandomTemplateConsistentWithParent(roomNode, parentDoorway);
+                    var room = CreateRoomFromTemplate(roomTemplate, roomNode);
 
-    private bool CanPlaceRoom(RoomNodeSO roomNode, Room parentRoom)
-    {
-        bool roomOverlaps = true;
-
-        while (roomOverlaps)
-        {
-            var unconnectedParentDoorways = parentRoom.doorwayList.FindAll(x => (!x.isConnected && !x.isUnavailable));
-
-            if (unconnectedParentDoorways.Count == 0)
-            {
-                return false;
-            }
-
-            var parentDoorway = unconnectedParentDoorways[UnityEngine.Random.Range(0, unconnectedParentDoorways.Count)];
-
-            var roomTemplate = GetRandomTemplateConsistentWithParent(roomNode, parentDoorway);
-
-            var room = CreateRoomFromTemplate(roomTemplate, roomNode);
-
-            if (PlaceTheRoom(parentRoom, parentDoorway, room))
-            {
-                roomOverlaps = false;
-
-                room.isPositioned = true;
-
-                roomDictionary.Add(room.id, room);
+                    if (PlaceRoom(parentRoom, parentDoorway, room))
+                    {
+                        room.isPositioned = true;
+                        roomDictionary.Add(room.id, room);
+                        break;
+                    }
+                }
             }
         }
 
         return true;
     }
 
-    private bool PlaceTheRoom(Room parentRoom, Doorway parentDoorway, Room room)
+    private void InstantiateRoomGameObjects()
+    {
+        foreach (var room in roomDictionary.Values)
+        {
+            var roomPosition = new Vector3(room.lowerBound.x - room.templateLowerBound.x, room.lowerBound.y - room.templateLowerBound.y);
+            var roomGameObject = GameObject.Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
+
+            var instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+            instantiatedRoom.room = room;
+            instantiatedRoom.Initialize(roomGameObject);
+
+            room.instantiatedRoom = instantiatedRoom;
+        }
+    }
+
+    private bool PlaceRoom(Room parentRoom, Doorway parentDoorway, Room room)
     {
         var doorway = GetOppositeDoorway(parentDoorway, room.doorwayList);
 
@@ -195,31 +190,9 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
             return false;
         }
 
-        var parentDoorwayPosition = parentRoom.lowerBound + parentDoorway.position - parentRoom.templateLowerBound;
-        var adjustment = Vector2Int.zero;
+        room.Position = parentRoom.Position + parentDoorway.position + GetOrientationAdjustment(doorway.orientation) - doorway.position;
 
-        switch (doorway.orientation)
-        {
-            case Orientation.north:
-                adjustment = new Vector2Int(0, -1);
-                break;
-            case Orientation.south:
-                adjustment = new Vector2Int(0, 1);
-                break;
-            case Orientation.west:
-                adjustment = new Vector2Int(1, 0);
-                break;
-            case Orientation.east:
-                adjustment = new Vector2Int(-1, 0);
-                break;
-            default:
-                break;
-        }
-
-        room.lowerBound = parentDoorwayPosition + adjustment + room.templateLowerBound - doorway.position;
-        room.upperBound = room.lowerBound + room.templateUpperBound - room.templateLowerBound;
-
-        if (CheckForRoomOverlap(room) == null)
+        if (!CheckForRoomOverlap(room))
         {
             parentDoorway.isConnected = true;
             parentDoorway.isUnavailable = true;
@@ -237,7 +210,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
     }
 
-    private Room CheckForRoomOverlap(Room roomToTest)
+    private bool CheckForRoomOverlap(Room roomToTest)
     {
         var roomToTestRect = new Rect(roomToTest.lowerBound, roomToTest.upperBound - roomToTest.upperBound);
 
@@ -252,11 +225,29 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
             if (roomToTestRect.Overlaps(roomRect))
             {
-                return room;
+                return true;
             }
         }
 
-        return null;
+        return false;
+    }
+
+    #region ORIENTATION HELPER
+    private Vector2Int GetOrientationAdjustment(Orientation orientation)
+    {
+        switch (orientation)
+        {
+            case Orientation.north:
+                return new Vector2Int(0, -1);
+            case Orientation.south:
+                return new Vector2Int(0, 1);
+            case Orientation.west:
+                return new Vector2Int(1, 0);
+            case Orientation.east:
+                return new Vector2Int(-1, 0);
+            default:
+                return Vector2Int.zero;
+        }
     }
 
     private Doorway GetOppositeDoorway(Doorway parentDoorway, List<Doorway> doorwayList)
@@ -316,7 +307,9 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
         return template;
     }
+    #endregion
 
+    #region CREATE FUNCTIONS
     private Room CreateRoomFromTemplate(RoomTemplateSO roomTemplate, RoomNodeSO roomNode)
     {
         var room = new Room();
@@ -346,6 +339,14 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
         return room;
     }
+    #endregion
+
+    #region SELECT RANDOM HELPER
+    private RoomNodeGraphSO GetRandomGraph(List<RoomNodeGraphSO> roomNodeGraphList)
+    {
+        return roomNodeGraphList[UnityEngine.Random.Range(0, roomNodeGraphList.Count)];
+    }
+
 
     private RoomTemplateSO GetRandomTemplate(RoomNodeTypeSO type)
     {
@@ -358,41 +359,18 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         return null;
     }
 
-    private void ClearDungeon()
+    private Doorway GetRandomUnconnectedDoorway(List<Doorway> doorwayList)
     {
-        if (roomDictionary.Count <= 0)
+        var unconnectedParentDoorways = doorwayList.FindAll(x => (!x.isConnected && !x.isUnavailable));
+        if (unconnectedParentDoorways.Count > 0)
         {
-            return;
+            return unconnectedParentDoorways[UnityEngine.Random.Range(0, unconnectedParentDoorways.Count)];
         }
-
-        foreach (var room in roomDictionary.Values)
-        {
-            if (room.instantiatedRoom != null)
-            {
-                Destroy(room.instantiatedRoom.gameObject);
-            }
-        }
-
-        roomDictionary.Clear();
+        return null;
     }
+    #endregion
 
-    private void LoadRoomTemplateIntoDictionary()
-    {
-        templateDictionary.Clear();
-
-        foreach (var template in templateList)
-        {
-            if (!templateDictionary.ContainsKey(template.guid))
-            {
-                templateDictionary.Add(template.guid, template);
-            }
-            else
-            {
-                Debug.Log("Duplicate Room Template Key in " + templateList);
-            }
-        }
-    }
-
+    #region COPY LIST HELPER
     private List<Doorway> CopyDoorwayList(List<Doorway> oldDoorwayList)
     {
         List<Doorway> newDoorwayList = new List<Doorway>();
@@ -416,10 +394,6 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         return newDoorwayList;
     }
 
-
-    /// <summary>
-    /// Create deep copy of string list
-    /// </summary>
     private List<string> CopyStringList(List<string> oldStringList)
     {
         List<string> newStringList = new List<string>();
@@ -431,5 +405,6 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
         return newStringList;
     }
+    #endregion
 
 }

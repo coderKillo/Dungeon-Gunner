@@ -30,6 +30,18 @@ public class Room
     public bool isClearedOfEnemies = false;
     public bool isPreviouslyVisited = false;
 
+    public Vector2Int Size { get { return templateUpperBound - templateLowerBound; } }
+
+    public Vector2Int Position
+    {
+        get { return lowerBound - templateLowerBound; }
+        set
+        {
+            lowerBound = value + templateLowerBound;
+            upperBound = lowerBound + Size;
+        }
+    }
+
     public Room()
     {
         childIdList = new List<string>();
