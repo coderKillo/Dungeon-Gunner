@@ -52,6 +52,12 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void PlayDungeonLevel(int levelIndex)
     {
+        bool buildSuccessful = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[levelIndex]);
+
+        if (!buildSuccessful)
+        {
+            Debug.LogError("Couldn't build dungeon from specified dungeon level");
+        }
     }
 
     #region UNITY EDITOR

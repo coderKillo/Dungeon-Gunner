@@ -604,6 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1735956483205961315}
   - component: {fileID: 1735956483205961314}
+  - component: {fileID: 6499812384733938646}
   m_Layer: 12
   m_Name: RoomTemplate
   m_TagString: Untagged
@@ -654,6 +655,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6499812384733938646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735956483205961313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ec487ca5b4e624c9d43bcc891e2530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  groundTilemap: {fileID: 0}
+  decorator1Tilemap: {fileID: 0}
+  decorator2Tilemap: {fileID: 0}
+  frontTilemap: {fileID: 0}
+  collisionTilemap: {fileID: 0}
+  minimapTilemap: {fileID: 0}
+  roomColliderBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &1735956483399845635
 GameObject:
   m_ObjectHideFlags: 0

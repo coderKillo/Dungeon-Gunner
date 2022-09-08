@@ -15,6 +15,6 @@ public class Doorway
     [Tooltip("The height of tiles in the doorway to copy over")]
     public int doorwayCopyTileHeight;
 
-    [HideInInspector] public bool isConnected = false;
-    [HideInInspector] public bool isUnavailable = false;
+    public bool isConnected = false;
+    public bool isUnavailable = false;
 }
