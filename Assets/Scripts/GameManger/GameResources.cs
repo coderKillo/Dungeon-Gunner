@@ -23,6 +23,10 @@ public class GameResources : MonoBehaviour
     public RoomNodeTypeListSO roomNodeTypeList;
 
     [Space(10)]
+    [Header("PLAYER")]
+    public CurrentPlayerSO currentPlayer;
+
+    [Space(10)]
     [Header("MATERIALS")]
     public Material dimmedMaterial;
 }
