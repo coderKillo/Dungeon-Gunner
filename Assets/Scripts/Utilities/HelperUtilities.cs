@@ -82,6 +82,26 @@ public static class HelperUtilities
         return error;
     }
 
+    internal static Vector3 GetNearestSpawnPoint(Vector3 position)
+    {
+        var currentRoom = GameManager.Instance.CurrentRoom;
+        var grid = currentRoom.instantiatedRoom.grid;
+
+        var nearestSpawnPosition = new Vector3(10000f, 10000f, 0f);
+
+        foreach (var spawnPosition in currentRoom.spawnPositions)
+        {
+            var spawnPositionWorld = grid.CellToWorld((Vector3Int)spawnPosition);
+
+            if (Vector3.Distance(spawnPositionWorld, position) < Vector3.Distance(nearestSpawnPosition, position))
+            {
+                nearestSpawnPosition = spawnPositionWorld;
+            }
+        }
+
+        return nearestSpawnPosition;
+    }
+
     public static Vector2 RoundDirectionTo90Degree(Vector2 point1, Vector2 point2)
     {
         var direction = (point2 - point1).normalized;

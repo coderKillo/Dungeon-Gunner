@@ -691,7 +691,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000b521e4d02d0c5f77e74950f2992f09d9c9f11e3d
@@ -882,10 +882,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.1183432
-    width: 0.6772487
-    height: 0.71005917
+    x: 0.023280423
+    y: 0
+    width: 0.95379186
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -990,6 +990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1961633193}
   - component: {fileID: 1961633192}
+  - component: {fileID: 1961633194}
   m_Layer: 0
   m_Name: CinemachineTargetGroup
   m_TagString: Untagged
@@ -1028,3 +1029,15 @@ Transform:
   m_Father: {fileID: 1512401360}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961633194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961633191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d63f356402182e4b811d8f6391f5253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

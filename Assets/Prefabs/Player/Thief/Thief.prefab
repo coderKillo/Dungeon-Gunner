@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 60259571, guid: ad50f74c7dd070c4ca884eda5975a8de, type: 3}
+    - target: {fileID: 2666148502720246136, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3212205580358937324, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
       propertyPath: m_Size.x
       value: 0.25
@@ -50,6 +54,14 @@ PrefabInstance:
     - target: {fileID: 3212205580358937324, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410476941377813141, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410476941377813141, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.125
       objectReference: {fileID: 0}
     - target: {fileID: 3825358416390042574, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
       propertyPath: m_Offset.x
@@ -116,8 +128,24 @@ PrefabInstance:
       value: Thief
       objectReference: {fileID: 0}
     - target: {fileID: 5606799528666889479, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_Size.x
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606799528666889479, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
+    - target: {fileID: 5606799528666889479, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606799528666889479, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606799528666889479, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6408926008596642449, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
       propertyPath: m_Offset.x

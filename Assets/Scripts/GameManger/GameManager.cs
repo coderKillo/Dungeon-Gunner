@@ -12,8 +12,35 @@ public class GameManager : SingletonAbstract<GameManager>
 
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList;
     [SerializeField] private int currentLevelIndex = 0;
+
     [HideInInspector] public GameState gameState;
+
+    private Room currentRoom;
+    public Room CurrentRoom { get { return currentRoom; } }
+    public void SetCurrentRoom(Room room)
+    {
+        previousRoom = currentRoom;
+        currentRoom = room;
+    }
+
+    private Room previousRoom;
+    private PlayerDetailsSO playerDetails;
+
+    private Player player;
+    public Player Player { get { return player; } }
     #endregion
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        playerDetails = GameResources.Instance.currentPlayer.playerDetails;
+
+        var playerGameObject = Instantiate(playerDetails.prefab);
+
+        player = playerGameObject.GetComponent<Player>();
+        player.Initialize(playerDetails);
+    }
 
     private void Start()
     {
@@ -58,6 +85,14 @@ public class GameManager : SingletonAbstract<GameManager>
         {
             Debug.LogError("Couldn't build dungeon from specified dungeon level");
         }
+
+        player.gameObject.transform.position = new Vector3(
+            (currentRoom.lowerBound.x + currentRoom.upperBound.x) / 2f,
+            (currentRoom.lowerBound.y + currentRoom.upperBound.y) / 2f,
+            0f
+        );
+
+        player.gameObject.transform.position = HelperUtilities.GetNearestSpawnPoint(player.gameObject.transform.position);
     }
 
     #region UNITY EDITOR

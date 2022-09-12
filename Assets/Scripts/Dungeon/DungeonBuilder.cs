@@ -331,6 +331,8 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         {
             room.parentId = "";
             room.isPreviouslyVisited = true;
+
+            GameManager.Instance.SetCurrentRoom(room); // set entrance
         }
         else
         {
