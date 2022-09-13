@@ -1,4 +1,5 @@
-﻿public enum Orientation
+﻿using System.Security.AccessControl;
+public enum Orientation
 {
     north,
     east,
@@ -20,4 +21,14 @@ public enum GameState
     gamePaused,
     dungeonOverviewMap,
     restartGame
+}
+
+public enum AimDirection
+{
+    Up,
+    UpRight,
+    UpLeft,
+    Right,
+    Left,
+    Down
 }

@@ -1,9 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class HelperUtilities
 {
+    public static Camera mainCamera;
+
     public static bool ValidateCheckEmptyString(Object thisObject, string fileName, string stringToCheck)
     {
         if (stringToCheck == "")
@@ -122,6 +123,67 @@ public static class HelperUtilities
         {
             direction = Vector2.down;
         }
+        return direction;
+    }
+
+    public static Vector3 GetWorldMousePosition()
+    {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
+
+        Vector3 mouseScreenPosition = Input.mousePosition;
+
+        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width);
+        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.height);
+
+        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+        mouseWorldPosition.z = 0f;
+
+        return mouseScreenPosition;
+    }
+
+    public static float GetAngleFromVector(Vector3 vector)
+    {
+        float radians = Mathf.Atan2(vector.y, vector.x);
+        float degree = radians * Mathf.Rad2Deg;
+        return degree;
+    }
+
+    public static AimDirection GetAimDirection(float angle)
+    {
+        AimDirection direction;
+
+        if (angle > 22f && angle <= 67f)
+        {
+            direction = AimDirection.UpRight;
+        }
+        else if (angle > 67f && angle <= 112f)
+        {
+            direction = AimDirection.Up;
+        }
+        else if (angle > 112f && angle <= 158f)
+        {
+            direction = AimDirection.UpLeft;
+        }
+        else if ((angle > 159f && angle <= 180f) || (angle > -180f && angle <= -135f))
+        {
+            direction = AimDirection.Left;
+        }
+        else if (angle > -135f && angle <= -45f)
+        {
+            direction = AimDirection.Down;
+        }
+        else if ((angle > -45f && angle <= 0f) || (angle > 0f && angle <= 22f))
+        {
+            direction = AimDirection.Right;
+        }
+        else
+        {
+            direction = AimDirection.Right;
+        }
+
         return direction;
     }
 }
