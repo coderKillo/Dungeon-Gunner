@@ -141,7 +141,7 @@ public static class HelperUtilities
         Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
         mouseWorldPosition.z = 0f;
 
-        return mouseScreenPosition;
+        return mouseWorldPosition;
     }
 
     public static float GetAngleFromVector(Vector3 vector)

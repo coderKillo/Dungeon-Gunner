@@ -34,6 +34,7 @@ public class InstantiatedRoom : MonoBehaviour
         BlockOffUnusedDoorways(tilemaps);
 
         collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
+        minimapTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
     }
 
     private void PopulateTilemaps(Tilemap[] tilemaps)
