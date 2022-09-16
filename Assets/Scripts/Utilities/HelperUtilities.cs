@@ -83,6 +83,53 @@ public static class HelperUtilities
         return error;
     }
 
+    public static bool ValidateCheckPositiveValue(Object thisObject, string fileName, float valueToCheck, bool isZeroAllowed)
+    {
+        bool error = false;
+
+        if (isZeroAllowed)
+        {
+            if (valueToCheck < 0)
+            {
+                Debug.Log(fileName + " must contain a positive value or zero in object " + thisObject.name.ToString());
+                error = true;
+            }
+        }
+        else
+        {
+            if (valueToCheck <= 0)
+            {
+                Debug.Log(fileName + " must contain a positive value in object " + thisObject.name.ToString());
+                error = true;
+            }
+        }
+
+        return error;
+    }
+
+    public static bool ValidateCheckPositiveRange(Object thisObject, string minimumFileName, float minimumValueToCheck, string maximumFileName, float maximumValueToCheck, bool isZeroAllowed)
+    {
+        bool error = false;
+
+        if (minimumValueToCheck > maximumValueToCheck)
+        {
+            Debug.Log(minimumFileName + " must be less then " + maximumFileName + " in object " + thisObject.name.ToString());
+            error = true;
+        }
+
+        if (ValidateCheckPositiveValue(thisObject, minimumFileName, minimumValueToCheck, isZeroAllowed))
+        {
+            error = true;
+        }
+
+        if (ValidateCheckPositiveValue(thisObject, maximumFileName, maximumValueToCheck, isZeroAllowed))
+        {
+            error = true;
+        }
+
+        return error;
+    }
+
     internal static Vector3 GetNearestSpawnPoint(Vector3 position)
     {
         var currentRoom = GameManager.Instance.CurrentRoom;

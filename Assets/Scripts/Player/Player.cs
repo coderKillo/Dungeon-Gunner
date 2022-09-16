@@ -17,6 +17,8 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(AimWeapon))]
 [RequireComponent(typeof(AimWeaponEvent))]
+[RequireComponent(typeof(MovementByVelocity))]
+[RequireComponent(typeof(MovementByVelocityEvent))]
 #endregion
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public AimWeaponEvent aimWeaponEvent;
     [HideInInspector] public IdleEvent idleEvent;
+    [HideInInspector] public MovementByVelocityEvent movementByVelocityEvent;
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         idleEvent = GetComponent<IdleEvent>();
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
+        movementByVelocityEvent = GetComponent<MovementByVelocityEvent>();
     }
 
     public void Initialize(PlayerDetailsSO details)

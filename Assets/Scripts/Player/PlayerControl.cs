@@ -7,12 +7,15 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private Transform weaponShootPosition;
+    [SerializeField] private MovementDetailsSO movementDetails;
 
     private Player player;
+    private float moveSpeed;
 
     private void Awake()
     {
         player = GetComponent<Player>();
+        moveSpeed = movementDetails.GetRandomMovementSpeed();
     }
 
     private void Update()
@@ -39,6 +42,20 @@ public class PlayerControl : MonoBehaviour
 
     private void MovementInput()
     {
-        player.idleEvent.CallIdleEvent();
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        float verticalMovement = Input.GetAxis("Vertical");
+
+        var direction = new Vector2(horizontalMovement, verticalMovement);
+
+        direction.Normalize();
+
+        if (direction != Vector2.zero)
+        {
+            player.movementByVelocityEvent.CallMovementByVelocity(direction, moveSpeed);
+        }
+        else
+        {
+            player.idleEvent.CallIdleEvent();
+        }
     }
 }

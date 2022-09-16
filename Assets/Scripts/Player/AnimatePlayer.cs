@@ -18,12 +18,14 @@ public class AnimatePlayer : MonoBehaviour
     {
         player.idleEvent.OnIdle += IdleEvent_OnIdle;
         player.aimWeaponEvent.OnWeaponAim += AimWeaponEvent_OnWeaponAim;
+        player.movementByVelocityEvent.OnMovementByVelocity += MovementByVelocityEvent_OnMovementByVelocity;
     }
 
     private void OnDisable()
     {
         player.idleEvent.OnIdle -= IdleEvent_OnIdle;
         player.aimWeaponEvent.OnWeaponAim -= AimWeaponEvent_OnWeaponAim;
+        player.movementByVelocityEvent.OnMovementByVelocity -= MovementByVelocityEvent_OnMovementByVelocity;
     }
 
     #region IDLE HANDLER
@@ -36,6 +38,19 @@ public class AnimatePlayer : MonoBehaviour
     {
         player.animator.SetBool(Animations.isIdle, true);
         player.animator.SetBool(Animations.isMoving, false);
+    }
+    #endregion
+
+    #region MOVEMENT HANDLER
+    private void MovementByVelocityEvent_OnMovementByVelocity(MovementByVelocityEvent arg1, MovementByVelocityArgs arg2)
+    {
+        SetMovementAnimationParameters();
+    }
+
+    private void SetMovementAnimationParameters()
+    {
+        player.animator.SetBool(Animations.isIdle, false);
+        player.animator.SetBool(Animations.isMoving, true);
     }
     #endregion
 
