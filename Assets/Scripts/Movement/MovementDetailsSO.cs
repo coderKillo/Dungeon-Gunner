@@ -5,10 +5,17 @@ public class MovementDetailsSO : ScriptableObject
 {
     #region HEADER
     [Space(10)]
-    [Header("MOVEMENT DETAILS")]
+    [Header("MOVEMENT")]
 
     public float minMoveSpeed = 8f;
     public float maxMoveSpeed = 8f;
+
+    [Space(10)]
+    [Header("ROLLING")]
+
+    public float rollSpeed;
+    public float rollDistance;
+    public float rollCooldown;
     #endregion
 
     public float GetRandomMovementSpeed()
@@ -28,6 +35,13 @@ public class MovementDetailsSO : ScriptableObject
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckPositiveRange(this, nameof(minMoveSpeed), minMoveSpeed, nameof(maxMoveSpeed), maxMoveSpeed, false);
+
+        if (rollCooldown != 0f || rollDistance != 0f || rollSpeed != 0f)
+        {
+            HelperUtilities.ValidateCheckPositiveValue(this, nameof(rollCooldown), rollCooldown, false);
+            HelperUtilities.ValidateCheckPositiveValue(this, nameof(rollDistance), rollDistance, false);
+            HelperUtilities.ValidateCheckPositiveValue(this, nameof(rollSpeed), rollSpeed, false);
+        }
     }
 #endif
     #endregion

@@ -12,17 +12,34 @@ public class PlayerControl : MonoBehaviour
     private Player player;
     private float moveSpeed;
 
+    private Coroutine rollCoroutine;
+    private WaitForFixedUpdate waitForFixedUpdate;
+    private bool isRolling = false;
+    private float rollingCooldownTimer = 0f;
+
     private void Awake()
     {
         player = GetComponent<Player>();
         moveSpeed = movementDetails.GetRandomMovementSpeed();
     }
 
+    private void Start()
+    {
+        waitForFixedUpdate = new WaitForFixedUpdate();
+    }
+
     private void Update()
     {
+        if (isRolling)
+        {
+            return;
+        }
+
         MovementInput();
 
         WeaponInput();
+
+        RollCooldownTimer();
     }
 
     private void WeaponInput()
@@ -44,6 +61,7 @@ public class PlayerControl : MonoBehaviour
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
+        bool shiftButtonPressed = Input.GetKeyDown(KeyCode.LeftShift);
 
         var direction = new Vector2(horizontalMovement, verticalMovement);
 
@@ -51,11 +69,64 @@ public class PlayerControl : MonoBehaviour
 
         if (direction != Vector2.zero)
         {
-            player.movementByVelocityEvent.CallMovementByVelocity(direction, moveSpeed);
+            if (shiftButtonPressed && rollingCooldownTimer <= 0f)
+            {
+                rollCoroutine = StartCoroutine(RollCoroutine(direction));
+            }
+            else
+            {
+                player.movementByVelocityEvent.CallMovementByVelocity(direction, moveSpeed);
+            }
         }
         else
         {
             player.idleEvent.CallIdleEvent();
+        }
+    }
+
+    private IEnumerator RollCoroutine(Vector2 direction)
+    {
+        float minimumDistance = 0.2f;
+
+        isRolling = true;
+
+        var targetPosition = transform.position + (Vector3)direction * movementDetails.rollDistance;
+
+        while (Vector3.Distance(transform.position, targetPosition) > minimumDistance)
+        {
+            player.movementToPositionEvent.CallMovementToPositionEvent(transform.position, targetPosition, movementDetails.rollSpeed, direction, isRolling);
+            yield return waitForFixedUpdate;
+        }
+
+        isRolling = false;
+        rollingCooldownTimer = movementDetails.rollCooldown;
+        player.transform.position = targetPosition;
+    }
+
+    private void RollCooldownTimer()
+    {
+        if (rollingCooldownTimer >= 0f)
+        {
+            rollingCooldownTimer -= Time.deltaTime;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        StopRollingCoroutine();
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        StopRollingCoroutine();
+    }
+
+    private void StopRollingCoroutine()
+    {
+        if (rollCoroutine != null)
+        {
+            StopCoroutine(rollCoroutine);
+            isRolling = false;
         }
     }
 }
