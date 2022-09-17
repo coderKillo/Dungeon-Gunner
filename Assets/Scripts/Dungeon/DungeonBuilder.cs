@@ -212,16 +212,17 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
     private bool CheckForRoomOverlap(Room roomToTest)
     {
-        var roomToTestRect = new Rect(roomToTest.lowerBound, roomToTest.upperBound - roomToTest.upperBound);
+        var roomToTestRect = new Rect(roomToTest.lowerBound, roomToTest.upperBound - roomToTest.lowerBound);
 
         foreach (var room in roomDictionary.Values)
         {
+
             if (room.id == roomToTest.id || !room.isPositioned)
             {
                 continue;
             }
 
-            var roomRect = new Rect(room.lowerBound, room.upperBound - room.upperBound);
+            var roomRect = new Rect(room.lowerBound, room.upperBound - room.lowerBound);
 
             if (roomToTestRect.Overlaps(roomRect))
             {
