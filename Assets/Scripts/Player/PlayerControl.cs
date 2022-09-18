@@ -59,8 +59,8 @@ public class PlayerControl : MonoBehaviour
 
     private void MovementInput()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal");
-        float verticalMovement = Input.GetAxis("Vertical");
+        float horizontalMovement = Input.GetAxisRaw("Horizontal");
+        float verticalMovement = Input.GetAxisRaw("Vertical");
         bool shiftButtonPressed = Input.GetKeyDown(KeyCode.LeftShift);
 
         var direction = new Vector2(horizontalMovement, verticalMovement);
