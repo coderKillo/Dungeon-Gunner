@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -32,6 +34,8 @@ public class InstantiatedRoom : MonoBehaviour
         PopulateTilemaps(tilemaps);
 
         BlockOffUnusedDoorways(tilemaps);
+
+        AddDoorsToRoom();
 
         collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
         minimapTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
@@ -126,4 +130,45 @@ public class InstantiatedRoom : MonoBehaviour
             }
         }
     }
+
+    private void AddDoorsToRoom()
+    {
+        if (room.nodeType.isCorridorEW || room.nodeType.isCorridorNS)
+        {
+            return;
+        }
+
+        foreach (var doorway in room.doorwayList)
+        {
+            if (!doorway.isConnected || doorway.doorPrefab == null)
+            {
+                continue;
+            }
+
+            var tileDistance = Settings.tileSizePixels / Settings.pixelPerUnit;
+
+            var door = GameObject.Instantiate(doorway.doorPrefab, gameObject.transform);
+            door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y, 0f);
+
+            switch (doorway.orientation)
+            {
+                case Orientation.north:
+                    door.transform.localPosition += new Vector3(tileDistance / 2f, tileDistance, 0f);
+                    break;
+
+                case Orientation.south:
+                    door.transform.localPosition += new Vector3(tileDistance / 2f, 0f, 0f);
+                    break;
+
+                case Orientation.west:
+                    door.transform.localPosition += new Vector3(tileDistance, tileDistance * 1.25f, 0f);
+                    break;
+
+                case Orientation.east:
+                    door.transform.localPosition += new Vector3(0f, tileDistance * 1.25f, 0f);
+                    break;
+            }
+        }
+    }
+
 }
