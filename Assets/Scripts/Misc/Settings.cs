@@ -9,6 +9,11 @@ static public class Settings
     public const float tileSizePixels = 16f;
     #endregion
 
+    #region TAGS
+    public const string playerTag = "Player";
+    public const string playerWeaponTag = "PlayerWeapon";
+    #endregion
+
     #region ROOM SETTINGS
     public const int maxChildCorridors = 3;
     #endregion

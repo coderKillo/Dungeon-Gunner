@@ -2,6 +2,7 @@ using UnityEngine;
 
 public static class Animations
 {
+    #region PLAYER
     public static int aimUp = Animator.StringToHash("aimUp");
     public static int aimUpRight = Animator.StringToHash("aimUpRight");
     public static int aimUpLeft = Animator.StringToHash("aimUpLeft");
@@ -14,4 +15,9 @@ public static class Animations
     public static int rollDown = Animator.StringToHash("rollDown");
     public static int rollLeft = Animator.StringToHash("rollLeft");
     public static int rollRight = Animator.StringToHash("rollRight");
+    #endregion
+
+    #region DOOR
+    public static int open = Animator.StringToHash("open");
+    #endregion
 }
