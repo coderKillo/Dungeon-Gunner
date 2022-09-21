@@ -25,6 +25,15 @@ public class InstantiatedRoom : MonoBehaviour
         roomColliderBounds = boxCollider.bounds;
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == Settings.playerTag && room != GameManager.Instance.CurrentRoom)
+        {
+            room.isPreviouslyVisited = true;
+            StaticEventHandler.CallRoomChangedEvent(room);
+        }
+    }
+
     public void Initialize(GameObject roomGameObject)
     {
         grid = roomGameObject.GetComponentInChildren<Grid>();
@@ -49,11 +58,11 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 groundTilemap = tilemap;
             }
-            else if (tilemap.gameObject.tag == "decorator1Tilemap")
+            else if (tilemap.gameObject.tag == "decoration1Tilemap")
             {
                 decorator1Tilemap = tilemap;
             }
-            else if (tilemap.gameObject.tag == "decorator2Tilemap")
+            else if (tilemap.gameObject.tag == "decoration2Tilemap")
             {
                 decorator2Tilemap = tilemap;
             }

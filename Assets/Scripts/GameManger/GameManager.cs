@@ -86,6 +86,8 @@ public class GameManager : SingletonAbstract<GameManager>
             Debug.LogError("Couldn't build dungeon from specified dungeon level");
         }
 
+        StaticEventHandler.CallRoomChangedEvent(currentRoom);
+
         player.gameObject.transform.position = new Vector3(
             (currentRoom.lowerBound.x + currentRoom.upperBound.x) / 2f,
             (currentRoom.lowerBound.y + currentRoom.upperBound.y) / 2f,

@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3582884304525282898}
   - component: {fileID: 6341041060015011522}
+  - component: {fileID: 1422556174617306086}
   m_Layer: 12
   m_Name: DoorLightingControl
   m_TagString: Untagged
@@ -170,6 +171,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9, y: 5.5}
   m_EdgeRadius: 0
+--- !u!114 &1422556174617306086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822150115871169392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7d18a0948a0e0489169f0cd624798b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8630435228122920586
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,3 +330,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorCollider: {fileID: 1184919418801203297}
+  isBossRoom: 0

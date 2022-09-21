@@ -29,4 +29,9 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("MATERIALS")]
     public Material dimmedMaterial;
+    public Material litMaterial;
+
+    [Space(10)]
+    [Header("SHADERS")]
+    public Shader variableLitShader;
 }

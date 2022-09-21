@@ -15,6 +15,7 @@ static public class Settings
     #endregion
 
     #region ROOM SETTINGS
+    public const float fateInTime = 0.5f;
     public const int maxChildCorridors = 3;
     #endregion
 

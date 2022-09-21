@@ -31,6 +31,15 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         base.Awake();
 
         typeList = GameResources.Instance.roomNodeTypeList;
+    }
+
+    private void OnEnable()
+    {
+        GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 0f);
+    }
+
+    private void OnDisable()
+    {
 
         GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 1f);
     }
