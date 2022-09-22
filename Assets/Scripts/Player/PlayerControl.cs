@@ -26,6 +26,8 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         waitForFixedUpdate = new WaitForFixedUpdate();
+
+        SetPlayerAnimationSpeed();
     }
 
     private void Update()
@@ -40,6 +42,16 @@ public class PlayerControl : MonoBehaviour
         WeaponInput();
 
         RollCooldownTimer();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        StopRollingCoroutine();
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        StopRollingCoroutine();
     }
 
     private void WeaponInput()
@@ -111,16 +123,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        StopRollingCoroutine();
-    }
-
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        StopRollingCoroutine();
-    }
-
     private void StopRollingCoroutine()
     {
         if (rollCoroutine != null)
@@ -128,5 +130,10 @@ public class PlayerControl : MonoBehaviour
             StopCoroutine(rollCoroutine);
             isRolling = false;
         }
+    }
+
+    private void SetPlayerAnimationSpeed()
+    {
+        player.animator.speed = moveSpeed / Animations.playerAnimationBaseSpeed;
     }
 }

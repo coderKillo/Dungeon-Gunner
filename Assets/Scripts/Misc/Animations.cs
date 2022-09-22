@@ -15,6 +15,8 @@ public static class Animations
     public static int rollDown = Animator.StringToHash("rollDown");
     public static int rollLeft = Animator.StringToHash("rollLeft");
     public static int rollRight = Animator.StringToHash("rollRight");
+
+    public static float playerAnimationBaseSpeed = 8f;
     #endregion
 
     #region DOOR
