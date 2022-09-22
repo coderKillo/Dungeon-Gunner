@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using DG.Tweening;
 
 [RequireComponent(typeof(InstantiatedRoom))]
 public class RoomLightingControl : MonoBehaviour
@@ -52,11 +53,6 @@ public class RoomLightingControl : MonoBehaviour
 
     private void FadeInRoom()
     {
-        StartCoroutine(FadeInRoomRoutine(instantiatedRoom));
-    }
-
-    private IEnumerator FadeInRoomRoutine(InstantiatedRoom instantiatedRoom)
-    {
         var material = new Material(GameResources.Instance.variableLitShader);
 
         instantiatedRoom.groundTilemap.GetComponent<TilemapRenderer>().material = material;
@@ -66,17 +62,16 @@ public class RoomLightingControl : MonoBehaviour
         instantiatedRoom.decorator1Tilemap.GetComponent<TilemapRenderer>().material = material;
         instantiatedRoom.decorator2Tilemap.GetComponent<TilemapRenderer>().material = material;
 
-        for (float i = 0.05f; i <= 1f; i += Time.deltaTime / Settings.fateInTime)
-        {
-            material.SetFloat("Alpha_Slider", i);
-            yield return null;
-        }
-
-        instantiatedRoom.groundTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
-        instantiatedRoom.collisionTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
-        instantiatedRoom.minimapTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
-        instantiatedRoom.frontTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
-        instantiatedRoom.decorator1Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
-        instantiatedRoom.decorator2Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+        material
+            .DOFloat(1f, "Alpha_Slider", Settings.fateInTime)
+            .OnComplete(() =>
+            {
+                instantiatedRoom.groundTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+                instantiatedRoom.collisionTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+                instantiatedRoom.minimapTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+                instantiatedRoom.frontTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+                instantiatedRoom.decorator1Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+                instantiatedRoom.decorator2Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+            });
     }
 }

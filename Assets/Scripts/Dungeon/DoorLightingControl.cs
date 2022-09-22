@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 [DisallowMultipleComponent]
 public class DoorLightingControl : MonoBehaviour
@@ -22,25 +23,15 @@ public class DoorLightingControl : MonoBehaviour
 
         foreach (var spriteRenderer in GetComponentsInParent<SpriteRenderer>())
         {
-            StartCoroutine(FadeInRoutine(spriteRenderer));
+            var material = new Material(GameResources.Instance.variableLitShader);
+
+            spriteRenderer.material = material;
+            material
+                .DOFloat(1f, "Alpha_Slider", Settings.fateInTime)
+                .OnComplete(() => { spriteRenderer.material = GameResources.Instance.litMaterial; });
         }
 
         isLit = true;
-    }
-
-    private IEnumerator FadeInRoutine(SpriteRenderer spriteRenderer)
-    {
-        var material = new Material(GameResources.Instance.variableLitShader);
-
-        spriteRenderer.material = material;
-
-        for (float i = 0.05f; i <= 1f; i += Time.deltaTime / Settings.fateInTime)
-        {
-            material.SetFloat("Alpha_Slider", i);
-            yield return null;
-        }
-
-        spriteRenderer.material = GameResources.Instance.litMaterial;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
