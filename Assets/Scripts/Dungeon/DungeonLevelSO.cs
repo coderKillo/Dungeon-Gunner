@@ -19,7 +19,7 @@ public class DungeonLevelSO : ScriptableObject
 
 #if UNITY_EDITOR
 
-    #region validation
+    #region VALIDATION
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckEmptyString(this, nameof(levelName), levelName);
