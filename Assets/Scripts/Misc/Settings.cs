@@ -23,4 +23,9 @@ static public class Settings
     public const int maxDungeonRebuildAttemptsForRoomGraph = 1000;
     public const int maxDungeonBuildAttempts = 10;
     #endregion
+
+    #region FIRING CONTROL 
+    public const float useAimAngleDistance = 3.5f;
+    #endregion
+
 }

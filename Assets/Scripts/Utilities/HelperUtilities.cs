@@ -198,6 +198,22 @@ public static class HelperUtilities
         return degree;
     }
 
+    public static Vector3 GetVectorFromAngle(float angle)
+    {
+        float radians = angle * Mathf.Deg2Rad;
+        Vector3 vector = new Vector3(Mathf.Cos(radians), Mathf.Sin(radians), 0f);
+        return vector;
+    }
+
+    public static int RandomSign()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            return -1;
+        }
+        return 1;
+    }
+
     public static AimDirection GetAimDirection(float angle)
     {
         AimDirection direction;
