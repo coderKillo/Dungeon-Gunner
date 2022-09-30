@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6392799203748116069}
   - component: {fileID: 2266906687519434815}
   - component: {fileID: 7025265209078803840}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PlayerAmmo6x6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8204992326203930457}
   - component: {fileID: 6438627784644722470}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

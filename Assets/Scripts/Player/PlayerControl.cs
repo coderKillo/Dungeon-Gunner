@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Player))]
+[DisallowMultipleComponent]
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] private Transform weaponShootPosition;
     [SerializeField] private MovementDetailsSO movementDetails;
 
     private Player player;
@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate;
     private bool isRolling = false;
     private float rollingCooldownTimer = 0f;
+
+    private int currentWeaponIndex = 1;
 
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class PlayerControl : MonoBehaviour
         waitForFixedUpdate = new WaitForFixedUpdate();
 
         SetPlayerAnimationSpeed();
+
+        SetStartingWeapon();
     }
 
     private void Update()
@@ -56,9 +60,10 @@ public class PlayerControl : MonoBehaviour
 
     private void WeaponInput()
     {
+        #region AIM WEAPON
         var mouseWorldPosition = HelperUtilities.GetWorldMousePosition();
 
-        var weaponDirection = (mouseWorldPosition - weaponShootPosition.position);
+        var weaponDirection = (mouseWorldPosition - player.activeWeapon.ShootPosition);
         var playerDirection = (mouseWorldPosition - transform.position);
 
         var weaponAngle = HelperUtilities.GetAngleFromVector(weaponDirection);
@@ -67,6 +72,15 @@ public class PlayerControl : MonoBehaviour
         var playerAimDirection = HelperUtilities.GetAimDirection(playerAngle);
 
         player.aimWeaponEvent.CallWeaponAimEvent(playerAimDirection, playerAngle, weaponAngle, weaponDirection);
+        #endregion
+
+        #region FIRE WEAPON
+        bool fireWeapon = Input.GetMouseButton(0);
+        if (fireWeapon)
+        {
+            player.fireWeaponEvent.CallFireWeaponEvent(true, playerAimDirection, playerAngle, weaponAngle, weaponDirection);
+        }
+        #endregion
     }
 
     private void MovementInput()
@@ -135,5 +149,17 @@ public class PlayerControl : MonoBehaviour
     private void SetPlayerAnimationSpeed()
     {
         player.animator.speed = moveSpeed / Animations.playerAnimationBaseSpeed;
+    }
+
+    private void SetStartingWeapon()
+    {
+        for (int i = 0; i < player.weaponList.Count; i++)
+        {
+            if (player.weaponList[i].weaponDetails == player.playerDetails.startingWeapon)
+            {
+                currentWeaponIndex = i;
+                player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[i]);
+            }
+        }
     }
 }

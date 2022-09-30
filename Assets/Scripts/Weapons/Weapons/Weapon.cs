@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public WeaponDetailsSO weaponDetails;
+    public int weaponListPosition;
 
-    // Update is called once per frame
-    void Update()
+    public float reloadTimer;
+    public bool isReloading = false;
+
+    public int clipAmmo;
+    public int totalAmmo;
+
+    static public Weapon CreateWeapon(WeaponDetailsSO weaponDetails)
     {
-        
+        return new Weapon()
+        {
+            weaponDetails = weaponDetails,
+            reloadTimer = 0f,
+            isReloading = false,
+            clipAmmo = weaponDetails.ammoClipCapacity,
+            totalAmmo = weaponDetails.ammoCapacity,
+        };
     }
 }
