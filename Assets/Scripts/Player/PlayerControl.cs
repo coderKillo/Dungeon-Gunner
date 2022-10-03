@@ -81,6 +81,13 @@ public class PlayerControl : MonoBehaviour
             player.fireWeaponEvent.CallFireWeaponEvent(true, playerAimDirection, playerAngle, weaponAngle, weaponDirection);
         }
         #endregion
+
+        #region 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadWeapon();
+        }
+        #endregion
     }
 
     private void MovementInput()
@@ -161,5 +168,27 @@ public class PlayerControl : MonoBehaviour
                 player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[i]);
             }
         }
+    }
+
+    private void ReloadWeapon()
+    {
+        var currentWeapon = player.activeWeapon.CurrentWeapon;
+
+        if (currentWeapon.isReloading)
+        {
+            return;
+        }
+
+        if (currentWeapon.totalAmmo < currentWeapon.weaponDetails.ammoClipCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo)
+        {
+            return;
+        }
+
+        if (currentWeapon.clipAmmo == currentWeapon.weaponDetails.ammoClipCapacity)
+        {
+            return;
+        }
+
+        player.reloadWeaponEvent.CallReloadWeaponEvent(currentWeapon);
     }
 }

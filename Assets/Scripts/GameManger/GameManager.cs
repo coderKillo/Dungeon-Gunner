@@ -51,12 +51,12 @@ public class GameManager : SingletonAbstract<GameManager>
     {
         HandleGameState();
 
-        #region RESTART FOR TESTING
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            gameState = GameState.gameStarted;
-        }
-        #endregion
+        // #region RESTART FOR TESTING
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     gameState = GameState.gameStarted;
+        // }
+        // #endregion
     }
 
     private void HandleGameState()

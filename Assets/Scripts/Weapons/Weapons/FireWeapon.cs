@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(FireWeaponEvent))]
 [RequireComponent(typeof(WeaponFiredEvent))]
+[RequireComponent(typeof(ReloadWeaponEvent))]
 [RequireComponent(typeof(ActiveWeapon))]
 [DisallowMultipleComponent]
 public class FireWeapon : MonoBehaviour
@@ -10,12 +11,14 @@ public class FireWeapon : MonoBehaviour
 
     private FireWeaponEvent fireWeaponEvent;
     private WeaponFiredEvent weaponFiredEvent;
+    private ReloadWeaponEvent reloadWeaponEvent;
     private ActiveWeapon activeWeapon;
 
     private void Awake()
     {
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
         weaponFiredEvent = GetComponent<WeaponFiredEvent>();
+        reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         activeWeapon = GetComponent<ActiveWeapon>();
     }
 
@@ -48,6 +51,11 @@ public class FireWeapon : MonoBehaviour
 
         FireAmmo(arg2.aimAngle, arg2.weaponAimAngle, arg2.weaponAimDirectionVector);
 
+        if (IsClipEmpty())
+        {
+            ReloadWeapon();
+        }
+
         ResetCooldownTimer();
     }
 
@@ -58,17 +66,17 @@ public class FireWeapon : MonoBehaviour
             return false;
         }
 
-        if (activeWeapon.CurrentWeapon.totalAmmo <= 0 && !activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteAmmo)
-        {
-            return false;
-        }
-
-        if (activeWeapon.CurrentWeapon.clipAmmo <= 0 && !activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteClipCapacity)
-        {
-            return false;
-        }
-
         if (activeWeapon.CurrentWeapon.isReloading)
+        {
+            return false;
+        }
+
+        if (IsAmmoEmpty())
+        {
+            return false;
+        }
+
+        if (IsClipEmpty())
         {
             return false;
         }
@@ -102,4 +110,20 @@ public class FireWeapon : MonoBehaviour
     {
         fireRateCooldownTimer = activeWeapon.CurrentWeapon.weaponDetails.fireRate;
     }
+
+    private void ReloadWeapon()
+    {
+        reloadWeaponEvent.CallReloadWeaponEvent(activeWeapon.CurrentWeapon);
+    }
+
+    private bool IsAmmoEmpty()
+    {
+        return (activeWeapon.CurrentWeapon.totalAmmo <= 0 && !activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteAmmo);
+    }
+
+    private bool IsClipEmpty()
+    {
+        return (activeWeapon.CurrentWeapon.clipAmmo <= 0 && !activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteClipCapacity);
+    }
+
 }
