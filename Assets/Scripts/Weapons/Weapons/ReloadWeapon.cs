@@ -95,7 +95,7 @@ public class ReloadWeapon : MonoBehaviour
             return;
         }
 
-        weapon.clipAmmo = Mathf.Clamp(weapon.totalAmmo, 0, weapon.weaponDetails.ammoCapacity);
+        weapon.clipAmmo = Mathf.Clamp(weapon.totalAmmo, 0, weapon.weaponDetails.ammoClipCapacity);
     }
 
     private void ReloadComplete(Weapon weapon)
