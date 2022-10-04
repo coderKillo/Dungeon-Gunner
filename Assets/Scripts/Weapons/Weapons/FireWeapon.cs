@@ -8,6 +8,7 @@ using UnityEngine;
 public class FireWeapon : MonoBehaviour
 {
     private float fireRateCooldownTimer = 0f;
+    private float chargeTimer = 0f;
 
     private FireWeaponEvent fireWeaponEvent;
     private WeaponFiredEvent weaponFiredEvent;
@@ -34,7 +35,15 @@ public class FireWeapon : MonoBehaviour
 
     private void Update()
     {
-        fireRateCooldownTimer -= Time.deltaTime;
+        if (fireRateCooldownTimer > 0f)
+        {
+            fireRateCooldownTimer -= Time.deltaTime;
+        }
+
+        if (chargeTimer > 0f)
+        {
+            chargeTimer -= Time.deltaTime;
+        }
     }
 
     private void FireWeaponEvent_OnFireWeapon(FireWeaponEvent arg1, FireWeaponEventArgs arg2)
@@ -42,6 +51,11 @@ public class FireWeapon : MonoBehaviour
         if (!arg2.fire)
         {
             return;
+        }
+
+        if (IsFirePressedFrame(arg2))
+        {
+            ResetChargeTimer();
         }
 
         if (!IsWeaponReadyToFire())
@@ -56,12 +70,18 @@ public class FireWeapon : MonoBehaviour
             ReloadWeapon();
         }
 
-        ResetCooldownTimer();
+        ResetFireRateCooldownTimer();
+        ResetChargeTimer();
     }
 
     private bool IsWeaponReadyToFire()
     {
         if (fireRateCooldownTimer > 0f)
+        {
+            return false;
+        }
+
+        if (chargeTimer > 0f)
         {
             return false;
         }
@@ -106,9 +126,14 @@ public class FireWeapon : MonoBehaviour
         weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.CurrentWeapon);
     }
 
-    private void ResetCooldownTimer()
+    private void ResetFireRateCooldownTimer()
     {
         fireRateCooldownTimer = activeWeapon.CurrentWeapon.weaponDetails.fireRate;
+    }
+
+    private void ResetChargeTimer()
+    {
+        chargeTimer = activeWeapon.CurrentWeapon.weaponDetails.prechargeTime;
     }
 
     private void ReloadWeapon()
@@ -124,6 +149,11 @@ public class FireWeapon : MonoBehaviour
     private bool IsClipEmpty()
     {
         return (activeWeapon.CurrentWeapon.clipAmmo <= 0 && !activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteClipCapacity);
+    }
+
+    private bool IsFirePressedFrame(FireWeaponEventArgs arg2)
+    {
+        return arg2.fire && !arg2.fireLastFrame;
     }
 
 }

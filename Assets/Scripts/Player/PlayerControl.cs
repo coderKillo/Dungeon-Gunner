@@ -19,6 +19,8 @@ public class PlayerControl : MonoBehaviour
 
     private int currentWeaponIndex = 1;
 
+    private bool fireLastFrame = false;
+
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -78,8 +80,9 @@ public class PlayerControl : MonoBehaviour
         bool fireWeapon = Input.GetMouseButton(0);
         if (fireWeapon)
         {
-            player.fireWeaponEvent.CallFireWeaponEvent(true, playerAimDirection, playerAngle, weaponAngle, weaponDirection);
+            player.fireWeaponEvent.CallFireWeaponEvent(true, fireLastFrame, playerAimDirection, playerAngle, weaponAngle, weaponDirection);
         }
+        fireLastFrame = fireWeapon;
         #endregion
 
         #region 

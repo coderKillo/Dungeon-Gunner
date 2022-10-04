@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
   m_Name: AmmoDetails_Revolver
   m_EditorClassIdentifier: 
-  ammoName: PistolAmmo
+  ammoName: RevolverAmmo
   isPlayerAmmo: 1
   ammoSprite: {fileID: 21300000, guid: 4df9cc7131cd27f4288bca5e76c82034, type: 3}
   prefabArray:
