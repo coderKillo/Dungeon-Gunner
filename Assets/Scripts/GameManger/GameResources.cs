@@ -34,4 +34,8 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("SHADERS")]
     public Shader variableLitShader;
+
+    [Space(10)]
+    [Header("UI")]
+    public GameObject ammoIconPrefab;
 }

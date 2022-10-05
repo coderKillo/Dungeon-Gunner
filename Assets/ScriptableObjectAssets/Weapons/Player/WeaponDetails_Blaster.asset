@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8991a50c74ccd344acd417fcf545897, type: 3}
-  m_Name: WeaponDetails_Pistol
+  m_Name: WeaponDetails_Blaster
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
-  shootPosition: {x: 1.115, y: 0.277, z: 0}
-  ammo: {fileID: 11400000, guid: 819cd0edb56180f4fbbff34757a4f5ca, type: 2}
+  weaponName: Blaster
+  weaponSprite: {fileID: 21300000, guid: a9d9372b640a67a4dae1cdbb59e3b919, type: 3}
+  shootPosition: {x: 1.245, y: 0.277, z: 0}
+  ammo: {fileID: 11400000, guid: 816cf7f4c9fb82745b29ebc21e67412e, type: 2}
   hasInfiniteAmmo: 1
   ammoCapacity: 0
   hasInfiniteClipCapacity: 0
-  ammoClipCapacity: 10
-  fireRate: 0.25
-  prechargeTime: 0
-  reloadTime: 1.2
+  ammoClipCapacity: 6
+  fireRate: 0.5
+  prechargeTime: 0.2
+  reloadTime: 1

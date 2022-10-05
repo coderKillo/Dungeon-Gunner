@@ -21,5 +21,5 @@ MonoBehaviour:
   hasInfiniteClipCapacity: 0
   ammoClipCapacity: 6
   fireRate: 0.35
-  prechargeTime: 3
+  prechargeTime: 0
   reloadTime: 2
