@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     private bool isRolling = false;
     private float rollingCooldownTimer = 0f;
 
-    private int currentWeaponIndex = 1;
+    private int currentWeaponIndex = 0;
 
     private bool fireLastFrame = false;
 
@@ -85,7 +85,74 @@ public class PlayerControl : MonoBehaviour
         fireLastFrame = fireWeapon;
         #endregion
 
-        #region 
+        #region SWITCH WEAPON
+        if (Input.mouseScrollDelta.y > 0f)
+        {
+            currentWeaponIndex--;
+            if (currentWeaponIndex < 0)
+            {
+                currentWeaponIndex = player.weaponList.Count - 1;
+            }
+            SetWeaponByIndex(currentWeaponIndex);
+        }
+        else if (Input.mouseScrollDelta.y < 0f)
+        {
+            currentWeaponIndex++;
+            if (currentWeaponIndex >= player.weaponList.Count)
+            {
+                currentWeaponIndex = 0;
+            }
+            SetWeaponByIndex(currentWeaponIndex);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            SetWeaponByIndex(0);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            SetWeaponByIndex(1);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            SetWeaponByIndex(2);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            SetWeaponByIndex(3);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            SetWeaponByIndex(4);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha6))
+        {
+            SetWeaponByIndex(5);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha7))
+        {
+            SetWeaponByIndex(6);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha8))
+        {
+            SetWeaponByIndex(7);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha9))
+        {
+            SetWeaponByIndex(8);
+        }
+
+        #endregion
+
+        #region RELOAD WEAPON
         if (Input.GetKeyDown(KeyCode.R))
         {
             ReloadWeapon();
@@ -163,14 +230,19 @@ public class PlayerControl : MonoBehaviour
 
     private void SetStartingWeapon()
     {
-        for (int i = 0; i < player.weaponList.Count; i++)
+        int index = player.weaponList.FindIndex((weapon) => { return weapon.weaponDetails == player.playerDetails.startingWeapon; });
+        SetWeaponByIndex(index);
+    }
+
+    private void SetWeaponByIndex(int index)
+    {
+        if (index >= player.weaponList.Count)
         {
-            if (player.weaponList[i].weaponDetails == player.playerDetails.startingWeapon)
-            {
-                currentWeaponIndex = i;
-                player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[i]);
-            }
+            return;
         }
+
+        currentWeaponIndex = index;
+        player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[index]);
     }
 
     private void ReloadWeapon()
