@@ -55,7 +55,7 @@ public class ActiveWeapon : MonoBehaviour
 
         SetWeaponPolygonCollider();
 
-        shootPositionTransform.position = weapon.weaponDetails.shootPosition;
+        shootPositionTransform.localPosition = weapon.weaponDetails.shootPosition;
     }
 
     private void SetWeaponPolygonCollider()

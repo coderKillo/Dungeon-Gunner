@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8991a50c74ccd344acd417fcf545897, type: 3}
-  m_Name: WeaponDetails_SMG
+  m_Name: WeaponDetails_RocketLauncher
   m_EditorClassIdentifier: 
-  weaponName: SMG
-  weaponSprite: {fileID: 21300000, guid: dff74299f2cf7674eb05930ed6b07f8e, type: 3}
-  shootPosition: {x: 1.284, y: 0.342, z: 0}
-  ammo: {fileID: 11400000, guid: 7cb3909d6ae7ac04bb7eb902970d414b, type: 2}
+  weaponName: Rocket Launcher
+  weaponSprite: {fileID: 21300000, guid: f4a1e113145591f45bfacfc7d7bf80c5, type: 3}
+  shootPosition: {x: 1.547, y: 0.306, z: 0}
+  ammo: {fileID: 11400000, guid: 41485fc53fbd81c4b8b56501b690f6cf, type: 2}
   hasInfiniteAmmo: 0
-  ammoCapacity: 50
+  ammoCapacity: 15
   hasInfiniteClipCapacity: 0
-  ammoClipCapacity: 15
-  fireRate: 0.2
+  ammoClipCapacity: 2
+  fireRate: 1
   prechargeTime: 0
-  reloadTime: 3
+  reloadTime: 2.5

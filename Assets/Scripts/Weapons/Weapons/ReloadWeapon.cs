@@ -36,6 +36,11 @@ public class ReloadWeapon : MonoBehaviour
 
     private void SetActiveWeaponEvent_OnSetActiveWeapon(SetActiveWeaponEvent arg1, SetActiveWeaponEventArgs arg2)
     {
+        if (reloadCoroutine != null)
+        {
+            StopCoroutine(reloadCoroutine);
+        }
+
         if (arg2.weapon.isReloading)
         {
             StartReloadWeapon(arg2.weapon, 0);

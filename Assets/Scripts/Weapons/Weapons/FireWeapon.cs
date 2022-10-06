@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(FireWeaponEvent))]
@@ -65,11 +66,6 @@ public class FireWeapon : MonoBehaviour
 
         FireAmmo(arg2.aimAngle, arg2.weaponAimAngle, arg2.weaponAimDirectionVector);
 
-        if (IsClipEmpty())
-        {
-            ReloadWeapon();
-        }
-
         ResetFireRateCooldownTimer();
         ResetChargeTimer();
     }
@@ -111,16 +107,35 @@ public class FireWeapon : MonoBehaviour
             return;
         }
 
-        var speed = Random.Range(activeWeapon.CurrentAmmo.speedMin, activeWeapon.CurrentAmmo.speedMax);
-        var prefab = activeWeapon.CurrentAmmo.prefabArray[Random.Range(0, activeWeapon.CurrentAmmo.prefabArray.Length)];
+        StartCoroutine(FireAmmoCoroutine(aimAngle, weaponAimAngle, weaponAimDirectionVector));
+    }
 
-        var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
-        ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle, weaponAimAngle, speed, weaponAimDirectionVector);
+    private IEnumerator FireAmmoCoroutine(float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
+    {
+        var spawnAmount = Random.Range(activeWeapon.CurrentAmmo.spawnAmmoMin, activeWeapon.CurrentAmmo.spawnAmmoMax);
+        var spawnInterval = Random.Range(activeWeapon.CurrentAmmo.spawnIntervalMin, activeWeapon.CurrentAmmo.spawnIntervalMax);
+        spawnInterval = (spawnAmount > 1) ? spawnInterval : 0f;
+
+        for (int i = 0; i < spawnAmount; i++)
+        {
+            var speed = Random.Range(activeWeapon.CurrentAmmo.speedMin, activeWeapon.CurrentAmmo.speedMax);
+            var prefab = activeWeapon.CurrentAmmo.prefabArray[Random.Range(0, activeWeapon.CurrentAmmo.prefabArray.Length)];
+
+            var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
+            ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle, weaponAimAngle, speed, weaponAimDirectionVector);
+
+            yield return new WaitForSeconds(spawnInterval);
+        }
 
         if (!activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteClipCapacity)
         {
             activeWeapon.CurrentWeapon.clipAmmo--;
             activeWeapon.CurrentWeapon.totalAmmo--;
+        }
+
+        if (IsClipEmpty())
+        {
+            ReloadWeapon();
         }
 
         weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.CurrentWeapon);

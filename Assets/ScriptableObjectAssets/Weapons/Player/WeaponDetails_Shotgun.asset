@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8991a50c74ccd344acd417fcf545897, type: 3}
-  m_Name: WeaponDetails_SMG
+  m_Name: WeaponDetails_Shotgun
   m_EditorClassIdentifier: 
-  weaponName: SMG
-  weaponSprite: {fileID: 21300000, guid: dff74299f2cf7674eb05930ed6b07f8e, type: 3}
-  shootPosition: {x: 1.284, y: 0.342, z: 0}
-  ammo: {fileID: 11400000, guid: 7cb3909d6ae7ac04bb7eb902970d414b, type: 2}
+  weaponName: Shotgun
+  weaponSprite: {fileID: 21300000, guid: 957e7c5a4532c7b4fa28cd31bf5aee5d, type: 3}
+  shootPosition: {x: 1.376, y: 0.208, z: 0}
+  ammo: {fileID: 11400000, guid: 0540f21928043084c845a5106fe18ff0, type: 2}
   hasInfiniteAmmo: 0
-  ammoCapacity: 50
+  ammoCapacity: 30
   hasInfiniteClipCapacity: 0
-  ammoClipCapacity: 15
-  fireRate: 0.2
+  ammoClipCapacity: 4
+  fireRate: 0.4
   prechargeTime: 0
-  reloadTime: 3
+  reloadTime: 1
