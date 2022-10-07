@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GameResources : MonoBehaviour
 {
@@ -38,4 +39,8 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("UI")]
     public GameObject ammoIconPrefab;
+
+    [Space(10)]
+    [Header("SOUND")]
+    public AudioMixerGroup soundMasterAudioMixer;
 }
