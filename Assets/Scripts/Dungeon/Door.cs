@@ -49,6 +49,17 @@ public class Door : MonoBehaviour
             doorCollider.enabled = false;
 
             animator.SetBool(Animations.open, true);
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.doorOpenSoundEffect);
+        }
+    }
+
+    private void Close()
+    {
+        if (isOpen)
+        {
+            isOpen = false;
+            animator.SetBool(Animations.open, false);
+            SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.doorOpenSoundEffect);
         }
     }
 
@@ -57,11 +68,7 @@ public class Door : MonoBehaviour
         doorTrigger.enabled = false;
         doorCollider.enabled = true;
 
-        if (isOpen)
-        {
-            isOpen = false;
-            animator.SetBool(Animations.open, false);
-        }
+        Close();
     }
 
     public void Unlock()

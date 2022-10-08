@@ -43,4 +43,5 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("SOUND")]
     public AudioMixerGroup soundMasterAudioMixer;
+    public SoundEffectSO doorOpenSoundEffect;
 }
