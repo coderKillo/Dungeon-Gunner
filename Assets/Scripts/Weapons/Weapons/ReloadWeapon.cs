@@ -67,6 +67,8 @@ public class ReloadWeapon : MonoBehaviour
         weapon.isReloading = true;
         weapon.reloadTimer = weapon.weaponDetails.reloadTime;
 
+        ReloadSoundEffect(weapon);
+
         while (weapon.reloadTimer > 0)
         {
             weapon.reloadTimer -= Time.deltaTime;
@@ -106,5 +108,16 @@ public class ReloadWeapon : MonoBehaviour
     private void ReloadComplete(Weapon weapon)
     {
         weaponReloadedEvent.CallWeaponReloadedEvent(weapon);
+    }
+
+    private void ReloadSoundEffect(Weapon weapon)
+    {
+        var soundEffect = weapon.weaponDetails.reloadSoundEffect;
+        if (soundEffect == null)
+        {
+            return;
+        }
+
+        SoundEffectManager.Instance.PlaySoundEffect(weapon.weaponDetails.reloadSoundEffect);
     }
 }

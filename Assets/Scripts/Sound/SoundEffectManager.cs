@@ -34,6 +34,6 @@ public class SoundEffectManager : SingletonAbstract<SoundEffectManager>
         float volumeDecibel = HelperUtilities.LinearToDecibels(volume);
         volumeDecibel = (volume <= 0) ? muteDecibel : volumeDecibel;
 
-        GameResources.Instance.soundMasterAudioMixer.audioMixer.SetFloat("soundVolume", volumeDecibel);
+        GameResources.Instance.soundMasterAudioMixer.audioMixer.SetFloat("soundsVolume", volumeDecibel);
     }
 }

@@ -7,10 +7,9 @@ public class SoundEffectSO : ScriptableObject
     public GameObject soundEffectPrefab;
     public AudioClip audioClip;
 
-    [Range(0.1f, 1.0f)] public float pitchVariantMin;
-    [Range(0.1f, 1.0f)] public float pitchVariantMax;
-
-    public float volume;
+    [Range(0.1f, 1.5f)] public float pitchVariantMin = 0.8f;
+    [Range(0.1f, 1.5f)] public float pitchVariantMax = 1.2f;
+    [Range(0f, 1.0f)] public float volume = 1f;
 
     #region VALIDATION
 #if UNITY_EDITOR

@@ -107,6 +107,8 @@ public class FireWeapon : MonoBehaviour
             return;
         }
 
+        FireWeaponSoundEffect();
+
         StartCoroutine(FireAmmoCoroutine(aimAngle, weaponAimAngle, weaponAimDirectionVector));
     }
 
@@ -171,4 +173,14 @@ public class FireWeapon : MonoBehaviour
         return arg2.fire && !arg2.fireLastFrame;
     }
 
+    private void FireWeaponSoundEffect()
+    {
+        var soundEffect = activeWeapon.CurrentWeapon.weaponDetails.fireSoundEffect;
+        if (soundEffect == null)
+        {
+            return;
+        }
+
+        SoundEffectManager.Instance.PlaySoundEffect(soundEffect);
+    }
 }
