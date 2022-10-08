@@ -47,7 +47,6 @@ public class InstantiatedRoom : MonoBehaviour
         AddDoorsToRoom();
 
         collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
-        minimapTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
     }
 
     private void PopulateTilemaps(Tilemap[] tilemaps)

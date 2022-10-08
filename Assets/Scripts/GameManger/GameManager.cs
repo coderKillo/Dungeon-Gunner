@@ -28,6 +28,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private Player player;
     public Player Player { get { return player; } }
+    public Sprite PlayerIcon { get { return player.playerDetails.minimapIcon; } }
     #endregion
 
     protected override void Awake()
