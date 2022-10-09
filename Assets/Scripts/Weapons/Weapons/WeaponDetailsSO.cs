@@ -29,6 +29,10 @@ public class WeaponDetailsSO : ScriptableObject
     public SoundEffectSO fireSoundEffect;
     public SoundEffectSO reloadSoundEffect;
 
+    [Space(10)]
+    [Header("WEAPON VISUAL EFFECTS")]
+    public WeaponShootEffectSO fireVisualEffect;
+
     #region VALIDATION
 #if UNITY_EDITOR
     private void OnValidate()

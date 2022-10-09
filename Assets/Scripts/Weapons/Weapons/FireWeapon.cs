@@ -109,6 +109,8 @@ public class FireWeapon : MonoBehaviour
 
         FireWeaponSoundEffect();
 
+        FireWeaponVisualEffect(aimAngle);
+
         StartCoroutine(FireAmmoCoroutine(aimAngle, weaponAimAngle, weaponAimDirectionVector));
     }
 
@@ -183,4 +185,24 @@ public class FireWeapon : MonoBehaviour
 
         SoundEffectManager.Instance.PlaySoundEffect(soundEffect);
     }
+
+    private void FireWeaponVisualEffect(float aimAngle)
+    {
+        var visualEffect = activeWeapon.CurrentWeapon.weaponDetails.fireVisualEffect;
+
+        if (visualEffect == null)
+        {
+            return;
+        }
+
+        if (visualEffect.prefab == null)
+        {
+            return;
+        }
+
+        var effectObject = (WeaponShootEffect)PoolManager.Instance.ReuseComponent(visualEffect.prefab, activeWeapon.ShootPosition, Quaternion.identity);
+        effectObject.Setup(visualEffect, aimAngle);
+        effectObject.gameObject.SetActive(true);
+    }
+
 }
