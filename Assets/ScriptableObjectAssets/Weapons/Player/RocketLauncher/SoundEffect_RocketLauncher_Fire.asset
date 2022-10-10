@@ -17,4 +17,4 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 274e5c4738cc8fa4989c5ccc3a8206fe, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
-  volume: 1
+  volume: 0.7

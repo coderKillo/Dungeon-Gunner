@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDetails_LaserBlaster
   m_EditorClassIdentifier: 
   weaponName: Laser Blaster
-  weaponSprite: {fileID: 21300000, guid: a9d9372b640a67a4dae1cdbb59e3b919, type: 3}
+  weaponSprite: {fileID: 21300000, guid: e9d1276e0a6b9bf42b04b5470c7073fb, type: 3}
   shootPosition: {x: 1.323, y: 0.294, z: 0}
   ammo: {fileID: 11400000, guid: ab0be33c5ca0fd043be8468bc9dc8477, type: 2}
   hasInfiniteAmmo: 0
@@ -25,3 +25,4 @@ MonoBehaviour:
   reloadTime: 3
   fireSoundEffect: {fileID: 11400000, guid: 4ad970a369d4d724abcd30286912c7be, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: b675819d086047e46b4c77ae54d5c9a1, type: 2}
+  fireVisualEffect: {fileID: 11400000, guid: f010b9eb78208a4488db0c3e62eee5e3, type: 2}

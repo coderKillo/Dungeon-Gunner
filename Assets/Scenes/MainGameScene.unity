@@ -622,6 +622,15 @@ MonoBehaviour:
   - size: 20
     prefab: {fileID: 5296985124228926427, guid: 7825f503b8891b849a3f733654421fe3, type: 3}
     componentTypeName: WeaponShootEffect
+  - size: 20
+    prefab: {fileID: 5296985124228926427, guid: 103d705d54a05cf4db2bbdc72fdfd8a1, type: 3}
+    componentTypeName: WeaponShootEffect
+  - size: 20
+    prefab: {fileID: 1521094998182052274, guid: d3e59e49908cf6346a74573b60573594, type: 3}
+    componentTypeName: WeaponShootEffect
+  - size: 20
+    prefab: {fileID: 5296985124228926427, guid: 4de8dac5cc2870344a33bda72dd7b6e1, type: 3}
+    componentTypeName: AmmoHitEffect
 --- !u!1 &304039099
 GameObject:
   m_ObjectHideFlags: 0

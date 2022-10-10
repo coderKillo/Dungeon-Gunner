@@ -60,13 +60,13 @@ public class WeaponShootEffect : MonoBehaviour
         minMaxCurveY.mode = ParticleSystemCurveMode.TwoConstants;
         minMaxCurveY.constantMin = velocityOverLifetimeMin.y;
         minMaxCurveY.constantMax = velocityOverLifetimeMax.y;
-        velocityOverLifeTimeModule.x = minMaxCurveY;
+        velocityOverLifeTimeModule.y = minMaxCurveY;
 
         var minMaxCurveZ = new ParticleSystem.MinMaxCurve();
         minMaxCurveZ.mode = ParticleSystemCurveMode.TwoConstants;
         minMaxCurveZ.constantMin = velocityOverLifetimeMin.z;
         minMaxCurveZ.constantMax = velocityOverLifetimeMax.z;
-        velocityOverLifeTimeModule.x = minMaxCurveZ;
+        velocityOverLifeTimeModule.z = minMaxCurveZ;
     }
 
     private void SetupEmissionModule(int emissionRate, int burstParticleNumber)

@@ -117,6 +117,26 @@ public class Ammo : MonoBehaviour, IFireable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        AmmoHitEffect();
+
         gameObject.SetActive(false);
+    }
+
+    private void AmmoHitEffect()
+    {
+        var visualEffect = ammoDetails.hitVisualEffect;
+
+        if (visualEffect == null)
+        {
+            return;
+        }
+        if (visualEffect.prefab == null)
+        {
+            return;
+        }
+
+        var ammoHitEffect = (AmmoHitEffect)PoolManager.Instance.ReuseComponent(visualEffect.prefab, transform.position, Quaternion.identity);
+        ammoHitEffect.Setup(visualEffect);
+        ammoHitEffect.gameObject.SetActive(true);
     }
 }

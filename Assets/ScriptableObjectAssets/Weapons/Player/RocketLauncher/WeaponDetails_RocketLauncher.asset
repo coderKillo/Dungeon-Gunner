@@ -25,3 +25,4 @@ MonoBehaviour:
   reloadTime: 2.5
   fireSoundEffect: {fileID: 11400000, guid: 02ed7c8ec3660f646ab9a4729c6199c5, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: 323f30cbb19cbb048b4bcd7fba60068e, type: 2}
+  fireVisualEffect: {fileID: 11400000, guid: db3da58ef914a2f49aef5b11e1131af9, type: 2}

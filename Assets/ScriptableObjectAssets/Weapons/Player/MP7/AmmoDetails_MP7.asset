@@ -36,3 +36,4 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
+  hitVisualEffect: {fileID: 11400000, guid: bd4406402dc69d54b88451574ae0937e, type: 2}

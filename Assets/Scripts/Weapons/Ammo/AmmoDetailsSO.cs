@@ -49,6 +49,10 @@ public class AmmoDetailsSO : ScriptableObject
     [Range(0f, 1f)] public float trailStartWidth;
     [Range(0f, 1f)] public float trailEndWidth;
 
+    [Space(10)]
+    [Header("Ammo VISUAL EFFECTS")]
+    public AmmoHitEffectSO hitVisualEffect;
+
     #region VALIDATION
 #if UNITY_EDITOR
     private void OnValidate()
