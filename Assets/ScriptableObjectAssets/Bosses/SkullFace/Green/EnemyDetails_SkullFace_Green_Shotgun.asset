@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c929b223ca41adc46b8512e41f9c8480, type: 3}
+  m_Name: EnemyDetails_SkullFace_Green_Shotgun
+  m_EditorClassIdentifier: 
+  enemyName: SkullFace Green
+  prefab: {fileID: 8220697058464618339, guid: 75e476ba6e1dfb543b3cd54e52c47915, type: 3}
