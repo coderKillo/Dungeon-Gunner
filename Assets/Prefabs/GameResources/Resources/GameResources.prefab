@@ -52,3 +52,7 @@ MonoBehaviour:
   ammoIconPrefab: {fileID: 6555343837402441951, guid: 6950b5a7a17a89441b95c30300c5c5ae, type: 3}
   soundMasterAudioMixer: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   doorOpenSoundEffect: {fileID: 11400000, guid: 762d44ddb2cc27945981631bbe4b2673, type: 2}
+  enemyUnwalkableCollisionTilesArray:
+  - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
+  - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}
+  preferredEnemyPath: {fileID: 11400000, guid: 3ce5fb260af53d24887b55c3d50041e2, type: 2}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Tilemaps;
 
 public class GameResources : MonoBehaviour
 {
@@ -44,4 +45,9 @@ public class GameResources : MonoBehaviour
     [Header("SOUND")]
     public AudioMixerGroup soundMasterAudioMixer;
     public SoundEffectSO doorOpenSoundEffect;
+
+    [Space(10)]
+    [Header("SPECIAL TILEMAP TILES")]
+    public TileBase[] enemyUnwalkableCollisionTilesArray;
+    public TileBase preferredEnemyPath;
 }
