@@ -9,6 +9,7 @@ using UnityEngine.Tilemaps;
 public class EnemyMovementAI : MonoBehaviour
 {
     [SerializeField] private MovementDetailsSO movementDetails;
+    public bool debugPath = false;
 
     [HideInInspector] public float moveSpeed;
 
@@ -20,7 +21,6 @@ public class EnemyMovementAI : MonoBehaviour
     private float rebuildCooldownTimer;
     private WaitForFixedUpdate waitForFixedUpdate;
     private bool chasePlayer;
-
 
     private void Awake()
     {
@@ -93,14 +93,41 @@ public class EnemyMovementAI : MonoBehaviour
             Idle();
         }
 
-        StartCoroutine(MoveEnemyCoroutine(path));
+
+        if (debugPath)
+        {
+            DebugPath();
+        }
+
+        moveEnemyCoroutine = StartCoroutine(MoveEnemyCoroutine(path));
+    }
+
+    private void DebugPath()
+    {
+        var room = GameManager.Instance.CurrentRoom;
+        var frontTilemapClone = room.instantiatedRoom.transform.Find("Grid/Tilemap4_Front(Clone)");
+
+        if (frontTilemapClone != null)
+        {
+            var pathTilemap = frontTilemapClone.GetComponent<Tilemap>();
+            var grid = room.instantiatedRoom.grid;
+            var startTile = GameResources.Instance.preferredEnemyPath;
+
+            pathTilemap.ClearAllTiles();
+
+            foreach (var pos in path)
+            {
+                pathTilemap.SetTile(grid.WorldToCell(pos), startTile);
+            }
+        }
+
     }
 
     private IEnumerator MoveEnemyCoroutine(Stack<Vector3> steps)
     {
-        while (path.Count > 0)
+        while (steps.Count > 0)
         {
-            var targetPosition = path.Pop();
+            var targetPosition = steps.Pop();
             var direction = (targetPosition - transform.position).normalized;
 
             while (Vector3.Distance(targetPosition, transform.position) > 0.2f)

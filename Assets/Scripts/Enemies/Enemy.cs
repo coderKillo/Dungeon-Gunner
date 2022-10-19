@@ -25,11 +25,11 @@ public class Enemy : MonoBehaviour
 
     private CircleCollider2D circleCollider;
     private PolygonCollider2D polygonCollider;
-    private Animator animator;
     private EnemyMovementAI enemyMovementAI;
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
+    [HideInInspector] public Animator animator;
     #endregion
 
     private void Awake()

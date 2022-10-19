@@ -198,6 +198,13 @@ public static class HelperUtilities
         return degree;
     }
 
+    public static float GetAngleFromVector(Vector2 vector)
+    {
+        float radians = Mathf.Atan2(vector.y, vector.x);
+        float degree = radians * Mathf.Rad2Deg;
+        return degree;
+    }
+
     public static Vector3 GetVectorFromAngle(float angle)
     {
         float radians = angle * Mathf.Deg2Rad;
