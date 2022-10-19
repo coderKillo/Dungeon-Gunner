@@ -32,4 +32,11 @@ static public class Settings
     public const float uiAmmoIconSpacing = 4f;
     #endregion
 
+    #region ASTAR PATHFINDER PARAMETERS
+    public const int defaultAstarMovementPenalty = 40;
+    public const int preferredPathMovementPenalty = 1;
+    public const float playerMoveDistanceToRebuildPath = 3f;
+    public const float enemyPathRebuildCooldown = 2f;
+    #endregion
+
 }

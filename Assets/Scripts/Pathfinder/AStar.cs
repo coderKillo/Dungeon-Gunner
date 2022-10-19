@@ -70,12 +70,19 @@ public static class AStar
             List<Node> neighborNodes = GetNeighborNodes(selectedNode, grid, instantiatedRoom.room.lowerBound, instantiatedRoom.room.upperBound);
             foreach (var node in neighborNodes)
             {
+
                 if (closeList.Contains(node))
                 {
                     continue;
                 }
 
-                int gCost = selectedNode.gCost + GetDistance(selectedNode, node);
+                int movementPenalty = instantiatedRoom.pathfinderMovementPenaltyMatrix[node.position.x, node.position.y];
+                if (movementPenalty <= 0)
+                {
+                    continue;
+                }
+
+                int gCost = selectedNode.gCost + GetDistance(selectedNode, node) + movementPenalty;
 
                 if (!openList.Contains(node) || gCost < selectedNode.gCost)
                 {
@@ -134,7 +141,11 @@ public static class AStar
                     continue;
                 }
 
-                neighborNodes.Add(grid.GetNode(x, y));
+                var node = grid.GetNode(x, y);
+                if (node != null)
+                {
+                    neighborNodes.Add(node);
+                }
             }
         }
 

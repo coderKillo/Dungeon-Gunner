@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 754261833581178493, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: fbcfbc933c4ed6448b0c8e75277631d1, type: 2}
     - target: {fileID: 1111977778612913738, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 3
@@ -111,6 +115,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 0.13193047
       objectReference: {fileID: 0}
+    - target: {fileID: 1582880359696476315, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: c9a09874779a8964fa35a8fc82f5ba1b, type: 2}
     - target: {fileID: 4821766618793254805, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
       propertyPath: m_Name
       value: SkullFace_White

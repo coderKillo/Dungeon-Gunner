@@ -9,6 +9,7 @@ public class EnemyDetailsSO : ScriptableObject
     [Header("BASE DETAILS")]
     public string enemyName;
     public GameObject prefab;
+    public float chaseDistance = 50f;
 
     // public RuntimeAnimatorController runtimeAnimatorController;
 

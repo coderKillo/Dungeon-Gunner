@@ -10,16 +10,27 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(EnemyMovementAI))]
+[RequireComponent(typeof(Idle))]
+[RequireComponent(typeof(IdleEvent))]
+[RequireComponent(typeof(MovementToPosition))]
+[RequireComponent(typeof(MovementToPositionEvent))]
 #endregion
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
 {
-    [HideInInspector] public EnemyDetailsSO enemyDetails;
+    public EnemyDetailsSO enemyDetails;
+
     [HideInInspector] public SpriteRenderer[] spriteRenderer;
 
     private CircleCollider2D circleCollider;
     private PolygonCollider2D polygonCollider;
     private Animator animator;
+    private EnemyMovementAI enemyMovementAI;
+    #region EVENTS
+    [HideInInspector] public IdleEvent idleEvent;
+    [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
+    #endregion
 
     private void Awake()
     {
@@ -27,5 +38,8 @@ public class Enemy : MonoBehaviour
         polygonCollider = GetComponent<PolygonCollider2D>();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        enemyMovementAI = GetComponent<EnemyMovementAI>();
+        idleEvent = GetComponent<IdleEvent>();
+        movementToPositionEvent = GetComponent<MovementToPositionEvent>();
     }
 }

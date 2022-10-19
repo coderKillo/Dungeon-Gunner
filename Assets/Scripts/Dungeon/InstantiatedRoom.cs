@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,6 +17,7 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap collisionTilemap;
     [HideInInspector] public Tilemap minimapTilemap;
     [HideInInspector] public Bounds roomColliderBounds;
+    [HideInInspector] public int[,] pathfinderMovementPenaltyMatrix;
 
     private BoxCollider2D boxCollider;
 
@@ -43,6 +45,8 @@ public class InstantiatedRoom : MonoBehaviour
         PopulateTilemaps(tilemaps);
 
         BlockOffUnusedDoorways(tilemaps);
+
+        AddObstacles();
 
         AddDoorsToRoom();
 
@@ -100,6 +104,33 @@ public class InstantiatedRoom : MonoBehaviour
                 BlockDoorwayOnTilemap(doorway, tilemap);
             }
         }
+    }
+
+    private void AddObstacles()
+    {
+        pathfinderMovementPenaltyMatrix = new int[room.Size.x, room.Size.y];
+
+        for (int x = 0; x < room.Size.x; x++)
+        {
+            for (int y = 0; y < room.Size.y; y++)
+            {
+                pathfinderMovementPenaltyMatrix[x, y] = Settings.defaultAstarMovementPenalty;
+
+                var worldPosition = new Vector3Int(x + room.templateLowerBound.x, y + room.templateLowerBound.y);
+                var currentTile = collisionTilemap.GetTile(worldPosition);
+
+                if (GameResources.Instance.enemyUnwalkableCollisionTilesArray.Contains(currentTile))
+                {
+                    pathfinderMovementPenaltyMatrix[x, y] = 0;
+                }
+
+                if (GameResources.Instance.preferredEnemyPath == currentTile)
+                {
+                    pathfinderMovementPenaltyMatrix[x, y] = Settings.preferredPathMovementPenalty;
+                }
+            }
+        }
+
     }
 
     private void BlockDoorwayOnTilemap(Doorway doorway, Tilemap tilemap)

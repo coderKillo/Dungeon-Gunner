@@ -20,9 +20,7 @@ public class MovementToPosition : MonoBehaviour
 
     private void OnEnable()
     {
-
         movementToPositionEvent.OnMovementToPosition += MovementToPositionEvent_OnMovementToPosition;
-
     }
 
     private void OnDisable()

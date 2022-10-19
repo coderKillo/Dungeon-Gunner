@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 754261833581178493, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 36659f9ad19541b4289f920e957d33f1, type: 2}
     - target: {fileID: 1111977778612913738, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 3
@@ -111,6 +115,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 0.13193047
       objectReference: {fileID: 0}
+    - target: {fileID: 1582880359696476315, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 38c5d1ba8a9a36147b2d1d8536af16b7, type: 2}
     - target: {fileID: 3716360052853156418, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
       value: 0.5

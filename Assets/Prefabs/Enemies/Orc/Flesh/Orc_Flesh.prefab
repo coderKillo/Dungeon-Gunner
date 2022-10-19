@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 754261833581178493, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: cad4f169e4da1de459aa43fa01a49ec3, type: 2}
     - target: {fileID: 1111977778612913738, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.25
@@ -111,6 +115,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 1.9172341
       objectReference: {fileID: 0}
+    - target: {fileID: 1582880359696476315, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d9fc35840995f54c820f675a9872961, type: 2}
     - target: {fileID: 4821766618793254805, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
       propertyPath: m_Name
       value: Orc_Flesh
