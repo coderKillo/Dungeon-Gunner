@@ -35,6 +35,11 @@ public class RoomTemplateSO : ScriptableObject
     [Tooltip("Each possible spawn position (used for enemies and chests) for the room in tilemap coordinates should be added to this array")]
     public Vector2Int[] spawnPositionArray;
 
+    [Space(10)]
+    [Header("ENEMY DETAILS")]
+
+    public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
+
     public List<Doorway> GetDoorwayList()
     {
         return doorwayList;

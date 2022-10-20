@@ -26,6 +26,8 @@ public class GameManager : SingletonAbstract<GameManager>
     private Room previousRoom;
     private PlayerDetailsSO playerDetails;
 
+    public DungeonLevelSO CurrentLevel { get { return dungeonLevelList[currentLevelIndex]; } }
+
     private Player player;
     public Player Player { get { return player; } }
     public Sprite PlayerIcon { get { return player.playerDetails.minimapIcon; } }

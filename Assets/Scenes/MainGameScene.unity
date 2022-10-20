@@ -433,7 +433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73737722}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe41fae7c378c164086e5e05074d935c, type: 3}
   m_Name: 
@@ -779,6 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 578854983}
   - component: {fileID: 578854984}
+  - component: {fileID: 578854986}
   - component: {fileID: 578854985}
   m_Layer: 0
   m_Name: GameManager
@@ -821,7 +822,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 153cf9471fb236f4f835d3803971d706, type: 2}
   - {fileID: 11400000, guid: 736d46f2917239345ac5c45dbdd30cc9, type: 2}
   - {fileID: 11400000, guid: b792f51e23191214697d805823a1efd1, type: 2}
-  currentLevelIndex: 0
+  currentLevelIndex: 2
   gameState: 0
 --- !u!81 &578854985
 AudioListener:
@@ -831,6 +832,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578854982}
   m_Enabled: 1
+--- !u!114 &578854986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578854982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44184fbeb34658409daefb9f1da79f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomTemplate: {fileID: 11400000, guid: 5ec7c3fd29261984abd0f0a91400645d, type: 2}
 --- !u!1 &637089388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,9 +2178,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.31038252
+    y: 0
     width: 1
-    height: 0.37868854
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
