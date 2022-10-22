@@ -30,8 +30,16 @@ public class RandomSpawnableObject<T>
 
                 spawnableObjectLookup.Add(spawnableObjectRatio.dungeonObject);
 
-                for (int i = 0; i < spawnableObjectRatio.ratio; i++) spawnableObjectLookupIndexList.Add(index);
+                for (int i = 0; i < spawnableObjectRatio.ratio; i++)
+                {
+                    spawnableObjectLookupIndexList.Add(index);
+                }
             }
+        }
+
+        if (spawnableObjectLookupIndexList.Count <= 0)
+        {
+            return spawnableObject;
         }
 
         int lookUpValue = Random.Range(0, spawnableObjectLookupIndexList.Count);

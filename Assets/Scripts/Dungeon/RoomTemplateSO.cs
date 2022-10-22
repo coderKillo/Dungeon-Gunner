@@ -40,6 +40,8 @@ public class RoomTemplateSO : ScriptableObject
 
     public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
 
+    public List<RoomEnemySpawnParameters> enemySpawnParameterList;
+
     public List<Doorway> GetDoorwayList()
     {
         return doorwayList;

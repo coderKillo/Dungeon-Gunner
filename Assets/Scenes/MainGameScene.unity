@@ -822,7 +822,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 153cf9471fb236f4f835d3803971d706, type: 2}
   - {fileID: 11400000, guid: 736d46f2917239345ac5c45dbdd30cc9, type: 2}
   - {fileID: 11400000, guid: b792f51e23191214697d805823a1efd1, type: 2}
-  currentLevelIndex: 2
+  currentLevelIndex: 0
   gameState: 0
 --- !u!81 &578854985
 AudioListener:
@@ -844,7 +844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44184fbeb34658409daefb9f1da79f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomTemplate: {fileID: 11400000, guid: 5ec7c3fd29261984abd0f0a91400645d, type: 2}
 --- !u!1 &637089388
 GameObject:
   m_ObjectHideFlags: 0

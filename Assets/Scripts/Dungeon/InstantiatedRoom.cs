@@ -32,6 +32,7 @@ public class InstantiatedRoom : MonoBehaviour
         if (other.tag == Settings.playerTag && room != GameManager.Instance.CurrentRoom)
         {
             room.isPreviouslyVisited = true;
+            GameManager.Instance.SetCurrentRoom(room);
             StaticEventHandler.CallRoomChangedEvent(room);
         }
     }
