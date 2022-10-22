@@ -13,7 +13,14 @@ public class GameManager : SingletonAbstract<GameManager>
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList;
     [SerializeField] private int currentLevelIndex = 0;
 
-    [HideInInspector] public GameState gameState;
+    private GameState gameState;
+    public GameState GameState { get { return gameState; } }
+    public void SetGameState(GameState state)
+    {
+        previousGameState = gameState;
+        gameState = state;
+    }
+    private GameState previousGameState;
 
     private Room currentRoom;
     public Room CurrentRoom { get { return currentRoom; } }
@@ -49,6 +56,7 @@ public class GameManager : SingletonAbstract<GameManager>
     private void Start()
     {
         gameState = GameState.gameStarted;
+        previousGameState = GameState.gameStarted;
     }
 
     private void Update()

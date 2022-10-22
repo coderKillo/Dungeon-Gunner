@@ -335,6 +335,8 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         room.templateLowerBound = roomTemplate.lowerBounds;
         room.templateUpperBound = roomTemplate.upperBounds;
         room.spawnPositions = roomTemplate.spawnPositionArray;
+        room.enemiesByLevelList = roomTemplate.enemiesByLevelList;
+        room.enemySpawnParameterList = roomTemplate.enemySpawnParameterList;
         room.doorwayList = CopyDoorwayList(roomTemplate.doorwayList);
 
         if (roomNode.parentIdList.Count == 0)
@@ -347,6 +349,11 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         else
         {
             room.parentId = roomNode.parentIdList[0];
+        }
+
+        if (room.GetNumbersOfEnemiesToSpawn(GameManager.Instance.CurrentLevel) == 0)
+        {
+            room.isClearedOfEnemies = true;
         }
 
         return room;

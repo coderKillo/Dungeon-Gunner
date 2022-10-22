@@ -443,6 +443,7 @@ MonoBehaviour:
   spriteRenderer: []
   idleEvent: {fileID: 0}
   movementToPositionEvent: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &754261833581178493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDetails: {fileID: 11400000, guid: 797da1463404433489e3013a71a1ff71, type: 2}
+  debugPath: 0
   moveSpeed: 0
 --- !u!114 &2160519120283584595
 MonoBehaviour:

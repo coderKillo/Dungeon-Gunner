@@ -219,4 +219,18 @@ public class InstantiatedRoom : MonoBehaviour
         }
     }
 
+    public void LockDoors()
+    {
+        foreach (var door in GetComponentsInChildren<Door>())
+        {
+            door.Lock();
+        }
+
+        DisableRoomCollider();
+    }
+
+    public void DisableRoomCollider()
+    {
+        boxCollider.enabled = false;
+    }
 }

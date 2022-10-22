@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour
     {
         this.enemyDetails = enemyDetails;
 
+        enemyMovementAI.updateFrameNumber = enemySpawnNumber % Settings.targetFrameRateToSpreadRebuildPath;
+
         SetEnemyAnimationSpeed();
     }
 
