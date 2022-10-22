@@ -37,6 +37,7 @@ static public class Settings
     public const int preferredPathMovementPenalty = 1;
     public const float playerMoveDistanceToRebuildPath = 3f;
     public const float enemyPathRebuildCooldown = 2f;
+    public const int targetFrameRateToSpreadRebuildPath = 60;
     #endregion
 
 }

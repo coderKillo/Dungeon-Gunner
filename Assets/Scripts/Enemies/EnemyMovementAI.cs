@@ -12,6 +12,7 @@ public class EnemyMovementAI : MonoBehaviour
     public bool debugPath = false;
 
     [HideInInspector] public float moveSpeed;
+    [HideInInspector] public int updateFrameNumber = 1;
 
     private Enemy enemy;
 
@@ -44,6 +45,11 @@ public class EnemyMovementAI : MonoBehaviour
         }
 
         if (!chasePlayer)
+        {
+            return;
+        }
+
+        if (Time.frameCount % Settings.targetFrameRateToSpreadRebuildPath != updateFrameNumber)
         {
             return;
         }

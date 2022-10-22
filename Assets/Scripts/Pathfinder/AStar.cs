@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,7 +57,7 @@ public static class AStar
 
         while (openList.Count > 0)
         {
-            openList.Sort();
+            openList = openList.OrderBy(node => node.FCost).ToList();
             var selectedNode = openList[0];
 
             if (selectedNode == targetNode)
