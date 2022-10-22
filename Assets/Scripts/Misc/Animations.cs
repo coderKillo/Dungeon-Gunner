@@ -17,6 +17,7 @@ public static class Animations
     public static int rollRight = Animator.StringToHash("rollRight");
 
     public static float playerAnimationBaseSpeed = 8f;
+    public static float enemyAnimationBaseSpeed = 3f;
     #endregion
 
     #region DOOR

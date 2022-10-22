@@ -15,12 +15,12 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(MovementToPosition))]
 [RequireComponent(typeof(MovementToPositionEvent))]
+[RequireComponent(typeof(AnimateEnemy))]
 #endregion
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
 {
-    public EnemyDetailsSO enemyDetails;
-
+    [HideInInspector] public EnemyDetailsSO enemyDetails;
     [HideInInspector] public SpriteRenderer[] spriteRenderer;
 
     private CircleCollider2D circleCollider;
@@ -41,5 +41,17 @@ public class Enemy : MonoBehaviour
         enemyMovementAI = GetComponent<EnemyMovementAI>();
         idleEvent = GetComponent<IdleEvent>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
+    }
+
+    public void Initialize(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
+    {
+        this.enemyDetails = enemyDetails;
+
+        SetEnemyAnimationSpeed();
+    }
+
+    private void SetEnemyAnimationSpeed()
+    {
+        animator.speed = enemyMovementAI.moveSpeed / Animations.enemyAnimationBaseSpeed;
     }
 }
