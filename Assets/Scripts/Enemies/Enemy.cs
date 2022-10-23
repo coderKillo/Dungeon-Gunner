@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(MovementToPosition))]
 [RequireComponent(typeof(MovementToPositionEvent))]
 [RequireComponent(typeof(AnimateEnemy))]
+[RequireComponent(typeof(MaterializeEffect))]
 #endregion
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour
     private CircleCollider2D circleCollider;
     private PolygonCollider2D polygonCollider;
     private EnemyMovementAI enemyMovementAI;
+    private MaterializeEffect materializeEffect;
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
@@ -37,6 +40,7 @@ public class Enemy : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         polygonCollider = GetComponent<PolygonCollider2D>();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
+        materializeEffect = GetComponent<MaterializeEffect>();
         animator = GetComponent<Animator>();
         enemyMovementAI = GetComponent<EnemyMovementAI>();
         idleEvent = GetComponent<IdleEvent>();
@@ -50,10 +54,34 @@ public class Enemy : MonoBehaviour
         enemyMovementAI.updateFrameNumber = enemySpawnNumber % Settings.targetFrameRateToSpreadRebuildPath;
 
         SetEnemyAnimationSpeed();
+
+        StartCoroutine(MaterializeEnemy());
     }
 
     private void SetEnemyAnimationSpeed()
     {
         animator.speed = enemyMovementAI.moveSpeed / Animations.enemyAnimationBaseSpeed;
+    }
+
+    private IEnumerator MaterializeEnemy()
+    {
+        EnableEnemy(false);
+
+        yield return materializeEffect.MaterializeRoutine(
+            enemyDetails.materializeShader,
+            enemyDetails.materializeColor,
+            enemyDetails.materializeTime,
+            spriteRenderer,
+            enemyDetails.standardMaterial);
+
+        EnableEnemy(true);
+    }
+
+
+    private void EnableEnemy(bool enable)
+    {
+        circleCollider.enabled = enable;
+        polygonCollider.enabled = enable;
+        enemyMovementAI.enabled = enable;
     }
 }

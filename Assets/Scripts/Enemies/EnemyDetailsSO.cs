@@ -11,6 +11,16 @@ public class EnemyDetailsSO : ScriptableObject
     public GameObject prefab;
     public float chaseDistance = 50f;
 
+    [Space(10)]
+    [Header("MATERIAL DETAILS")]
+    public Material standardMaterial;
+
+    [Space(10)]
+    [Header("MATERIALIZE DETAILS")]
+    public float materializeTime;
+    [ColorUsage(true, true)] public Color materializeColor;
+    public Shader materializeShader;
+
     // public RuntimeAnimatorController runtimeAnimatorController;
 
     // [Space(10)]
@@ -33,6 +43,9 @@ public class EnemyDetailsSO : ScriptableObject
     {
         HelperUtilities.ValidateCheckEmptyString(this, nameof(enemyName), enemyName);
         HelperUtilities.ValidateCheckNullValue(this, nameof(prefab), prefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(standardMaterial), standardMaterial);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(materializeShader), materializeShader);
+        HelperUtilities.ValidateCheckPositiveValue(this, nameof(materializeTime), materializeTime, true);
         // HelperUtilities.ValidateCheckPositiveValue(this, nameof(healthAmount), healthAmount, false);
         // HelperUtilities.ValidateCheckNullValue(this, nameof(minimapIcon), minimapIcon);
         // HelperUtilities.ValidateCheckNullValue(this, nameof(handSprite), handSprite);

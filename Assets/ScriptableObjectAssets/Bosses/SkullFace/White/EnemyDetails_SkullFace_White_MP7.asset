@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: SkullFace White
   prefab: {fileID: 8220697058464618339, guid: 10682e202c2ea434bb4877fb3237684d, type: 3}
+  chaseDistance: 50
+  standardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  materializeTime: 2
+  materializeColor: {r: 8.829129, g: 0, b: 5.5470967, a: 1}
+  materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
