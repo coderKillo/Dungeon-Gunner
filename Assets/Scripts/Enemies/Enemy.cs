@@ -11,13 +11,15 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AnimateEnemy))]
+[RequireComponent(typeof(MaterializeEffect))]
 [RequireComponent(typeof(EnemyMovementAI))]
 [RequireComponent(typeof(Idle))]
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(MovementToPosition))]
 [RequireComponent(typeof(MovementToPositionEvent))]
-[RequireComponent(typeof(AnimateEnemy))]
-[RequireComponent(typeof(MaterializeEffect))]
+[RequireComponent(typeof(AimWeaponEvent))]
+[RequireComponent(typeof(FireWeaponEvent))]
 #endregion
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
@@ -32,6 +34,8 @@ public class Enemy : MonoBehaviour
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
+    [HideInInspector] public AimWeaponEvent aimWeaponEvent;
+    [HideInInspector] public FireWeaponEvent fireWeaponEvent;
     [HideInInspector] public Animator animator;
     #endregion
 
@@ -45,6 +49,8 @@ public class Enemy : MonoBehaviour
         enemyMovementAI = GetComponent<EnemyMovementAI>();
         idleEvent = GetComponent<IdleEvent>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
+        aimWeaponEvent = GetComponent<AimWeaponEvent>();
+        fireWeaponEvent = GetComponent<FireWeaponEvent>();
     }
 
     public void Initialize(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
