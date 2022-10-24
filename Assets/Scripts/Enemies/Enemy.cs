@@ -14,12 +14,21 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(AnimateEnemy))]
 [RequireComponent(typeof(MaterializeEffect))]
 [RequireComponent(typeof(EnemyMovementAI))]
+[RequireComponent(typeof(EnemyWeaponAI))]
 [RequireComponent(typeof(Idle))]
 [RequireComponent(typeof(IdleEvent))]
 [RequireComponent(typeof(MovementToPosition))]
 [RequireComponent(typeof(MovementToPositionEvent))]
+[RequireComponent(typeof(AimWeapon))]
 [RequireComponent(typeof(AimWeaponEvent))]
+[RequireComponent(typeof(ActiveWeapon))]
+[RequireComponent(typeof(SetActiveWeaponEvent))]
+[RequireComponent(typeof(FireWeapon))]
 [RequireComponent(typeof(FireWeaponEvent))]
+[RequireComponent(typeof(WeaponFiredEvent))]
+[RequireComponent(typeof(ReloadWeapon))]
+[RequireComponent(typeof(ReloadWeaponEvent))]
+[RequireComponent(typeof(WeaponReloadedEvent))]
 #endregion
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
@@ -31,6 +40,8 @@ public class Enemy : MonoBehaviour
     private PolygonCollider2D polygonCollider;
     private EnemyMovementAI enemyMovementAI;
     private MaterializeEffect materializeEffect;
+    private FireWeapon fireWeapon;
+    private SetActiveWeaponEvent setActiveWeaponEvent;
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
@@ -47,10 +58,12 @@ public class Enemy : MonoBehaviour
         materializeEffect = GetComponent<MaterializeEffect>();
         animator = GetComponent<Animator>();
         enemyMovementAI = GetComponent<EnemyMovementAI>();
+        fireWeapon = GetComponent<FireWeapon>();
         idleEvent = GetComponent<IdleEvent>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
+        setActiveWeaponEvent = GetComponent<SetActiveWeaponEvent>();
     }
 
     public void Initialize(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
@@ -61,12 +74,26 @@ public class Enemy : MonoBehaviour
 
         SetEnemyAnimationSpeed();
 
+        SetEnemyStartingWeapon();
+
         StartCoroutine(MaterializeEnemy());
     }
 
     private void SetEnemyAnimationSpeed()
     {
         animator.speed = enemyMovementAI.moveSpeed / Animations.enemyAnimationBaseSpeed;
+    }
+
+    private void SetEnemyStartingWeapon()
+    {
+        if (enemyDetails.weaponDetails == null)
+        {
+            return;
+        }
+
+        var weapon = Weapon.CreateWeapon(enemyDetails.weaponDetails);
+
+        setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
     }
 
     private IEnumerator MaterializeEnemy()
@@ -89,5 +116,6 @@ public class Enemy : MonoBehaviour
         circleCollider.enabled = enable;
         polygonCollider.enabled = enable;
         enemyMovementAI.enabled = enable;
+        fireWeapon.enabled = enabled;
     }
 }
