@@ -32,6 +32,12 @@ public class EnemyDetailsSO : ScriptableObject
     public float RandomFiringDuration { get { return Random.Range(firingDurationMin, firingDurationMax); } }
     public bool firingLineOfSightRequire;
 
+    [Space(10)]
+    [Header("HEALTH DETAILS")]
+    public EnemyHealthDetails[] healthDetailList;
+    public bool isImmuneAfterHit = false;
+    public int hitImmuneTime;
+
     // public RuntimeAnimatorController runtimeAnimatorController;
 
     // [Space(10)]
@@ -59,6 +65,7 @@ public class EnemyDetailsSO : ScriptableObject
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(materializeTime), materializeTime, false);
         HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingIntervalMin), firingIntervalMin, nameof(firingIntervalMax), firingIntervalMax, false);
         HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingDurationMin), firingDurationMin, nameof(firingDurationMax), firingDurationMax, false);
+        HelperUtilities.ValidateCheckPositiveValue(this, nameof(hitImmuneTime), hitImmuneTime, true);
         // HelperUtilities.ValidateCheckPositiveValue(this, nameof(healthAmount), healthAmount, false);
         // HelperUtilities.ValidateCheckNullValue(this, nameof(minimapIcon), minimapIcon);
         // HelperUtilities.ValidateCheckNullValue(this, nameof(handSprite), handSprite);

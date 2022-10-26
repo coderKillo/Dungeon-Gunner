@@ -119,7 +119,19 @@ public class Ammo : MonoBehaviour, IFireable
     {
         AmmoHitEffect();
 
+        DealDamage(other);
+
         gameObject.SetActive(false);
+    }
+
+    private void DealDamage(Collider2D collider)
+    {
+        var health = collider.GetComponent<Health>();
+
+        if (health != null)
+        {
+            health.TakeDamage(ammoDetails.damage);
+        }
     }
 
     private void AmmoHitEffect()

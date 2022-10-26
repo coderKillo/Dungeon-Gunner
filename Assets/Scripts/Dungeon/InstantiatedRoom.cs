@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Diagnostics;
 using System;
 using System.Linq;
@@ -227,6 +228,29 @@ public class InstantiatedRoom : MonoBehaviour
         }
 
         DisableRoomCollider();
+    }
+
+    public void UnlockDoors(float delay)
+    {
+        StartCoroutine(UnlockDoorsRoutine(delay));
+    }
+
+    private IEnumerator UnlockDoorsRoutine(float delay)
+    {
+        if (delay > 0)
+        {
+            yield return new WaitForSeconds(delay);
+        }
+
+        foreach (var door in GetComponentsInChildren<Door>())
+        {
+            door.Unlock();
+        }
+    }
+
+    public void EnableRoomCollider()
+    {
+        boxCollider.enabled = true;
     }
 
     public void DisableRoomCollider()

@@ -29,6 +29,10 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(ReloadWeapon))]
 [RequireComponent(typeof(ReloadWeaponEvent))]
 [RequireComponent(typeof(WeaponReloadedEvent))]
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(HealthEvent))]
+[RequireComponent(typeof(Destroyed))]
+[RequireComponent(typeof(DestroyedEvent))]
 #endregion
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
@@ -42,6 +46,9 @@ public class Enemy : MonoBehaviour
     private MaterializeEffect materializeEffect;
     private FireWeapon fireWeapon;
     private SetActiveWeaponEvent setActiveWeaponEvent;
+    private Health health;
+    private HealthEvent healthEvent;
+    private DestroyedEvent destroyedEvent;
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
@@ -64,6 +71,27 @@ public class Enemy : MonoBehaviour
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
         setActiveWeaponEvent = GetComponent<SetActiveWeaponEvent>();
+        health = GetComponent<Health>();
+        healthEvent = GetComponent<HealthEvent>();
+        destroyedEvent = GetComponent<DestroyedEvent>();
+    }
+
+    private void OnEnable()
+    {
+        healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+    }
+
+    private void OnDisable()
+    {
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+    }
+
+    private void HealthEvent_OnHealthChanged(HealthEvent arg1, HealthEventArgs arg2)
+    {
+        if (arg2.healthAmount <= 0)
+        {
+            destroyedEvent.CallDestroyedEvent();
+        }
     }
 
     public void Initialize(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel)
@@ -73,6 +101,8 @@ public class Enemy : MonoBehaviour
         enemyMovementAI.updateFrameNumber = enemySpawnNumber % Settings.targetFrameRateToSpreadRebuildPath;
 
         SetEnemyAnimationSpeed();
+
+        SetEnemyStartingHealth(dungeonLevel);
 
         SetEnemyStartingWeapon();
 
@@ -94,6 +124,21 @@ public class Enemy : MonoBehaviour
         var weapon = Weapon.CreateWeapon(enemyDetails.weaponDetails);
 
         setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
+    }
+
+    private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
+    {
+        health.StartingHealth = Settings.defaultEnemyHealth;
+
+        foreach (var healthDetail in enemyDetails.healthDetailList)
+        {
+            if (healthDetail.dungeonLevel != dungeonLevel)
+            {
+                continue;
+            }
+
+            health.StartingHealth = healthDetail.healthAmount;
+        }
     }
 
     private IEnumerator MaterializeEnemy()

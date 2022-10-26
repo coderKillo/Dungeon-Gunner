@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemySpawner : SingletonAbstract<EnemySpawner>
 {
     private int totalEnemies;
+    private int spawnedEnemies;
     private int concurrentEnemies;
     private int currentEnemies;
     private Room room;
@@ -24,6 +25,7 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs obj)
     {
         totalEnemies = 0;
+        spawnedEnemies = 0;
         currentEnemies = 0;
         room = obj.room;
 
@@ -47,13 +49,9 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
             return;
         }
 
-        SpawnEnemies();
+        room.instantiatedRoom.LockDoors();
 
-        var roomTemplate = DungeonBuilder.Instance.GetRoomTemplate(obj.room.templateId);
-        if (roomTemplate == null)
-        {
-            return;
-        }
+        SpawnEnemies();
     }
 
     private void SpawnEnemies()
@@ -93,8 +91,38 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
     private void CreateEnemy(EnemyDetailsSO enemyDetails, Vector3 position, int spawnNumber)
     {
         currentEnemies++;
+        spawnedEnemies++;
 
         var enemy = GameObject.Instantiate(enemyDetails.prefab, position, Quaternion.identity);
         enemy.GetComponent<Enemy>().Initialize(enemyDetails, spawnNumber, GameManager.Instance.CurrentLevel);
+        enemy.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
+    }
+
+    private void DestroyedEvent_OnDestroyed(DestroyedEvent obj)
+    {
+        obj.OnDestroyed -= DestroyedEvent_OnDestroyed;
+
+        currentEnemies--;
+
+        if (currentEnemies <= 0 && spawnedEnemies >= totalEnemies)
+        {
+            room.isClearedOfEnemies = true;
+        }
+
+        if (room.isClearedOfEnemies)
+        {
+            StaticEventHandler.CallRoomEnemiesDefeated(room);
+
+            if (GameManager.Instance.GameState == GameState.engagingEnemies)
+            {
+                GameManager.Instance.SetGameState(GameState.playingLevel);
+            }
+            else if (GameManager.Instance.GameState == GameState.engagingBoss)
+            {
+                GameManager.Instance.SetGameState(GameState.bossStage);
+            }
+
+            room.instantiatedRoom.UnlockDoors(Settings.doorUnlockDelay);
+        }
     }
 }

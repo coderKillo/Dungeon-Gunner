@@ -17,6 +17,7 @@ static public class Settings
     #region ROOM SETTINGS
     public const float fateInTime = 0.5f;
     public const int maxChildCorridors = 3;
+    public const float doorUnlockDelay = 1f;
     #endregion
 
     #region DUNGEON BUILD SETTINGS
@@ -38,6 +39,10 @@ static public class Settings
     public const float playerMoveDistanceToRebuildPath = 3f;
     public const float enemyPathRebuildCooldown = 2f;
     public const int targetFrameRateToSpreadRebuildPath = 60;
+    #endregion
+
+    #region HEALTH PARAMETERS
+    public const int defaultEnemyHealth = 20;
     #endregion
 
 }

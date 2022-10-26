@@ -19,3 +19,24 @@ MonoBehaviour:
   materializeTime: 3
   materializeColor: {r: 0.84298223, g: 8.47419, b: 0, a: 1}
   materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
+  weaponDetails: {fileID: 11400000, guid: df761ea646c8906469cc49c83af63a47, type: 2}
+  firingIntervalMin: 1
+  firingIntervalMax: 1.5
+  firingDurationMin: 6
+  firingDurationMax: 8
+  firingLineOfSightRequire: 1
+  healthDetailList:
+  - dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
+    healthAmount: 12
+  - dungeonLevel: {fileID: 11400000, guid: e7b3c6cb4093e954f81d880ad3c6c1a7, type: 2}
+    healthAmount: 35
+  - dungeonLevel: {fileID: 11400000, guid: 78e08a79e32967e449f3f889e8c7f07b, type: 2}
+    healthAmount: 50
+  - dungeonLevel: {fileID: 11400000, guid: 153cf9471fb236f4f835d3803971d706, type: 2}
+    healthAmount: 60
+  - dungeonLevel: {fileID: 11400000, guid: 736d46f2917239345ac5c45dbdd30cc9, type: 2}
+    healthAmount: 60
+  - dungeonLevel: {fileID: 11400000, guid: b792f51e23191214697d805823a1efd1, type: 2}
+    healthAmount: 70
+  isImmuneAfterHit: 0
+  hitImmuneTime: 0

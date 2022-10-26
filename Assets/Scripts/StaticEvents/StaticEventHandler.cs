@@ -8,9 +8,22 @@ public static class StaticEventHandler
     {
         OnRoomChanged?.Invoke(new RoomChangedEventArgs() { room = room });
     }
+
+
+    public static event Action<RoomEnemiesDefeatedEventArgs> OnRoomEnemiesDefeated;
+
+    public static void CallRoomEnemiesDefeated(Room room)
+    {
+        OnRoomEnemiesDefeated?.Invoke(new RoomEnemiesDefeatedEventArgs() { room = room });
+    }
 }
 
 public class RoomChangedEventArgs : EventArgs
+{
+    public Room room;
+}
+
+public class RoomEnemiesDefeatedEventArgs : EventArgs
 {
     public Room room;
 }
