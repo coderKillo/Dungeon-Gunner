@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
     private CircleCollider2D circleCollider;
     private PolygonCollider2D polygonCollider;
     private EnemyMovementAI enemyMovementAI;
+    private EnemyWeaponAI enemyWeaponAI;
     private MaterializeEffect materializeEffect;
     private FireWeapon fireWeapon;
     private SetActiveWeaponEvent setActiveWeaponEvent;
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour
         materializeEffect = GetComponent<MaterializeEffect>();
         animator = GetComponent<Animator>();
         enemyMovementAI = GetComponent<EnemyMovementAI>();
+        enemyWeaponAI = GetComponent<EnemyWeaponAI>();
         fireWeapon = GetComponent<FireWeapon>();
         idleEvent = GetComponent<IdleEvent>();
         movementToPositionEvent = GetComponent<MovementToPositionEvent>();
@@ -163,6 +165,7 @@ public class Enemy : MonoBehaviour
         circleCollider.enabled = enable;
         polygonCollider.enabled = enable;
         enemyMovementAI.enabled = enable;
+        enemyWeaponAI.enabled = enable;
         fireWeapon.enabled = enabled;
     }
 }
