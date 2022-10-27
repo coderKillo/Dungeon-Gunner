@@ -29,6 +29,10 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(WeaponFiredEvent))]
 [RequireComponent(typeof(ReloadWeaponEvent))]
 [RequireComponent(typeof(WeaponReloadedEvent))]
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(HealthEvent))]
+[RequireComponent(typeof(DestroyedEvent))]
+[RequireComponent(typeof(PlayerDied))]
 #endregion
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
@@ -48,6 +52,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public WeaponFiredEvent weaponFiredEvent;
     [HideInInspector] public ReloadWeaponEvent reloadWeaponEvent;
     [HideInInspector] public WeaponReloadedEvent weaponReloadedEvent;
+    [HideInInspector] public HealthEvent healthEvent;
+    [HideInInspector] public DestroyedEvent destroyedEvent;
     #endregion
 
     public List<Weapon> weaponList = new List<Weapon>();
@@ -68,6 +74,8 @@ public class Player : MonoBehaviour
         weaponFiredEvent = GetComponent<WeaponFiredEvent>();
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
+        healthEvent = GetComponent<HealthEvent>();
+        destroyedEvent = GetComponent<DestroyedEvent>();
         #endregion
     }
 
@@ -84,6 +92,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+    }
+
+    private void OnDisable()
+    {
+        healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+    }
+
+
     public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
     {
         var weapon = Weapon.CreateWeapon(weaponDetails);
@@ -95,4 +114,13 @@ public class Player : MonoBehaviour
 
         return weapon;
     }
+
+    private void HealthEvent_OnHealthChanged(HealthEvent arg1, HealthEventArgs arg2)
+    {
+        if (arg2.healthAmount <= 0)
+        {
+            destroyedEvent.CallDestroyedEvent();
+        }
+    }
+
 }
