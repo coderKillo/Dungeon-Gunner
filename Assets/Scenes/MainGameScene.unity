@@ -691,6 +691,9 @@ MonoBehaviour:
   - size: 20
     prefab: {fileID: 5296985124228926427, guid: 4de8dac5cc2870344a33bda72dd7b6e1, type: 3}
     componentTypeName: AmmoHitEffect
+  - size: 50
+    prefab: {fileID: 1281338800750000515, guid: ea61a2a28aad2b643986d089f803f005, type: 3}
+    componentTypeName: DamagePopup
 --- !u!1 &304039099
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +831,7 @@ GameObject:
   - component: {fileID: 578854983}
   - component: {fileID: 578854984}
   - component: {fileID: 578854985}
+  - component: {fileID: 578854986}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -878,6 +882,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578854982}
   m_Enabled: 1
+--- !u!114 &578854986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578854982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52743c57ef811394dad607e5c5285ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &637089388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2581,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 200
   m_TargetDisplay: 0

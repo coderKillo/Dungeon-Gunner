@@ -88,6 +88,8 @@ public class Enemy : MonoBehaviour
 
     private void HealthEvent_OnHealthChanged(HealthEvent arg1, HealthEventArgs arg2)
     {
+        DamagePopup.Create(transform.position, arg2.damageAmount);
+
         if (arg2.healthAmount <= 0)
         {
             destroyedEvent.CallDestroyedEvent();

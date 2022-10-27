@@ -40,6 +40,7 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("UI")]
     public GameObject ammoIconPrefab;
+    public GameObject damagePopupPrefab;
 
     [Space(10)]
     [Header("SOUND")]
