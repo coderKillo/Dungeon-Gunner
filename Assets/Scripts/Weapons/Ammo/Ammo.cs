@@ -20,6 +20,7 @@ public class Ammo : MonoBehaviour, IFireable
 
     private float chargeTimer;
     private bool ammoMaterialIsSet = false;
+    private bool isColliding = false;
     private bool overrideAmmoMovement;
 
     public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, bool overrideAmmoMovement = false)
@@ -29,6 +30,7 @@ public class Ammo : MonoBehaviour, IFireable
         this.range = ammoDetails.range;
         this.speed = speed;
         this.overrideAmmoMovement = overrideAmmoMovement;
+        this.isColliding = false;
 
         spriteRenderer.sprite = ammoDetails.ammoSprite;
 
@@ -117,6 +119,13 @@ public class Ammo : MonoBehaviour, IFireable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (isColliding)
+        {
+            return;
+        }
+
+        isColliding = true;
+
         AmmoHitEffect();
 
         DealDamage(other);
