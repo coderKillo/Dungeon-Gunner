@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 2321386061614680361}
   - component: {fileID: 6702397747898440064}
   - component: {fileID: 8848076093265053191}
+  - component: {fileID: 4968173095973270298}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -468,10 +469,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetails: {fileID: 0}
+  playerControl: {fileID: 0}
   health: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
   activeWeapon: {fileID: 0}
+  postHitImmunity: {fileID: 0}
   aimWeaponEvent: {fileID: 0}
   idleEvent: {fileID: 0}
   movementByVelocityEvent: {fileID: 0}
@@ -496,6 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDetails: {fileID: 11400000, guid: 816009b4a56469045a76096073e11764, type: 2}
+  isRolling: 0
 --- !u!114 &6598218562824775065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,6 +722,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamageable: 1
+--- !u!114 &4968173095973270298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585357847043585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6acd7974e6b5a84aa6068ab66c8b149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteFlashInterval: 0.1
+  spriteFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  triggerImmunityThreshold: 1
+  immunityTime: 0
 --- !u!1 &5947420354461193311
 GameObject:
   m_ObjectHideFlags: 0

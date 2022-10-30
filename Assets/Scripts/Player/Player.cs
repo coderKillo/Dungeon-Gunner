@@ -33,15 +33,18 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(DestroyedEvent))]
 [RequireComponent(typeof(PlayerDied))]
+[RequireComponent(typeof(PostHitImmunity))]
 #endregion
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
 {
     [HideInInspector] public PlayerDetailsSO playerDetails;
+    [HideInInspector] public PlayerControl playerControl;
     [HideInInspector] public Health health;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator animator;
     [HideInInspector] public ActiveWeapon activeWeapon;
+    [HideInInspector] public PostHitImmunity postHitImmunity;
     #region EVENTS
     [HideInInspector] public AimWeaponEvent aimWeaponEvent;
     [HideInInspector] public IdleEvent idleEvent;
@@ -61,9 +64,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         health = GetComponent<Health>();
+        playerControl = GetComponent<PlayerControl>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         activeWeapon = GetComponent<ActiveWeapon>();
+        postHitImmunity = GetComponent<PostHitImmunity>();
         #region EVENTS
         idleEvent = GetComponent<IdleEvent>();
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
@@ -84,6 +89,7 @@ public class Player : MonoBehaviour
         playerDetails = details;
 
         health.StartingHealth = details.healthAmount;
+        postHitImmunity.immunityTime = details.hitImmunityTime;
 
         weaponList.Clear();
         foreach (var weaponDetails in details.startingWeaponList)
@@ -123,4 +129,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool IsRolling()
+    {
+        return playerControl.isRolling;
+    }
 }

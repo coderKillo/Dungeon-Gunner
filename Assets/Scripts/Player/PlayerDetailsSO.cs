@@ -14,6 +14,7 @@ public class PlayerDetailsSO : ScriptableObject
     [Space(10)]
     [Header("HEALTH")]
     public int healthAmount;
+    public float hitImmunityTime = 0f;
 
     [Space(10)]
     [Header("WEAPON")]

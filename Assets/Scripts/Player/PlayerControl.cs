@@ -9,12 +9,13 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private MovementDetailsSO movementDetails;
 
+    [HideInInspector] public bool isRolling = false;
+
     private Player player;
     private float moveSpeed;
 
     private Coroutine rollCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate;
-    private bool isRolling = false;
     private float rollingCooldownTimer = 0f;
 
     private int currentWeaponIndex = 0;
