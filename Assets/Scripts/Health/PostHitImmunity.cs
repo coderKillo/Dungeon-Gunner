@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(HealthEvent))]
@@ -39,25 +40,14 @@ public class PostHitImmunity : MonoBehaviour
     {
         if (immunityTime > 0f && arg2.damageAmount > triggerImmunityThreshold && arg2.healthPercent > 0f)
         {
-            StartCoroutine(HitImmunityRoutine());
+            var intervals = Mathf.CeilToInt(immunityTime / (spriteFlashInterval * 2f));
+
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.SetLoops(intervals)
+            .AppendCallback(() => health.isDamageable = false)
+            .Append(spriteRenderer.DOColor(spriteFlashColor, spriteFlashInterval))
+            .Append(spriteRenderer.DOColor(Color.white, spriteFlashInterval))
+            .OnComplete(() => health.isDamageable = true);
         }
-    }
-
-    private IEnumerator HitImmunityRoutine()
-    {
-        var intervals = Mathf.CeilToInt(immunityTime / (spriteFlashInterval * 2f));
-
-        health.isDamageable = false;
-
-        for (int i = 0; i < intervals; i++)
-        {
-            spriteRenderer.color = spriteFlashColor;
-            yield return new WaitForSeconds(spriteFlashInterval);
-
-            spriteRenderer.color = Color.white;
-            yield return new WaitForSeconds(spriteFlashInterval);
-        }
-
-        health.isDamageable = true;
     }
 }

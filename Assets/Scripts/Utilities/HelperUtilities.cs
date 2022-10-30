@@ -262,4 +262,11 @@ public static class HelperUtilities
 
         return direction;
     }
+
+    public static bool IsObjectOnLayerMask(GameObject gameObject, LayerMask mask)
+    {
+        var objectLayerMask = (1 << gameObject.layer);
+
+        return (objectLayerMask & mask.value) != 0;
+    }
 }

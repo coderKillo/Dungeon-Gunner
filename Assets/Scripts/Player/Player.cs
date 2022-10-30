@@ -34,6 +34,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(DestroyedEvent))]
 [RequireComponent(typeof(PlayerDied))]
 [RequireComponent(typeof(PostHitImmunity))]
+[RequireComponent(typeof(ReceiveContactDamage))]
 #endregion
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour

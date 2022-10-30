@@ -33,6 +33,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(Destroyed))]
 [RequireComponent(typeof(DestroyedEvent))]
+[RequireComponent(typeof(DealContactDamage))]
 #endregion
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour

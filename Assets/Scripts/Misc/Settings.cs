@@ -45,4 +45,7 @@ static public class Settings
     public const int defaultEnemyHealth = 20;
     #endregion
 
+    #region CONTACT DAMAGE PARAMETERS
+    public const float contactDamageCollisionResetDelay = 0.5f;
+    #endregion
 }
