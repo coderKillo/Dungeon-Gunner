@@ -31,14 +31,16 @@ public class GameManager : SingletonAbstract<GameManager>
     }
 
     private Room previousRoom;
-    private PlayerDetailsSO playerDetails;
 
     public DungeonLevelSO CurrentLevel { get { return dungeonLevelList[currentLevelIndex]; } }
 
+    private PlayerDetailsSO playerDetails;
     private Player player;
     public Player Player { get { return player; } }
     public Sprite PlayerIcon { get { return player.playerDetails.minimapIcon; } }
     public Vector3 PlayerPosition { get { return player.transform.position; } }
+
+    private long score = 0;
     #endregion
 
     protected override void Awake()
@@ -57,18 +59,23 @@ public class GameManager : SingletonAbstract<GameManager>
     {
         gameState = GameState.gameStarted;
         previousGameState = GameState.gameStarted;
+
+        SetScore(0);
+    }
+
+    private void OnEnable()
+    {
+        StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
+    }
+
+    private void OnDisable()
+    {
+        StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
     }
 
     private void Update()
     {
         HandleGameState();
-
-        // #region RESTART FOR TESTING
-        // if (Input.GetKeyDown(KeyCode.P))
-        // {
-        //     gameState = GameState.gameStarted;
-        // }
-        // #endregion
     }
 
     private void HandleGameState()
@@ -107,6 +114,17 @@ public class GameManager : SingletonAbstract<GameManager>
         );
 
         player.gameObject.transform.position = HelperUtilities.GetNearestSpawnPoint(player.gameObject.transform.position);
+    }
+
+    public void SetScore(long amount)
+    {
+        score = amount;
+        StaticEventHandler.CallScoreChangedEvent(score);
+    }
+
+    private void StaticEventHandler_OnPointsScored(PointsScoredArgs args)
+    {
+        SetScore(score + args.points);
     }
 
     #region UNITY EDITOR

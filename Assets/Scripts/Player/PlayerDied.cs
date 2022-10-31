@@ -21,7 +21,7 @@ public class PlayerDied : MonoBehaviour
         destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
     }
 
-    private void DestroyedEvent_OnDestroyed(DestroyedEvent obj)
+    private void DestroyedEvent_OnDestroyed(DestroyedEvent obj, DestroyedEventArgs args)
     {
         gameObject.SetActive(false);
     }

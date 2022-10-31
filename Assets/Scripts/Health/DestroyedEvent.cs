@@ -3,10 +3,18 @@ using UnityEngine;
 
 public class DestroyedEvent : MonoBehaviour
 {
-    public Action<DestroyedEvent> OnDestroyed;
+    public Action<DestroyedEvent, DestroyedEventArgs> OnDestroyed;
 
-    public void CallDestroyedEvent()
+    public void CallDestroyedEvent(int points = 0)
     {
-        OnDestroyed?.Invoke(this);
+        OnDestroyed?.Invoke(this, new DestroyedEventArgs()
+        {
+            points = points
+        });
     }
+}
+
+public class DestroyedEventArgs : EventArgs
+{
+    public int points;
 }

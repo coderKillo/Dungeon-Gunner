@@ -95,7 +95,8 @@ public class Enemy : MonoBehaviour
 
         if (arg2.healthAmount <= 0)
         {
-            destroyedEvent.CallDestroyedEvent();
+            var points = health.StartingHealth;
+            destroyedEvent.CallDestroyedEvent(points);
         }
     }
 

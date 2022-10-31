@@ -98,11 +98,13 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         enemy.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
     }
 
-    private void DestroyedEvent_OnDestroyed(DestroyedEvent obj)
+    private void DestroyedEvent_OnDestroyed(DestroyedEvent obj, DestroyedEventArgs args)
     {
         obj.OnDestroyed -= DestroyedEvent_OnDestroyed;
 
         currentEnemies--;
+
+        StaticEventHandler.CallPointScoredEvent(args.points);
 
         if (currentEnemies <= 0 && spawnedEnemies >= totalEnemies)
         {
