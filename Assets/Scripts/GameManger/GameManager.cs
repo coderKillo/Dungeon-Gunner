@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonAbstract<GameManager>
@@ -13,14 +14,21 @@ public class GameManager : SingletonAbstract<GameManager>
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList;
     [SerializeField] private int currentLevelIndex = 0;
 
-    private GameState gameState;
+    private GameState previousGameState = GameState.none;
+    private GameState gameState = GameState.none;
     public GameState GameState { get { return gameState; } }
     public void SetGameState(GameState state)
     {
+        if (state == gameState)
+        {
+            return;
+        }
+
         previousGameState = gameState;
         gameState = state;
+
+        HandleGameStateChange();
     }
-    private GameState previousGameState;
 
     private Room currentRoom;
     public Room CurrentRoom { get { return currentRoom; } }
@@ -57,8 +65,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void Start()
     {
-        gameState = GameState.gameStarted;
-        previousGameState = GameState.gameStarted;
+        SetGameState(GameState.gameStarted);
 
         SetScore(0);
     }
@@ -66,19 +73,20 @@ public class GameManager : SingletonAbstract<GameManager>
     private void OnEnable()
     {
         StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
+        StaticEventHandler.OnRoomEnemiesEngaging += StaticEventHandOnRoomEnemiesEngaging;
+        StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnEnemiesDefeated;
+        player.destroyedEvent.OnDestroyed += PlayerDestroyedEvent_OnDestroyed;
     }
 
     private void OnDisable()
     {
         StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
+        StaticEventHandler.OnRoomEnemiesEngaging -= StaticEventHandOnRoomEnemiesEngaging;
+        StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnEnemiesDefeated;
+        player.destroyedEvent.OnDestroyed -= PlayerDestroyedEvent_OnDestroyed;
     }
 
-    private void Update()
-    {
-        HandleGameState();
-    }
-
-    private void HandleGameState()
+    private void HandleGameStateChange()
     {
         switch (gameState)
         {
@@ -86,14 +94,87 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 PlayDungeonLevel(currentLevelIndex);
 
-                gameState = GameState.levelCompleted;
+                break;
+
+
+            case GameState.playingLevel:
+
+                if (previousGameState == GameState.engagingBoss)
+                {
+                    SetGameState(GameState.levelCompleted);
+                }
 
                 break;
 
+
+            case GameState.engagingBoss:
+                break;
+
+
+            case GameState.engagingEnemies:
+                break;
+
+
+            case GameState.gameWon:
+                Debug.Log("Game Won!");
+                break;
+
+
+            case GameState.gameLost:
+
+                SetGameState(GameState.restartGame);
+
+                break;
+
+
+            case GameState.gamePaused:
+                break;
+
+
+            case GameState.restartGame:
+
+                StartCoroutine(RestartLevel());
+
+                break;
+
+
+            case GameState.dungeonOverviewMap:
+                break;
+
+
             case GameState.levelCompleted:
+
+                currentLevelIndex++;
+
+                if (currentLevelIndex >= dungeonLevelList.Count)
+                {
+                    SetGameState(GameState.gameWon);
+                }
+
+                StopAllCoroutines();
+                StartCoroutine(LevelComplete());
+
                 break;
         }
 
+    }
+
+    private IEnumerator LevelComplete()
+    {
+        Debug.Log("Level Completed! Next level starts in 2 seconds");
+
+        yield return new WaitForSeconds(2f);
+
+        PlayDungeonLevel(currentLevelIndex);
+    }
+
+    private IEnumerator RestartLevel()
+    {
+        Debug.Log("Restart level in 5 seconds");
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene("MainGameScene");
     }
 
     private void PlayDungeonLevel(int levelIndex)
@@ -114,6 +195,8 @@ public class GameManager : SingletonAbstract<GameManager>
         );
 
         player.gameObject.transform.position = HelperUtilities.GetNearestSpawnPoint(player.gameObject.transform.position);
+
+        SetGameState(GameState.playingLevel);
     }
 
     public void SetScore(long amount)
@@ -126,6 +209,29 @@ public class GameManager : SingletonAbstract<GameManager>
     {
         SetScore(score + args.points);
     }
+
+    private void PlayerDestroyedEvent_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs arg2)
+    {
+        SetGameState(GameState.gameLost);
+    }
+
+    private void StaticEventHandler_OnEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
+    {
+        SetGameState(GameState.playingLevel);
+    }
+
+    private void StaticEventHandOnRoomEnemiesEngaging(RoomEnemiesEngagingEventArgs obj)
+    {
+        if (obj.room.nodeType.isBossRoom)
+        {
+            SetGameState(GameState.engagingBoss);
+        }
+        else
+        {
+            SetGameState(GameState.engagingEnemies);
+        }
+    }
+
 
     #region UNITY EDITOR
 #if UNITY_EDITOR

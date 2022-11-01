@@ -215,7 +215,9 @@ public class InstantiatedRoom : MonoBehaviour
                 var doorComponent = door.GetComponent<Door>();
 
                 doorComponent.isBossRoom = true;
-                doorComponent.Lock();
+                doorComponent.SetColor(Color.red);
+
+                // doorComponent.Lock();
             }
         }
     }

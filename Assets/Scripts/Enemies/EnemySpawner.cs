@@ -51,16 +51,13 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
 
         room.instantiatedRoom.LockDoors();
 
+        StaticEventHandler.CallRoomEnemiesEngaging(room);
+
         SpawnEnemies();
     }
 
     private void SpawnEnemies()
     {
-        if (GameManager.Instance.GameState == GameState.playingLevel)
-        {
-            GameManager.Instance.SetGameState(GameState.engagingEnemies);
-        }
-
         if (room.spawnPositions.Length > 0)
         {
             StartCoroutine(SpawnEnemiesRoutine());
@@ -114,15 +111,6 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         if (room.isClearedOfEnemies)
         {
             StaticEventHandler.CallRoomEnemiesDefeated(room);
-
-            if (GameManager.Instance.GameState == GameState.engagingEnemies)
-            {
-                GameManager.Instance.SetGameState(GameState.playingLevel);
-            }
-            else if (GameManager.Instance.GameState == GameState.engagingBoss)
-            {
-                GameManager.Instance.SetGameState(GameState.bossStage);
-            }
 
             room.instantiatedRoom.UnlockDoors(Settings.doorUnlockDelay);
         }

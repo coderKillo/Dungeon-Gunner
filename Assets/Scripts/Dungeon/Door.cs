@@ -83,6 +83,21 @@ public class Door : MonoBehaviour
         }
     }
 
+    public void SetColor(Color color)
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer)
+        {
+            spriteRenderer.color = color;
+        }
+
+        var spriteRendererCollider = doorCollider.GetComponent<SpriteRenderer>();
+        if (spriteRendererCollider)
+        {
+            spriteRendererCollider.color = color;
+        }
+    }
+
 
     #region VALIDATION
 #if UNITY_EDITOR
