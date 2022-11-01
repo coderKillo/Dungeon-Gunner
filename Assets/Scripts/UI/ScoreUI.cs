@@ -60,6 +60,7 @@ public class ScoreUI : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreText.text = "Score: " + currentScore.ToString();
+        var scoreTextSize = 8;
+        scoreText.text = "Score: " + currentScore.ToString().PadLeft(scoreTextSize, '0');
     }
 }
