@@ -49,10 +49,10 @@ public class Enemy : MonoBehaviour
     private FireWeapon fireWeapon;
     private SetActiveWeaponEvent setActiveWeaponEvent;
     private Health health;
-    private HealthEvent healthEvent;
     private DestroyedEvent destroyedEvent;
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
+    [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
     [HideInInspector] public AimWeaponEvent aimWeaponEvent;
     [HideInInspector] public FireWeaponEvent fireWeaponEvent;

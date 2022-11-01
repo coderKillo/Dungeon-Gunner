@@ -90,9 +90,13 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         currentEnemies++;
         spawnedEnemies++;
 
-        var enemy = GameObject.Instantiate(enemyDetails.prefab, position, Quaternion.identity);
-        enemy.GetComponent<Enemy>().Initialize(enemyDetails, spawnNumber, GameManager.Instance.CurrentLevel);
-        enemy.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
+        var enemyGameObject = GameObject.Instantiate(enemyDetails.prefab, position, Quaternion.identity);
+        enemyGameObject.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
+
+        var enemy = enemyGameObject.GetComponent<Enemy>();
+        enemy.Initialize(enemyDetails, spawnNumber, GameManager.Instance.CurrentLevel);
+
+        StaticEventHandler.CallEnemySpawned(enemy);
     }
 
     private void DestroyedEvent_OnDestroyed(DestroyedEvent obj, DestroyedEventArgs args)
