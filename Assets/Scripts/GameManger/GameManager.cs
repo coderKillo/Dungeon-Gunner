@@ -51,9 +51,13 @@ public class GameManager : SingletonAbstract<GameManager>
     private long score = 0;
     #endregion
 
+    private DisplayMessage displayMessage;
+
     protected override void Awake()
     {
         base.Awake();
+
+        displayMessage = GetComponent<DisplayMessage>();
 
         playerDetails = GameResources.Instance.currentPlayer.playerDetails;
 
@@ -61,6 +65,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
         player = playerGameObject.GetComponent<Player>();
         player.Initialize(playerDetails);
+
     }
 
     private void Start()
@@ -116,7 +121,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
 
             case GameState.gameWon:
-                Debug.Log("Game Won!");
+                displayMessage.DisplayText("Game Won!", 5f, Color.white);
                 break;
 
 
@@ -161,7 +166,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private IEnumerator LevelComplete()
     {
-        Debug.Log("Level Completed! Next level starts in 2 seconds");
+        displayMessage.DisplayText("Level Completed! Next level starts in 2 seconds", 2f, Color.white, 0.5f, 1f);
 
         yield return new WaitForSeconds(2f);
 
@@ -170,7 +175,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private IEnumerator RestartLevel()
     {
-        Debug.Log("Restart level in 5 seconds");
+        displayMessage.DisplayText("Restart level in 5 seconds", 5f, Color.white, 0.5f, 1f);
 
         yield return new WaitForSeconds(5f);
 
@@ -185,6 +190,8 @@ public class GameManager : SingletonAbstract<GameManager>
         {
             Debug.LogError("Couldn't build dungeon from specified dungeon level");
         }
+
+        displayMessage.DisplayText("Level " + levelIndex + "\n\n" + dungeonLevelList[levelIndex].levelName, 3f, Color.white);
 
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
 

@@ -134,4 +134,9 @@ public class Player : MonoBehaviour
     {
         return playerControl.isRolling;
     }
+
+    public bool EnableMovement(bool enabled)
+    {
+        return playerControl.isMovementEnabled = enabled;
+    }
 }

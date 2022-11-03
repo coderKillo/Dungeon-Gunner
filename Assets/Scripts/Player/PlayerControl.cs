@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private MovementDetailsSO movementDetails;
 
     [HideInInspector] public bool isRolling = false;
+    [HideInInspector] public bool isMovementEnabled = true;
 
     private Player player;
     private float moveSpeed;
@@ -39,6 +40,11 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
+        if (!isMovementEnabled)
+        {
+            return;
+        }
+
         if (isRolling)
         {
             return;
