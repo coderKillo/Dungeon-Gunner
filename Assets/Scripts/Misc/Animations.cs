@@ -23,4 +23,9 @@ public static class Animations
     #region DOOR
     public static int open = Animator.StringToHash("open");
     #endregion
+
+    #region DESTROY
+    public static int destroy = Animator.StringToHash("destroy");
+    public static string stateDestroyed = "Destroyed";
+    #endregion
 }

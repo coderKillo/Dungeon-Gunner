@@ -39,6 +39,7 @@ public class RoomLightingControl : MonoBehaviour
 
         FadeInRoom();
         FadeInDoors();
+        FadeInEnvironment();
 
         instantiatedRoom.room.isLit = true;
     }
@@ -73,5 +74,30 @@ public class RoomLightingControl : MonoBehaviour
                 instantiatedRoom.decorator1Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
                 instantiatedRoom.decorator2Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
             });
+
+    }
+
+    private void FadeInEnvironment()
+    {
+
+        foreach (var renderer in GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (!renderer.CompareTag("Environment"))
+            {
+                continue;
+            }
+
+            var material = new Material(GameResources.Instance.variableLitShader);
+
+            renderer.material = material;
+            material
+                .DOFloat(1f, "Alpha_Slider", Settings.fateInTime)
+                .OnComplete(() =>
+                {
+                    renderer.material = GameResources.Instance.litMaterial;
+                });
+        }
+
+
     }
 }
