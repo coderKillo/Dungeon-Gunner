@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System;
 using System.Linq;
@@ -19,6 +20,8 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap minimapTilemap;
     [HideInInspector] public Bounds roomColliderBounds;
     [HideInInspector] public int[,] pathfinderMovementPenaltyMatrix;
+    [HideInInspector] public int[,] pathfinderItemObstaclesMatrix;
+    [HideInInspector] public List<MoveItem> moveableItemList = new List<MoveItem>();
 
     private BoxCollider2D boxCollider;
 
@@ -26,6 +29,11 @@ public class InstantiatedRoom : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider2D>();
         roomColliderBounds = boxCollider.bounds;
+    }
+
+    private void Start()
+    {
+        UpdateMoveableObjects();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -111,12 +119,14 @@ public class InstantiatedRoom : MonoBehaviour
     private void AddObstacles()
     {
         pathfinderMovementPenaltyMatrix = new int[room.Size.x, room.Size.y];
+        pathfinderItemObstaclesMatrix = new int[room.Size.x, room.Size.y];
 
         for (int x = 0; x < room.Size.x; x++)
         {
             for (int y = 0; y < room.Size.y; y++)
             {
                 pathfinderMovementPenaltyMatrix[x, y] = Settings.defaultAstarMovementPenalty;
+                pathfinderItemObstaclesMatrix[x, y] = Settings.defaultAstarMovementPenalty;
 
                 var worldPosition = new Vector3Int(x + room.templateLowerBound.x, y + room.templateLowerBound.y);
                 var currentTile = collisionTilemap.GetTile(worldPosition);
@@ -259,4 +269,65 @@ public class InstantiatedRoom : MonoBehaviour
     {
         boxCollider.enabled = false;
     }
+
+    public void ClearItemObstaclesMatrix()
+    {
+        for (int x = 0; x < room.Size.x; x++)
+        {
+            for (int y = 0; y < room.Size.y; y++)
+            {
+                pathfinderItemObstaclesMatrix[x, y] = Settings.defaultAstarMovementPenalty;
+            }
+        }
+    }
+
+    public void UpdateMoveableObjects()
+    {
+        ClearItemObstaclesMatrix();
+
+        foreach (var moveableItem in moveableItemList)
+        {
+            var colliderBoundMin = grid.WorldToCell(moveableItem.BoxCollider.bounds.min);
+            var colliderBoundMax = grid.WorldToCell(moveableItem.BoxCollider.bounds.max);
+
+            for (int x = colliderBoundMin.x; x <= colliderBoundMax.x; x++)
+            {
+                for (int y = colliderBoundMin.y; y <= colliderBoundMax.y; y++)
+                {
+                    pathfinderItemObstaclesMatrix[x - room.templateLowerBound.x, y - room.templateLowerBound.y] = 0;
+                }
+            }
+        }
+    }
+
+    public bool IsObstacle(Vector2Int position)
+    {
+        var obstacleValue = pathfinderItemObstaclesMatrix[position.x, position.y];
+        var penaltyValue = pathfinderMovementPenaltyMatrix[position.x, position.y];
+
+        return Mathf.Min(obstacleValue, penaltyValue) == 0;
+    }
+
+    #region DEBUG
+    private void OnDrawGizmos()
+    {
+        if (room == null)
+        {
+            return;
+        }
+
+        for (int x = 0; x < room.Size.x; x++)
+        {
+            for (int y = 0; y < room.Size.y; y++)
+            {
+                if (pathfinderItemObstaclesMatrix[x, y] == 0)
+                {
+                    var worldPosition = grid.CellToWorld(new Vector3Int(room.templateLowerBound.x + x, room.templateLowerBound.y + y, 0));
+                    var center = worldPosition + new Vector3(0.5f, 0.5f, 0f);
+                    Gizmos.DrawWireCube(center, Vector3.one);
+                }
+            }
+        }
+    }
+    #endregion
 }

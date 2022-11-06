@@ -22,6 +22,7 @@ public class EnemyMovementAI : MonoBehaviour
     private float rebuildCooldownTimer;
     private WaitForFixedUpdate waitForFixedUpdate;
     private bool chasePlayer;
+    private List<Vector3> surroundingPositionList = new List<Vector3>();
 
     private void Awake()
     {
@@ -72,7 +73,7 @@ public class EnemyMovementAI : MonoBehaviour
         var grid = room.instantiatedRoom.grid;
 
         var startPosition = grid.WorldToCell(enemy.transform.position);
-        var endPosition = grid.WorldToCell(GameManager.Instance.PlayerPosition);
+        var endPosition = GetPlayerPosition();
 
         path = AStar.BuildPath(room, startPosition, endPosition);
 
@@ -84,6 +85,40 @@ public class EnemyMovementAI : MonoBehaviour
         {
             Idle();
         }
+    }
+
+    private Vector3Int GetPlayerPosition()
+    {
+        var room = GameManager.Instance.CurrentRoom;
+        var grid = room.instantiatedRoom.grid;
+        var playerAbsolutePos = grid.WorldToCell(GameManager.Instance.PlayerPosition);
+        var playerRelativePos = (Vector2Int)playerAbsolutePos - room.templateLowerBound;
+
+        if (!room.instantiatedRoom.IsObstacle(playerRelativePos))
+        {
+            return playerAbsolutePos;
+        }
+
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                var position = playerRelativePos + new Vector2Int(i, j);
+                try
+                {
+                    if (!room.instantiatedRoom.IsObstacle(position))
+                    {
+                        return playerAbsolutePos + new Vector3Int(i, j, 0);
+                    }
+                }
+                catch // if is out of bounce
+                {
+
+                }
+            }
+        }
+
+        return (Vector3Int)room.RandomSpawnPosition();
     }
 
     private void MoveEnemy()

@@ -46,6 +46,7 @@ public class GameResources : MonoBehaviour
     [Header("SOUND")]
     public AudioMixerGroup soundMasterAudioMixer;
     public SoundEffectSO doorOpenSoundEffect;
+    public SoundEffectSO tableFlipSoundEffect;
 
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]

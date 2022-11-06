@@ -53,6 +53,7 @@ MonoBehaviour:
   damagePopupPrefab: {fileID: 1281338800750000515, guid: ea61a2a28aad2b643986d089f803f005, type: 3}
   soundMasterAudioMixer: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   doorOpenSoundEffect: {fileID: 11400000, guid: 762d44ddb2cc27945981631bbe4b2673, type: 2}
+  tableFlipSoundEffect: {fileID: 11400000, guid: 50c650152917f9643b5edbc1c5b2e540, type: 2}
   enemyUnwalkableCollisionTilesArray:
   - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}

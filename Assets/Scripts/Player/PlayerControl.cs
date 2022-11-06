@@ -54,12 +54,9 @@ public class PlayerControl : MonoBehaviour
 
         WeaponInput();
 
-        RollCooldownTimer();
-    }
+        UseItemInput();
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        StopRollingCoroutine();
+        RollCooldownTimer();
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -166,6 +163,23 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
     }
+
+    private void UseItemInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            var radius = 2f;
+            foreach (var collider in Physics2D.OverlapCircleAll(player.transform.position, radius))
+            {
+                var useable = collider.GetComponent<IUseable>();
+                if (useable != null)
+                {
+                    useable.useItem();
+                }
+            }
+        }
+    }
+
 
     private void MovementInput()
     {

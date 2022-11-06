@@ -83,6 +83,12 @@ public static class AStar
                     continue;
                 }
 
+                int itemObstacle = instantiatedRoom.pathfinderItemObstaclesMatrix[node.position.x, node.position.y];
+                if (itemObstacle <= 0)
+                {
+                    continue;
+                }
+
                 int gCost = selectedNode.gCost + GetDistance(selectedNode, node) + movementPenalty;
 
                 if (!openList.Contains(node) || gCost < selectedNode.gCost)

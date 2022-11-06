@@ -24,6 +24,13 @@ public static class Animations
     public static int open = Animator.StringToHash("open");
     #endregion
 
+    #region TABLE
+    public static int flipRight = Animator.StringToHash("flipRight");
+    public static int flipLeft = Animator.StringToHash("flipLeft");
+    public static int flipDown = Animator.StringToHash("flipDown");
+    public static int flipUp = Animator.StringToHash("flipUp");
+    #endregion
+
     #region DESTROY
     public static int destroy = Animator.StringToHash("destroy");
     public static string stateDestroyed = "Destroyed";
