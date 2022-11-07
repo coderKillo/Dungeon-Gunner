@@ -91,7 +91,7 @@ public class Ammo : MonoBehaviour, IFireable
 
     private void Update()
     {
-        if (chargeTimer < 0f)
+        if (chargeTimer > 0f)
         {
             chargeTimer -= Time.deltaTime;
             return;
@@ -105,7 +105,10 @@ public class Ammo : MonoBehaviour, IFireable
 
         var distance = fireDirectionVector * speed * Time.deltaTime;
 
-        transform.position += distance;
+        if (!overrideAmmoMovement)
+        {
+            transform.position += distance;
+        }
 
         #region RANGE
         range -= distance.magnitude;

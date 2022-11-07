@@ -21,8 +21,8 @@ MonoBehaviour:
   chargeTime: 0
   chargeMaterial: {fileID: 0}
   damage: 25
-  speedMin: 8
-  speedMax: 10
+  speedMin: 25
+  speedMax: 30
   range: 30
   rotationSpeed: 1
   spreadMin: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   spawnIntervalMin: 0
   spawnIntervalMax: 0
   hasTrail: 1
-  trailLifetime: 0.15
+  trailLifetime: 0.05
   trailMaterial: {fileID: 2100000, guid: 8556be20b5f346149bb8497e4b4dfbdc, type: 2}
   trailStartWidth: 0.15
   trailEndWidth: 0.5

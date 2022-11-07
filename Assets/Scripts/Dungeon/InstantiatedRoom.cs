@@ -309,25 +309,25 @@ public class InstantiatedRoom : MonoBehaviour
     }
 
     #region DEBUG
-    private void OnDrawGizmos()
-    {
-        if (room == null)
-        {
-            return;
-        }
+    // private void OnDrawGizmos()
+    // {
+    //     if (room == null)
+    //     {
+    //         return;
+    //     }
 
-        for (int x = 0; x < room.Size.x; x++)
-        {
-            for (int y = 0; y < room.Size.y; y++)
-            {
-                if (pathfinderItemObstaclesMatrix[x, y] == 0)
-                {
-                    var worldPosition = grid.CellToWorld(new Vector3Int(room.templateLowerBound.x + x, room.templateLowerBound.y + y, 0));
-                    var center = worldPosition + new Vector3(0.5f, 0.5f, 0f);
-                    Gizmos.DrawWireCube(center, Vector3.one);
-                }
-            }
-        }
-    }
+    //     for (int x = 0; x < room.Size.x; x++)
+    //     {
+    //         for (int y = 0; y < room.Size.y; y++)
+    //         {
+    //             if (pathfinderItemObstaclesMatrix[x, y] == 0)
+    //             {
+    //                 var worldPosition = grid.CellToWorld(new Vector3Int(room.templateLowerBound.x + x, room.templateLowerBound.y + y, 0));
+    //                 var center = worldPosition + new Vector3(0.5f, 0.5f, 0f);
+    //                 Gizmos.DrawWireCube(center, Vector3.one);
+    //             }
+    //         }
+    //     }
+    // }
     #endregion
 }

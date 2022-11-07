@@ -19,11 +19,11 @@ MonoBehaviour:
   materializeTime: 1
   materializeColor: {r: 0.84298223, g: 8.47419, b: 0, a: 1}
   materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
-  weaponDetails: {fileID: 0}
-  firingIntervalMin: 0.1
-  firingIntervalMax: 1
-  firingDurationMin: 1
-  firingDurationMax: 2
+  weaponDetails: {fileID: 11400000, guid: e0dfbd9f70bf3ac46a58561f124cd081, type: 2}
+  firingIntervalMin: 1
+  firingIntervalMax: 3
+  firingDurationMin: 7
+  firingDurationMax: 10
   firingLineOfSightRequire: 0
   healthDetailList:
   - dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}

@@ -824,6 +824,21 @@ MonoBehaviour:
   - size: 50
     prefab: {fileID: 1281338800750000515, guid: ea61a2a28aad2b643986d089f803f005, type: 3}
     componentTypeName: DamagePopup
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 6e9b769f13834044b9e04a38553316a0, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 4580c1d8f201a384cb6970e9153cc3ea, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 91ada61bc60503641ba952ee24a828c4, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 08c9df6ae2c475046b1a31384e93e14b, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: d830cb953e18e62419703912a4ecc336, type: 3}
+    componentTypeName: IFireable
 --- !u!1 &304039099
 GameObject:
   m_ObjectHideFlags: 0
