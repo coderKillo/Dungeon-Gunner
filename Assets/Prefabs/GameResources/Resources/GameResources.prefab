@@ -49,7 +49,7 @@ MonoBehaviour:
   dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   variableLitShader: {fileID: -6465566751694194690, guid: 304a236819d488f409a1dfccdc33ea46, type: 3}
-  materializeShader: {fileID: 0}
+  materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   ammoIconPrefab: {fileID: 6555343837402441951, guid: 6950b5a7a17a89441b95c30300c5c5ae, type: 3}
   damagePopupPrefab: {fileID: 1281338800750000515, guid: ea61a2a28aad2b643986d089f803f005, type: 3}
   chestPrefab: {fileID: 5559247751414620710, guid: 4f4c504749fa23c4892404d5eb6591f0, type: 3}

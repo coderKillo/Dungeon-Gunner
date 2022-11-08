@@ -2,7 +2,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [System.Serializable]
-public class RoomChestSpawnParameters : MonoBehaviour
+public class RoomChestSpawnParameters
 {
     public DungeonLevelSO dungeonLevel;
 

@@ -29,6 +29,11 @@ public class ChestSpawner : MonoBehaviour
 
         var parameters = room.GetChestSpawnParameters(GameManager.Instance.CurrentLevel);
 
+        if (parameters == null)
+        {
+            return;
+        }
+
         if (RandomSpawnChest(parameters.SpawnChance))
         {
             SpawnChest(parameters);
