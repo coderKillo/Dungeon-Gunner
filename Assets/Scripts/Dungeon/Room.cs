@@ -20,6 +20,8 @@ public class Room
     public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
     public List<RoomEnemySpawnParameters> enemySpawnParameterList;
 
+    public List<RoomChestSpawnParameters> chestSpawnParameterList;
+
     public string parentId;
     public List<string> childIdList;
 
@@ -30,6 +32,7 @@ public class Room
     public bool isLit = false;
     public bool isPositioned = false;
     public bool isClearedOfEnemies = false;
+    public bool isAlreadyLooted = false;
     public bool isPreviouslyVisited = false;
 
     public Vector2Int Size { get { return templateUpperBound - templateLowerBound; } }
@@ -61,6 +64,19 @@ public class Room
         }
 
         return 0;
+    }
+
+    public RoomChestSpawnParameters GetChestSpawnParameters(DungeonLevelSO level)
+    {
+        foreach (var chestSpawnParameter in chestSpawnParameterList)
+        {
+            if (chestSpawnParameter.dungeonLevel == level)
+            {
+                return chestSpawnParameter;
+            }
+        }
+
+        return null;
     }
 
     public RoomEnemySpawnParameters GetEnemySpawnParameter(DungeonLevelSO level)

@@ -8,6 +8,8 @@ using DG.Tweening;
 [RequireComponent(typeof(InstantiatedRoom))]
 public class RoomLightingControl : MonoBehaviour
 {
+    [SerializeField] private Transform environmentParentObject;
+
     private InstantiatedRoom instantiatedRoom;
 
     private void Awake()
@@ -79,14 +81,8 @@ public class RoomLightingControl : MonoBehaviour
 
     private void FadeInEnvironment()
     {
-
-        foreach (var renderer in GetComponentsInChildren<SpriteRenderer>())
+        foreach (var renderer in environmentParentObject.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (!renderer.CompareTag("Environment"))
-            {
-                continue;
-            }
-
             var material = new Material(GameResources.Instance.variableLitShader);
 
             renderer.material = material;
@@ -97,7 +93,5 @@ public class RoomLightingControl : MonoBehaviour
                     renderer.material = GameResources.Instance.litMaterial;
                 });
         }
-
-
     }
 }

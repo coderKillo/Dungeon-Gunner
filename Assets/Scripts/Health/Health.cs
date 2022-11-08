@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        CallHealthEvent(0);
+        CallHealthEvent(0, 0);
 
         player = GetComponent<Player>();
         enemy = GetComponent<Enemy>();
@@ -66,12 +66,22 @@ public class Health : MonoBehaviour
 
         currentHealth -= damageAmount;
 
-        CallHealthEvent(damageAmount);
+        CallHealthEvent(damageAmount, 0);
     }
 
-    private void CallHealthEvent(int damageAmount)
+    public void Heal(int amount)
     {
-        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount);
+        var healthMissing = startingHealth - currentHealth;
+        var capedHealAmount = Math.Clamp(amount, 0, healthMissing);
+
+        currentHealth += capedHealAmount;
+
+        CallHealthEvent(0, capedHealAmount);
+    }
+
+    private void CallHealthEvent(int damageAmount, int healAmount)
+    {
+        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount);
     }
 
     private bool IsDamageable()

@@ -10,7 +10,7 @@ public class DamagePopupTest : MonoBehaviour
         {
             var position = HelperUtilities.GetWorldMousePosition();
 
-            DamagePopup.Create(position, 999);
+            DamagePopup.Create(position, "-999", Color.red);
         }
     }
 }

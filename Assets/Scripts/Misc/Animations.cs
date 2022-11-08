@@ -35,4 +35,8 @@ public static class Animations
     public static int destroy = Animator.StringToHash("destroy");
     public static string stateDestroyed = "Destroyed";
     #endregion
+
+    #region CHEST
+    public static int openChest = Animator.StringToHash("use");
+    #endregion
 }

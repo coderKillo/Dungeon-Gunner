@@ -36,11 +36,17 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("SHADERS")]
     public Shader variableLitShader;
+    public Shader materializeShader;
 
     [Space(10)]
     [Header("UI")]
     public GameObject ammoIconPrefab;
     public GameObject damagePopupPrefab;
+
+    [Space(10)]
+    [Header("CHESTS")]
+    public GameObject chestPrefab;
+    public GameObject chestItemPrefab;
 
     [Space(10)]
     [Header("SOUND")]

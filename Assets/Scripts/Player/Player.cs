@@ -122,8 +122,26 @@ public class Player : MonoBehaviour
         return weapon;
     }
 
+    public bool HasWeapon(WeaponDetailsSO weaponDetails)
+    {
+        foreach (var weapon in weaponList)
+        {
+            if (weapon.weaponDetails == weaponDetails)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void HealthEvent_OnHealthChanged(HealthEvent arg1, HealthEventArgs arg2)
     {
+        if (arg2.healAmount > 0)
+        {
+            DamagePopup.Create(transform.position, "+" + arg2.healAmount.ToString(), Color.green);
+        }
+
         if (arg2.healthAmount <= 0)
         {
             destroyedEvent.CallDestroyedEvent();

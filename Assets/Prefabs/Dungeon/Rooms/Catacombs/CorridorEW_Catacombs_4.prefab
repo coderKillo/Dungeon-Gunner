@@ -7745,7 +7745,6 @@ Transform:
   m_Children:
   - {fileID: 5307577531824988785}
   - {fileID: 1293465242950325356}
-  - {fileID: 8997835963605325136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7797,6 +7796,7 @@ MonoBehaviour:
   roomColliderBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  moveableItemList: []
 --- !u!114 &1659587356724748257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7809,6 +7809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33604ba96df2194dbf0d208fb3fe911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  environmentParentObject: {fileID: 1293465242950325356}
 --- !u!1 &6714043297886329097
 GameObject:
   m_ObjectHideFlags: 0
@@ -12554,7 +12555,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8997835963605325136}
   m_Father: {fileID: 316384385408736750}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12563,11 +12565,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 316384385408736750}
+    m_TransformParent: {fileID: 1293465242950325356}
     m_Modifications:
     - target: {fileID: 4663065437473537901, guid: 7ea9201f45ca13c4abd09b44a33855f7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4663065437473537901, guid: 7ea9201f45ca13c4abd09b44a33855f7, type: 3}
       propertyPath: m_LocalPosition.x

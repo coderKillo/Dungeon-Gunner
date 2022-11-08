@@ -1,4 +1,5 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "SoundEffect_", menuName = "Scriptable Object/Sounds/Sound Effect")]
 public class SoundEffectSO : ScriptableObject
@@ -10,6 +11,18 @@ public class SoundEffectSO : ScriptableObject
     [Range(0.1f, 1.5f)] public float pitchVariantMin = 0.8f;
     [Range(0.1f, 1.5f)] public float pitchVariantMax = 1.2f;
     [Range(0f, 1.0f)] public float volume = 1f;
+
+    [HorizontalGroup("Split", 0.5f)]
+    [Button(ButtonSizes.Large)]
+    public void Play()
+    {
+        if (SoundEffectManager.Instance == null)
+        {
+            return;
+        }
+
+        SoundEffectManager.Instance.PlaySoundEffect(this);
+    }
 
     #region VALIDATION
 #if UNITY_EDITOR

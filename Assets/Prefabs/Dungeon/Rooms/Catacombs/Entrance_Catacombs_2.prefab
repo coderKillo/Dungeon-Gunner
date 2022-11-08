@@ -8935,6 +8935,7 @@ MonoBehaviour:
   roomColliderBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  moveableItemList: []
 --- !u!114 &2163339231689475494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8947,6 +8948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33604ba96df2194dbf0d208fb3fe911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  environmentParentObject: {fileID: 2213096327042767384}
 --- !u!1 &7423723252957058154
 GameObject:
   m_ObjectHideFlags: 0

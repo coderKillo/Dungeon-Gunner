@@ -46,6 +46,9 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         if (totalEnemies == 0)
         {
             room.isClearedOfEnemies = true;
+
+            StaticEventHandler.CallRoomEnemiesDefeated(room);
+
             return;
         }
 

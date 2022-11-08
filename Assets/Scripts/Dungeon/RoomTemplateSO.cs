@@ -39,8 +39,12 @@ public class RoomTemplateSO : ScriptableObject
     [Header("ENEMY DETAILS")]
 
     public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
-
     public List<RoomEnemySpawnParameters> enemySpawnParameterList;
+
+    [Space(10)]
+    [Header("CHEST DETAILS")]
+
+    public List<RoomChestSpawnParameters> chestSpawnParameterList;
 
     public List<Doorway> GetDoorwayList()
     {

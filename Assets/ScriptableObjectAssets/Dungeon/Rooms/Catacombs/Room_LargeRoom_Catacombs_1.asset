@@ -115,3 +115,4 @@ MonoBehaviour:
     maxConcurrentEnemies: 10
     minSpawnInterval: 1
     maxSpawnInterval: 4
+  chestSpawnParameterList: []

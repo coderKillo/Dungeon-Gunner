@@ -337,6 +337,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         room.spawnPositions = roomTemplate.spawnPositionArray;
         room.enemiesByLevelList = roomTemplate.enemiesByLevelList;
         room.enemySpawnParameterList = roomTemplate.enemySpawnParameterList;
+        room.chestSpawnParameterList = roomTemplate.chestSpawnParameterList;
         room.doorwayList = CopyDoorwayList(roomTemplate.doorwayList);
 
         if (roomNode.parentIdList.Count == 0)

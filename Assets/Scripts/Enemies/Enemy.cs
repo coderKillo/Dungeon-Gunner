@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
     {
         if (arg2.damageAmount > 0)
         {
-            DamagePopup.Create(transform.position, arg2.damageAmount);
+            DamagePopup.Create(transform.position, "-" + arg2.damageAmount.ToString(), Color.red);
         }
 
         if (arg2.healthAmount <= 0)

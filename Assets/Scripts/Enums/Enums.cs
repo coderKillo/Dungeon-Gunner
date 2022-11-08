@@ -23,6 +23,18 @@ public enum GameState
     restartGame
 }
 
+public enum ChestState
+{
+    none,
+    init,
+    closed,
+    open,
+    collectHealth,
+    collectAmmo,
+    collectWeapon,
+    empty
+}
+
 public enum AimDirection
 {
     Up,

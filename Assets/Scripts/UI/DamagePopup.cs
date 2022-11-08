@@ -13,19 +13,20 @@ public class DamagePopup : MonoBehaviour
     private Vector3 worldPosition;
     private float disappearTimer = 0f;
 
-    static public DamagePopup Create(Vector3 location, int damage)
+    static public DamagePopup Create(Vector3 location, string text, Color color)
     {
         var damagePopup = (DamagePopup)PoolManager.Instance.ReuseComponent(GameResources.Instance.damagePopupPrefab, HelperUtilities.mainCamera.WorldToScreenPoint(location), Quaternion.identity);
 
-        damagePopup.Setup(damage, location);
+        damagePopup.Setup(text, location, color);
 
         return damagePopup;
     }
 
-    void Setup(int damage, Vector3 location)
+    void Setup(string text, Vector3 location, Color color)
     {
-        textMesh.text = damage.ToString();
+        textMesh.text = text;
         textMesh.alpha = 1;
+        textMesh.color = color;
         worldPosition = location;
         disappearTimer = disappearTime;
 

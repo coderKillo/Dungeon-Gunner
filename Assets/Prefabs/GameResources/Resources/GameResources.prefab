@@ -49,8 +49,11 @@ MonoBehaviour:
   dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   variableLitShader: {fileID: -6465566751694194690, guid: 304a236819d488f409a1dfccdc33ea46, type: 3}
+  materializeShader: {fileID: 0}
   ammoIconPrefab: {fileID: 6555343837402441951, guid: 6950b5a7a17a89441b95c30300c5c5ae, type: 3}
   damagePopupPrefab: {fileID: 1281338800750000515, guid: ea61a2a28aad2b643986d089f803f005, type: 3}
+  chestPrefab: {fileID: 5559247751414620710, guid: 4f4c504749fa23c4892404d5eb6591f0, type: 3}
+  chestItemPrefab: {fileID: 5559247751414620710, guid: edef9d25c3ad5d947a38a17ca2d6d090, type: 3}
   soundMasterAudioMixer: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   doorOpenSoundEffect: {fileID: 11400000, guid: 762d44ddb2cc27945981631bbe4b2673, type: 2}
   tableFlipSoundEffect: {fileID: 11400000, guid: 50c650152917f9643b5edbc1c5b2e540, type: 2}
