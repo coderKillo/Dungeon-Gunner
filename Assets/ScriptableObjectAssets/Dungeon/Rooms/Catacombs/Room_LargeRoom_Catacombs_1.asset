@@ -115,4 +115,32 @@ MonoBehaviour:
     maxConcurrentEnemies: 10
     minSpawnInterval: 1
     maxSpawnInterval: 4
-  chestSpawnParameterList: []
+  chestSpawnParameterList:
+  - dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
+    spawnChance: 60
+    itemAmount: {x: 1, y: 3}
+    healthAmount: {x: 20, y: 30}
+    ammoAmount: {x: 10, y: 20}
+    weaponList:
+    - {fileID: 11400000, guid: aabf4870ce9476e409271204102ed668, type: 2}
+    - {fileID: 11400000, guid: 306fd3ff98ced8e49ae09f8f072c106e, type: 2}
+    - {fileID: 11400000, guid: ed7129837736ae04c8f50cc3cb134364, type: 2}
+  - dungeonLevel: {fileID: 11400000, guid: e7b3c6cb4093e954f81d880ad3c6c1a7, type: 2}
+    spawnChance: 60
+    itemAmount: {x: 1, y: 3}
+    healthAmount: {x: 30, y: 40}
+    ammoAmount: {x: 10, y: 30}
+    weaponList:
+    - {fileID: 11400000, guid: 295e55a3fa1e84748a81d75444755959, type: 2}
+    - {fileID: 11400000, guid: 5b7d706878e0b564194e814c18915dcf, type: 2}
+    - {fileID: 11400000, guid: ed7129837736ae04c8f50cc3cb134364, type: 2}
+    - {fileID: 11400000, guid: 306fd3ff98ced8e49ae09f8f072c106e, type: 2}
+  - dungeonLevel: {fileID: 11400000, guid: 78e08a79e32967e449f3f889e8c7f07b, type: 2}
+    spawnChance: 60
+    itemAmount: {x: 1, y: 3}
+    healthAmount: {x: 30, y: 50}
+    ammoAmount: {x: 10, y: 40}
+    weaponList:
+    - {fileID: 11400000, guid: 98ad799487afe5e40bb9c4f55577fb74, type: 2}
+    - {fileID: 11400000, guid: 295e55a3fa1e84748a81d75444755959, type: 2}
+    - {fileID: 11400000, guid: ed7129837736ae04c8f50cc3cb134364, type: 2}

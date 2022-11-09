@@ -849,6 +849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288597863}
   - component: {fileID: 288597864}
+  - component: {fileID: 288597865}
   m_Layer: 0
   m_Name: ChestSpanwer
   m_TagString: Untagged
@@ -883,6 +884,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3327e2863dfe146a2a7edc75a2b28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &288597865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288597862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fddadb93cd68d2408cb487e66775259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameters:
+    dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
+    spawnChance: 12
+    itemAmount: {x: 2, y: 3}
+    healthAmount: {x: 10, y: 50}
+    ammoAmount: {x: 10, y: 40}
+    weaponList:
+    - {fileID: 11400000, guid: ed7129837736ae04c8f50cc3cb134364, type: 2}
 --- !u!1 &304039099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,8 +2978,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.99917763
+    width: 0.999833
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
