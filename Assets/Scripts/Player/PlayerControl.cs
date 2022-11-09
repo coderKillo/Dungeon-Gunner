@@ -42,6 +42,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (!isMovementEnabled)
         {
+            player.idleEvent.CallIdleEvent();
             return;
         }
 

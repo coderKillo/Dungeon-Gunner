@@ -111,6 +111,15 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 break;
 
+            case GameState.bossDefeated:
+
+                Portal.SpawnPortal(PlayerPosition);
+
+                displayMessage.DisplayText("Boss Defeated! Use portal to enter the next level", 2f, Color.white, 0.5f, 1f);
+
+                SetGameState(GameState.playingLevel);
+                break;
+
 
             case GameState.engagingBoss:
                 break;
@@ -166,7 +175,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private IEnumerator LevelComplete()
     {
-        displayMessage.DisplayText("Level Completed! Next level starts in 2 seconds", 2f, Color.white, 0.5f, 1f);
+        displayMessage.DisplayText("Level Completed! Next level starts in 2 seconds", 2f, Color.white, 1f, 1f);
 
         yield return new WaitForSeconds(2f);
 
@@ -224,7 +233,14 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void StaticEventHandler_OnEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
     {
-        SetGameState(GameState.playingLevel);
+        if (obj.room.nodeType.isBossRoom)
+        {
+            SetGameState(GameState.bossDefeated);
+        }
+        else
+        {
+            SetGameState(GameState.playingLevel);
+        }
     }
 
     private void StaticEventHandOnRoomEnemiesEngaging(RoomEnemiesEngagingEventArgs obj)

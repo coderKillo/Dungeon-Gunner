@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openDelay: 1
-  materializeColor: {r: 0.2595296, g: 1, b: 0, a: 0}
+  materializeColor: {r: 0, g: 14.807843, b: 12.92549, a: 1}
   materializeTime: 3
   spawnPoint: {fileID: 1758765583953308356}
   healthSprite: {fileID: 21300000, guid: 93356131eec0f44458223985928ac6e3, type: 3}

@@ -15,6 +15,7 @@ public enum GameState
     playingLevel,
     engagingEnemies,
     engagingBoss,
+    bossDefeated,
     levelCompleted,
     gameWon,
     gameLost,

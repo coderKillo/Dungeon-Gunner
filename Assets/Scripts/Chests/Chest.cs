@@ -15,7 +15,7 @@ public class Chest : MonoBehaviour, IUseable
 
     [Space(10)]
     [Header("MATERIALIZE")]
-    [SerializeField] private Color materializeColor;
+    [ColorUsage(true, true)][SerializeField] private Color materializeColor;
     [SerializeField] private float materializeTime = 3f;
 
     [Space(10)]

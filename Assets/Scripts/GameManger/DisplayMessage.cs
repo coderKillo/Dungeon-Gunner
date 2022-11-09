@@ -11,7 +11,7 @@ public class DisplayMessage : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
 
     [Button("Display Test Text", ButtonSizes.Large)]
-    private void Heal()
+    private void DisplayTest()
     {
         DisplayText("This is a short text to test the UI, will disappear after 2 seconds.", 2f, Color.white);
     }

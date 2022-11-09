@@ -49,6 +49,10 @@ public class GameResources : MonoBehaviour
     public GameObject chestItemPrefab;
 
     [Space(10)]
+    [Header("PORTAL")]
+    public GameObject portalPrefab;
+
+    [Space(10)]
     [Header("SOUND")]
     public AudioMixerGroup soundMasterAudioMixer;
     public SoundEffectSO doorOpenSoundEffect;
