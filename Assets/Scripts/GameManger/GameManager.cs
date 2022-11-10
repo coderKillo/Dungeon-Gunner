@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonAbstract<GameManager>
@@ -16,7 +17,8 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private GameState previousGameState = GameState.none;
     private GameState gameState = GameState.none;
-    public GameState GameState { get { return gameState; } }
+    [ShowInInspector] public GameState GameState { get { return gameState; } }
+    [ShowInInspector] public GameState PreviousGameState { get { return previousGameState; } }
     public void SetGameState(GameState state)
     {
         if (state == gameState)
@@ -91,6 +93,19 @@ public class GameManager : SingletonAbstract<GameManager>
         player.destroyedEvent.OnDestroyed -= PlayerDestroyedEvent_OnDestroyed;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) && gameState == GameState.playingLevel)
+        {
+            SetGameState(GameState.dungeonOverviewMap);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Tab) && gameState == GameState.dungeonOverviewMap)
+        {
+            SetGameState(GameState.playingLevel);
+        }
+    }
+
     private void HandleGameStateChange()
     {
         switch (gameState)
@@ -104,9 +119,9 @@ public class GameManager : SingletonAbstract<GameManager>
 
             case GameState.playingLevel:
 
-                if (previousGameState == GameState.engagingBoss)
+                if (previousGameState == GameState.dungeonOverviewMap)
                 {
-                    SetGameState(GameState.levelCompleted);
+                    DungeonMap.Instance.ClearDungeonMap();
                 }
 
                 break;
@@ -153,6 +168,9 @@ public class GameManager : SingletonAbstract<GameManager>
 
 
             case GameState.dungeonOverviewMap:
+
+                DungeonMap.Instance.DisplayDungeonMap();
+
                 break;
 
 
