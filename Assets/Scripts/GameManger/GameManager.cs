@@ -14,6 +14,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList;
     [SerializeField] private int currentLevelIndex = 0;
+    public DungeonLevelSO CurrentLevel { get { return dungeonLevelList[currentLevelIndex]; } }
 
     private GameState previousGameState = GameState.none;
     private GameState gameState = GameState.none;
@@ -42,7 +43,8 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private Room previousRoom;
 
-    public DungeonLevelSO CurrentLevel { get { return dungeonLevelList[currentLevelIndex]; } }
+    [Space(10)]
+    [Header("PLAYER")]
 
     private PlayerDetailsSO playerDetails;
     private Player player;
@@ -54,12 +56,14 @@ public class GameManager : SingletonAbstract<GameManager>
     #endregion
 
     private DisplayMessage displayMessage;
+    private PauseMenu pauseMenu;
 
     protected override void Awake()
     {
         base.Awake();
 
         displayMessage = GetComponent<DisplayMessage>();
+        pauseMenu = GetComponent<PauseMenu>();
 
         playerDetails = GameResources.Instance.currentPlayer.playerDetails;
 
@@ -102,7 +106,31 @@ public class GameManager : SingletonAbstract<GameManager>
 
         if (Input.GetKeyUp(KeyCode.Tab) && gameState == GameState.dungeonOverviewMap)
         {
+            DungeonMap.Instance.ClearDungeonMap();
             SetGameState(GameState.playingLevel);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame()
+    {
+        if (gameState == GameState.engagingBoss
+            || gameState == GameState.engagingEnemies
+            || gameState == GameState.bossDefeated
+            || gameState == GameState.playingLevel)
+        {
+            SetGameState(GameState.gamePaused);
+        }
+
+        else if (gameState == GameState.gamePaused)
+        {
+            pauseMenu.ClearPauseMenu();
+            SetGameState(previousGameState);
         }
     }
 
@@ -118,12 +146,6 @@ public class GameManager : SingletonAbstract<GameManager>
 
 
             case GameState.playingLevel:
-
-                if (previousGameState == GameState.dungeonOverviewMap)
-                {
-                    DungeonMap.Instance.ClearDungeonMap();
-                }
-
                 break;
 
             case GameState.bossDefeated:
@@ -157,6 +179,9 @@ public class GameManager : SingletonAbstract<GameManager>
 
 
             case GameState.gamePaused:
+
+                pauseMenu.DisplayPauseMenu();
+
                 break;
 
 

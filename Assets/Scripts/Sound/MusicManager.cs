@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : SingletonAbstract<MusicManager>
 {
-    [SerializeField] private int musicVolume = 10;
+    [SerializeField] private int volume = 10;
+    public int Volume { get { return volume; } }
 
     private AudioSource _audioSource = null;
     private AudioClip _currentAudioClip = null;
@@ -16,6 +17,8 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
+        base.Awake();
+
         _audioSource = GetComponent<AudioSource>();
 
         GameResources.Instance.musicOffSnapshot.TransitionTo(0f);
@@ -23,12 +26,41 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        SetMusicVolume(musicVolume);
+        volume = PlayerPrefs.GetInt("musicVolume", volume);
+
+        SetVolume(volume);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("musicVolume", volume);
     }
 
     public void PlayMusic(MusicTrackSO track, float fadeIn, float fadeOut)
     {
         StartCoroutine(PlayMusicRoutine(track, fadeIn, fadeOut));
+    }
+
+    public void IncreaseVolume()
+    {
+        if (volume >= 20)
+        {
+            return;
+        }
+
+        volume += 1;
+        SetVolume(volume);
+    }
+
+    public void DecreaseVolume()
+    {
+        if (volume <= 0)
+        {
+            return;
+        }
+
+        volume -= 1;
+        SetVolume(volume);
     }
 
     private IEnumerator PlayMusicRoutine(MusicTrackSO track, float fadeIn, float fadeOut)
@@ -74,7 +106,7 @@ public class MusicManager : MonoBehaviour
         yield return new WaitForSeconds(time);
     }
 
-    private void SetMusicVolume(int volume)
+    private void SetVolume(int volume)
     {
         float muteDecibel = -80f;
 

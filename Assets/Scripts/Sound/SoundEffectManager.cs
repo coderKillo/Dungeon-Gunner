@@ -6,10 +6,19 @@ using UnityEngine;
 public class SoundEffectManager : SingletonAbstract<SoundEffectManager>
 {
     private int volume = 8;
+    public int Volume { get { return volume; } }
 
-    void Start()
+    private void Start()
     {
+        volume = PlayerPrefs.GetInt("soundVolume", volume);
+
         SetVolume(volume);
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Stop game");
+        PlayerPrefs.SetInt("soundVolume", volume);
     }
 
     public void PlaySoundEffect(SoundEffectSO soundEffect)
@@ -18,6 +27,28 @@ public class SoundEffectManager : SingletonAbstract<SoundEffectManager>
         sound.SetSound(soundEffect);
 
         StartCoroutine(PlaySoundEffectRoutine(sound, soundEffect.audioClip.length));
+    }
+
+    public void IncreaseVolume()
+    {
+        if (volume >= 20)
+        {
+            return;
+        }
+
+        volume += 1;
+        SetVolume(volume);
+    }
+
+    public void DecreaseVolume()
+    {
+        if (volume <= 0)
+        {
+            return;
+        }
+
+        volume -= 1;
+        SetVolume(volume);
     }
 
     private IEnumerator PlaySoundEffectRoutine(SoundEffect sound, float duration)

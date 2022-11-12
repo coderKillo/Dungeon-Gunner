@@ -28,7 +28,7 @@ public class DungeonMap : SingletonAbstract<DungeonMap>
         mainCamera.gameObject.SetActive(false);
         minimapUI.SetActive(false);
 
-        GameManager.Instance.Player.EnableMovement(false);
+        GameManager.Instance.Player.EnablePlayer(false);
 
         ActivateAllRooms();
     }
@@ -48,6 +48,6 @@ public class DungeonMap : SingletonAbstract<DungeonMap>
         mainCamera.gameObject.SetActive(true);
         minimapUI.SetActive(true);
 
-        GameManager.Instance.Player.EnableMovement(true);
+        GameManager.Instance.Player.EnablePlayer(true);
     }
 }

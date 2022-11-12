@@ -21,14 +21,14 @@ public class DisplayMessage : MonoBehaviour
         messageText.color = color;
         messageText.text = message;
 
-        GameManager.Instance.Player.EnableMovement(false);
+        GameManager.Instance.Player.EnablePlayer(false);
 
         var displaySequence = DOTween.Sequence();
         displaySequence.Append(canvasGroup.DOFade(alpha, fadeIn));
         displaySequence.AppendInterval(duration);
         displaySequence.AppendCallback(() =>
         {
-            GameManager.Instance.Player.EnableMovement(true);
+            GameManager.Instance.Player.EnablePlayer(true);
         });
         displaySequence.Append(canvasGroup.DOFade(0f, 2f));
     }
