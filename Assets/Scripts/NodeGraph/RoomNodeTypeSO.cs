@@ -11,6 +11,7 @@ public class RoomNodeTypeSO : ScriptableObject
     public bool isCorridorEW;
     public bool isEntrance;
     public bool isBossRoom;
+    public bool isChestRoom;
     public bool isNone;
 
 #if UNITY_EDITOR

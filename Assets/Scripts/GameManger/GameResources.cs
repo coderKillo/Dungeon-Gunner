@@ -53,10 +53,17 @@ public class GameResources : MonoBehaviour
     public GameObject portalPrefab;
 
     [Space(10)]
-    [Header("SOUND")]
+    [Header("SOUND EFFECTS")]
     public AudioMixerGroup soundMasterAudioMixer;
     public SoundEffectSO doorOpenSoundEffect;
     public SoundEffectSO tableFlipSoundEffect;
+
+    [Space(10)]
+    [Header("MUSIC")]
+    public AudioMixerGroup musicMasterAudioMixer;
+    public AudioMixerSnapshot musicOnFullSnapshot;
+    public AudioMixerSnapshot musicLowSnapshot;
+    public AudioMixerSnapshot musicOffSnapshot;
 
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]
