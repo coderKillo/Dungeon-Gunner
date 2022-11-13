@@ -25,8 +25,13 @@ public class GameResources : MonoBehaviour
     public RoomNodeTypeListSO roomNodeTypeList;
 
     [Space(10)]
+    [Header("PLAYER SELECTION")]
+    public GameObject playerSelectionPrefab;
+
+    [Space(10)]
     [Header("PLAYER")]
     public CurrentPlayerSO currentPlayer;
+    public List<PlayerDetailsSO> playerDetailsList;
 
     [Space(10)]
     [Header("MATERIALS")]
@@ -64,6 +69,7 @@ public class GameResources : MonoBehaviour
     public AudioMixerSnapshot musicOnFullSnapshot;
     public AudioMixerSnapshot musicLowSnapshot;
     public AudioMixerSnapshot musicOffSnapshot;
+    public MusicTrackSO mainMenuTrack;
 
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]

@@ -231,7 +231,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
         yield return new WaitForSeconds(5f);
 
-        SceneManager.LoadScene("MainGameScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     private void PlayDungeonLevel(int levelIndex)
