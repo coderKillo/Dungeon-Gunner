@@ -19,6 +19,7 @@ public class RoomNodeGraphSO : ScriptableObject
     {
         LoadListToDictionary();
     }
+#endif
 
     [HideInInspector] public RoomNodeSO roomNodeToDrawLineFrom = null;
     [HideInInspector] public Vector2 linePosition;
@@ -62,6 +63,4 @@ public class RoomNodeGraphSO : ScriptableObject
         }
         return null;
     }
-
-#endif
 }
