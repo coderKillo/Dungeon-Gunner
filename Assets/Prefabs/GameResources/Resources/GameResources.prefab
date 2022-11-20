@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 768c1aec03bccd5479b7d060af9b2096, type: 2}
   - {fileID: 11400000, guid: 556eb71ac935bb54d94d7c4bb99c50af, type: 2}
   - {fileID: 11400000, guid: 78c5daee1aaec2546af6f7e173180b84, type: 2}
+  - {fileID: 11400000, guid: 70fa2616879037a4d9f257401fe1d5a2, type: 2}
   dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   variableLitShader: {fileID: -6465566751694194690, guid: 304a236819d488f409a1dfccdc33ea46, type: 3}
