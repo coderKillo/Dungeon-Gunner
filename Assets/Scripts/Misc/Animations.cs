@@ -15,6 +15,10 @@ public static class Animations
     public static int rollDown = Animator.StringToHash("rollDown");
     public static int rollLeft = Animator.StringToHash("rollLeft");
     public static int rollRight = Animator.StringToHash("rollRight");
+    public static int dashUp = Animator.StringToHash("dashUp");
+    public static int dashDown = Animator.StringToHash("dashDown");
+    public static int dashLeft = Animator.StringToHash("dashLeft");
+    public static int dashRight = Animator.StringToHash("dashRight");
 
     public static float playerAnimationBaseSpeed = 8f;
     public static float enemyAnimationBaseSpeed = 3f;
