@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d724b4290d3d014d9d5213b1a1f57ab, type: 3}
-  m_Name: SoundEffect_Pistol_Fire
+  m_Name: SoundEffect_BigGun_Fire
   m_EditorClassIdentifier: 
-  soundEffectName: Pistol Fire
+  soundEffectName: Big Gun Fire
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: a2e21bf7e0dc41d4699b168f8a6ed79d, type: 3}
-  pitchVariantMin: 0.8
-  pitchVariantMax: 1.2
-  volume: 0.504
+  audioClip: {fileID: 8300000, guid: 559a85eaa82c77f4098fdd1b994edd9b, type: 3}
+  pitchVariantMin: 0.6
+  pitchVariantMax: 0.8
+  volume: 0.554

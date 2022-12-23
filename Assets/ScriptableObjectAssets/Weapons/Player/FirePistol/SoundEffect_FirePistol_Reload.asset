@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d724b4290d3d014d9d5213b1a1f57ab, type: 3}
-  m_Name: SoundEffect_Pistol_Fire
+  m_Name: SoundEffect_FirePistol_Reload
   m_EditorClassIdentifier: 
-  soundEffectName: Pistol Fire
+  soundEffectName: Fire Pistol Reload
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: a2e21bf7e0dc41d4699b168f8a6ed79d, type: 3}
-  pitchVariantMin: 0.8
-  pitchVariantMax: 1.2
-  volume: 0.504
+  audioClip: {fileID: 8300000, guid: 17b4c46db03cedd4299f9d1b1b7e779f, type: 3}
+  pitchVariantMin: 0.703
+  pitchVariantMax: 0.977
+  volume: 1

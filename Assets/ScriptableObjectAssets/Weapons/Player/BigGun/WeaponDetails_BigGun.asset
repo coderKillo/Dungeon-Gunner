@@ -15,15 +15,16 @@ MonoBehaviour:
   weaponName: Big Gun
   weaponSprite: {fileID: 21300000, guid: e163ac9d06bfa4343ac1fb28df612d3d, type: 3}
   shootPosition: {x: 1.04, y: 0.35, z: 0}
+  positionOffset: 0.65
   ammo: {fileID: 11400000, guid: 047dc435363c1c946a954b82e2d67189, type: 2}
-  hasInfiniteAmmo: 0
+  hasInfiniteAmmo: 1
   ammoCapacity: 10
   hasInfiniteClipCapacity: 0
   ammoClipCapacity: 1
   fireRate: 0.7
-  prechargeTime: 0.4
+  prechargeTime: 0.1
   reloadTime: 1
-  fireSoundEffect: {fileID: 0}
-  reloadSoundEffect: {fileID: 0}
+  fireSoundEffect: {fileID: 11400000, guid: c8c0da8e194d652489c2eedeb9105e64, type: 2}
+  reloadSoundEffect: {fileID: 11400000, guid: 13fd6cbcb582d1f40a868c2538606f48, type: 2}
   fireVisualEffect: {fileID: 0}
   shotAnimation: {fileID: 7400000, guid: bd6b30bdec6cebc46b5838582d069988, type: 2}

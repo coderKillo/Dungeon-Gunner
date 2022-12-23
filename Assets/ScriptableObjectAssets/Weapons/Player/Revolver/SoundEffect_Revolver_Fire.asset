@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Revolver Fire
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: bb91c0a2e0655b9458374194e7985430, type: 3}
+  audioClip: {fileID: 8300000, guid: 698b6dfa7287a7046acafdde4195a231, type: 3}
   pitchVariantMin: 1
-  pitchVariantMax: 1.2
-  volume: 0.728
+  pitchVariantMax: 1.221
+  volume: 0.517

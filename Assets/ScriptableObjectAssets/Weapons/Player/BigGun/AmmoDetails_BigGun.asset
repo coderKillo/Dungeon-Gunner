@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
   m_Name: AmmoDetails_BigGun
   m_EditorClassIdentifier: 
-  ammoName: 
+  ammoName: Big Gun
   isPlayerAmmo: 0
   ammoSprite: {fileID: 21300000, guid: c3be09077243891458bdbf46a57d2e8a, type: 3}
   prefabArray:
