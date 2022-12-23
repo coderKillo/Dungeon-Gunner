@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c929b223ca41adc46b8512e41f9c8480, type: 3}
+  m_Name: EnemyDetails_Dummy
+  m_EditorClassIdentifier: 
+  enemyName: Dummy
+  prefab: {fileID: 7896467077661417485, guid: 9bf44c3af9411a04183661969bc746fd, type: 3}
+  chaseDistance: 0
+  standardMaterial: {fileID: 0}
+  materializeTime: 0
+  materializeColor: {r: 0, g: 0, b: 0, a: 0}
+  materializeShader: {fileID: 0}
+  weaponDetails: {fileID: 0}
+  firingIntervalMin: 0.1
+  firingIntervalMax: 1
+  firingDurationMin: 1
+  firingDurationMax: 2
+  firingLineOfSightRequire: 0
+  healthDetailList:
+  - dungeonLevel: {fileID: 11400000, guid: 55aba9bebb934c542bc24a25af064e0f, type: 2}
+    healthAmount: 100
+  isImmuneAfterHit: 0
+  hitImmuneTime: 0

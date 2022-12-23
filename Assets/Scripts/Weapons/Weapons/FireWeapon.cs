@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 [RequireComponent(typeof(FireWeaponEvent))]
 [RequireComponent(typeof(WeaponFiredEvent))]
@@ -8,6 +9,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class FireWeapon : MonoBehaviour
 {
+    [SerializeField] private MMF_Player fireFeedback;
+
     private float fireRateCooldownTimer = 0f;
     private float chargeTimer = 0f;
 
@@ -111,7 +114,21 @@ public class FireWeapon : MonoBehaviour
 
         FireWeaponVisualEffect(aimAngle);
 
+        fireFeedback.PlayFeedbacks();
+
+        PlayFireAnimation();
+
         StartCoroutine(FireAmmoCoroutine(aimAngle, weaponAimAngle, weaponAimDirectionVector));
+    }
+
+    private void PlayFireAnimation()
+    {
+        if (activeWeapon.Animator == null)
+        {
+            return;
+        }
+
+        activeWeapon.Animator.SetTrigger(Animations.shot);
     }
 
     private IEnumerator FireAmmoCoroutine(float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)

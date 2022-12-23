@@ -75,4 +75,8 @@ public class GameResources : MonoBehaviour
     [Header("SPECIAL TILEMAP TILES")]
     public TileBase[] enemyUnwalkableCollisionTilesArray;
     public TileBase preferredEnemyPath;
+
+    [Space(10)]
+    [Header("WEAPON ANIMATION")]
+    public AnimationClip emptyAnimationClip;
 }

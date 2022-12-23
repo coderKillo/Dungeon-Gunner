@@ -11,11 +11,12 @@ public class MovementDetailsSO : ScriptableObject
     public float maxMoveSpeed = 8f;
 
     [Space(10)]
-    [Header("ROLLING")]
+    [Header("DASHING")]
 
-    public float rollSpeed;
-    public float rollDistance;
-    public float rollCooldown;
+    public float dashSpeed;
+    public AnimationCurve dashSpeedMultiplier;
+    public float dashTime;
+    public float dashCooldown;
     #endregion
 
     public float GetRandomMovementSpeed()
@@ -36,11 +37,11 @@ public class MovementDetailsSO : ScriptableObject
     {
         HelperUtilities.ValidateCheckPositiveRange(this, nameof(minMoveSpeed), minMoveSpeed, nameof(maxMoveSpeed), maxMoveSpeed, false);
 
-        if (rollCooldown != 0f || rollDistance != 0f || rollSpeed != 0f)
+        if (dashCooldown != 0f || dashTime != 0f || dashSpeed != 0f)
         {
-            HelperUtilities.ValidateCheckPositiveValue(this, nameof(rollCooldown), rollCooldown, false);
-            HelperUtilities.ValidateCheckPositiveValue(this, nameof(rollDistance), rollDistance, false);
-            HelperUtilities.ValidateCheckPositiveValue(this, nameof(rollSpeed), rollSpeed, false);
+            HelperUtilities.ValidateCheckPositiveValue(this, nameof(dashCooldown), dashCooldown, false);
+            HelperUtilities.ValidateCheckPositiveValue(this, nameof(dashTime), dashTime, false);
+            HelperUtilities.ValidateCheckPositiveValue(this, nameof(dashSpeed), dashSpeed, false);
         }
     }
 #endif

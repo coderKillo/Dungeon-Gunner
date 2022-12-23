@@ -18,7 +18,7 @@ public class AmmoDetailsSO : ScriptableObject
 
     [Space(10)]
     [Header("AMMO CHARGE")]
-    public float chargeTime = 0.1f;
+    public float chargeTime = 0f;
     public Material chargeMaterial;
 
     [Space(10)]

@@ -12,6 +12,10 @@ public class AnimatePlayer : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
+        if (player == null)
+        {
+            Debug.Log("to fast");
+        }
     }
 
     private void OnEnable()

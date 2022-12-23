@@ -43,4 +43,8 @@ public static class Animations
     #region CHEST
     public static int openChest = Animator.StringToHash("use");
     #endregion
+
+    #region WEAPON
+    public static int shot = Animator.StringToHash("shot");
+    #endregion
 }

@@ -33,6 +33,12 @@ public class WeaponDetailsSO : ScriptableObject
     [Header("WEAPON VISUAL EFFECTS")]
     public WeaponShootEffectSO fireVisualEffect;
 
+    [Space(10)]
+    [Header("WEAPON ANIMATION")]
+    public AnimationClip shotAnimation;
+
+    //TODO: add Weapon x position offset to not hold big guns so close to player
+
     #region VALIDATION
 #if UNITY_EDITOR
     private void OnValidate()

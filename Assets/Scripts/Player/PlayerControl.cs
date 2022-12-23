@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 [RequireComponent(typeof(Player))]
 [DisallowMultipleComponent]
@@ -9,15 +10,20 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private MovementDetailsSO movementDetails;
 
-    [HideInInspector] public bool isRolling = false;
+    [Space(10)]
+    [Header("Feedbacks")]
+    [SerializeField] private MMF_Player startDashFeedback;
+    [SerializeField] private MMF_Player stopDashFeedback;
+
+    [HideInInspector] public bool isDashing = false;
     [HideInInspector] public bool isEnabled = true;
 
     private Player player;
     private float moveSpeed;
 
-    private Coroutine rollCoroutine;
+    private Coroutine dashCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate;
-    private float rollingCooldownTimer = 0f;
+    private float dashingCooldownTimer = 0f;
 
     private int currentWeaponIndex = 0;
 
@@ -46,7 +52,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (isRolling)
+        if (isDashing)
         {
             return;
         }
@@ -57,12 +63,12 @@ public class PlayerControl : MonoBehaviour
 
         UseItemInput();
 
-        RollCooldownTimer();
+        DashCooldownTimer();
     }
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        StopRollingCoroutine();
+        StopDashingCoroutine();
     }
 
     private void WeaponInput()
@@ -194,9 +200,9 @@ public class PlayerControl : MonoBehaviour
 
         if (direction != Vector2.zero)
         {
-            if (shiftButtonPressed && rollingCooldownTimer <= 0f)
+            if (shiftButtonPressed && dashingCooldownTimer <= 0f)
             {
-                rollCoroutine = StartCoroutine(RollCoroutine(direction));
+                dashCoroutine = StartCoroutine(RollCoroutine(direction));
             }
             else
             {
@@ -211,38 +217,45 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator RollCoroutine(Vector2 direction)
     {
-        float minimumDistance = 0.2f;
+        isDashing = true;
 
-        isRolling = true;
+        var targetPosition = transform.position + (Vector3)direction * movementDetails.dashTime * movementDetails.dashSpeed;
+        var timeElapsed = 0f;
 
-        var targetPosition = transform.position + (Vector3)direction * movementDetails.rollDistance;
+        startDashFeedback.PlayFeedbacks();
 
-        while (Vector3.Distance(transform.position, targetPosition) > minimumDistance)
+        while (timeElapsed < movementDetails.dashTime)
         {
-            player.movementToPositionEvent.CallMovementToPositionEvent(transform.position, targetPosition, movementDetails.rollSpeed, direction, isRolling);
+            timeElapsed += Time.fixedDeltaTime;
+
+            var dashSpeedMultiplier = movementDetails.dashSpeedMultiplier.Evaluate(timeElapsed / movementDetails.dashTime);
+            var dashSpeed = movementDetails.dashSpeed * dashSpeedMultiplier;
+
+            player.movementToPositionEvent.CallMovementToPositionEvent(transform.position, targetPosition, dashSpeed, direction, isDashing);
             yield return waitForFixedUpdate;
         }
 
-        isRolling = false;
-        rollingCooldownTimer = movementDetails.rollCooldown;
-        player.transform.position = targetPosition;
+        StopDashingCoroutine();
     }
 
-    private void RollCooldownTimer()
+    private void DashCooldownTimer()
     {
-        if (rollingCooldownTimer >= 0f)
+        if (dashingCooldownTimer >= 0f)
         {
-            rollingCooldownTimer -= Time.deltaTime;
+            dashingCooldownTimer -= Time.deltaTime;
         }
     }
 
-    private void StopRollingCoroutine()
+    private void StopDashingCoroutine()
     {
-        if (rollCoroutine != null)
+        if (dashCoroutine != null)
         {
-            StopCoroutine(rollCoroutine);
-            isRolling = false;
+            StopCoroutine(dashCoroutine);
         }
+
+        dashingCooldownTimer = movementDetails.dashCooldown;
+        stopDashFeedback.PlayFeedbacks();
+        isDashing = false;
     }
 
     private void SetPlayerAnimationSpeed()

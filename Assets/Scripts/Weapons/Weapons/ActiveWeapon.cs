@@ -10,6 +10,9 @@ public class ActiveWeapon : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PolygonCollider2D polygonCollider2D;
 
+    [SerializeField] private Animator animator;
+    public Animator Animator { get { return animator; } }
+
     [SerializeField] private Transform shootPositionTransform;
     public Vector3 ShootPosition { get { return shootPositionTransform.position; } }
 
@@ -17,6 +20,8 @@ public class ActiveWeapon : MonoBehaviour
     public Vector3 ShootEffectPosition { get { return shootEffectTransform.position; } }
 
     private SetActiveWeaponEvent setActiveWeaponEvent;
+    private AnimatorOverrideController animatorOverrideController;
+    private AnimationClipOverrides clipOverrides;
 
     private Weapon currentWeapon;
     public Weapon CurrentWeapon { get { return currentWeapon; } }
@@ -30,6 +35,20 @@ public class ActiveWeapon : MonoBehaviour
     private void Awake()
     {
         setActiveWeaponEvent = GetComponent<SetActiveWeaponEvent>();
+
+        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        animator.runtimeAnimatorController = animatorOverrideController;
+
+        clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
+        animatorOverrideController.GetOverrides(clipOverrides);
+    }
+
+    private void LateUpdate()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            spriteRenderer.sprite = currentWeapon.weaponDetails.weaponSprite;
+        }
     }
 
     private void OnEnable()
@@ -50,6 +69,8 @@ public class ActiveWeapon : MonoBehaviour
     private void SetWeapon(Weapon weapon)
     {
         currentWeapon = weapon;
+
+        SetAnimations();
 
         spriteRenderer.sprite = weapon.weaponDetails.weaponSprite;
 
@@ -73,6 +94,20 @@ public class ActiveWeapon : MonoBehaviour
         var spritePhysicalShapePoints = new List<Vector2>();
         spriteRenderer.sprite.GetPhysicsShape(0, spritePhysicalShapePoints);
         polygonCollider2D.points = spritePhysicalShapePoints.ToArray();
+    }
+
+    private void SetAnimations()
+    {
+        if (currentWeapon.weaponDetails.shotAnimation != null)
+        {
+            animatorOverrideController["Shot"] = currentWeapon.weaponDetails.shotAnimation;
+            animator.speed = currentWeapon.weaponDetails.shotAnimation.length / currentWeapon.weaponDetails.fireRate;
+        }
+        else
+        {
+            animatorOverrideController["Shot"] = GameResources.Instance.emptyAnimationClip;
+            animator.speed = 1;
+        }
     }
 
     #region VALIDATION

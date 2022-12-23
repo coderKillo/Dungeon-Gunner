@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
 
     public bool IsRolling()
     {
-        return playerControl.isRolling;
+        return playerControl.isDashing;
     }
 
     public bool EnablePlayer(bool enabled)

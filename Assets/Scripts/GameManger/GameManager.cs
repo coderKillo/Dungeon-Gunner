@@ -243,7 +243,7 @@ public class GameManager : SingletonAbstract<GameManager>
             Debug.LogError("Couldn't build dungeon from specified dungeon level");
         }
 
-        displayMessage.DisplayText("Level " + levelIndex + "\n\n" + dungeonLevelList[levelIndex].levelName, 3f, Color.white);
+        displayMessage.DisplayText("Level " + (levelIndex + 1) + "\n\n" + dungeonLevelList[levelIndex].levelName, 1f, Color.white);
 
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
 
