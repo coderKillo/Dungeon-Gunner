@@ -1655,6 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5606799528666889479}
+  weaponPositionTransform: {fileID: 4265378308118892525}
   polygonCollider2D: {fileID: 3410476941377813141}
   animator: {fileID: 3912443771605409970}
   shootPositionTransform: {fileID: 8202063575545534639}

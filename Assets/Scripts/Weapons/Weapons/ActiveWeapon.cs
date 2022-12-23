@@ -8,6 +8,7 @@ using UnityEngine;
 public class ActiveWeapon : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Transform weaponPositionTransform;
     [SerializeField] private PolygonCollider2D polygonCollider2D;
 
     [SerializeField] private Animator animator;
@@ -77,6 +78,7 @@ public class ActiveWeapon : MonoBehaviour
         SetWeaponPolygonCollider();
 
         shootPositionTransform.localPosition = weapon.weaponDetails.shootPosition;
+        weaponPositionTransform.localPosition = new Vector3(weapon.weaponDetails.positionOffset, 0f, 0f);
     }
 
     private void SetWeaponPolygonCollider()

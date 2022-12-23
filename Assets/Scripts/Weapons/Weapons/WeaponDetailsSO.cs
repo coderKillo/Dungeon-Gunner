@@ -12,6 +12,7 @@ public class WeaponDetailsSO : ScriptableObject
     [Space(10)]
     [Header("WEAPON CONFIGURATION")]
     public Vector3 shootPosition;
+    public float positionOffset = 0f;
     public AmmoDetailsSO ammo;
 
     [Space(10)]
@@ -36,8 +37,6 @@ public class WeaponDetailsSO : ScriptableObject
     [Space(10)]
     [Header("WEAPON ANIMATION")]
     public AnimationClip shotAnimation;
-
-    //TODO: add Weapon x position offset to not hold big guns so close to player
 
     #region VALIDATION
 #if UNITY_EDITOR
