@@ -39,6 +39,8 @@ using UnityEngine.Rendering;
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer handRenderer;
+
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public PlayerControl playerControl;
     [HideInInspector] public Health health;
@@ -91,6 +93,7 @@ public class Player : MonoBehaviour
 
         health.StartingHealth = details.healthAmount;
         postHitImmunity.immunityTime = details.hitImmunityTime;
+        handRenderer.sprite = details.handSprite;
 
         weaponList.Clear();
         foreach (var weaponDetails in details.startingWeaponList)

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97b89421b0993446b55b5016b2cd207, type: 3}
+  m_Name: PlayerDetails_Jack
+  m_EditorClassIdentifier: 
+  characterName: Jack
+  prefab: {fileID: 6441610178944495798, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
+  runtimeAnimatorController: {fileID: 9100000, guid: f63b48ab2725097418c65faa1c8c3dd9, type: 2}
+  healthAmount: 100
+  hitImmunityTime: 1
+  startingWeapon: {fileID: 11400000, guid: aabf4870ce9476e409271204102ed668, type: 2}
+  startingWeaponList:
+  - {fileID: 11400000, guid: aabf4870ce9476e409271204102ed668, type: 2}
+  minimapIcon: {fileID: 0}
+  handSprite: {fileID: 0}
