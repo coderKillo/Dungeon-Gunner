@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: SpriteEffect_BigGun_Explosion
   m_EditorClassIdentifier: 
   scale: 1
-  frameRate: 24
+  frameRate: 14
   spriteArray:
-  - {fileID: 530035041, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
-  - {fileID: 301564570, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
-  - {fileID: -294426206, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
-  - {fileID: 907551322, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
-  - {fileID: -790917379, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
-  - {fileID: 1645068099, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
-  - {fileID: -380446764, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
-  - {fileID: -2098748717, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
+  - {fileID: -9411581, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -561974077, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: 358923573, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: 2116326102, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -1192846108, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -1488470133, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -109364491, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: 74724886, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: 1571424622, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -457583090, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -582814769, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -771437556, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -1916716756, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: -380995426, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
+  - {fileID: 101462925, guid: 03f05244c219fc542ba2363ebb0f88f0, type: 3}
   offset: {x: 0, y: 0, z: 0}

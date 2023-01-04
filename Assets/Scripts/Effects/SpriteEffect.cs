@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,15 +8,16 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteEffect : MonoBehaviour
 {
-    private Sprite[] spriteArray;
-    private float frameRate;
+    [SerializeField] private bool looping = false;
+    [SerializeField] private Sprite[] spriteArray;
+    [SerializeField] private float frameRate;
+
     private SpriteRenderer spriteRenderer;
     private Coroutine showEffectCoroutine;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteArray = new Sprite[0];
     }
 
     public void Initialize(SpriteEffectSO spriteEffect)
@@ -42,12 +44,25 @@ public class SpriteEffect : MonoBehaviour
 
     private IEnumerator ShowEffect()
     {
+        while (true)
+        {
+            yield return AnimateSpriteArray();
+
+            if (!looping)
+            {
+                break;
+            }
+        }
+
+        gameObject.SetActive(false);
+    }
+
+    private IEnumerator AnimateSpriteArray()
+    {
         foreach (var sprite in spriteArray)
         {
             spriteRenderer.sprite = sprite;
             yield return new WaitForSeconds(1 / frameRate);
         }
-
-        gameObject.SetActive(false);
     }
 }
