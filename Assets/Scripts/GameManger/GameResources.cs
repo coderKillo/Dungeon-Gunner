@@ -64,6 +64,10 @@ public class GameResources : MonoBehaviour
     public SoundEffectSO tableFlipSoundEffect;
 
     [Space(10)]
+    [Header("VISUAL EFFECTS")]
+    public GameObject spriteEffectPrefab;
+
+    [Space(10)]
     [Header("MUSIC")]
     public AudioMixerGroup musicMasterAudioMixer;
     public AudioMixerSnapshot musicOnFullSnapshot;

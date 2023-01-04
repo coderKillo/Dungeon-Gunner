@@ -154,13 +154,9 @@ public class Ammo : MonoBehaviour, IFireable
         {
             return;
         }
-        if (visualEffect.prefab == null)
-        {
-            return;
-        }
 
-        var ammoHitEffect = (AmmoHitEffect)PoolManager.Instance.ReuseComponent(visualEffect.prefab, transform.position, Quaternion.identity);
-        ammoHitEffect.Setup(visualEffect);
+        var ammoHitEffect = (SpriteEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.spriteEffectPrefab, transform.position, Quaternion.identity);
+        ammoHitEffect.Initialize(visualEffect);
         ammoHitEffect.gameObject.SetActive(true);
     }
 }

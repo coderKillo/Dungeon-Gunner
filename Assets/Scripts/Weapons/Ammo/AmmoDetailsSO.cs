@@ -51,7 +51,7 @@ public class AmmoDetailsSO : ScriptableObject
 
     [Space(10)]
     [Header("Ammo VISUAL EFFECTS")]
-    public AmmoHitEffectSO hitVisualEffect;
+    public SpriteEffectSO hitVisualEffect;
 
     #region VALIDATION
 #if UNITY_EDITOR

@@ -64,6 +64,7 @@ MonoBehaviour:
   soundMasterAudioMixer: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   doorOpenSoundEffect: {fileID: 11400000, guid: 762d44ddb2cc27945981631bbe4b2673, type: 2}
   tableFlipSoundEffect: {fileID: 11400000, guid: 50c650152917f9643b5edbc1c5b2e540, type: 2}
+  spriteEffectPrefab: {fileID: 4514459192244064898, guid: 4fa4b6deb6dd3734c822fced15105bbe, type: 3}
   musicMasterAudioMixer: {fileID: -7206380732494497733, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}

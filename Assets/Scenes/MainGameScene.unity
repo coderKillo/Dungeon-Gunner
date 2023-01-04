@@ -926,6 +926,9 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 3842687458342963707, guid: d830cb953e18e62419703912a4ecc336, type: 3}
     componentTypeName: IFireable
+  - size: 40
+    prefab: {fileID: 4514459192244064898, guid: 4fa4b6deb6dd3734c822fced15105bbe, type: 3}
+    componentTypeName: SpriteEffect
 --- !u!1 &270442403
 GameObject:
   m_ObjectHideFlags: 0
