@@ -18,7 +18,7 @@ public class ActiveWeapon : MonoBehaviour
     public Vector3 ShootPosition { get { return shootPositionTransform.position; } }
 
     [SerializeField] private Transform shootEffectTransform;
-    public Vector3 ShootEffectPosition { get { return shootEffectTransform.position; } }
+    public Transform ShootEffect { get { return shootEffectTransform; } }
 
     private SetActiveWeaponEvent setActiveWeaponEvent;
     private AnimatorOverrideController animatorOverrideController;

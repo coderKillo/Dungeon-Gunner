@@ -18,6 +18,7 @@ public class FireWeapon : MonoBehaviour
     private WeaponFiredEvent weaponFiredEvent;
     private ReloadWeaponEvent reloadWeaponEvent;
     private ActiveWeapon activeWeapon;
+    private SpriteEffect fireWeaponEffect;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class FireWeapon : MonoBehaviour
         weaponFiredEvent = GetComponent<WeaponFiredEvent>();
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         activeWeapon = GetComponent<ActiveWeapon>();
+        fireWeaponEffect = activeWeapon.ShootEffect.GetComponent<SpriteEffect>();
     }
 
     private void OnEnable()
@@ -212,14 +214,8 @@ public class FireWeapon : MonoBehaviour
             return;
         }
 
-        if (visualEffect.prefab == null)
-        {
-            return;
-        }
-
-        var effectObject = (WeaponShootEffect)PoolManager.Instance.ReuseComponent(visualEffect.prefab, activeWeapon.ShootPosition, Quaternion.identity);
-        effectObject.Setup(visualEffect, aimAngle);
-        effectObject.gameObject.SetActive(true);
+        fireWeaponEffect.Initialize(visualEffect);
+        fireWeaponEffect.gameObject.SetActive(true);
     }
 
 }

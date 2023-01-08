@@ -893,6 +893,9 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 3415706278289267979, guid: e53e09d662e6f88458d7e585bcad783b, type: 3}
     componentTypeName: IFireable
+  - size: 30
+    prefab: {fileID: 3415706278289267979, guid: 6f0f1a32a445c234ab3fabd5fb0f113a, type: 3}
+    componentTypeName: IFireable
   - size: 40
     prefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
     componentTypeName: SoundEffect
@@ -4781,10 +4784,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.0036452007
-    width: 1
-    height: 0.9917224
+    x: 0.04068348
+    y: 0
+    width: 0.9185426
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

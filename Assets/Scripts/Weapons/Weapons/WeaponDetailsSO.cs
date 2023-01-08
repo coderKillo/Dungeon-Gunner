@@ -32,7 +32,7 @@ public class WeaponDetailsSO : ScriptableObject
 
     [Space(10)]
     [Header("WEAPON VISUAL EFFECTS")]
-    public WeaponShootEffectSO fireVisualEffect;
+    public SpriteEffectSO fireVisualEffect;
 
     [Space(10)]
     [Header("WEAPON ANIMATION")]
