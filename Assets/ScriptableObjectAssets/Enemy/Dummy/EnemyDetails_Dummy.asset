@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 7896467077661417485, guid: 9bf44c3af9411a04183661969bc746fd, type: 3}
   chaseDistance: 0
   standardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  materializeTime: 0
+  materializeTime: 1
   materializeColor: {r: 0, g: 0.06218882, b: 0.990566, a: 0}
   materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
   weaponDetails: {fileID: 0}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Sword
   weaponSprite: {fileID: 21300000, guid: 86d1867a11470cd4cb739417762c80ac, type: 3}
-  shootPosition: {x: 0.21, y: 0, z: 0}
+  shootPosition: {x: 1.7, y: 0.2, z: 0}
   positionOffset: 0
   ammo: {fileID: 11400000, guid: 04cd02618d3c53541a3404b0a4d4ac36, type: 2}
   hasInfiniteAmmo: 1
@@ -26,5 +26,5 @@ MonoBehaviour:
   reloadTime: 0
   fireSoundEffect: {fileID: 11400000, guid: cbe38f3d83fd16c4d81c03d66fe19fc1, type: 2}
   reloadSoundEffect: {fileID: 0}
-  fireVisualEffect: {fileID: 0}
+  fireVisualEffect: {fileID: 11400000, guid: de77118a25a119a40ae2789f0057b00d, type: 2}
   shotAnimation: {fileID: 7400000, guid: e101a498c36f7574d9935c773a3c83a9, type: 2}

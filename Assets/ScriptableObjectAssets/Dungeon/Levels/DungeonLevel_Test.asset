@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Test Area
   roomTemplateList:
-  - {fileID: 11400000, guid: 934158f41bf0ecc40a7065c7a6102b98, type: 2}
-  - {fileID: 11400000, guid: a48785e3b38677c41811296610df8f06, type: 2}
-  - {fileID: 11400000, guid: 3fe641821de8e5d4aacd3cd6141af9ef, type: 2}
+  - {fileID: 11400000, guid: b33973057b8879f43ac074cf152c260a, type: 2}
+  - {fileID: 11400000, guid: 7287a65b49a0d1c49ba1895d347de95e, type: 2}
+  - {fileID: 11400000, guid: b057f0acc9f9cb54e974f7d6ca5aa392, type: 2}
   - {fileID: 11400000, guid: c4809859434775c4db43c4fe08eedbac, type: 2}
   - {fileID: 11400000, guid: c78573f3520f5964bab250658e509661, type: 2}
   roomNodeGraphList:

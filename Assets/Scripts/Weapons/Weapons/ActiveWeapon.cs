@@ -37,15 +37,23 @@ public class ActiveWeapon : MonoBehaviour
     {
         setActiveWeaponEvent = GetComponent<SetActiveWeaponEvent>();
 
-        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-        animator.runtimeAnimatorController = animatorOverrideController;
+        if (animator != null)
+        {
+            animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+            animator.runtimeAnimatorController = animatorOverrideController;
 
-        clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
-        animatorOverrideController.GetOverrides(clipOverrides);
+            clipOverrides = new AnimationClipOverrides(animatorOverrideController.overridesCount);
+            animatorOverrideController.GetOverrides(clipOverrides);
+        }
     }
 
     private void LateUpdate()
     {
+        if (animator == null)
+        {
+            return;
+        }
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             spriteRenderer.sprite = currentWeapon.weaponDetails.weaponSprite;
@@ -100,6 +108,11 @@ public class ActiveWeapon : MonoBehaviour
 
     private void SetAnimations()
     {
+        if (animator == null)
+        {
+            return;
+        }
+
         if (currentWeapon.weaponDetails.shotAnimation != null)
         {
             animatorOverrideController["Shot"] = currentWeapon.weaponDetails.shotAnimation;

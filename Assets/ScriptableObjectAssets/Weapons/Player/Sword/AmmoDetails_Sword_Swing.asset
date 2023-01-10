@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AmmoDetails_Sword_Swing
   m_EditorClassIdentifier: 
   ammoName: Sword Swing
-  isPlayerAmmo: 0
+  isPlayerAmmo: 1
   ammoSprite: {fileID: 470902332, guid: 64a233b22f628bd4eb26022699fa35dd, type: 3}
   prefabArray:
   - {fileID: 3415706278289267979, guid: 6f0f1a32a445c234ab3fabd5fb0f113a, type: 3}
@@ -23,7 +23,7 @@ MonoBehaviour:
   damage: 20
   speedMin: 0.1
   speedMax: 0.1
-  range: 10
+  range: 1.5
   rotationSpeed: 0
   spreadMin: 0
   spreadMax: 0

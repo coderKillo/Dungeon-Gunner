@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 882722638798266051, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+      propertyPath: weaponPositionTransform
+      value: 
+      objectReference: {fileID: 7896750178987186258}
     - target: {fileID: 1111977778612913738, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2
@@ -77,3 +81,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+--- !u!4 &7896750178987186258 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4821487937526556618, guid: d4c3032e7180a8749906f318ebb1b5b4, type: 3}
+  m_PrefabInstance: {fileID: 3422658515562495896}
+  m_PrefabAsset: {fileID: 0}
