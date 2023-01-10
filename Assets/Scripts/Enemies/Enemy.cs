@@ -38,6 +38,8 @@ using UnityEngine.Rendering;
 [DisallowMultipleComponent]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private Transform spawnDamagePopup;
+
     [HideInInspector] public EnemyDetailsSO enemyDetails;
     [HideInInspector] public SpriteRenderer[] spriteRenderer;
 
@@ -93,7 +95,7 @@ public class Enemy : MonoBehaviour
     {
         if (arg2.damageAmount > 0)
         {
-            DamagePopup.Create(transform.position, "-" + arg2.damageAmount.ToString(), Color.red);
+            DamagePopup.Create(spawnDamagePopup.position, "-" + arg2.damageAmount.ToString(), Color.red);
         }
 
         if (arg2.healthAmount <= 0)
