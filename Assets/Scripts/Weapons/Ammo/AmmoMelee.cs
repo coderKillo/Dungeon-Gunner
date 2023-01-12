@@ -8,6 +8,9 @@ public class AmmoMelee : MonoBehaviour, IFireable
     private PolygonCollider2D polyCollider;
     private AmmoDetailsSO ammoDetails;
     private bool isColliding = false;
+    private float speed = 0f;
+    private float range = 0f;
+    private List<GameObject> alreadyCollided;
 
     public GameObject GetGameObject()
     {
@@ -22,29 +25,48 @@ public class AmmoMelee : MonoBehaviour, IFireable
     public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, bool overrideAmmoMovement = false)
     {
         this.ammoDetails = ammoDetails;
+        this.speed = speed;
+        this.range = ammoDetails.range;
+        this.alreadyCollided = new List<GameObject>();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 
         gameObject.SetActive(true);
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        var allOverlappingColliders = new Collider2D[16];
-        var contactFilter = new ContactFilter2D();
+        var distance = transform.right * speed * Time.deltaTime;
+        transform.position += distance;
 
-        contactFilter.useTriggers = false;
-        contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-        contactFilter.useLayerMask = true;
-
-        int overlapCount = Physics2D.OverlapCollider(polyCollider, contactFilter, allOverlappingColliders);
-
-        for (int i = 0; i < overlapCount; i++)
+        range -= distance.magnitude;
+        if (range < 0f)
         {
-            DealDamage(allOverlappingColliders[i]);
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (alreadyCollided.Contains(other.gameObject))
+        {
+            return;
+        }
+        alreadyCollided.Add(other.gameObject);
+
+        DealDamage(other);
+        PlayHitSound();
+    }
+
+    private void PlayHitSound()
+    {
+        var soundEffect = ammoDetails.hitAudioEffect;
+        if (soundEffect == null)
+        {
+            return;
         }
 
-        gameObject.SetActive(false);
+        SoundEffectManager.Instance.PlaySoundEffect(soundEffect);
     }
 
     private void DealDamage(Collider2D collider)

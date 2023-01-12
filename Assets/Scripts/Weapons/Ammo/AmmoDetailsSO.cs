@@ -53,6 +53,10 @@ public class AmmoDetailsSO : ScriptableObject
     [Header("Ammo VISUAL EFFECTS")]
     public SpriteEffectSO hitVisualEffect;
 
+    [Space(10)]
+    [Header("Ammo AUDIO EFFECTS")]
+    public SoundEffectSO hitAudioEffect;
+
     #region VALIDATION
 #if UNITY_EDITOR
     private void OnValidate()
