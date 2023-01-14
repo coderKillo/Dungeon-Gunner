@@ -37,6 +37,7 @@ public class WeaponDetailsSO : ScriptableObject
     [Space(10)]
     [Header("WEAPON ANIMATION")]
     public AnimationClip shotAnimation;
+    public AnimationClip chargeAnimation;
 
     #region VALIDATION
 #if UNITY_EDITOR

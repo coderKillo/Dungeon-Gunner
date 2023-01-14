@@ -116,13 +116,23 @@ public class ActiveWeapon : MonoBehaviour
         if (currentWeapon.weaponDetails.shotAnimation != null)
         {
             animatorOverrideController["Shot"] = currentWeapon.weaponDetails.shotAnimation;
-            animator.speed = currentWeapon.weaponDetails.shotAnimation.length / currentWeapon.weaponDetails.fireRate;
+            // animator.speed = currentWeapon.weaponDetails.shotAnimation.length / currentWeapon.weaponDetails.fireRate;
         }
         else
         {
             animatorOverrideController["Shot"] = GameResources.Instance.emptyAnimationClip;
-            animator.speed = 1;
+            // animator.speed = 1;
         }
+
+        if (currentWeapon.weaponDetails.chargeAnimation != null)
+        {
+            animatorOverrideController["Charge"] = currentWeapon.weaponDetails.chargeAnimation;
+        }
+        else
+        {
+            animatorOverrideController["Charge"] = GameResources.Instance.emptyAnimationClip;
+        }
+
     }
 
     #region VALIDATION

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2266906687519434815}
   - component: {fileID: 7025265209078803840}
   m_Layer: 14
-  m_Name: PlayerAmmoMeele
+  m_Name: PlayerAmmoMeele_Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

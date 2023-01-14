@@ -20,6 +20,15 @@ public class FireWeapon : MonoBehaviour
     private ActiveWeapon activeWeapon;
     private SpriteEffect fireWeaponEffect;
 
+    enum WeaponState
+    {
+        Idle,
+        Charge,
+        Shot
+    }
+
+    private WeaponState state = WeaponState.Idle;
+
     private void Awake()
     {
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
@@ -54,35 +63,65 @@ public class FireWeapon : MonoBehaviour
 
     private void FireWeaponEvent_OnFireWeapon(FireWeaponEvent arg1, FireWeaponEventArgs arg2)
     {
-        if (!arg2.fire)
-        {
-            return;
-        }
-
-        if (IsFirePressedFrame(arg2))
-        {
-            ResetChargeTimer();
-        }
-
         if (!IsWeaponReadyToFire())
         {
             return;
         }
 
-        FireAmmo(arg2.aimAngle, arg2.weaponAimAngle, arg2.weaponAimDirectionVector);
+        switch (state)
+        {
+            case WeaponState.Idle:
 
-        ResetFireRateCooldownTimer();
-        ResetChargeTimer();
+                ResetChargeTimer();
+
+                if (chargeTimer > 0f)
+                {
+                    PlayChargeAnimation();
+                    state = WeaponState.Charge;
+                }
+                else
+                {
+                    state = WeaponState.Shot;
+                }
+
+                break;
+
+
+            case WeaponState.Charge:
+
+                if (!arg2.fire)
+                {
+                    StopChargingAnimation();
+                    state = WeaponState.Idle;
+                    return;
+                }
+
+                if (chargeTimer <= 0f)
+                {
+                    StopChargingAnimation();
+                    state = WeaponState.Shot;
+                }
+
+                break;
+
+
+            case WeaponState.Shot:
+
+                FireAmmo(arg2.aimAngle, arg2.weaponAimAngle, arg2.weaponAimDirectionVector);
+                ResetFireRateCooldownTimer();
+
+                state = WeaponState.Idle;
+
+                break;
+
+            default:
+                break;
+        }
     }
 
     private bool IsWeaponReadyToFire()
     {
         if (fireRateCooldownTimer > 0f)
-        {
-            return false;
-        }
-
-        if (chargeTimer > 0f)
         {
             return false;
         }
@@ -131,6 +170,26 @@ public class FireWeapon : MonoBehaviour
         }
 
         activeWeapon.Animator.SetTrigger(Animations.shot);
+    }
+
+    private void PlayChargeAnimation()
+    {
+        if (activeWeapon.Animator == null)
+        {
+            return;
+        }
+
+        activeWeapon.Animator.SetTrigger(Animations.charge);
+    }
+
+    private void StopChargingAnimation()
+    {
+        if (activeWeapon.Animator == null)
+        {
+            return;
+        }
+
+        activeWeapon.Animator.SetTrigger(Animations.cancelCharge);
     }
 
     private IEnumerator FireAmmoCoroutine(float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
@@ -192,6 +251,11 @@ public class FireWeapon : MonoBehaviour
     private bool IsFirePressedFrame(FireWeaponEventArgs arg2)
     {
         return arg2.fire && !arg2.fireLastFrame;
+    }
+
+    private bool IsFireReleaseFrame(FireWeaponEventArgs arg2)
+    {
+        return !arg2.fire && arg2.fireLastFrame;
     }
 
     private void FireWeaponSoundEffect()

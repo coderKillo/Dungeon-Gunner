@@ -46,5 +46,7 @@ public static class Animations
 
     #region WEAPON
     public static int shot = Animator.StringToHash("shot");
+    public static int charge = Animator.StringToHash("charge");
+    public static int cancelCharge = Animator.StringToHash("cancelCharge");
     #endregion
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
-  m_Name: AmmoDetails_Sword_Swing
+  m_Name: AmmoDetails_Axe_Swing
   m_EditorClassIdentifier: 
-  ammoName: Sword Swing
+  ammoName: Axe Swing
   isPlayerAmmo: 1
   ammoSprite: {fileID: 470902332, guid: 64a233b22f628bd4eb26022699fa35dd, type: 3}
   prefabArray:
-  - {fileID: 3415706278289267979, guid: 6f0f1a32a445c234ab3fabd5fb0f113a, type: 3}
+  - {fileID: 3415706278289267979, guid: 01cf603dc1866f24a86f7676463b17f8, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
@@ -37,4 +37,4 @@ MonoBehaviour:
   trailStartWidth: 0
   trailEndWidth: 0
   hitVisualEffect: {fileID: 0}
-  hitAudioEffect: {fileID: 11400000, guid: 072ba8fb5fe54164c97c3fa8478a75c8, type: 2}
+  hitAudioEffect: {fileID: 11400000, guid: 5ab52027219fd274d9bb4d7e785edd81, type: 2}

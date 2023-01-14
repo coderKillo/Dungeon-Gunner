@@ -22,7 +22,7 @@ public class SpriteEffect : MonoBehaviour
 
     public void Initialize(SpriteEffectSO spriteEffect)
     {
-        transform.localScale = new Vector3(spriteEffect.scale, spriteEffect.scale, spriteEffect.scale);
+        transform.localScale = new Vector3(spriteEffect.scale.x, spriteEffect.scale.y, 1f);
         transform.position += spriteEffect.offset;
 
         spriteArray = spriteEffect.spriteArray;

@@ -89,9 +89,9 @@ public class PlayerControl : MonoBehaviour
 
         #region FIRE WEAPON
         bool fireWeapon = Input.GetMouseButton(0);
-        if (fireWeapon)
+        if (fireWeapon || fireLastFrame)
         {
-            player.fireWeaponEvent.CallFireWeaponEvent(true, fireLastFrame, playerAimDirection, playerAngle, weaponAngle, weaponDirection);
+            player.fireWeaponEvent.CallFireWeaponEvent(fireWeapon, fireLastFrame, playerAimDirection, playerAngle, weaponAngle, weaponDirection);
         }
         fireLastFrame = fireWeapon;
         #endregion
