@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: Axe
   weaponSprite: {fileID: 21300000, guid: a6c2973fb36c7414eb4a7b56fddc4603, type: 3}
   shootPosition: {x: 0, y: 0, z: 0}
-  positionOffset: -0.3
+  positionOffset: 0
   ammo: {fileID: 11400000, guid: 04cd02618d3c53541a3404b0a4d4ac36, type: 2}
   hasInfiniteAmmo: 1
   ammoCapacity: 100
