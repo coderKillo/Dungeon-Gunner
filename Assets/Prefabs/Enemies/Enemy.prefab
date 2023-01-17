@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 5423808294640241134}
   - component: {fileID: 1582880359696476315}
   - component: {fileID: 754261833581178493}
+  - component: {fileID: 7803383980286423615}
   - component: {fileID: 6082241386020688191}
   - component: {fileID: 3833538573536706407}
   - component: {fileID: 2160519120283584595}
@@ -674,6 +675,20 @@ MonoBehaviour:
   debugPath: 0
   moveSpeed: 0
   updateFrameNumber: 1
+--- !u!114 &7803383980286423615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821766618793254805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c16bd8bcd0bac49ad902baed736115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitEffectTime: 0.2
+  _hitForce: 100
 --- !u!114 &6082241386020688191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,7 +753,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 400
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -766,7 +781,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2eda659c2ebc8484fb5e34427a2b2f64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

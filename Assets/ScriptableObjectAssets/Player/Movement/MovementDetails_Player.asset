@@ -49,4 +49,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dashTime: 0.2
-  dashCooldown: 0.5
+  dashCooldown: 0.4
