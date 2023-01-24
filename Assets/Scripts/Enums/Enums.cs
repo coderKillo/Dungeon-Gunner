@@ -45,3 +45,11 @@ public enum AimDirection
     Left,
     Down
 }
+
+public enum CardRarity
+{
+    Common,
+    Rare,
+    Epic,
+    Legendary,
+}

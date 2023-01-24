@@ -48,4 +48,10 @@ static public class Settings
     #region CONTACT DAMAGE PARAMETERS
     public const float contactDamageCollisionResetDelay = 0.5f;
     #endregion
+
+    #region CARD SYSTEM
+    public const int deckSize = 30;
+    public const int handSize = 5;
+    public const int drawSize = 3;
+    #endregion
 }
