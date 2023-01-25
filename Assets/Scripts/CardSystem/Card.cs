@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using TMPro;
 
-[RequireComponent(typeof(CardSelector))]
 public class Card : SerializedMonoBehaviour
 {
     [Space(10)]
@@ -17,6 +17,14 @@ public class Card : SerializedMonoBehaviour
     [Space(10)]
     [Header("Rarity Color")]
     [SerializeField] private Dictionary<CardRarity, Color> _rarityColorLookup;
+
+    private CardFlip _cardFlip;
+    public CardFlip Flip { get { return _cardFlip; } }
+
+    private void Awake()
+    {
+        _cardFlip = GetComponent<CardFlip>();
+    }
 
     public void Instantiate(CardSO card)
     {

@@ -9,11 +9,13 @@ public class DrawUI : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPrefab;
 
-    private CardSelector[] _cards;
+    private Animator _animator;
+    private Card[] _cards;
 
     private void Awake()
     {
-        _cards = new CardSelector[0];
+        _cards = new Card[0];
+        _animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -33,7 +35,7 @@ public class DrawUI : MonoBehaviour
     {
         Clear();
 
-        _cards = new CardSelector[cards.Length];
+        _cards = new Card[cards.Length];
 
         for (int i = 0; i < cards.Length; i++)
         {
@@ -41,18 +43,33 @@ public class DrawUI : MonoBehaviour
 
             var card = cardObject.GetComponent<Card>();
             card.Instantiate(cards[i]);
+            card.Flip.ShowBack();
 
-            var selector = cardObject.GetComponent<CardSelector>();
-            selector.Id = i;
-            selector.OnClick += CardSelected;
+            var cardEvent = cardObject.GetComponent<CardEvent>();
+            cardEvent.Id = i;
+            cardEvent.OnEvent += OnCardEvent;
 
-            _cards[i] = selector;
+            _cards[i] = card;
         }
 
+        _animator.Play("Start");
     }
 
-    private void CardSelected(int id)
+    private void OnCardEvent(CardEvent arg1, CardEventArgs args2)
     {
-        _cards[id].Selected = !_cards[id].Selected;
+        switch (args2.cardEventType)
+        {
+            case CardEventType.Click:
+                CardClicked(args2.id);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void CardClicked(int id)
+    {
+        _cards[id].Flip.ShowFront();
     }
 }
