@@ -13,6 +13,9 @@ public class CardFlip : MonoBehaviour
     [Header("Feedback")]
     [SerializeField] private MMF_Player _flipFeedback;
 
+    private bool _isFlipped = false;
+    public bool IsFlipped { get { return _isFlipped; } }
+
     public void ShowFront()
     {
         ShowBack();
@@ -20,11 +23,15 @@ public class CardFlip : MonoBehaviour
         _back.DOScaleX(0f, 0.3f).OnComplete(() => _front.DOScaleX(1f, 0.3f));
 
         _flipFeedback.PlayFeedbacks();
+
+        _isFlipped = true;
     }
 
     public void ShowBack()
     {
         _back.localScale = new Vector3(1f, 1f, 1f);
         _front.localScale = new Vector3(0f, 1f, 1f);
+
+        _isFlipped = false;
     }
 }

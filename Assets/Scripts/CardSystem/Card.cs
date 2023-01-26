@@ -28,10 +28,22 @@ public class Card : SerializedMonoBehaviour
 
     public void Instantiate(CardSO card)
     {
-        _title.text = card.title;
-        _description.text = card.description;
-        _icon.sprite = card.sprite;
-        _background.color = _rarityColorLookup.GetValueOrDefault(card.rarity, Color.white);
+        if (_title != null)
+        {
+            _title.text = card.title;
+        }
+        if (_description != null)
+        {
+            _description.text = card.description;
+        }
+        if (_icon != null)
+        {
+            _icon.sprite = card.sprite;
+        }
+        if (_background != null)
+        {
+            _background.color = _rarityColorLookup.GetValueOrDefault(card.rarity, Color.white);
+        }
     }
 }
 

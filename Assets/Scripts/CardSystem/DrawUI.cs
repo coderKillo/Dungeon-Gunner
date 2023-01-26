@@ -10,11 +10,11 @@ public class DrawUI : MonoBehaviour
     [SerializeField] private GameObject _cardPrefab;
 
     private Animator _animator;
-    private Card[] _cards;
+    private List<Card> _cards;
 
     private void Awake()
     {
-        _cards = new Card[0];
+        _cards = new List<Card>();
         _animator = GetComponent<Animator>();
     }
 
@@ -29,13 +29,13 @@ public class DrawUI : MonoBehaviour
         {
             Destroy(card.gameObject);
         }
+
+        _cards.Clear();
     }
 
     public void Draw(CardSO[] cards)
     {
         Clear();
-
-        _cards = new Card[cards.Length];
 
         for (int i = 0; i < cards.Length; i++)
         {
@@ -49,7 +49,7 @@ public class DrawUI : MonoBehaviour
             cardEvent.Id = i;
             cardEvent.OnEvent += OnCardEvent;
 
-            _cards[i] = card;
+            _cards.Add(card);
         }
 
         _animator.Play("Start");
@@ -70,6 +70,14 @@ public class DrawUI : MonoBehaviour
 
     private void CardClicked(int id)
     {
-        _cards[id].Flip.ShowFront();
+        if (!_cards[id].Flip.IsFlipped)
+        {
+            _cards[id].Flip.ShowFront();
+        }
+        else
+        {
+            CardSystem.Instance.DrawSelectCard(id);
+            Clear();
+        }
     }
 }

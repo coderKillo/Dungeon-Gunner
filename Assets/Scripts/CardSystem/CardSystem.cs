@@ -4,20 +4,23 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class CardSystem : MonoBehaviour
+public class CardSystem : SingletonAbstract<CardSystem>
 {
     [SerializeField] private CardDeckSO playerDeck;
     [SerializeField] private int firstDraw;
+    [SerializeField] private int handMax = 5;
 
     private List<CardSO> _hand = new List<CardSO>();
     private List<CardSO> _draw = new List<CardSO>();
     private List<CardSO> _deck = new List<CardSO>();
-    private List<CardSO> _selected = new List<CardSO>();
 
     static public Action<CardSO[]> OnDraw;
+    static public Action<CardSO[]> OnHandChanged;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         foreach (var card in playerDeck.deck)
         {
             _deck.Add(card);
@@ -28,12 +31,12 @@ public class CardSystem : MonoBehaviour
     {
         for (int i = 0; i < firstDraw; i++)
         {
-            draw();
+            Draw();
         }
     }
 
     [Button("Draw Card")]
-    public void draw()
+    public void Draw()
     {
         _draw.Clear();
 
@@ -45,9 +48,21 @@ public class CardSystem : MonoBehaviour
         OnDraw?.Invoke(_draw.ToArray());
     }
 
-    public void select(CardSO card)
+    public void DrawSelectCard(int id)
     {
-        _selected.Add(card);
+        AddCardToHand(_draw[id]);
+
+        _draw.Clear();
     }
 
+    private void AddCardToHand(CardSO card)
+    {
+        if (_hand.Count >= handMax)
+        {
+            return;
+        }
+
+        _hand.Add(card);
+        OnHandChanged?.Invoke(_hand.ToArray());
+    }
 }

@@ -1719,6 +1719,7 @@ GameObject:
   - component: {fileID: 1971140357}
   - component: {fileID: 1971140358}
   - component: {fileID: 1971140359}
+  - component: {fileID: 1971140360}
   m_Layer: 5
   m_Name: Draw
   m_TagString: Untagged
@@ -1798,3 +1799,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardPrefab: {fileID: 1322081215169718702, guid: f731cdcbc0956ed448d4023a8a591e22, type: 3}
+--- !u!95 &1971140360
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971140355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f680f630207c20c4db77b8cbc2d77eb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
