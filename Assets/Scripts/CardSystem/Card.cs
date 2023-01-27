@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using TMPro;
+using MoreMountains.Feedbacks;
 
 public class Card : SerializedMonoBehaviour
 {
@@ -15,8 +16,17 @@ public class Card : SerializedMonoBehaviour
     [SerializeField] private Image _background;
 
     [Space(10)]
+    [Header("Feedbacks")]
+    [SerializeField] private MMF_Player _pointerEnterFeedback;
+    public MMF_Player PointerEnterFeedback { get { return _pointerEnterFeedback; } }
+
+
+    [Space(10)]
     [Header("Rarity Color")]
     [SerializeField] private Dictionary<CardRarity, Color> _rarityColorLookup;
+
+    private CardSO _details;
+    public CardSO Details { get { return _details; } }
 
     private CardFlip _cardFlip;
     public CardFlip Flip { get { return _cardFlip; } }
@@ -28,6 +38,8 @@ public class Card : SerializedMonoBehaviour
 
     public void Instantiate(CardSO card)
     {
+        _details = card;
+
         if (_title != null)
         {
             _title.text = card.title;
