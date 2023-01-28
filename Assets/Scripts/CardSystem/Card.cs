@@ -13,6 +13,7 @@ public class Card : SerializedMonoBehaviour
     [SerializeField] private TextMeshProUGUI _title;
     [SerializeField] private TextMeshProUGUI _description;
     [SerializeField] private Image _icon;
+    [SerializeField] private Image _iconMini;
     [SerializeField] private Image _background;
 
     [Space(10)]
@@ -50,7 +51,11 @@ public class Card : SerializedMonoBehaviour
         }
         if (_icon != null)
         {
-            _icon.sprite = card.sprite;
+            _icon.sprite = card.icon;
+        }
+        if (_iconMini != null)
+        {
+            _iconMini.sprite = card.iconMini;
         }
         if (_background != null)
         {
