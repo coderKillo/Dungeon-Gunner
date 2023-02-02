@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Health
   rarity: 0
-  sprite: {fileID: 0}
+  icon: {fileID: -1176485256, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
+  iconMini: {fileID: -1176485256, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: Add Health
+  action: 0
+  healAmount: 10
+  ammoAmount: 0
+  weapon: {fileID: 0}

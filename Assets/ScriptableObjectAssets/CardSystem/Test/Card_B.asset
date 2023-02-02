@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Ammo
   rarity: 0
-  sprite: {fileID: 0}
+  icon: {fileID: -1295195350, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
+  iconMini: {fileID: -1295195350, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: Add Ammo
+  action: 1
+  healAmount: 0
+  ammoAmount: 10
+  weapon: {fileID: 0}

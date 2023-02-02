@@ -16,6 +16,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     static public Action<CardSO[]> OnDraw;
     static public Action<CardSO[]> OnHandChanged;
+    static public Action<Boolean> OnShowHand;
 
     protected override void Awake()
     {
@@ -46,6 +47,18 @@ public class CardSystem : SingletonAbstract<CardSystem>
         }
 
         OnDraw?.Invoke(_draw.ToArray());
+    }
+
+    [Button("Show")]
+    public void Show()
+    {
+        OnShowHand(true);
+    }
+
+    [Button("Hide")]
+    public void Hide()
+    {
+        OnShowHand(false);
     }
 
     public void DrawSelectCard(int id)

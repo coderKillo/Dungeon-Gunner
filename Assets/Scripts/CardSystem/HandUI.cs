@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using DG.Tweening;
 
 public class HandUI : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class HandUI : MonoBehaviour
     [SerializeField] private GameObject _cardMiniPrefab;
     [SerializeField] private Transform _handPreview;
     [SerializeField] private Transform _handGroup;
+
+    [Space(10)]
+    [Header("Animation")]
+    [SerializeField] private float _floatInTime;
+    [SerializeField] private float _floatInDistance;
 
     private List<Card> _cards;
     private Card _cardPreview;
@@ -28,6 +34,19 @@ public class HandUI : MonoBehaviour
     void Start()
     {
         CardSystem.OnHandChanged += OnHandChanged;
+        CardSystem.OnShowHand += OnShowHand;
+    }
+
+    private void OnShowHand(bool show)
+    {
+        _handGroup.gameObject.SetActive(show);
+
+        if (show)
+        {
+            var origin = _handGroup.localPosition;
+            _handGroup.localPosition += new Vector3(0f, _floatInDistance, 0f);
+            _handGroup.DOLocalMoveY(origin.y, _floatInTime);
+        }
     }
 
     public void Clear()
