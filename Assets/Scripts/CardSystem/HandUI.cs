@@ -13,28 +13,60 @@ public class HandUI : MonoBehaviour
     [SerializeField] private GameObject _cardMiniPrefab;
     [SerializeField] private Transform _handPreview;
     [SerializeField] private Transform _handGroup;
+    [SerializeField] private CardHand _cardHand;
+    [SerializeField] private CardRarityColor _rarityColor;
 
     [Space(10)]
     [Header("Animation")]
     [SerializeField] private float _floatInTime;
     [SerializeField] private float _floatInDistance;
 
-    private List<Card> _cards;
-    private Card _cardPreview;
+    private List<CardUI> _cards;
+    private CardUI _cardPreview;
 
     private void Awake()
     {
-        _cards = new List<Card>();
+        _cards = new List<CardUI>();
 
         var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, _handPreview);
-        _cardPreview = cardObject.GetComponent<Card>();
+        _cardPreview = cardObject.GetComponent<CardUI>();
         cardObject.SetActive(false);
     }
 
     void Start()
     {
-        CardSystem.OnHandChanged += OnHandChanged;
-        CardSystem.OnShowHand += OnShowHand;
+        _cardHand.OnCardAdd += OnCardAdd;
+        _cardHand.OnCardRemove += OnCardRemove;
+        _cardHand.OnShow += OnShowHand;
+    }
+
+    private void OnCardRemove(CardSO card)
+    {
+        var result = _cards.Find(x => x.details == card);
+
+        if (result != null)
+        {
+            Destroy(result.gameObject);
+            _cards.Remove(result);
+
+            HidePreviewCard();
+        }
+    }
+
+    private void OnCardAdd(CardSO card)
+    {
+        var cardObject = GameObject.Instantiate(_cardMiniPrefab, Vector3.zero, Quaternion.identity, _handGroup);
+
+        var cardUI = cardObject.GetComponent<CardUI>();
+        cardUI.icon.sprite = card.iconMini;
+        cardUI.background.color = _rarityColor.GetColor(card.rarity);
+        cardUI.details = card;
+
+        var cardEvent = cardObject.GetComponent<CardEvent>();
+        cardEvent.Id = _cards.Count;
+        cardEvent.OnEvent += OnCardEvent;
+
+        _cards.Add(cardUI);
     }
 
     private void OnShowHand(bool show)
@@ -59,25 +91,6 @@ public class HandUI : MonoBehaviour
         _cards.Clear();
     }
 
-    private void OnHandChanged(CardSO[] cards)
-    {
-        Clear();
-
-        for (int i = 0; i < cards.Length; i++)
-        {
-            var cardObject = GameObject.Instantiate(_cardMiniPrefab, Vector3.zero, Quaternion.identity, _handGroup);
-
-            var card = cardObject.GetComponent<Card>();
-            card.Instantiate(cards[i]);
-
-            var cardEvent = cardObject.GetComponent<CardEvent>();
-            cardEvent.Id = i;
-            cardEvent.OnEvent += OnCardEvent;
-
-            _cards.Add(card);
-        }
-    }
-
     private void OnCardEvent(CardEvent arg1, CardEventArgs arg2)
     {
         switch (arg2.cardEventType)
@@ -90,16 +103,29 @@ public class HandUI : MonoBehaviour
                 HidePreviewCard();
                 break;
 
+            case CardEventType.Click:
+                CardClicked(arg2.id);
+                break;
+
             default:
                 break;
         }
+    }
+
+    private void CardClicked(int id)
+    {
+        _cardHand.CardSelected(id);
     }
 
     private void ShowPreviewCard(int id)
     {
         _cards[id].PointerEnterFeedback.PlayFeedbacks();
 
-        _cardPreview.Instantiate(_cards[id].Details);
+        _cardPreview.title.text = _cards[id].details.title;
+        _cardPreview.description.text = _cards[id].details.description;
+        _cardPreview.icon.sprite = _cards[id].details.icon;
+        _cardPreview.background.color = _rarityColor.GetColor(_cards[id].details.rarity);
+
         _cardPreview.gameObject.SetActive(true);
     }
 

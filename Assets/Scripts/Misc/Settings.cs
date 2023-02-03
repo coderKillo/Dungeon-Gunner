@@ -50,8 +50,8 @@ static public class Settings
     #endregion
 
     #region CARD SYSTEM
-    public const int deckSize = 30;
-    public const int handSize = 5;
-    public const int drawSize = 3;
+    public const int cardDeckSize = 30;
+    public const int cardHandSize = 5;
+    public const int cardDrawSize = 3;
     #endregion
 }

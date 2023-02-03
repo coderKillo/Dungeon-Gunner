@@ -581,6 +581,8 @@ MonoBehaviour:
   _cardMiniPrefab: {fileID: 1322081215169718702, guid: c6d2ef1687a18c6409af95b830418d43, type: 3}
   _handPreview: {fileID: 853567432}
   _handGroup: {fileID: 2100701896}
+  _floatInTime: 1
+  _floatInDistance: 30
 --- !u!1 &950467376
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,8 +703,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeck: {fileID: 11400000, guid: 0ac099b53102bc740b52f0cf59db9bc6, type: 2}
-  firstDraw: 0
-  handMax: 5
 --- !u!1 &1383181852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,9 +1333,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.005284016
+    y: 0
     width: 1
-    height: 0.98976225
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

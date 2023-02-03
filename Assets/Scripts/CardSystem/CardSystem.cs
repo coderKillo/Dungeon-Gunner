@@ -4,78 +4,62 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
+// TODO: add state machine
 public class CardSystem : SingletonAbstract<CardSystem>
 {
     [SerializeField] private CardDeckSO playerDeck;
-    [SerializeField] private int firstDraw;
-    [SerializeField] private int handMax = 5;
 
-    private List<CardSO> _hand = new List<CardSO>();
-    private List<CardSO> _draw = new List<CardSO>();
     private List<CardSO> _deck = new List<CardSO>();
 
-    static public Action<CardSO[]> OnDraw;
-    static public Action<CardSO[]> OnHandChanged;
-    static public Action<Boolean> OnShowHand;
+    private CardHand _cardHand;
+    private CardDraw _cardDraw;
 
     protected override void Awake()
     {
         base.Awake();
 
-        foreach (var card in playerDeck.deck)
-        {
-            _deck.Add(card);
-        }
+        CreateDeck();
+
+        _cardDraw = GetComponent<CardDraw>();
+        _cardHand = GetComponent<CardHand>();
+
+        _cardDraw.OnCardSelected += CardDraw_OnCardSelected;
+        _cardHand.OnCardSelected += CardHand_OnCardSelected;
     }
 
-    private void Start()
+    private void CardHand_OnCardSelected(CardSO card)
     {
-        for (int i = 0; i < firstDraw; i++)
-        {
-            Draw();
-        }
+        _cardHand.Remove(card);
+    }
+
+    private void CardDraw_OnCardSelected(CardSO card)
+    {
+        _cardHand.Add(card);
     }
 
     [Button("Draw Card")]
     public void Draw()
     {
-        _draw.Clear();
-
-        for (int i = 0; i < Settings.drawSize; i++)
-        {
-            _draw.Add(_deck[UnityEngine.Random.Range(0, _deck.Count)]);
-        }
-
-        OnDraw?.Invoke(_draw.ToArray());
+        _cardDraw.Draw(_deck.ToArray());
     }
 
     [Button("Show")]
     public void Show()
     {
-        OnShowHand(true);
+        _cardHand.Show(true);
     }
 
     [Button("Hide")]
     public void Hide()
     {
-        OnShowHand(false);
+        _cardHand.Show(false);
     }
 
-    public void DrawSelectCard(int id)
+    private void CreateDeck()
     {
-        AddCardToHand(_draw[id]);
-
-        _draw.Clear();
-    }
-
-    private void AddCardToHand(CardSO card)
-    {
-        if (_hand.Count >= handMax)
+        foreach (var card in playerDeck.deck)
         {
-            return;
+            _deck.Add(card);
         }
-
-        _hand.Add(card);
-        OnHandChanged?.Invoke(_hand.ToArray());
     }
 }

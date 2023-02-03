@@ -8,19 +8,21 @@ using UnityEngine.UI;
 public class DrawUI : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPrefab;
+    [SerializeField] private CardDraw _cardDraw;
+    [SerializeField] private CardRarityColor _rarityColor;
 
     private Animator _animator;
-    private List<Card> _cards;
+    private List<CardUI> _cards;
 
     private void Awake()
     {
-        _cards = new List<Card>();
+        _cards = new List<CardUI>();
         _animator = GetComponent<Animator>();
     }
 
     void Start()
     {
-        CardSystem.OnDraw += Draw;
+        _cardDraw.OnDraw += Draw;
     }
 
     public void Clear()
@@ -41,9 +43,13 @@ public class DrawUI : MonoBehaviour
         {
             var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, transform);
 
-            var card = cardObject.GetComponent<Card>();
-            card.Instantiate(cards[i]);
-            card.Flip.ShowBack();
+            var card = cardObject.GetComponent<CardUI>();
+            card.title.text = cards[i].title;
+            card.description.text = cards[i].description;
+            card.icon.sprite = cards[i].icon;
+            card.background.color = _rarityColor.GetColor(cards[i].rarity);
+
+            cardObject.GetComponent<CardFlip>().ShowBack();
 
             var cardEvent = cardObject.GetComponent<CardEvent>();
             cardEvent.Id = i;
@@ -70,13 +76,15 @@ public class DrawUI : MonoBehaviour
 
     private void CardClicked(int id)
     {
-        if (!_cards[id].Flip.IsFlipped)
+        var cardFlip = _cards[id].gameObject.GetComponent<CardFlip>();
+
+        if (!cardFlip.IsFlipped)
         {
-            _cards[id].Flip.ShowFront();
+            cardFlip.ShowFront();
         }
         else
         {
-            CardSystem.Instance.DrawSelectCard(id);
+            _cardDraw.CardSelected(id);
             Clear();
         }
     }
