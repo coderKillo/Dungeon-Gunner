@@ -36,5 +36,5 @@ public class CardHand : MonoBehaviour
         OnShow?.Invoke(show);
     }
 
-    public bool Full() { return _hand.Count >= Settings.cardHandSize; }
+    public bool Full() { return _hand.Count > Settings.cardHandSize; }
 }

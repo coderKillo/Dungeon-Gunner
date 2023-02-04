@@ -4,17 +4,9 @@ using UnityEngine.EventSystems;
 
 public class Card
 {
-    private CardSO _details;
-    public CardSO Details { get { return _details; } }
-
-    public void Instantiate(CardSO card)
+    static public void Action(CardSO card)
     {
-        _details = card;
-    }
-
-    public void Action()
-    {
-
+        Debug.Log("Activate Card: " + card.title);
     }
 }
 
