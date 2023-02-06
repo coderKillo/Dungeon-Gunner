@@ -136,13 +136,16 @@ public class CardSystem : SingletonAbstract<CardSystem>
     private void ActivateCard(CardSO card)
     {
         Card.Action(card);
+
         _cardHand.Remove(card);
+
         SetState(State.Hide);
     }
 
     private void RemoveCard(CardSO card)
     {
         _cardHand.Remove(card);
+
         SetState(State.Hide);
     }
 

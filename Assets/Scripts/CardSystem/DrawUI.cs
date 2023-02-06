@@ -29,7 +29,8 @@ public class DrawUI : MonoBehaviour
     {
         foreach (var card in _cards)
         {
-            Destroy(card.gameObject);
+            card.DestroyFeedback.PlayFeedbacks();
+            // Destroy(card.gameObject);
         }
 
         _cards.Clear();
@@ -84,7 +85,10 @@ public class DrawUI : MonoBehaviour
         }
         else
         {
+            _cards[id].SelectedFeedback.PlayFeedbacks();
             _cardDraw.CardSelected(id);
+
+            _cards.RemoveAt(id);
             Clear();
         }
     }

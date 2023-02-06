@@ -19,5 +19,14 @@ public class CardUI : MonoBehaviour
     [SerializeField] private MMF_Player _pointerEnterFeedback;
     public MMF_Player PointerEnterFeedback { get { return _pointerEnterFeedback; } }
 
+    [SerializeField] private MMF_Player _destroyFeedback;
+    public MMF_Player DestroyFeedback { get { return _destroyFeedback; } }
+
+    [SerializeField] private MMF_Player _selectedFeedback;
+    public MMF_Player SelectedFeedback { get { return _selectedFeedback; } }
+
+    [SerializeField] private MMF_Player _startFeedback;
+    public MMF_Player StartFeedback { get { return _startFeedback; } }
+
     [HideInInspector] public CardSO details;
 }

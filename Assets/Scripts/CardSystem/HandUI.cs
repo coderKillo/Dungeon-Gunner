@@ -23,6 +23,8 @@ public class HandUI : MonoBehaviour
 
     private List<CardUI> _cards;
     private CardUI _cardPreview;
+    private float _hideTimer = 0f;
+    private bool _show = false;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class HandUI : MonoBehaviour
 
         var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, _handPreview);
         _cardPreview = cardObject.GetComponent<CardUI>();
-        cardObject.SetActive(false);
+        cardObject.SetActive(_show);
     }
 
     void Start()
@@ -40,13 +42,23 @@ public class HandUI : MonoBehaviour
         _cardHand.OnShow += OnShowHand;
     }
 
+    private void Update()
+    {
+        if (_hideTimer > 0f)
+        {
+            _hideTimer -= Time.deltaTime;
+        }
+    }
+
     private void OnCardRemove(CardSO card)
     {
         var result = _cards.Find(x => x.details == card);
 
         if (result != null)
         {
-            Destroy(result.gameObject);
+            result.DestroyFeedback.PlayFeedbacks();
+            _hideTimer = result.DestroyFeedback.TotalDuration;
+
             _cards.Remove(result);
 
             HidePreviewCard();
@@ -61,6 +73,9 @@ public class HandUI : MonoBehaviour
         cardUI.icon.sprite = card.iconMini;
         cardUI.background.color = _rarityColor.GetColor(card.rarity);
         cardUI.details = card;
+        cardUI.StartFeedback.PlayFeedbacks();
+
+        _hideTimer = cardUI.StartFeedback.TotalDuration;
 
         var cardEvent = cardObject.GetComponent<CardEvent>();
         cardEvent.Id = _cards.Count;
@@ -71,14 +86,42 @@ public class HandUI : MonoBehaviour
 
     private void OnShowHand(bool show)
     {
-        _handGroup.gameObject.SetActive(show);
+        if (_show == show)
+        {
+            return;
+        }
+
+        _show = show;
 
         if (show)
         {
+            _handGroup.gameObject.SetActive(true);
+
             var origin = _handGroup.localPosition;
             _handGroup.localPosition += new Vector3(0f, _floatInDistance, 0f);
             _handGroup.DOLocalMoveY(origin.y, _floatInTime);
         }
+        else
+        {
+            if (_hideTimer > 0)
+            {
+                Invoke(nameof(Hide), _hideTimer);
+            }
+            else
+            {
+                Hide();
+            }
+        }
+    }
+
+    private void Hide()
+    {
+        var origin = _handGroup.localPosition;
+        _handGroup.DOLocalMoveY(origin.y + _floatInDistance, _floatInTime).OnComplete(() =>
+        {
+            _handGroup.gameObject.SetActive(false);
+            _handGroup.localPosition = origin;
+        });
     }
 
     public void Clear()
