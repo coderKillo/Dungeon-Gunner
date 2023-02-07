@@ -29,4 +29,5 @@ public class CardUI : MonoBehaviour
     public MMF_Player StartFeedback { get { return _startFeedback; } }
 
     [HideInInspector] public CardSO details;
+    [HideInInspector] public int id;
 }

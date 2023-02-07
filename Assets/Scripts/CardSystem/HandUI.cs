@@ -9,7 +9,7 @@ public class HandUI : MonoBehaviour
 {
     [Space(10)]
     [Header("Reference")]
-    [SerializeField] private GameObject _cardPrefab;
+    [SerializeField] private GameObject _cardPreviewPrefab;
     [SerializeField] private GameObject _cardMiniPrefab;
     [SerializeField] private Transform _handPreview;
     [SerializeField] private Transform _handGroup;
@@ -30,7 +30,7 @@ public class HandUI : MonoBehaviour
     {
         _cards = new List<CardUI>();
 
-        var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, _handPreview);
+        var cardObject = GameObject.Instantiate(_cardPreviewPrefab, Vector3.zero, Quaternion.identity, _handPreview);
         _cardPreview = cardObject.GetComponent<CardUI>();
         cardObject.SetActive(_show);
     }
@@ -50,29 +50,36 @@ public class HandUI : MonoBehaviour
         }
     }
 
-    private void OnCardRemove(CardSO card)
+    private void OnCardRemove(Card card)
     {
-        var result = _cards.Find(x => x.details == card);
+        var result = _cards.Find(x => x.id == card.id);
 
-        if (result != null)
+        if (result == null)
         {
-            result.DestroyFeedback.PlayFeedbacks();
-            _hideTimer = result.DestroyFeedback.TotalDuration;
-
-            _cards.Remove(result);
-
-            HidePreviewCard();
+            return;
         }
+
+        result.DestroyFeedback.PlayFeedbacks();
+        _hideTimer = result.DestroyFeedback.TotalDuration;
+
+        _cards.Remove(result);
+        for (int i = 0; i < _cards.Count; i++)
+        {
+            _cards[i].GetComponent<CardEvent>().Id = i;
+        }
+
+        HidePreviewCard();
     }
 
-    private void OnCardAdd(CardSO card)
+    private void OnCardAdd(Card card)
     {
         var cardObject = GameObject.Instantiate(_cardMiniPrefab, Vector3.zero, Quaternion.identity, _handGroup);
 
         var cardUI = cardObject.GetComponent<CardUI>();
-        cardUI.icon.sprite = card.iconMini;
-        cardUI.background.color = _rarityColor.GetColor(card.rarity);
-        cardUI.details = card;
+        cardUI.icon.sprite = card.details.iconMini;
+        cardUI.background.color = _rarityColor.GetColor(card.details.rarity);
+        cardUI.details = card.details;
+        cardUI.id = card.id;
         cardUI.StartFeedback.PlayFeedbacks();
 
         _hideTimer = cardUI.StartFeedback.TotalDuration;
@@ -136,6 +143,7 @@ public class HandUI : MonoBehaviour
 
     private void OnCardEvent(CardEvent arg1, CardEventArgs arg2)
     {
+        Debug.Log(arg2.id);
         switch (arg2.cardEventType)
         {
             case CardEventType.PointerEnter:

@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class CardHand : MonoBehaviour
 {
-    private List<CardSO> _hand = new List<CardSO>();
+    private List<Card> _hand = new List<Card>();
 
-    [HideInInspector] public Action<CardSO> OnCardAdd;
-    [HideInInspector] public Action<CardSO> OnCardRemove;
-    [HideInInspector] public Action<CardSO> OnCardSelected;
+    [HideInInspector] public Action<Card> OnCardAdd;
+    [HideInInspector] public Action<Card> OnCardRemove;
+    [HideInInspector] public Action<Card> OnCardSelected;
     [HideInInspector] public Action<Boolean> OnShow;
 
-    public void Add(CardSO card)
+    public void Add(Card card)
     {
         _hand.Add(card);
 
         OnCardAdd?.Invoke(card);
     }
 
-    public void Remove(CardSO card)
+    public void Remove(Card card)
     {
         _hand.Remove(card);
 

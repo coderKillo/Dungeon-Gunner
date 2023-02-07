@@ -17,7 +17,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     [SerializeField] private CardDeckSO playerDeck;
 
-    private List<CardSO> _deck = new List<CardSO>();
+    private List<Card> _deck = new List<Card>();
 
     private CardHand _cardHand;
     private CardDraw _cardDraw;
@@ -44,14 +44,19 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private void CreateDeck()
     {
-        foreach (var card in playerDeck.deck)
+        for (int i = 0; i < playerDeck.deck.Length; i++)
         {
+            var card = new Card();
+            card.id = i;
+            card.details = playerDeck.deck[i];
+
             _deck.Add(card);
+
         }
     }
 
     #region Handle Events
-    private void CardHand_OnCardSelected(CardSO card)
+    private void CardHand_OnCardSelected(Card card)
     {
         switch (_currentState)
         {
@@ -65,7 +70,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
         }
     }
 
-    private void CardDraw_OnCardSelected(CardSO card)
+    private void CardDraw_OnCardSelected(Card card)
     {
         switch (_currentState)
         {
@@ -133,23 +138,23 @@ public class CardSystem : SingletonAbstract<CardSystem>
         }
     }
 
-    private void ActivateCard(CardSO card)
+    private void ActivateCard(Card card)
     {
-        Card.Action(card);
+        Card.Action(card.details);
 
         _cardHand.Remove(card);
 
         SetState(State.Hide);
     }
 
-    private void RemoveCard(CardSO card)
+    private void RemoveCard(Card card)
     {
         _cardHand.Remove(card);
 
-        SetState(State.Hide);
+        SetState(State.Show);
     }
 
-    private void AddCard(CardSO card)
+    private void AddCard(Card card)
     {
         _cardHand.Add(card);
 
@@ -159,7 +164,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
         }
         else
         {
-            SetState(State.Hide);
+            SetState(State.Show);
         }
     }
     #endregion

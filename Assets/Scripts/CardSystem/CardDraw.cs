@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class CardDraw : MonoBehaviour
 {
-    private List<CardSO> _draw = new List<CardSO>();
+    private List<Card> _draw = new List<Card>();
 
-    [HideInInspector] public Action<CardSO[]> OnDraw;
-    [HideInInspector] public Action<CardSO> OnCardSelected;
+    [HideInInspector] public Action<Card[]> OnDraw;
+    [HideInInspector] public Action<Card> OnCardSelected;
 
-    public void Draw(CardSO[] cards)
+    public void Draw(Card[] cards)
     {
         _draw.Clear();
 
@@ -29,7 +29,7 @@ public class CardDraw : MonoBehaviour
         _draw.Clear();
     }
 
-    private CardSO PickRandomCard(CardSO[] cards)
+    private Card PickRandomCard(Card[] cards)
     {
         return cards[UnityEngine.Random.Range(0, cards.Length - 1)];
     }

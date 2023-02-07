@@ -36,7 +36,7 @@ public class DrawUI : MonoBehaviour
         _cards.Clear();
     }
 
-    public void Draw(CardSO[] cards)
+    public void Draw(Card[] cards)
     {
         Clear();
 
@@ -45,10 +45,12 @@ public class DrawUI : MonoBehaviour
             var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, transform);
 
             var card = cardObject.GetComponent<CardUI>();
-            card.title.text = cards[i].title;
-            card.description.text = cards[i].description;
-            card.icon.sprite = cards[i].icon;
-            card.background.color = _rarityColor.GetColor(cards[i].rarity);
+            card.title.text = cards[i].details.title;
+            card.description.text = cards[i].details.description;
+            card.icon.sprite = cards[i].details.icon;
+            card.background.color = _rarityColor.GetColor(cards[i].details.rarity);
+            card.id = cards[i].id;
+            card.details = cards[i].details;
 
             cardObject.GetComponent<CardFlip>().ShowBack();
 
