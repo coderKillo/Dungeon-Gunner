@@ -143,7 +143,6 @@ public class HandUI : MonoBehaviour
 
     private void OnCardEvent(CardEvent arg1, CardEventArgs arg2)
     {
-        Debug.Log(arg2.id);
         switch (arg2.cardEventType)
         {
             case CardEventType.PointerEnter:
