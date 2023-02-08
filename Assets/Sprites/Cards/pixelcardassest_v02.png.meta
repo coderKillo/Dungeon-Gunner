@@ -1888,6 +1888,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: pixelcardassest_v02_85
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 72
+        width: 78
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607ba8e8f4973d145b97c445e172cc99
+      internalID: 2114538182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixelcardassest_v02_86
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 21
+        width: 97
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e3c1dabc55d04499ea45bdabf92007
+      internalID: 1943138910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1899,47 +1941,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pixelcardassest_v02_70: -422075615
-      pixelcardassest_v02_14: 560502433
-      pixelcardassest_v02_45: 1716026743
-      pixelcardassest_v02_1: 543648827
-      pixelcardassest_v02_80: -1493565890
       pixelcardassest_v02_47: 1292423023
-      pixelcardassest_v02_57: 1565410360
-      pixelcardassest_v02_63: 591406171
       pixelcardassest_v02_74: -1922366712
       pixelcardassest_v02_20: 1542783595
       pixelcardassest_v02_27: -175905337
-      pixelcardassest_v02_59: -290663138
-      pixelcardassest_v02_21: -609711288
       pixelcardassest_v02_39: 2139909720
-      pixelcardassest_v02_0: -1254165434
-      pixelcardassest_v02_38: -1977532366
-      pixelcardassest_v02_36: 1158010612
-      pixelcardassest_v02_71: -1808593288
       pixelcardassest_v02_79: 788099581
-      pixelcardassest_v02_35: 668843166
-      pixelcardassest_v02_83: -1937949783
-      pixelcardassest_v02_84: -667926312
+      pixelcardassest_v02_71: -1808593288
       pixelcardassest_v02_10: -605998413
       pixelcardassest_v02_31: -385847706
       pixelcardassest_v02_73: 497010366
       pixelcardassest_v02_67: 36893150
       pixelcardassest_v02_8: 752117924
-      pixelcardassest_v02_40: -269240228
       pixelcardassest_v02_65: -138134576
       pixelcardassest_v02_7: -157775643
-      pixelcardassest_v02_66: -985235972
-      pixelcardassest_v02_13: 433302258
-      pixelcardassest_v02_76: -351282547
       pixelcardassest_v02_51: -1238199811
-      pixelcardassest_v02_34: 1497409798
       pixelcardassest_v02_32: -2086989501
       pixelcardassest_v02_18: -86165031
+      pixelcardassest_v02_85: 2114538182
       pixelcardassest_v02_17: -1224739159
       pixelcardassest_v02_52: 1342321262
       pixelcardassest_v02_15: -650454979
-      pixelcardassest_v02_68: 1050842499
       pixelcardassest_v02_4: -1773730355
       pixelcardassest_v02_19: 833739482
       pixelcardassest_v02_26: 617545877
@@ -1948,42 +1970,64 @@ TextureImporter:
       pixelcardassest_v02_25: -2104046086
       pixelcardassest_v02_48: 596729897
       pixelcardassest_v02_24: 129358553
-      pixelcardassest_v02_75: -1786725923
-      pixelcardassest_v02_82: -296806456
-      pixelcardassest_v02_54: 157567848
       pixelcardassest_v02_22: -512422102
       pixelcardassest_v02_5: -1251404260
-      pixelcardassest_v02_43: 1683979665
       pixelcardassest_v02_23: -819277020
-      pixelcardassest_v02_11: -1938318638
       pixelcardassest_v02_77: -765422714
       pixelcardassest_v02_53: -656650443
-      pixelcardassest_v02_64: 1373667498
-      pixelcardassest_v02_72: -1995281814
       pixelcardassest_v02_9: 250494402
-      pixelcardassest_v02_60: 1005238121
-      pixelcardassest_v02_78: 253816086
-      pixelcardassest_v02_81: 1032868285
       pixelcardassest_v02_42: 1455171481
       pixelcardassest_v02_33: -1446968903
       pixelcardassest_v02_46: 313898433
-      pixelcardassest_v02_49: 70230400
+      pixelcardassest_v02_83: -1937949783
+      pixelcardassest_v02_55: -1746027377
+      pixelcardassest_v02_29: -676512281
+      pixelcardassest_v02_12: -448008527
+      pixelcardassest_v02_30: -358151521
+      pixelcardassest_v02_6: -2005031938
+      pixelcardassest_v02_37: -611434491
+      pixelcardassest_v02_70: -422075615
+      pixelcardassest_v02_14: 560502433
+      pixelcardassest_v02_45: 1716026743
+      pixelcardassest_v02_1: 543648827
+      pixelcardassest_v02_63: 591406171
+      pixelcardassest_v02_57: 1565410360
+      pixelcardassest_v02_59: -290663138
+      pixelcardassest_v02_21: -609711288
+      pixelcardassest_v02_0: -1254165434
+      pixelcardassest_v02_38: -1977532366
+      pixelcardassest_v02_36: 1158010612
+      pixelcardassest_v02_35: 668843166
+      pixelcardassest_v02_86: 1943138910
+      pixelcardassest_v02_40: -269240228
+      pixelcardassest_v02_66: -985235972
+      pixelcardassest_v02_76: -351282547
+      pixelcardassest_v02_13: 433302258
+      pixelcardassest_v02_34: 1497409798
+      pixelcardassest_v02_68: 1050842499
+      pixelcardassest_v02_75: -1786725923
+      pixelcardassest_v02_82: -296806456
+      pixelcardassest_v02_54: 157567848
+      pixelcardassest_v02_43: 1683979665
+      pixelcardassest_v02_64: 1373667498
+      pixelcardassest_v02_11: -1938318638
+      pixelcardassest_v02_72: -1995281814
+      pixelcardassest_v02_60: 1005238121
+      pixelcardassest_v02_78: 253816086
+      pixelcardassest_v02_81: 1032868285
       pixelcardassest_v02_62: -1951261775
+      pixelcardassest_v02_49: 70230400
       pixelcardassest_v02_58: -1847889164
+      pixelcardassest_v02_80: -1493565890
       pixelcardassest_v02_50: -1227713396
       pixelcardassest_v02_2: -1980917895
       pixelcardassest_v02_28: -528571157
-      pixelcardassest_v02_29: -676512281
-      pixelcardassest_v02_44: 1242773711
       pixelcardassest_v02_3: 1694422556
-      pixelcardassest_v02_30: -358151521
-      pixelcardassest_v02_61: 739443691
-      pixelcardassest_v02_12: -448008527
-      pixelcardassest_v02_6: -2005031938
+      pixelcardassest_v02_44: 1242773711
       pixelcardassest_v02_69: -412623044
+      pixelcardassest_v02_61: 739443691
       pixelcardassest_v02_56: -1874457362
-      pixelcardassest_v02_37: -611434491
-      pixelcardassest_v02_55: -1746027377
+      pixelcardassest_v02_84: -667926312
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

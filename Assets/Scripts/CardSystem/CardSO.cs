@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "Card_", menuName = "Scriptable Object/Card System/Card")]
@@ -20,17 +21,24 @@ public class CardSO : ScriptableObject
     [ShowIf("action", CardAction.Heal)]
     public float healAmount;
 
+    [ShowIf("action", CardAction.Shield)]
+    public float shieldAmount;
+
     [ShowIf("action", CardAction.Ammo)]
     public float ammoAmount;
 
     [ShowIf("action", CardAction.AddWeapon)]
     public WeaponDetailsSO weapon;
 
+    [ShowIf("action", CardAction.PowerUp)]
+    public UnityEvent powerUpEvent;
 }
 
 public enum CardAction
 {
     Heal,
+    Shield,
     Ammo,
-    AddWeapon
+    AddWeapon,
+    PowerUp
 }
