@@ -19,7 +19,19 @@ public class CardEvent : MonoBehaviour
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        CallEvent(_id, CardEventType.Click);
+        switch (eventData.button)
+        {
+            case PointerEventData.InputButton.Left:
+                CallEvent(_id, CardEventType.ClickLeft);
+                break;
+
+            case PointerEventData.InputButton.Right:
+                CallEvent(_id, CardEventType.ClickRight);
+                break;
+
+            default:
+                break;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -41,7 +53,8 @@ public class CardEventArgs : EventArgs
 
 public enum CardEventType
 {
-    Click,
+    ClickLeft,
+    ClickRight,
     PointerEnter,
     PointerExit,
 }

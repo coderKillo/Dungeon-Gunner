@@ -14,6 +14,7 @@ public class CardUI : MonoBehaviour
     public Image icon;
     public Image background;
     public Transform levelGroup;
+    public Transform selectBorder;
 
     [Space(10)]
     [Header("Feedbacks")]
@@ -32,6 +33,7 @@ public class CardUI : MonoBehaviour
     [HideInInspector] public CardSO details;
     [HideInInspector] public int id;
     [HideInInspector] public int level;
+    [HideInInspector] public bool selected = false;
 
     public void setLevel(int level)
     {

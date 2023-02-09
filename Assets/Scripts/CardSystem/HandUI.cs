@@ -127,6 +127,8 @@ public class HandUI : MonoBehaviour
 
     private void Hide()
     {
+        DeselectAll();
+
         var origin = _handGroup.localPosition;
         _handGroup.DOLocalMoveY(origin.y + _floatInDistance, _floatInTime).OnComplete(() =>
         {
@@ -157,8 +159,14 @@ public class HandUI : MonoBehaviour
                 HidePreviewCard();
                 break;
 
-            case CardEventType.Click:
-                CardClicked(arg2.id);
+            case CardEventType.ClickLeft:
+                SelectCard(arg2.id);
+                CardClicked();
+                DeselectAll();
+                break;
+
+            case CardEventType.ClickRight:
+                ToggleSelection(arg2.id);
                 break;
 
             default:
@@ -166,9 +174,45 @@ public class HandUI : MonoBehaviour
         }
     }
 
-    private void CardClicked(int id)
+    private void ToggleSelection(int id)
     {
-        _cardHand.CardSelected(id);
+        if (_cards[id].selected)
+        {
+            DeselectCard(id);
+        }
+        else
+        {
+            SelectCard(id);
+        }
+    }
+
+    private void SelectCard(int id)
+    {
+        _cards[id].selected = true;
+        _cards[id].selectBorder.gameObject.SetActive(true);
+    }
+
+    private void DeselectAll()
+    {
+        for (int id = 0; id < _cards.Count; id++)
+        {
+            DeselectCard(id);
+        }
+    }
+
+    private void DeselectCard(int id)
+    {
+        _cards[id].selected = false;
+        _cards[id].selectBorder.gameObject.SetActive(false);
+    }
+
+    private void CardClicked()
+    {
+        // FIXME: dont use card.id but index
+        // TODO: rename id to index
+        var selected_cards = _cards.FindAll((x) => x.selected);
+        // TODO: send all selected cards
+        _cardHand.CardSelected(selected_cards[0].id);
     }
 
     private void ShowPreviewCard(int id)

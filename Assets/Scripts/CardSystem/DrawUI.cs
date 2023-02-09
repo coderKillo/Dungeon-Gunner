@@ -69,7 +69,7 @@ public class DrawUI : MonoBehaviour
     {
         switch (args2.cardEventType)
         {
-            case CardEventType.Click:
+            case CardEventType.ClickLeft:
                 CardClicked(args2.id);
                 break;
 
