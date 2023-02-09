@@ -49,9 +49,9 @@ public class CardSystem : SingletonAbstract<CardSystem>
             var card = new Card();
             card.id = i;
             card.details = playerDeck.deck[i];
+            card.level = UnityEngine.Random.Range(1, 6);
 
             _deck.Add(card);
-
         }
     }
 

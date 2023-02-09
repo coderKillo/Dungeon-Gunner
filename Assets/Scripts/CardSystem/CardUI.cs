@@ -13,6 +13,7 @@ public class CardUI : MonoBehaviour
     public TextMeshProUGUI description;
     public Image icon;
     public Image background;
+    public Transform levelGroup;
 
     [Space(10)]
     [Header("Feedbacks")]
@@ -30,4 +31,14 @@ public class CardUI : MonoBehaviour
 
     [HideInInspector] public CardSO details;
     [HideInInspector] public int id;
+    [HideInInspector] public int level;
+
+    public void setLevel(int level)
+    {
+        for (int i = 0; i < levelGroup.childCount; i++)
+        {
+            levelGroup.GetChild(i).gameObject.SetActive(i < level);
+        }
+    }
+
 }

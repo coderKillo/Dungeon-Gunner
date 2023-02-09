@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
   m_Name: Card_D
   m_EditorClassIdentifier: 
-  title: Fire Pistol
-  rarity: 1
-  icon: {fileID: -212423810, guid: eb67b824d0783e24ebf1ac493e53ac9d, type: 3}
-  iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
-  description: For Fire and Flames
-  action: 2
+  title: Shield
+  rarity: 0
+  icon: {fileID: 21300000, guid: db9f23bf534cb004b878298a0c7d785a, type: 3}
+  iconMini: {fileID: -1495392994, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
+  description: Add Shield
+  action: 1
   healAmount: 0
+  shieldAmount: 20
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
+  powerUpEvent:
+    m_PersistentCalls:
+      m_Calls: []

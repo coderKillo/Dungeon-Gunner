@@ -51,6 +51,7 @@ public class DrawUI : MonoBehaviour
             card.background.color = _rarityColor.GetColor(cards[i].details.rarity);
             card.id = cards[i].id;
             card.details = cards[i].details;
+            card.setLevel(cards[i].level);
 
             cardObject.GetComponent<CardFlip>().ShowBack();
 

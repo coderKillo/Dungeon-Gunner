@@ -80,6 +80,10 @@ public class HandUI : MonoBehaviour
         cardUI.background.color = _rarityColor.GetColor(card.details.rarity);
         cardUI.details = card.details;
         cardUI.id = card.id;
+        cardUI.level = card.level;
+
+        cardUI.setLevel(card.level);
+
         cardUI.StartFeedback.PlayFeedbacks();
 
         _hideTimer = cardUI.StartFeedback.TotalDuration;
@@ -175,6 +179,7 @@ public class HandUI : MonoBehaviour
         _cardPreview.description.text = _cards[id].details.description;
         _cardPreview.icon.sprite = _cards[id].details.icon;
         _cardPreview.background.color = _rarityColor.GetColor(_cards[id].details.rarity);
+        _cardPreview.setLevel(_cards[id].level);
 
         _cardPreview.gameObject.SetActive(true);
     }

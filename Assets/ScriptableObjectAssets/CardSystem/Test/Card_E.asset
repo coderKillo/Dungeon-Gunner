@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
   m_Name: Card_E
   m_EditorClassIdentifier: 
-  title: Fire Pistol
-  rarity: 1
-  icon: {fileID: -212423810, guid: eb67b824d0783e24ebf1ac493e53ac9d, type: 3}
-  iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
-  description: For Fire and Flames
-  action: 2
+  title: Speed Boost
+  rarity: 2
+  icon: {fileID: 21300000, guid: d39bbc4723b2f61488e535d902db05d2, type: 3}
+  iconMini: {fileID: -1210985138, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
+  description: Gotta Go Fast!
+  action: 4
   healAmount: 0
+  shieldAmount: 0
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
+  powerUpEvent:
+    m_PersistentCalls:
+      m_Calls: []

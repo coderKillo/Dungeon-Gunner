@@ -17,7 +17,11 @@ MonoBehaviour:
   icon: {fileID: -212423810, guid: eb67b824d0783e24ebf1ac493e53ac9d, type: 3}
   iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: For Fire and Flames
-  action: 2
+  action: 3
   healAmount: 0
+  shieldAmount: 0
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
+  powerUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
