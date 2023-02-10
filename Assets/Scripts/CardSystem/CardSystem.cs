@@ -56,16 +56,26 @@ public class CardSystem : SingletonAbstract<CardSystem>
     }
 
     #region Handle Events
-    private void CardHand_OnCardSelected(Card card)
+    private void CardHand_OnCardSelected(Card[] cards)
     {
         switch (_currentState)
         {
             case State.RemoveCard:
-                RemoveCard(card);
+                if (cards.Length == 1)
+                {
+                    RemoveCard(cards[0]);
+                }
                 break;
 
             default:
-                ActivateCard(card);
+                if (cards.Length == 1)
+                {
+                    ActivateCard(cards[0]);
+                }
+                else
+                {
+                    CombineCards(cards);
+                }
                 break;
         }
     }
@@ -145,6 +155,16 @@ public class CardSystem : SingletonAbstract<CardSystem>
         _cardHand.Remove(card);
 
         SetState(State.Hide);
+    }
+
+    private void CombineCards(Card[] cards)
+    {
+        foreach (var card in cards)
+        {
+            Debug.Log("Combine: " + card.details.title);
+
+            _cardHand.Remove(card);
+        }
     }
 
     private void RemoveCard(Card card)

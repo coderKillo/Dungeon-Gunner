@@ -9,7 +9,7 @@ public class CardHand : MonoBehaviour
 
     [HideInInspector] public Action<Card> OnCardAdd;
     [HideInInspector] public Action<Card> OnCardRemove;
-    [HideInInspector] public Action<Card> OnCardSelected;
+    [HideInInspector] public Action<Card[]> OnCardSelected;
     [HideInInspector] public Action<Boolean> OnShow;
 
     public void Add(Card card)
@@ -26,9 +26,26 @@ public class CardHand : MonoBehaviour
         OnCardRemove?.Invoke(card);
     }
 
-    public void CardSelected(int id)
+    public void CardSelected(int[] index)
     {
-        OnCardSelected?.Invoke(_hand[id]);
+        if (index.Length <= 0)
+        {
+            return;
+        }
+
+        List<Card> cards = new List<Card>();
+
+        for (int i = 0; i < index.Length; i++)
+        {
+            if (index[i] >= _hand.Count)
+            {
+                continue;
+            }
+
+            cards.Add(_hand[index[i]]);
+        }
+
+        OnCardSelected?.Invoke(cards.ToArray());
     }
 
     public void Show(bool show)

@@ -174,56 +174,62 @@ public class HandUI : MonoBehaviour
         }
     }
 
-    private void ToggleSelection(int id)
+    private void ToggleSelection(int index)
     {
-        if (_cards[id].selected)
+        if (_cards[index].selected)
         {
-            DeselectCard(id);
+            DeselectCard(index);
         }
         else
         {
-            SelectCard(id);
+            SelectCard(index);
         }
     }
 
-    private void SelectCard(int id)
+    private void SelectCard(int index)
     {
-        _cards[id].selected = true;
-        _cards[id].selectBorder.gameObject.SetActive(true);
+        _cards[index].selected = true;
+        _cards[index].selectBorder.gameObject.SetActive(true);
     }
 
     private void DeselectAll()
     {
-        for (int id = 0; id < _cards.Count; id++)
+        for (int i = 0; i < _cards.Count; i++)
         {
-            DeselectCard(id);
+            DeselectCard(i);
         }
     }
 
-    private void DeselectCard(int id)
+    private void DeselectCard(int index)
     {
-        _cards[id].selected = false;
-        _cards[id].selectBorder.gameObject.SetActive(false);
+        _cards[index].selected = false;
+        _cards[index].selectBorder.gameObject.SetActive(false);
     }
 
     private void CardClicked()
     {
-        // FIXME: dont use card.id but index
-        // TODO: rename id to index
-        var selected_cards = _cards.FindAll((x) => x.selected);
-        // TODO: send all selected cards
-        _cardHand.CardSelected(selected_cards[0].id);
+        List<int> indexes = new List<int>();
+
+        for (int i = 0; i < _cards.Count; i++)
+        {
+            if (_cards[i].selected)
+            {
+                indexes.Add(i);
+            }
+        }
+
+        _cardHand.CardSelected(indexes.ToArray());
     }
 
-    private void ShowPreviewCard(int id)
+    private void ShowPreviewCard(int index)
     {
-        _cards[id].PointerEnterFeedback.PlayFeedbacks();
+        _cards[index].PointerEnterFeedback.PlayFeedbacks();
 
-        _cardPreview.title.text = _cards[id].details.title;
-        _cardPreview.description.text = _cards[id].details.description;
-        _cardPreview.icon.sprite = _cards[id].details.icon;
-        _cardPreview.background.color = _rarityColor.GetColor(_cards[id].details.rarity);
-        _cardPreview.setLevel(_cards[id].level);
+        _cardPreview.title.text = _cards[index].details.title;
+        _cardPreview.description.text = _cards[index].details.description;
+        _cardPreview.icon.sprite = _cards[index].details.icon;
+        _cardPreview.background.color = _rarityColor.GetColor(_cards[index].details.rarity);
+        _cardPreview.setLevel(_cards[index].level);
 
         _cardPreview.gameObject.SetActive(true);
     }
