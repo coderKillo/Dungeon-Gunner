@@ -4,7 +4,6 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-// TODO: add state machine
 public class CardSystem : SingletonAbstract<CardSystem>
 {
     public enum State

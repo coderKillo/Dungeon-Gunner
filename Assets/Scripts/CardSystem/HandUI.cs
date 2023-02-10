@@ -5,7 +5,6 @@ using UnityEngine;
 using MoreMountains.Feedbacks;
 using DG.Tweening;
 
-// TODO: use fix length of children instead of changing
 public class HandUI : MonoBehaviour
 {
     [Space(10)]
