@@ -30,7 +30,6 @@ public class DrawUI : MonoBehaviour
         foreach (var card in _cards)
         {
             card.DestroyFeedback.PlayFeedbacks();
-            // Destroy(card.gameObject);
         }
 
         _cards.Clear();
@@ -92,7 +91,7 @@ public class DrawUI : MonoBehaviour
             _cardDraw.CardSelected(id);
 
             _cards.RemoveAt(id);
-            Clear();
+            _animator.Play("End");
         }
     }
 }

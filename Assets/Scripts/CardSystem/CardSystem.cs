@@ -68,13 +68,18 @@ public class CardSystem : SingletonAbstract<CardSystem>
                 break;
 
             default:
-                if (cards.Length == 1)
+                switch (cards.Length)
                 {
-                    ActivateCard(cards[0]);
-                }
-                else
-                {
-                    CombineCards(cards);
+                    case 1:
+                        ActivateCard(cards[0]);
+                        break;
+                    case 2:
+                        LevelUpCard(cards[0], cards[1]);
+                        break;
+                    case 3:
+                        CombineCards(cards[0], cards[1], cards[2]);
+                        break;
+
                 }
                 break;
         }
@@ -157,14 +162,50 @@ public class CardSystem : SingletonAbstract<CardSystem>
         SetState(State.Hide);
     }
 
-    private void CombineCards(Card[] cards)
+    private void CombineCards(Card card1, Card card2, Card card3)
     {
-        foreach (var card in cards)
+        if (card1.details.rarity != card2.details.rarity || card1.details.rarity != card3.details.rarity)
         {
-            Debug.Log("Combine: " + card.details.title);
-
-            _cardHand.Remove(card);
+            return;
         }
+
+        var rarity = card1.details.rarity + 1;
+
+        var specificRarityCards = _deck.FindAll((x) => x.details.rarity == rarity);
+
+        if (specificRarityCards.Count <= 0)
+        {
+            Debug.Log("no card rarity in deck: " + rarity);
+            return;
+        }
+
+        var randomCard = specificRarityCards[UnityEngine.Random.Range(0, specificRarityCards.Count - 1)];
+
+        _cardHand.Remove(card1);
+        _cardHand.Remove(card2);
+        _cardHand.Remove(card3);
+
+        AddCard(randomCard);
+    }
+
+    private void LevelUpCard(Card card1, Card card2)
+    {
+        if (card1.details != card2.details)
+        {
+            return;
+        }
+
+        var level = Math.Max(card1.level, card2.level) + 1;
+
+        var card = new Card();
+        card.id = card1.id;
+        card.details = card1.details;
+        card.level = level;
+
+        _cardHand.Remove(card1);
+        _cardHand.Remove(card2);
+
+        AddCard(card);
     }
 
     private void RemoveCard(Card card)

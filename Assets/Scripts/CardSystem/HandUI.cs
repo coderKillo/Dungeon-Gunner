@@ -5,6 +5,7 @@ using UnityEngine;
 using MoreMountains.Feedbacks;
 using DG.Tweening;
 
+// TODO: use fix length of children instead of changing
 public class HandUI : MonoBehaviour
 {
     [Space(10)]
@@ -135,16 +136,6 @@ public class HandUI : MonoBehaviour
             _handGroup.gameObject.SetActive(false);
             _handGroup.localPosition = origin;
         });
-    }
-
-    public void Clear()
-    {
-        foreach (var card in _cards)
-        {
-            Destroy(card.gameObject);
-        }
-
-        _cards.Clear();
     }
 
     private void OnCardEvent(CardEvent arg1, CardEventArgs arg2)

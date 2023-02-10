@@ -276,7 +276,7 @@ MonoBehaviour:
     - rid: 521365480062844931
       type: {class: MMF_Animation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
-        Active: 1
+        Active: 0
         UniqueID: 606779866
         Label: Animation Parameter
         ChannelMode: 0
@@ -641,6 +641,7 @@ MonoBehaviour:
   icon: {fileID: 2955257074006865829}
   background: {fileID: 5608153615439472255}
   levelGroup: {fileID: 5769093449965330651}
+  selectBorder: {fileID: 0}
   _pointerEnterFeedback: {fileID: 0}
   _destroyFeedback: {fileID: 451166490323387180}
   _selectedFeedback: {fileID: 6733719002816918629}
@@ -648,6 +649,7 @@ MonoBehaviour:
   details: {fileID: 0}
   id: 0
   level: 0
+  selected: 0
 --- !u!114 &1372718021535795547
 MonoBehaviour:
   m_ObjectHideFlags: 0
