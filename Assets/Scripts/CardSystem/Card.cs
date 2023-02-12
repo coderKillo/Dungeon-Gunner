@@ -8,9 +8,32 @@ public class Card
     public int id;
     public int level = 1;
 
-    static public void Action(CardSO card)
+    public void Action(Player player)
     {
-        Debug.Log("Activate Card: " + card.title);
+        // TODO: add other actions
+        switch (details.action)
+        {
+            case CardAction.Heal:
+                // TODO: add level
+                player.health.Heal(details.healAmount);
+                break;
+
+            case CardAction.Shield:
+                break;
+
+            case CardAction.PowerUp:
+                break;
+
+            case CardAction.Ammo:
+                break;
+
+            case CardAction.AddWeapon:
+                break;
+
+            default:
+                break;
+        }
+
     }
 }
 

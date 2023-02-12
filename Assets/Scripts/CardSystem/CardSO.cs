@@ -19,10 +19,10 @@ public class CardSO : ScriptableObject
     public CardAction action;
 
     [ShowIf("action", CardAction.Heal)]
-    public float healAmount;
+    public int healAmount;
 
     [ShowIf("action", CardAction.Shield)]
-    public float shieldAmount;
+    public int shieldAmount;
 
     [ShowIf("action", CardAction.Ammo)]
     public float ammoAmount;

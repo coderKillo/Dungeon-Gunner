@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     [Button("+10", ButtonSizes.Large), GUIColor(0, 1, 0)]
     private void Heal()
     {
-        TakeDamage(-10);
+        Heal(10);
     }
 
     [HorizontalGroup("Split", 0.5f)]
@@ -28,9 +28,9 @@ public class Health : MonoBehaviour
     [HideInInspector] public bool isDamageable = true;
 
 
-    private int currentHealth;
+    [ShowInInspector] private int currentHealth;
 
-    private int startingHealth;
+    [ShowInInspector] private int startingHealth;
     public int StartingHealth
     {
         set

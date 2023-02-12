@@ -23,6 +23,8 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private State _currentState;
 
+    private Player _player;
+
     protected override void Awake()
     {
         base.Awake();
@@ -38,6 +40,8 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private void Start()
     {
+        _player = FindObjectOfType<Player>(); // FIXME: find better solution to find player
+
         SetState(State.Hide);
     }
 
@@ -154,7 +158,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private void ActivateCard(Card card)
     {
-        Card.Action(card.details);
+        card.Action(_player);
 
         _cardHand.Remove(card);
 
