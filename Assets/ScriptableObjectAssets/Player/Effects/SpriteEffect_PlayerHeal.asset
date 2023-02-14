@@ -13,6 +13,19 @@ MonoBehaviour:
   m_Name: SpriteEffect_PlayerHeal
   m_EditorClassIdentifier: 
   frameRate: 24
-  spriteArray: []
+  spriteArray:
+  - {fileID: 1873372493, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: 1305868887, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: 1720839150, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: 1744961254, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: -79165430, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: 1569254917, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: -375928452, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: 2059437403, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: -436391206, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: -1844413701, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: 579845941, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: 1709517631, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
+  - {fileID: -1999696392, guid: 465bad51aa84de7468bfcc3d04c2d64f, type: 3}
   offset: {x: 0, y: 0, z: 0}
   scale: {x: 1, y: 1}
