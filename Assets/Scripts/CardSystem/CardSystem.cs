@@ -23,8 +23,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private State _currentState;
 
-    private Player _player;
-
     protected override void Awake()
     {
         base.Awake();
@@ -40,8 +38,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private void Start()
     {
-        _player = FindObjectOfType<Player>(); // FIXME: find better solution to find player
-
         SetState(State.Hide);
     }
 
@@ -150,15 +146,14 @@ public class CardSystem : SingletonAbstract<CardSystem>
                 _cardDraw.Draw(_deck.ToArray());
                 break;
             case State.RemoveCard:
-                // TODO: display text to player
-                Debug.Log("Your Hand is Full! Select a Card to be removed.");
+                GameManager.Instance.DisplayMessage.DisplayText("Your Hand is Full! Select a Card to be removed.", 3f, Color.white, 0.5f, 1f);
                 break;
         }
     }
 
     private void ActivateCard(Card card)
     {
-        card.Action(_player);
+        card.Action(GameManager.Instance.Player);
 
         _cardHand.Remove(card);
 

@@ -56,6 +56,8 @@ public class GameManager : SingletonAbstract<GameManager>
     #endregion
 
     private DisplayMessage displayMessage;
+    public DisplayMessage DisplayMessage { get { return displayMessage; } }
+
     private PauseMenu pauseMenu;
 
     protected override void Awake()
@@ -236,6 +238,11 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void PlayDungeonLevel(int levelIndex)
     {
+        if (dungeonLevelList.Count <= 0)
+        {
+            return;
+        }
+
         bool buildSuccessful = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[levelIndex]);
 
         if (!buildSuccessful)
