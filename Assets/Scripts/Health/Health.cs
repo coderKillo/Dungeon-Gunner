@@ -20,6 +20,11 @@ public class Health : MonoBehaviour
         TakeDamage(10);
     }
 
+    [Button("+10", ButtonSizes.Large), GUIColor(0, 0, 1)]
+    private void Armor()
+    {
+        AddArmor(10);
+    }
 
     private HealthEvent healthEvent;
     private Player player;
@@ -29,6 +34,7 @@ public class Health : MonoBehaviour
 
 
     [ShowInInspector] private int currentHealth;
+    [ShowInInspector] private int currentArmor;
 
     [ShowInInspector] private int startingHealth;
     public int StartingHealth
@@ -64,6 +70,17 @@ public class Health : MonoBehaviour
             return;
         }
 
+        if (currentArmor > damageAmount)
+        {
+            currentArmor -= damageAmount;
+            damageAmount = 0;
+        }
+        else if (currentArmor > 0)
+        {
+            damageAmount -= currentArmor;
+            currentArmor = 0;
+        }
+
         currentHealth -= damageAmount;
 
         CallHealthEvent(damageAmount, 0);
@@ -77,6 +94,11 @@ public class Health : MonoBehaviour
         currentHealth += capedHealAmount;
 
         CallHealthEvent(0, capedHealAmount);
+    }
+
+    public void AddArmor(int amount)
+    {
+        currentArmor += amount;
     }
 
     private void CallHealthEvent(int damageAmount, int healAmount)
