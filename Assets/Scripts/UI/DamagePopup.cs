@@ -21,26 +21,27 @@ public class DamagePopup : MonoBehaviour
     private float speed = 0f;
     private Vector3 direction = Vector3.up;
 
-    static public DamagePopup Create(Vector3 location, string text, Color color)
+    static public DamagePopup Create(Vector3 location, string text, Color color, float fontSize = 8f, float speedFactor = 1f)
     {
         var damagePopup = (DamagePopup)PoolManager.Instance.ReuseComponent(GameResources.Instance.damagePopupPrefab, HelperUtilities.mainCamera.WorldToScreenPoint(location), Quaternion.identity);
 
-        damagePopup.Setup(text, location, color);
+        damagePopup.Setup(text, location, color, fontSize, speedFactor);
 
         return damagePopup;
     }
 
-    void Setup(string text, Vector3 location, Color color)
+    void Setup(string text, Vector3 location, Color color, float textSize, float speedFactor)
     {
         textMesh.text = text;
         textMesh.alpha = 1;
         textMesh.color = color;
+        textMesh.fontSize = textSize;
 
         worldPosition = location;
 
         disappearTimer = disappearTime;
 
-        speed = RandomSpeed;
+        speed = RandomSpeed * speedFactor;
         direction = HelperUtilities.GetVectorFromAngle(RandomDirection + 90);
 
         gameObject.SetActive(true);

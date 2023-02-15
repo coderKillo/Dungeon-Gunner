@@ -95,7 +95,16 @@ public class Enemy : MonoBehaviour
     {
         if (arg2.damageAmount > 0)
         {
-            DamagePopup.Create(spawnDamagePopup.position, "-" + arg2.damageAmount.ToString(), Color.red);
+            var isCrit = UnityEngine.Random.Range(0, 100) > 25; // TODO: add chance to event
+
+            if (isCrit)
+            {
+                DamagePopup.Create(spawnDamagePopup.position, "-" + arg2.damageAmount.ToString(), Color.red, 12f, 0.2f);
+            }
+            else
+            {
+                DamagePopup.Create(spawnDamagePopup.position, "-" + arg2.damageAmount.ToString(), Color.yellow);
+            }
         }
 
         if (arg2.healthAmount <= 0)
