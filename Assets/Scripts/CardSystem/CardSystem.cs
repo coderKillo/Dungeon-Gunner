@@ -48,7 +48,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
             var card = new Card();
             card.id = i;
             card.details = playerDeck.deck[i];
-            card.level = UnityEngine.Random.Range(1, 6);
+            card.level = UnityEngine.Random.Range(1, 3);
 
             _deck.Add(card);
         }
@@ -108,6 +108,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
     [Button("Show")]
     public void Show()
     {
+        // TODO: pause game like menu
         SetState(State.Show);
     }
 

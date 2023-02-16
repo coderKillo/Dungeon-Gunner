@@ -82,11 +82,11 @@ public class AmmoMelee : MonoBehaviour, IFireable
         {
             if (IsCrit())
             {
-                health.TakeDamage((int)(ammoDetails.damage * critDamage), true);
+                health.TakeDamage(Mathf.RoundToInt(damage * critDamage), true);
             }
             else
             {
-                health.TakeDamage(ammoDetails.damage, false);
+                health.TakeDamage(damage, false);
             }
         }
     }

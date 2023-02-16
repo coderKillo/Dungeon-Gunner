@@ -149,7 +149,7 @@ public class Ammo : MonoBehaviour, IFireable
         {
             if (IsCrit())
             {
-                health.TakeDamage((int)(damage * critDamage), true);
+                health.TakeDamage(Mathf.RoundToInt(damage * critDamage), true);
             }
             else
             {

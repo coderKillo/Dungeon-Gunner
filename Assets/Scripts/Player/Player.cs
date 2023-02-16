@@ -35,6 +35,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(PlayerDied))]
 [RequireComponent(typeof(PostHitImmunity))]
 [RequireComponent(typeof(ReceiveContactDamage))]
+[RequireComponent(typeof(PlayerPowerUp))]
 #endregion
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public PlayerControl playerControl;
+    [HideInInspector] public PlayerPowerUp playerPowerUp;
     [HideInInspector] public Health health;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator animator;
@@ -68,6 +70,7 @@ public class Player : MonoBehaviour
     {
         health = GetComponent<Health>();
         playerControl = GetComponent<PlayerControl>();
+        playerPowerUp = GetComponent<PlayerPowerUp>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         activeWeapon = GetComponent<ActiveWeapon>();

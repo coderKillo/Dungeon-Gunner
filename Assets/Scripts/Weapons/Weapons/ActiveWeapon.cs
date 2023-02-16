@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(SetActiveWeaponEvent))]
 [DisallowMultipleComponent]
@@ -24,7 +25,7 @@ public class ActiveWeapon : MonoBehaviour
     private AnimatorOverrideController animatorOverrideController;
     private AnimationClipOverrides clipOverrides;
 
-    private Weapon currentWeapon;
+    [ShowInInspector] private Weapon currentWeapon;
     public Weapon CurrentWeapon { get { return currentWeapon; } }
     public AmmoDetailsSO CurrentAmmo { get { return currentWeapon.weaponDetails.ammo; } }
 

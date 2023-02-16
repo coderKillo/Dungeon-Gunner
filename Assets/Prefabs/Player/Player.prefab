@@ -1432,6 +1432,7 @@ GameObject:
   - component: {fileID: 7202128664892455419}
   - component: {fileID: 6488728129132894053}
   - component: {fileID: 4592885024319373433}
+  - component: {fileID: 2428291616299338314}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1490,7 +1491,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a15a48a644e61a249a9d2930131ac4cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1657,6 +1658,7 @@ MonoBehaviour:
   weaponReloadedEvent: {fileID: 0}
   healthEvent: {fileID: 0}
   destroyedEvent: {fileID: 0}
+  weaponList: []
 --- !u!114 &1627810097287893019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,6 +2011,19 @@ MonoBehaviour:
   _bar: {fileID: 2124005543600113353}
   _slider: {fileID: 1614632659206739858}
   _barWith: 2
+--- !u!114 &2428291616299338314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585357847043585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa765612c945e0c4d8df358bf3e43366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 2004581340681601072}
 --- !u!1 &4644113007034623212
 GameObject:
   m_ObjectHideFlags: 0
