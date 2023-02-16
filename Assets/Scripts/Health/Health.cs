@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     [Button("-10", ButtonSizes.Large), GUIColor(1, 0, 0)]
     private void Damage()
     {
-        TakeDamage(10);
+        TakeDamage(10, false);
     }
 
     [Button("+10", ButtonSizes.Large), GUIColor(0, 0, 1)]
@@ -57,13 +57,13 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        CallHealthEvent(0, 0);
+        CallHealthEvent(0, 0, false);
 
         player = GetComponent<Player>();
         enemy = GetComponent<Enemy>();
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, bool isCrit)
     {
         if (!IsDamageable())
         {
@@ -83,7 +83,7 @@ public class Health : MonoBehaviour
 
         currentHealth -= damageAmount;
 
-        CallHealthEvent(damageAmount, 0);
+        CallHealthEvent(damageAmount, 0, isCrit);
     }
 
     public void Heal(int amount)
@@ -93,7 +93,7 @@ public class Health : MonoBehaviour
 
         currentHealth += capedHealAmount;
 
-        CallHealthEvent(0, capedHealAmount);
+        CallHealthEvent(0, capedHealAmount, false);
     }
 
     public void AddArmor(int amount)
@@ -101,9 +101,9 @@ public class Health : MonoBehaviour
         currentArmor += amount;
     }
 
-    private void CallHealthEvent(int damageAmount, int healAmount)
+    private void CallHealthEvent(int damageAmount, int healAmount, bool isCrit)
     {
-        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount);
+        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount, isCrit);
     }
 
     private bool IsDamageable()

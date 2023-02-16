@@ -24,6 +24,7 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("AMMO BASE PARAMETER")]
     public int damage = 1;
+    public float critChance = 0.1f;
     public float speedMin = 20f;
     public float speedMax = 20f;
     public float range = 20f;

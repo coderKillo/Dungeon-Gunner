@@ -16,7 +16,7 @@ public class AmmoPattern : MonoBehaviour, IFireable
         return gameObject;
     }
 
-    public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, bool overrideAmmoMovement = false)
+    public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
         this.speed = speed;
         this.fireDirection = weaponAimDirection;
@@ -26,7 +26,7 @@ public class AmmoPattern : MonoBehaviour, IFireable
 
         foreach (var ammo in ammoArray)
         {
-            ammo.InitialAmmo(ammoDetails, aimAngel, weaponAngle, speed, weaponAimDirection, true);
+            ammo.InitialAmmo(ammoDetails, aimAngel, weaponAngle, speed, weaponAimDirection, damage, critChance, true);
         }
 
         gameObject.SetActive(true);

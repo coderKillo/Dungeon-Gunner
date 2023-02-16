@@ -10,6 +10,9 @@ public class AmmoMelee : MonoBehaviour, IFireable
     private bool isColliding = false;
     private float speed = 0f;
     private float range = 0f;
+    private int damage = 0;
+    private float critDamage = 2.0f;
+    private float critChance = 0f;
     private List<GameObject> alreadyCollided;
 
     public GameObject GetGameObject()
@@ -22,12 +25,14 @@ public class AmmoMelee : MonoBehaviour, IFireable
         polyCollider = GetComponent<PolygonCollider2D>();
     }
 
-    public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, bool overrideAmmoMovement = false)
+    public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
         this.ammoDetails = ammoDetails;
         this.speed = speed;
         this.range = ammoDetails.range;
         this.alreadyCollided = new List<GameObject>();
+        this.damage = damage;
+        this.critChance = critChance;
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 
@@ -75,7 +80,19 @@ public class AmmoMelee : MonoBehaviour, IFireable
 
         if (health != null)
         {
-            health.TakeDamage(ammoDetails.damage);
+            if (IsCrit())
+            {
+                health.TakeDamage((int)(ammoDetails.damage * critDamage), true);
+            }
+            else
+            {
+                health.TakeDamage(ammoDetails.damage, false);
+            }
         }
+    }
+
+    private bool IsCrit()
+    {
+        return Random.Range(0, 100) < critChance * 100;
     }
 }

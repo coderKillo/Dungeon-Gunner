@@ -21,9 +21,12 @@ public class Ammo : MonoBehaviour, IFireable
     private float chargeTimer;
     private bool ammoMaterialIsSet = false;
     private bool isColliding = false;
+    private int damage = 0;
+    private float critDamage = 1.5f;
+    private float critChance = 0f;
     private bool overrideAmmoMovement;
 
-    public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, bool overrideAmmoMovement = false)
+    public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
         this.ammoDetails = ammoDetails;
         this.chargeTimer = ammoDetails.chargeTime;
@@ -31,6 +34,8 @@ public class Ammo : MonoBehaviour, IFireable
         this.speed = speed;
         this.overrideAmmoMovement = overrideAmmoMovement;
         this.isColliding = false;
+        this.damage = damage;
+        this.critChance = critChance;
 
         spriteRenderer.sprite = ammoDetails.ammoSprite;
 
@@ -142,8 +147,20 @@ public class Ammo : MonoBehaviour, IFireable
 
         if (health != null)
         {
-            health.TakeDamage(ammoDetails.damage);
+            if (IsCrit())
+            {
+                health.TakeDamage((int)(damage * critDamage), true);
+            }
+            else
+            {
+                health.TakeDamage(damage, false);
+            }
         }
+    }
+
+    private bool IsCrit()
+    {
+        return Random.Range(0, 100) < critChance * 100;
     }
 
     private void AmmoHitEffect()

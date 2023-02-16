@@ -95,9 +95,7 @@ public class Enemy : MonoBehaviour
     {
         if (arg2.damageAmount > 0)
         {
-            var isCrit = UnityEngine.Random.Range(0, 100) > 25; // TODO: add chance to event
-
-            if (isCrit)
+            if (arg2.isCrit)
             {
                 DamagePopup.Create(spawnDamagePopup.position, "-" + arg2.damageAmount.ToString(), Color.red, 12f, 0.2f);
             }

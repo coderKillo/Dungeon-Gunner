@@ -202,9 +202,11 @@ public class FireWeapon : MonoBehaviour
         {
             var speed = Random.Range(activeWeapon.CurrentAmmo.speedMin, activeWeapon.CurrentAmmo.speedMax);
             var prefab = activeWeapon.CurrentAmmo.prefabArray[Random.Range(0, activeWeapon.CurrentAmmo.prefabArray.Length)];
+            var damage = activeWeapon.CurrentAmmo.damage;
+            var critChance = activeWeapon.CurrentAmmo.critChance;
 
             var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
-            ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle, weaponAimAngle, speed, weaponAimDirectionVector);
+            ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle, weaponAimAngle, speed, weaponAimDirectionVector, damage, critChance);
 
             yield return new WaitForSeconds(spawnInterval);
         }
