@@ -200,7 +200,7 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
-  ForceTimescaleMode: 0
+  ForceTimescaleMode: 1
   ForcedTimescaleMode: 1
   DurationMultiplier: 1
   RandomizeDuration: 0
@@ -689,7 +689,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5ed9600e1b3fea54ab7bdefd8c4e101f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1754,7 +1754,7 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
-  ForceTimescaleMode: 0
+  ForceTimescaleMode: 1
   ForcedTimescaleMode: 1
   DurationMultiplier: 1
   RandomizeDuration: 0
@@ -1955,7 +1955,7 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
-  ForceTimescaleMode: 0
+  ForceTimescaleMode: 1
   ForcedTimescaleMode: 1
   DurationMultiplier: 1
   RandomizeDuration: 0

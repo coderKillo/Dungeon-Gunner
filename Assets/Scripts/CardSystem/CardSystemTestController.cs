@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CardSystemTestController : MonoBehaviour
 {
-    private bool toggleShow = false;
-
     private void Update()
     {
         if (Input.GetKey(KeyCode.F))
@@ -15,8 +13,7 @@ public class CardSystemTestController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            toggleShow = !toggleShow;
-            if (toggleShow)
+            if (!CardSystem.Instance.IsVisiable())
             {
                 CardSystem.Instance.Show();
             }

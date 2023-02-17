@@ -56,7 +56,7 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 1
   AutoPlayOnEnable: 0
-  ForceTimescaleMode: 0
+  ForceTimescaleMode: 1
   ForcedTimescaleMode: 1
   DurationMultiplier: 1
   RandomizeDuration: 0
@@ -815,7 +815,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 2786634181901327429}
         DebugActive: 0
-        PauseDuration: 2
+        PauseDuration: 0
         RandomizePauseDuration: 0
         MinPauseDuration: 1
         MaxPauseDuration: 3
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1151,7 +1151,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5bb021b6b66dbbc448b22f2b3fd379f5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1749,7 +1749,7 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
-  ForceTimescaleMode: 0
+  ForceTimescaleMode: 1
   ForcedTimescaleMode: 1
   DurationMultiplier: 1
   RandomizeDuration: 0
@@ -2566,7 +2566,7 @@ MonoBehaviour:
   AutoChangeDirectionOnEnd: 0
   AutoPlayOnStart: 0
   AutoPlayOnEnable: 0
-  ForceTimescaleMode: 0
+  ForceTimescaleMode: 1
   ForcedTimescaleMode: 1
   DurationMultiplier: 1
   RandomizeDuration: 0

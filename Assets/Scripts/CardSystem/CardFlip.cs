@@ -20,7 +20,7 @@ public class CardFlip : MonoBehaviour
     {
         ShowBack();
 
-        _back.DOScaleX(0f, 0.3f).OnComplete(() => _front.DOScaleX(1f, 0.3f));
+        _back.DOScaleX(0f, 0.3f).SetUpdate(true).OnComplete(() => _front.DOScaleX(1f, 0.3f).SetUpdate(true));
 
         _flipFeedback.PlayFeedbacks();
 

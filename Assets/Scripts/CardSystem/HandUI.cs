@@ -13,6 +13,7 @@ public class HandUI : MonoBehaviour
     [SerializeField] private GameObject _cardMiniPrefab;
     [SerializeField] private Transform _handPreview;
     [SerializeField] private Transform _handGroup;
+    [SerializeField] private Transform _handBackground;
     [SerializeField] private CardHand _cardHand;
     [SerializeField] private CardRarityColor _rarityColor;
 
@@ -106,11 +107,12 @@ public class HandUI : MonoBehaviour
 
         if (show)
         {
+            _handBackground.gameObject.SetActive(true);
             _handGroup.gameObject.SetActive(true);
 
             var origin = _handGroup.localPosition;
             _handGroup.localPosition += new Vector3(0f, _floatInDistance, 0f);
-            _handGroup.DOLocalMoveY(origin.y, _floatInTime);
+            _handGroup.DOLocalMoveY(origin.y, _floatInTime).SetUpdate(true);
         }
         else
         {
@@ -129,8 +131,10 @@ public class HandUI : MonoBehaviour
     {
         DeselectAll();
 
+        _handBackground.gameObject.SetActive(false);
+
         var origin = _handGroup.localPosition;
-        _handGroup.DOLocalMoveY(origin.y + _floatInDistance, _floatInTime).OnComplete(() =>
+        _handGroup.DOLocalMoveY(origin.y + _floatInDistance, _floatInTime).SetUpdate(true).OnComplete(() =>
         {
             _handGroup.gameObject.SetActive(false);
             _handGroup.localPosition = origin;

@@ -108,7 +108,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
     [Button("Show")]
     public void Show()
     {
-        // TODO: pause game like menu
         SetState(State.Show);
     }
 
@@ -116,6 +115,11 @@ public class CardSystem : SingletonAbstract<CardSystem>
     public void Hide()
     {
         SetState(State.Hide);
+    }
+
+    public bool IsVisiable()
+    {
+        return _currentState != State.Hide;
     }
     #endregion
 
@@ -137,12 +141,15 @@ public class CardSystem : SingletonAbstract<CardSystem>
         switch (newState)
         {
             case State.Show:
+                PauseGame();
                 _cardHand.Show(true);
                 break;
             case State.Hide:
                 _cardHand.Show(false);
+                ResumeGame();
                 break;
             case State.Draw:
+                PauseGame();
                 _cardHand.Show(true);
                 _cardDraw.Draw(_deck.ToArray());
                 break;
@@ -150,6 +157,18 @@ public class CardSystem : SingletonAbstract<CardSystem>
                 GameManager.Instance.DisplayMessage.DisplayText("Your Hand is Full! Select a Card to be removed.", 3f, Color.white, 0.5f, 1f);
                 break;
         }
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        GameManager.Instance.Player.EnablePlayer(true);
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        GameManager.Instance.Player.EnablePlayer(false);
     }
 
     private void ActivateCard(Card card)
