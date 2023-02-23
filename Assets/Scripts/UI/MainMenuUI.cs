@@ -16,7 +16,7 @@ public class MainMenuUI : MonoBehaviour
     {
         MusicManager.Instance.PlayMusic(GameResources.Instance.mainMenuTrack, 0f, 2f);
 
-        LoadCharacterSelectorScene();
+        LoadMainMenu();
     }
 
     public void PlayGame()
@@ -33,12 +33,10 @@ public class MainMenuUI : MonoBehaviour
         instructionsButton.SetActive(false);
         returnToMainMenuButton.SetActive(true);
 
-        SceneManager.UnloadSceneAsync("CharacterSelectorScene");
-
         SceneManager.LoadScene("InstructionsScene", LoadSceneMode.Additive);
     }
 
-    public void LoadCharacterSelectorScene()
+    public void LoadMainMenu()
     {
         quitButton.SetActive(true);
         playButton.SetActive(true);
@@ -50,8 +48,6 @@ public class MainMenuUI : MonoBehaviour
             SceneManager.UnloadSceneAsync("InstructionsScene");
             isInstructionLoaded = false;
         }
-
-        SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
     }
 
     public void QuitGame()

@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
 
     [ShowInInspector] private int currentHealth;
     [ShowInInspector] private int currentArmor;
+    [ShowInInspector] private int maxArmor = 300;
 
     [ShowInInspector] private int startingHealth;
     public int StartingHealth
@@ -99,11 +100,14 @@ public class Health : MonoBehaviour
     public void AddArmor(int amount)
     {
         currentArmor += amount;
+        currentArmor = Math.Clamp(currentArmor, 0, maxArmor);
+
+        CallHealthEvent(0, 0, false);
     }
 
     private void CallHealthEvent(int damageAmount, int healAmount, bool isCrit)
     {
-        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount, isCrit);
+        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount, ((float)currentArmor / (float)maxArmor), currentArmor, isCrit);
     }
 
     private bool IsDamageable()
