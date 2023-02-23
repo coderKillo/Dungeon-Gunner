@@ -12,6 +12,10 @@ public class HealthUI : MonoBehaviour
     [SerializeField] private GameObject healthBar;
 
     [Space(10)]
+    [Header("SHIELD")]
+    [SerializeField] private GameObject shieldBar;
+
+    [Space(10)]
     [Header("DELAY")]
     [SerializeField] private GameObject healthBarDelayed;
     [SerializeField] private float delayTime;
@@ -40,12 +44,18 @@ public class HealthUI : MonoBehaviour
     private void HealthEvent_OnHealthChanged(HealthEvent arg1, HealthEventArgs arg2)
     {
         SetHealthBar(arg2.healthPercent);
+        SetShieldBar(arg2.shieldPercent);
 
         if (healthBarDelayRoutine != null)
         {
             StopCoroutine(healthBarDelayRoutine);
         }
         healthBarDelayRoutine = StartCoroutine(StartHealthBarDelayRoutine(arg2.healthPercent));
+    }
+
+    private void SetShieldBar(float shieldPercent)
+    {
+        shieldBar.transform.localScale = new Vector3(shieldPercent, 1f, 1f);
     }
 
     private void SetHealthBar(float healthPercent)

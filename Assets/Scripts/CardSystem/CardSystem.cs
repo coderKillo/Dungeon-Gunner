@@ -34,11 +34,21 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
         _cardDraw.OnCardSelected += CardDraw_OnCardSelected;
         _cardHand.OnCardSelected += CardHand_OnCardSelected;
+
+        StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnRoomEnemiesDefeated;
     }
 
     private void Start()
     {
         SetState(State.Hide);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Show();
+        }
     }
 
     private void CreateDeck()
@@ -96,6 +106,11 @@ public class CardSystem : SingletonAbstract<CardSystem>
                 break;
         }
     }
+
+    private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
+    {
+        Draw();
+    }
     #endregion
 
     #region Public Interface
@@ -105,16 +120,17 @@ public class CardSystem : SingletonAbstract<CardSystem>
         SetState(State.Draw);
     }
 
-    [Button("Show")]
+    [Button("Show/Hide")]
     public void Show()
     {
-        SetState(State.Show);
-    }
-
-    [Button("Hide")]
-    public void Hide()
-    {
-        SetState(State.Hide);
+        if (!CardSystem.Instance.IsVisiable())
+        {
+            SetState(State.Show);
+        }
+        else
+        {
+            SetState(State.Hide);
+        }
     }
 
     public bool IsVisiable()

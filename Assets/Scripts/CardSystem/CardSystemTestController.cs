@@ -8,20 +8,10 @@ public class CardSystemTestController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.F))
         {
-            CardSystem.Instance.Draw();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (!CardSystem.Instance.IsVisiable())
-            {
-                CardSystem.Instance.Show();
-            }
-            else
-            {
-                CardSystem.Instance.Hide();
-            }
+            var room = new Room();
+            room.nodeType = new RoomNodeTypeSO();
+            room.nodeType.isBossRoom = false;
+            StaticEventHandler.CallRoomEnemiesDefeated(room);
         }
     }
-
 }

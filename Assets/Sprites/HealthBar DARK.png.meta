@@ -317,10 +317,10 @@ TextureImporter:
       name: HealthBar DARK_10
       rect:
         serializedVersion: 2
-        x: 17
-        y: 11
-        width: 61
-        height: 9
+        x: 21
+        y: 3
+        width: 56
+        height: 4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
