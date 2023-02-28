@@ -28,3 +28,4 @@ MonoBehaviour:
   reloadSoundEffect: {fileID: 11400000, guid: 15682a8155f18224698e9f2b2d9f7897, type: 2}
   fireVisualEffect: {fileID: 0}
   shotAnimation: {fileID: 7400000, guid: bc0796ded23cbf8419c11f08676c7e4c, type: 2}
+  chargeAnimation: {fileID: 0}

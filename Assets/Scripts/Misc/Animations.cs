@@ -49,4 +49,9 @@ public static class Animations
     public static int charge = Animator.StringToHash("charge");
     public static int cancelCharge = Animator.StringToHash("cancelCharge");
     #endregion
+
+    #region AMMO ICON
+    public static int ammoIconFilled = Animator.StringToHash("AmmoFilled");
+    public static int ammoIconFired = Animator.StringToHash("AmmoFired");
+    #endregion
 }

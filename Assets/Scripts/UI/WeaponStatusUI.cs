@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using MoreMountains.Feedbacks;
 using System;
 
 public class WeaponStatusUI : MonoBehaviour
@@ -19,16 +20,14 @@ public class WeaponStatusUI : MonoBehaviour
     [SerializeField] private Transform ammoHolderTransform;
 
     [Space(10)]
-    [Header("RELOAD")]
-    [SerializeField] private Image reloadBarImage;
+    [Header("FEEDBACK")]
+    [SerializeField] private MMF_Player fireFeedback;
+    [SerializeField] private MMF_Player reloadFeedback;
     #endregion
 
     private Player player;
 
     private List<GameObject> ammoIconList = new List<GameObject>();
-
-    private Coroutine reloadWeaponCoroutine;
-    private Coroutine blinkingReloadTextCoroutine;
 
     private void Awake()
     {
@@ -40,7 +39,6 @@ public class WeaponStatusUI : MonoBehaviour
         player.setActiveWeaponEvent.OnSetActiveWeapon += SetActiveWeaponEvent_OnSetActiveWeapon;
         player.weaponFiredEvent.OnWeaponFired += WeaponFiredEvent_OnWeaponFired;
         player.weaponReloadedEvent.OnWeaponReloaded += WeaponReloadedEvent_OnWeaponReloaded;
-        player.reloadWeaponEvent.OnReloadWeapon += ReloadWeaponEvent_OnReloadWeapon;
     }
 
     private void OnDisable()
@@ -48,7 +46,6 @@ public class WeaponStatusUI : MonoBehaviour
         player.setActiveWeaponEvent.OnSetActiveWeapon -= SetActiveWeaponEvent_OnSetActiveWeapon;
         player.weaponFiredEvent.OnWeaponFired -= WeaponFiredEvent_OnWeaponFired;
         player.weaponReloadedEvent.OnWeaponReloaded -= WeaponReloadedEvent_OnWeaponReloaded;
-        player.reloadWeaponEvent.OnReloadWeapon -= ReloadWeaponEvent_OnReloadWeapon;
     }
 
     private void Start()
@@ -57,16 +54,13 @@ public class WeaponStatusUI : MonoBehaviour
     }
 
     #region EVENT HANDLER
-    private void ReloadWeaponEvent_OnReloadWeapon(ReloadWeaponEvent arg1, ReloadWeaponEventArgs arg2)
-    {
-        UpdateWeaponReloadBar(arg2.weapon);
-    }
 
     private void WeaponReloadedEvent_OnWeaponReloaded(WeaponReloadedEvent arg1, WeaponReloadedEventArgs arg2)
     {
         UpdateAmmoText(arg2.weapon);
         UpdateAmmoLoadedIcons(arg2.weapon);
-        ResetWeaponReloadBar();
+
+        reloadFeedback.PlayFeedbacks();
     }
 
     private void WeaponFiredEvent_OnWeaponFired(WeaponFiredEvent arg1, WeaponFiredEventArgs arg2)
@@ -74,7 +68,9 @@ public class WeaponStatusUI : MonoBehaviour
         if (arg2.weapon == player.activeWeapon.CurrentWeapon)
         {
             UpdateAmmoText(arg2.weapon);
-            UpdateAmmoLoadedIcons(arg2.weapon);
+            DecreaseAmmoLoadedIcons(arg2.weapon);
+
+            fireFeedback.PlayFeedbacks();
         }
     }
 
@@ -91,15 +87,6 @@ public class WeaponStatusUI : MonoBehaviour
 
         UpdateAmmoText(weapon);
         UpdateAmmoLoadedIcons(weapon);
-
-        if (weapon.isReloading)
-        {
-            UpdateWeaponReloadBar(weapon);
-        }
-        else
-        {
-            ResetWeaponReloadBar();
-        }
     }
 
     private void UpdateWeaponImage(Weapon weapon)
@@ -124,33 +111,39 @@ public class WeaponStatusUI : MonoBehaviour
         }
     }
 
-    private void ResetWeaponReloadBar()
+    private void FillAmmoLoadedIcons(Weapon weapon)
     {
-        if (reloadWeaponCoroutine != null)
+        for (int i = 0; i < weapon.weaponDetails.ammoClipCapacity; i++)
         {
-            StopCoroutine(reloadWeaponCoroutine);
-        }
-
-        reloadBarImage.transform.localScale = new Vector3(1f, 1f, 1f);
-        reloadBarImage.color = Color.green;
-    }
-
-    private void UpdateAmmoLoadedIcons(Weapon weapon)
-    {
-        ClearAmmoLoadedIcons();
-
-        for (int i = 0; i < weapon.clipAmmo; i++)
-        {
-            var anchoredPosition = new Vector2(0f, Settings.uiAmmoIconSpacing * i);
+            var anchoredPosition = new Vector2(-Settings.uiAmmoIconSpacing * i, 0f);
 
             var ammoIcon = GameObject.Instantiate(GameResources.Instance.ammoIconPrefab, ammoHolderTransform);
             ammoIcon.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+
+            if (i < weapon.clipAmmo)
+            {
+                ammoIcon.GetComponent<AmmoIconUI>().Fill();
+            }
+            else
+            {
+                ammoIcon.GetComponent<AmmoIconUI>().Empty();
+            }
 
             ammoIconList.Add(ammoIcon);
         }
     }
 
-    private void ClearAmmoLoadedIcons()
+    private void DecreaseAmmoLoadedIcons(Weapon weapon)
+    {
+        if (weapon.clipAmmo >= ammoIconList.Count)
+        {
+            return;
+        }
+
+        ammoIconList[weapon.clipAmmo].GetComponent<AmmoIconUI>().BulletFired();
+    }
+
+    private void UpdateAmmoLoadedIcons(Weapon weapon)
     {
         foreach (var ammoIcon in ammoIconList)
         {
@@ -158,34 +151,8 @@ public class WeaponStatusUI : MonoBehaviour
         }
 
         ammoIconList.Clear();
-    }
 
-    private void UpdateWeaponReloadBar(Weapon weapon)
-    {
-        if (weapon.weaponDetails.hasInfiniteClipCapacity)
-        {
-            return;
-        }
-
-        if (reloadWeaponCoroutine != null)
-        {
-            StopCoroutine(reloadWeaponCoroutine);
-        }
-
-        reloadWeaponCoroutine = StartCoroutine(UpdateWeaponReloadBarCoroutine(weapon));
-    }
-
-    private IEnumerator UpdateWeaponReloadBarCoroutine(Weapon weapon)
-    {
-        while (weapon.isReloading)
-        {
-            var barFill = weapon.reloadTimer / weapon.weaponDetails.reloadTime;
-
-            reloadBarImage.color = Color.red;
-            reloadBarImage.transform.localScale = new Vector3(barFill, 1f, 1f);
-
-            yield return null;
-        }
+        FillAmmoLoadedIcons(weapon);
     }
 
     #region VALIDATION
@@ -196,7 +163,6 @@ public class WeaponStatusUI : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(weaponImage), weaponImage);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoHolderTransform), ammoHolderTransform);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoRemainingText), ammoRemainingText);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(reloadBarImage), reloadBarImage);
     }
 #endif
     #endregion
