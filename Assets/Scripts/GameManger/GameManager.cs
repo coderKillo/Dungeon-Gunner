@@ -101,12 +101,12 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && gameState == GameState.playingLevel)
+        if (Input.GetKeyDown(KeyCode.M) && gameState == GameState.playingLevel)
         {
             SetGameState(GameState.dungeonOverviewMap);
         }
 
-        if (Input.GetKeyUp(KeyCode.Tab) && gameState == GameState.dungeonOverviewMap)
+        if (Input.GetKeyUp(KeyCode.M) && gameState == GameState.dungeonOverviewMap)
         {
             DungeonMap.Instance.ClearDungeonMap();
             SetGameState(GameState.playingLevel);
@@ -238,7 +238,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void PlayDungeonLevel(int levelIndex)
     {
-        if (dungeonLevelList.Count <= 0)
+        if (dungeonLevelList.Count <= 0 || !DungeonBuilder.Instance)
         {
             return;
         }

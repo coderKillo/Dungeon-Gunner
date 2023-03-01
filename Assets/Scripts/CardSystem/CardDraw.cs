@@ -10,13 +10,23 @@ public class CardDraw : MonoBehaviour
     [HideInInspector] public Action<Card[]> OnDraw;
     [HideInInspector] public Action<Card> OnCardSelected;
 
+    private CardSystemSettings _cardSystemSettings;
+
+    private void Awake()
+    {
+        _cardSystemSettings = GetComponent<CardSystemSettings>();
+    }
+
     public void Draw(Card[] cards)
     {
         _draw.Clear();
 
         for (int i = 0; i < Settings.cardDrawSize; i++)
         {
-            _draw.Add(PickRandomCard(cards));
+            var card = _cardSystemSettings.PickRandomCard(cards);
+            card.level = _cardSystemSettings.GetCardLevelByDungeonLevel(GameManager.Instance.CurrentLevel);
+
+            _draw.Add(card);
         }
 
         OnDraw?.Invoke(_draw.ToArray());
@@ -27,11 +37,6 @@ public class CardDraw : MonoBehaviour
         OnCardSelected?.Invoke(_draw[id]);
 
         _draw.Clear();
-    }
-
-    private Card PickRandomCard(Card[] cards)
-    {
-        return cards[UnityEngine.Random.Range(0, cards.Length - 1)];
     }
 
 }

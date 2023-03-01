@@ -9,7 +9,7 @@ public class DrawUI : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPrefab;
     [SerializeField] private CardDraw _cardDraw;
-    [SerializeField] private CardRarityColor _rarityColor;
+    [SerializeField] private CardSystemSettings _cardSystemSettings;
 
     private Animator _animator;
     private List<CardUI> _cards;
@@ -47,7 +47,7 @@ public class DrawUI : MonoBehaviour
             card.title.text = cards[i].details.title;
             card.description.text = cards[i].details.description;
             card.icon.sprite = cards[i].details.icon;
-            card.background.color = _rarityColor.GetColor(cards[i].details.rarity);
+            card.background.color = _cardSystemSettings.GetColor(cards[i].details.rarity);
             card.id = cards[i].id;
             card.details = cards[i].details;
             card.setLevel(cards[i].level);

@@ -15,7 +15,7 @@ public class HandUI : MonoBehaviour
     [SerializeField] private Transform _handGroup;
     [SerializeField] private Transform _handBackground;
     [SerializeField] private CardHand _cardHand;
-    [SerializeField] private CardRarityColor _rarityColor;
+    [SerializeField] private CardSystemSettings _cardSystemSettings;
 
     [Space(10)]
     [Header("Animation")]
@@ -78,7 +78,7 @@ public class HandUI : MonoBehaviour
 
         var cardUI = cardObject.GetComponent<CardUI>();
         cardUI.icon.sprite = card.details.iconMini;
-        cardUI.background.color = _rarityColor.GetColor(card.details.rarity);
+        cardUI.background.color = _cardSystemSettings.GetColor(card.details.rarity);
         cardUI.details = card.details;
         cardUI.id = card.id;
         cardUI.level = card.level;
@@ -222,7 +222,7 @@ public class HandUI : MonoBehaviour
         _cardPreview.title.text = _cards[index].details.title;
         _cardPreview.description.text = _cards[index].details.description;
         _cardPreview.icon.sprite = _cards[index].details.icon;
-        _cardPreview.background.color = _rarityColor.GetColor(_cards[index].details.rarity);
+        _cardPreview.background.color = _cardSystemSettings.GetColor(_cards[index].details.rarity);
         _cardPreview.setLevel(_cards[index].level);
 
         _cardPreview.gameObject.SetActive(true);
