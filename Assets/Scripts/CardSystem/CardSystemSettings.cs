@@ -32,8 +32,6 @@ public class CardSystemSettings : SerializedMonoBehaviour
             rarityListLookup.AddRange(Enumerable.Repeat(item.Key, item.Value));
         }
 
-        // FIXME: check if ratio gives the right results
-
         var selectedRarity = rarityListLookup[Random.Range(0, rarityListLookup.Count)];
         var selectedRarityCards = new List<Card>();
 
