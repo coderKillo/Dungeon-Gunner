@@ -11,7 +11,7 @@ public class HandUI : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private GameObject _cardPreviewPrefab;
     [SerializeField] private GameObject _cardMiniPrefab;
-    [SerializeField] private Transform _handPreview;
+    [SerializeField] private CardUI _cardPreview;
     [SerializeField] private Transform _handGroup;
     [SerializeField] private Transform _handBackground;
     [SerializeField] private CardHand _cardHand;
@@ -23,17 +23,16 @@ public class HandUI : MonoBehaviour
     [SerializeField] private float _floatInDistance;
 
     private List<CardUI> _cards;
-    private CardUI _cardPreview;
     private float _hideTimer = 0f;
     private bool _show = false;
+    private Vector3 _handGroupOrigin;
+    private Coroutine _hideCoroutine;
 
     private void Awake()
     {
         _cards = new List<CardUI>();
 
-        var cardObject = GameObject.Instantiate(_cardPreviewPrefab, Vector3.zero, Quaternion.identity, _handPreview);
-        _cardPreview = cardObject.GetComponent<CardUI>();
-        cardObject.SetActive(_show);
+        _cardPreview.gameObject.SetActive(_show);
     }
 
     void Start()
@@ -41,6 +40,8 @@ public class HandUI : MonoBehaviour
         _cardHand.OnCardAdd += OnCardAdd;
         _cardHand.OnCardRemove += OnCardRemove;
         _cardHand.OnShow += OnShowHand;
+
+        _handGroupOrigin = _handGroup.localPosition;
     }
 
     private void Update()
@@ -105,30 +106,29 @@ public class HandUI : MonoBehaviour
 
         _show = show;
 
+        if (_hideCoroutine != null)
+        {
+            StopCoroutine(_hideCoroutine);
+        }
+
         if (show)
         {
             _handBackground.gameObject.SetActive(true);
             _handGroup.gameObject.SetActive(true);
 
-            var origin = _handGroup.localPosition;
             _handGroup.localPosition += new Vector3(0f, _floatInDistance, 0f);
-            _handGroup.DOLocalMoveY(origin.y, _floatInTime).SetUpdate(true);
+            _handGroup.DOLocalMoveY(_handGroupOrigin.y, _floatInTime).SetUpdate(true);
         }
         else
         {
-            if (_hideTimer > 0)
-            {
-                Invoke(nameof(Hide), _hideTimer);
-            }
-            else
-            {
-                Hide();
-            }
+            _hideCoroutine = StartCoroutine(Hide());
         }
     }
 
-    private void Hide()
+    private IEnumerator Hide()
     {
+        yield return new WaitForSeconds(_hideTimer);
+
         DeselectAll();
 
         _handBackground.gameObject.SetActive(false);
@@ -136,8 +136,8 @@ public class HandUI : MonoBehaviour
         var origin = _handGroup.localPosition;
         _handGroup.DOLocalMoveY(origin.y + _floatInDistance, _floatInTime).SetUpdate(true).OnComplete(() =>
         {
-            _handGroup.gameObject.SetActive(false);
-            _handGroup.localPosition = origin;
+            _handGroup.gameObject.SetActive(_show);
+            _handGroup.localPosition = _handGroupOrigin;
         });
     }
 
@@ -220,10 +220,11 @@ public class HandUI : MonoBehaviour
         _cards[index].PointerEnterFeedback.PlayFeedbacks();
 
         _cardPreview.title.text = _cards[index].details.title;
-        _cardPreview.description.text = _cards[index].details.description;
         _cardPreview.icon.sprite = _cards[index].details.icon;
         _cardPreview.background.color = _cardSystemSettings.GetColor(_cards[index].details.rarity);
+        _cardPreview.details = _cards[index].details;
         _cardPreview.setLevel(_cards[index].level);
+        _cardPreview.setDescription();
 
         _cardPreview.gameObject.SetActive(true);
     }

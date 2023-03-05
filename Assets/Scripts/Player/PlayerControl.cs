@@ -20,6 +20,7 @@ public class PlayerControl : MonoBehaviour
 
     private Player player;
     private float moveSpeed;
+    public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
 
     private Coroutine dashCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate;

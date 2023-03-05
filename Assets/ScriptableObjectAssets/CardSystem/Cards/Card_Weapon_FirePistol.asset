@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Card_Weapon_FirePistol
   m_EditorClassIdentifier: 
   title: Fire Pistol
-  rarity: 1
+  rarity: 3
   icon: {fileID: -212423810, guid: eb67b824d0783e24ebf1ac493e53ac9d, type: 3}
   iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: For Fire and Flames

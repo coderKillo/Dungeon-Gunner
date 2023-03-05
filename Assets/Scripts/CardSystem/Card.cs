@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ public class Card
 
 
             case CardAction.PowerUp:
-                player.playerPowerUp.StartPowerUp(SpeedPowerUp(), Color.green);
+                ActivatePowerUp(details.powerUpType, details.powerUpColor, player);
                 break;
 
 
@@ -60,10 +61,85 @@ public class Card
 
     }
 
-    static private IEnumerator SpeedPowerUp()
+    private void ActivatePowerUp(CardPowerUp powerUpType, Color powerUpColor, Player player)
     {
-        // TODO: implement powerups and outsource to own class
-        yield return new WaitForSeconds(5f);
+        switch (powerUpType)
+        {
+
+            case CardPowerUp.Crit:
+                player.playerPowerUp.StartPowerUp(CritPowerUp(player), powerUpColor);
+                break;
+            case CardPowerUp.Speed:
+                player.playerPowerUp.StartPowerUp(SpeedPowerUp(player), powerUpColor);
+                break;
+            case CardPowerUp.MultiShot:
+                player.playerPowerUp.StartPowerUp(MultiShotPowerUp(player), powerUpColor);
+                break;
+            case CardPowerUp.Reflect:
+                player.playerPowerUp.StartPowerUp(ReflectPowerUp(player), powerUpColor);
+                break;
+            case CardPowerUp.BlackHole:
+                break;
+            case CardPowerUp.FireBall:
+                break;
+            case CardPowerUp.LightningShot:
+                player.playerPowerUp.StartPowerUp(LightningShotPowerUp(player), powerUpColor);
+                break;
+            case CardPowerUp.LightningDash:
+                player.playerPowerUp.StartPowerUp(LightningDashPowerUp(player), powerUpColor);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private IEnumerator CritPowerUp(Player player)
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator SpeedPowerUp(Player player)
+    {
+        var moveSpeedFactor = details.powerUpAbility + (details.powerUpScaleAbility * level);
+        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
+
+        var moveSpeed = player.playerControl.MoveSpeed;
+        player.playerControl.MoveSpeed = moveSpeedFactor * moveSpeed;
+
+        yield return new WaitForSeconds(duration);
+
+        player.playerControl.MoveSpeed = moveSpeed;
+    }
+
+    private IEnumerator MultiShotPowerUp(Player player)
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator ReflectPowerUp(Player player)
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator BlackHolePowerUp(Player player)
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator FireBallPowerUp(Player player)
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator LightningShotPowerUp(Player player)
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
+    private IEnumerator LightningDashPowerUp(Player player)
+    {
+        yield return new WaitForSeconds(1f);
     }
 }
 

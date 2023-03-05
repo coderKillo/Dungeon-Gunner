@@ -30,8 +30,26 @@ public class CardSO : ScriptableObject
     [ShowIf("action", CardAction.AddWeapon)]
     public WeaponDetailsSO weapon;
 
+    [ShowIf("action", CardAction.AddWeapon)]
+    public float weaponDamageFactorPerLevel;
+
     [ShowIf("action", CardAction.PowerUp)]
-    public UnityEvent powerUpEvent;
+    public CardPowerUp powerUpType;
+
+    [ShowIf("action", CardAction.PowerUp)]
+    public Color powerUpColor;
+
+    [ShowIf("action", CardAction.PowerUp)]
+    public float powerUpDuration;
+
+    [ShowIf("action", CardAction.PowerUp)]
+    public float powerUpScaleDuration;
+
+    [ShowIf("action", CardAction.PowerUp)]
+    public float powerUpAbility;
+
+    [ShowIf("action", CardAction.PowerUp)]
+    public float powerUpScaleAbility;
 }
 
 public enum CardAction
@@ -41,4 +59,16 @@ public enum CardAction
     Ammo,
     AddWeapon,
     PowerUp
+}
+
+public enum CardPowerUp
+{
+    Crit,
+    Speed,
+    MultiShot,
+    Reflect,
+    BlackHole,
+    FireBall,
+    LightningShot,
+    LightningDash
 }

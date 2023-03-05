@@ -35,8 +35,43 @@ public class CardUI : MonoBehaviour
     [HideInInspector] public int level;
     [HideInInspector] public bool selected = false;
 
+    public void setDescription()
+    {
+        switch (details.action)
+        {
+            case CardAction.Heal:
+                description.text = details.description.Replace("$", "" + details.healAmount * level);
+                break;
+
+            case CardAction.Shield:
+                description.text = details.description.Replace("$", "" + details.shieldAmount * level);
+                break;
+
+            case CardAction.PowerUp:
+                var factor = (details.powerUpAbility + (details.powerUpScaleAbility * level)) * 100;
+                var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
+
+                description.text = details.description.Replace("$1", "" + factor).Replace("$2", "" + duration);
+                break;
+
+            case CardAction.Ammo:
+                description.text = details.description.Replace("$", "" + details.ammoAmount * level);
+                break;
+
+            case CardAction.AddWeapon:
+                description.text = details.description.Replace("$", "" + details.weaponDamageFactorPerLevel * level * 100);
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
     public void setLevel(int level)
     {
+        this.level = level;
+
         for (int i = 0; i < levelGroup.childCount; i++)
         {
             levelGroup.GetChild(i).gameObject.SetActive(i < level);

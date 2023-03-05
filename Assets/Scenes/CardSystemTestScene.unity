@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdda13cc6ed95f04eb50c4f70217a8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDeck: {fileID: 11400000, guid: 0ac099b53102bc740b52f0cf59db9bc6, type: 2}
+  playerDeck: {fileID: 11400000, guid: 189d0eb5df2f5964ead03fd6bcad171b, type: 2}
 --- !u!114 &1361949639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,7 +1368,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 3
-      Data: 30
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -1392,7 +1392,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 3
-      Data: 15
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -1404,7 +1404,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 3
-      Data: 5
+      Data: 1
     - Name: 
       Entry: 8
       Data: 

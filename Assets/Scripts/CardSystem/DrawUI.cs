@@ -45,12 +45,12 @@ public class DrawUI : MonoBehaviour
 
             var card = cardObject.GetComponent<CardUI>();
             card.title.text = cards[i].details.title;
-            card.description.text = cards[i].details.description;
             card.icon.sprite = cards[i].details.icon;
             card.background.color = _cardSystemSettings.GetColor(cards[i].details.rarity);
             card.id = cards[i].id;
             card.details = cards[i].details;
             card.setLevel(cards[i].level);
+            card.setDescription();
 
             cardObject.GetComponent<CardFlip>().ShowBack();
 
