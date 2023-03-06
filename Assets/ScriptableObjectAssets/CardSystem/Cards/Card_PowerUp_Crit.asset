@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
-  m_Name: Card_Armor
+  m_Name: Card_PowerUp_Crit
   m_EditorClassIdentifier: 
-  title: Armor
-  rarity: 0
-  icon: {fileID: 21300000, guid: db9f23bf534cb004b878298a0c7d785a, type: 3}
-  iconMini: {fileID: -1495392994, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
-  description: Add $ Armor
-  action: 1
+  title: Critical Strike
+  rarity: 2
+  icon: {fileID: 21300000, guid: d39bbc4723b2f61488e535d902db05d2, type: 3}
+  iconMini: {fileID: -1210985138, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
+  description: + $1% chance to hit a critical blow for $2 s.
+  action: 4
   healAmount: 0
-  shieldAmount: 20
+  shieldAmount: 0
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
   weaponDamageFactorPerLevel: 0
   powerUpType: 0
-  powerUpColor: {r: 0, g: 0, b: 0, a: 0}
-  powerUpDuration: 0
-  powerUpScaleDuration: 0
-  powerUpAbility: 0
+  powerUpColor: {r: 1, g: 0.8318379, b: 0, a: 1}
+  powerUpDuration: 6
+  powerUpScaleDuration: 2
+  powerUpAbility: 1
   powerUpScaleAbility: 0

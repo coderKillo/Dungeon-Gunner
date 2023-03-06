@@ -16,12 +16,16 @@ MonoBehaviour:
   rarity: 2
   icon: {fileID: 21300000, guid: d39bbc4723b2f61488e535d902db05d2, type: 3}
   iconMini: {fileID: -1210985138, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
-  description: Gotta Go Fast!
+  description: + $1% movement speed for $2 s.
   action: 4
   healAmount: 0
   shieldAmount: 0
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
-  powerUpEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  weaponDamageFactorPerLevel: 0
+  powerUpType: 1
+  powerUpColor: {r: 0, g: 1, b: 0.0791831, a: 1}
+  powerUpDuration: 5
+  powerUpScaleDuration: 1
+  powerUpAbility: 1
+  powerUpScaleAbility: 0.5
