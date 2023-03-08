@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
   m_Name: Card_PowerUp_Reflect
   m_EditorClassIdentifier: 
-  title: Speed Boost
+  title: Reflect Bullets
   rarity: 2
-  icon: {fileID: 21300000, guid: d39bbc4723b2f61488e535d902db05d2, type: 3}
+  icon: {fileID: 21300000, guid: 3a1fd5daf892dd141bd38426c7b4f345, type: 3}
   iconMini: {fileID: -1210985138, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: + $1% chance to reflect enemy projectiles  for $2 s.
   action: 4
@@ -25,7 +25,7 @@ MonoBehaviour:
   weaponDamageFactorPerLevel: 0
   powerUpType: 3
   powerUpColor: {r: 1, g: 0, b: 0.26052094, a: 1}
-  powerUpDuration: 6
+  powerUpDuration: 8
   powerUpScaleDuration: 3
   powerUpAbility: 1
   powerUpScaleAbility: 0

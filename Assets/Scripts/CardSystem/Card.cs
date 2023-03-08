@@ -65,7 +65,6 @@ public class Card
     {
         switch (powerUpType)
         {
-
             case CardPowerUp.Crit:
                 player.playerPowerUp.StartPowerUp(CritPowerUp(player), powerUpColor);
                 break;
@@ -96,7 +95,15 @@ public class Card
 
     private IEnumerator CritPowerUp(Player player)
     {
-        yield return new WaitForSeconds(1f);
+        var critChance = (details.powerUpAbility + (details.powerUpScaleAbility * level)) * 100f;
+        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
+
+        var weaponCritChanceFactor = player.fireWeapon.WeaponCritChanceFactor;
+        player.fireWeapon.WeaponCritChanceFactor = critChance;
+
+        yield return new WaitForSeconds(duration);
+
+        player.fireWeapon.WeaponCritChanceFactor = weaponCritChanceFactor;
     }
 
     private IEnumerator SpeedPowerUp(Player player)
@@ -114,7 +121,15 @@ public class Card
 
     private IEnumerator MultiShotPowerUp(Player player)
     {
-        yield return new WaitForSeconds(1f);
+        var multiShot = Mathf.RoundToInt(details.powerUpAbility + (details.powerUpScaleAbility * level));
+        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
+
+        var weaponCritChanceFactor = player.fireWeapon.WeaponCritChanceFactor;
+        player.fireWeapon.MultiShot = multiShot;
+
+        yield return new WaitForSeconds(duration);
+
+        player.fireWeapon.MultiShot = 1;
     }
 
     private IEnumerator ReflectPowerUp(Player player)

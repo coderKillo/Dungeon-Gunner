@@ -10,12 +10,17 @@ using MoreMountains.Feedbacks;
 public class FireWeapon : MonoBehaviour
 {
     [SerializeField] private MMF_Player fireFeedback;
+    [SerializeField] private float multiShotOffset = 10f;
+
+    private int multiShot = 1;
+    public int MultiShot { set { multiShot = value; } }
 
     private float fireRateCooldownTimer = 0f;
     private float chargeTimer = 0f;
 
     private float weaponDamageFactor = 1f;
     private float weaponCritChanceFactor = 1f;
+    public float WeaponCritChanceFactor { get { return weaponCritChanceFactor; } set { weaponCritChanceFactor = value; } }
 
     private FireWeaponEvent fireWeaponEvent;
     private WeaponFiredEvent weaponFiredEvent;
@@ -208,8 +213,19 @@ public class FireWeapon : MonoBehaviour
             var damage = Mathf.RoundToInt(activeWeapon.CurrentAmmo.damage * activeWeapon.CurrentWeapon.damageFactor * weaponDamageFactor);
             var critChance = activeWeapon.CurrentAmmo.critChance * weaponCritChanceFactor;
 
-            var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
-            ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle, weaponAimAngle, speed, weaponAimDirectionVector, damage, critChance);
+            Debug.Log("critChance = " + critChance + "factor:" + weaponCritChanceFactor);
+
+            for (int j = 0; j < multiShot; j++)
+            {
+                var sign = j % 2 > 0 ? -1 : 1;
+                var offset = (j + 1) / 2;
+
+                var offsetAngle = sign * offset * multiShotOffset;
+                var offsetVector = HelperUtilities.GetVectorFromAngle(offsetAngle);
+
+                var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
+                ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle + offsetAngle, weaponAimAngle + offsetAngle, speed, weaponAimDirectionVector + offsetVector, damage, critChance);
+            }
 
             yield return new WaitForSeconds(spawnInterval);
         }

@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public ActiveWeapon activeWeapon;
     [HideInInspector] public PostHitImmunity postHitImmunity;
+    [HideInInspector] public FireWeapon fireWeapon;
     #region EVENTS
     [HideInInspector] public AimWeaponEvent aimWeaponEvent;
     [HideInInspector] public IdleEvent idleEvent;
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         activeWeapon = GetComponent<ActiveWeapon>();
         postHitImmunity = GetComponent<PostHitImmunity>();
+        fireWeapon = GetComponent<FireWeapon>();
         #region EVENTS
         idleEvent = GetComponent<IdleEvent>();
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
