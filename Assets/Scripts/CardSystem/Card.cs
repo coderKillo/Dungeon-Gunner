@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class Card
 {
     public CardSO details;
-    public int id;
+    public Guid id;
     public int level = 1;
 
     public void Action(Player player)

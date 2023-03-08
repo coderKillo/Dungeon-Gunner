@@ -77,9 +77,9 @@ public class DrawUI : MonoBehaviour
         }
     }
 
-    private void CardClicked(int id)
+    private void CardClicked(int index)
     {
-        var cardFlip = _cards[id].gameObject.GetComponent<CardFlip>();
+        var cardFlip = _cards[index].gameObject.GetComponent<CardFlip>();
 
         if (!cardFlip.IsFlipped)
         {
@@ -87,10 +87,15 @@ public class DrawUI : MonoBehaviour
         }
         else
         {
-            _cards[id].SelectedFeedback.PlayFeedbacks();
-            _cardDraw.CardSelected(id);
+            _cards[index].SelectedFeedback.PlayFeedbacks();
+            _cardDraw.CardSelected(index);
 
-            _cards.RemoveAt(id);
+            foreach (var card in _cards)
+            {
+                card.setSelectable(false);
+            }
+
+            _cards.RemoveAt(index);
             _animator.Play("End");
         }
     }

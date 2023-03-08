@@ -23,7 +23,7 @@ public class CardSystemSettings : SerializedMonoBehaviour
         return _rarityColorLookup.GetValueOrDefault(rarity, Color.white);
     }
 
-    public Card PickRandomCard(Card[] cards)
+    public CardSO PickRandomCard(CardSO[] cards)
     {
         var rarityListLookup = new List<CardRarity>();
 
@@ -33,11 +33,11 @@ public class CardSystemSettings : SerializedMonoBehaviour
         }
 
         var selectedRarity = rarityListLookup[Random.Range(0, rarityListLookup.Count)];
-        var selectedRarityCards = new List<Card>();
+        var selectedRarityCards = new List<CardSO>();
 
         foreach (var card in cards)
         {
-            if (card.details.rarity != selectedRarity)
+            if (card.rarity != selectedRarity)
             {
                 continue;
             }

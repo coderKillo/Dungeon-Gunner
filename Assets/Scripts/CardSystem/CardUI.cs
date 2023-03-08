@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class CardUI : MonoBehaviour
     public Image background;
     public Transform levelGroup;
     public Transform selectBorder;
+    public Image[] raycastTargets;
 
     [Space(10)]
     [Header("Feedbacks")]
@@ -31,7 +33,7 @@ public class CardUI : MonoBehaviour
     public MMF_Player StartFeedback { get { return _startFeedback; } }
 
     [HideInInspector] public CardSO details;
-    [HideInInspector] public int id;
+    [HideInInspector] public Guid id;
     [HideInInspector] public int level;
     [HideInInspector] public bool selected = false;
 
@@ -66,6 +68,14 @@ public class CardUI : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void setSelectable(bool active)
+    {
+        foreach (var target in raycastTargets)
+        {
+            target.raycastTarget = active;
+        }
     }
 
     public void setLevel(int level)

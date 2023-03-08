@@ -62,13 +62,9 @@ public class HandUI : MonoBehaviour
         }
 
         result.DestroyFeedback.PlayFeedbacks();
-        _hideTimer = result.DestroyFeedback.TotalDuration;
+        SetHideTimer(result.DestroyFeedback.TotalDuration);
 
         _cards.Remove(result);
-        for (int i = 0; i < _cards.Count; i++)
-        {
-            _cards[i].GetComponent<CardEvent>().Id = i;
-        }
 
         HidePreviewCard();
     }
@@ -88,7 +84,7 @@ public class HandUI : MonoBehaviour
 
         cardUI.StartFeedback.PlayFeedbacks();
 
-        _hideTimer = cardUI.StartFeedback.TotalDuration;
+        SetHideTimer(cardUI.StartFeedback.TotalDuration);
 
         var cardEvent = cardObject.GetComponent<CardEvent>();
         cardEvent.Id = _cards.Count;
@@ -102,6 +98,11 @@ public class HandUI : MonoBehaviour
         if (_show == show)
         {
             return;
+        }
+
+        foreach (var card in _cards)
+        {
+            card.setSelectable(show);
         }
 
         _show = show;
@@ -127,11 +128,11 @@ public class HandUI : MonoBehaviour
 
     private IEnumerator Hide()
     {
-        yield return new WaitForSeconds(_hideTimer);
+        _handBackground.gameObject.SetActive(false);
 
         DeselectAll();
 
-        _handBackground.gameObject.SetActive(false);
+        yield return new WaitForSeconds(_hideTimer + 0.1f);
 
         var origin = _handGroup.localPosition;
         _handGroup.DOLocalMoveY(origin.y + _floatInDistance, _floatInTime).SetUpdate(true).OnComplete(() =>
@@ -139,6 +140,14 @@ public class HandUI : MonoBehaviour
             _handGroup.gameObject.SetActive(_show);
             _handGroup.localPosition = _handGroupOrigin;
         });
+    }
+
+    private void SetHideTimer(float duration)
+    {
+        if (duration > _hideTimer)
+        {
+            _hideTimer = duration;
+        }
     }
 
     private void OnCardEvent(CardEvent arg1, CardEventArgs arg2)
@@ -211,6 +220,7 @@ public class HandUI : MonoBehaviour
                 indexes.Add(i);
             }
         }
+
 
         _cardHand.CardSelected(indexes.ToArray());
     }

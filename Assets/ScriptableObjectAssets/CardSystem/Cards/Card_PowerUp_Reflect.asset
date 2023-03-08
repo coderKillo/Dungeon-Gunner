@@ -16,7 +16,7 @@ MonoBehaviour:
   rarity: 2
   icon: {fileID: 21300000, guid: 3a1fd5daf892dd141bd38426c7b4f345, type: 3}
   iconMini: {fileID: -1210985138, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
-  description: + $1% chance to reflect enemy projectiles  for $2 s.
+  description: $1% chance to reflect enemy projectiles  for $2 s.
   action: 4
   healAmount: 0
   shieldAmount: 0

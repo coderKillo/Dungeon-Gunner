@@ -17,13 +17,15 @@ public class CardDraw : MonoBehaviour
         _cardSystemSettings = GetComponent<CardSystemSettings>();
     }
 
-    public void Draw(Card[] cards)
+    public void Draw(CardSO[] cards)
     {
         _draw.Clear();
 
         for (int i = 0; i < Settings.cardDrawSize; i++)
         {
-            var card = _cardSystemSettings.PickRandomCard(cards);
+            var card = new Card();
+            card.id = Guid.NewGuid();
+            card.details = _cardSystemSettings.PickRandomCard(cards);
             card.level = _cardSystemSettings.GetCardLevelByDungeonLevel(GameManager.Instance.CurrentLevel);
 
             _draw.Add(card);

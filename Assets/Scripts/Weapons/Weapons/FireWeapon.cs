@@ -213,8 +213,6 @@ public class FireWeapon : MonoBehaviour
             var damage = Mathf.RoundToInt(activeWeapon.CurrentAmmo.damage * activeWeapon.CurrentWeapon.damageFactor * weaponDamageFactor);
             var critChance = activeWeapon.CurrentAmmo.critChance * weaponCritChanceFactor;
 
-            Debug.Log("critChance = " + critChance + "factor:" + weaponCritChanceFactor);
-
             for (int j = 0; j < multiShot; j++)
             {
                 var sign = j % 2 > 0 ? -1 : 1;
