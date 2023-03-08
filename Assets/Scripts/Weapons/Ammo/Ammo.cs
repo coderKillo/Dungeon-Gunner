@@ -147,8 +147,6 @@ public class Ammo : MonoBehaviour, IFireable
 
         if (health != null)
         {
-            Debug.Log("critChance = " + critChance);
-
             if (IsCrit())
             {
                 health.TakeDamage(Mathf.RoundToInt(damage * critDamage), true);

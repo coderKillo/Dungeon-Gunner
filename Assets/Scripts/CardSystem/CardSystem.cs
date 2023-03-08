@@ -16,8 +16,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     [SerializeField] private CardDeckSO playerDeck;
 
-    private List<Card> _deck = new List<Card>();
-
     private CardHand _cardHand;
     private CardDraw _cardDraw;
 
@@ -26,8 +24,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
     protected override void Awake()
     {
         base.Awake();
-
-        CreateDeck();
 
         _cardDraw = GetComponent<CardDraw>();
         _cardHand = GetComponent<CardHand>();
@@ -48,18 +44,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Show();
-        }
-    }
-
-    private void CreateDeck()
-    {
-        for (int i = 0; i < playerDeck.deck.Length; i++)
-        {
-            var card = new Card();
-            card.id = i;
-            card.details = playerDeck.deck[i];
-
-            _deck.Add(card);
         }
     }
 
@@ -166,7 +150,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
             case State.Draw:
                 PauseGame();
                 _cardHand.Show(true);
-                _cardDraw.Draw(_deck.ToArray());
+                _cardDraw.Draw(playerDeck.deck.ToArray());
                 break;
             case State.RemoveCard:
                 GameManager.Instance.DisplayMessage.DisplayText("Your Hand is Full! Select a Card to be removed.", 3f, Color.white, 0.5f, 1f);
@@ -204,7 +188,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
         var rarity = card1.details.rarity + 1;
 
-        var specificRarityCards = _deck.FindAll((x) => x.details.rarity == rarity);
+        var specificRarityCards = playerDeck.deck.FindAll((x) => x.rarity == rarity);
 
         if (specificRarityCards.Count <= 0)
         {
@@ -212,13 +196,16 @@ public class CardSystem : SingletonAbstract<CardSystem>
             return;
         }
 
-        var randomCard = specificRarityCards[UnityEngine.Random.Range(0, specificRarityCards.Count - 1)];
+        var card = new Card();
+        card.details = specificRarityCards[UnityEngine.Random.Range(0, specificRarityCards.Count - 1)];
+        card.level = Math.Min(Math.Min(card1.level, card2.level), card3.level);
+        card.id = Guid.NewGuid();
 
         _cardHand.Remove(card1);
         _cardHand.Remove(card2);
         _cardHand.Remove(card3);
 
-        AddCard(randomCard);
+        AddCard(card);
     }
 
     private void LevelUpCard(Card card1, Card card2)
@@ -231,7 +218,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
         var level = Math.Max(card1.level, card2.level) + 1;
 
         var card = new Card();
-        card.id = card1.id;
+        card.id = Guid.NewGuid();
         card.details = card1.details;
         card.level = level;
 
@@ -258,7 +245,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
         }
         else
         {
-            SetState(State.Show);
+            SetState(State.Hide);
         }
     }
     #endregion
