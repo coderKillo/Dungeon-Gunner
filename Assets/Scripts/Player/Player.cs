@@ -130,6 +130,21 @@ public class Player : MonoBehaviour
         return weapon;
     }
 
+    public void RemoveWeaponFromPlayer(WeaponDetailsSO weaponDetails)
+    {
+        var weapon = weaponList.Find((x) => x.weaponDetails == weaponDetails);
+
+        if (weapon == null)
+        {
+            return;
+        }
+
+        weaponList.Remove(weapon);
+        weapon.weaponListPosition = 0;
+
+        setActiveWeaponEvent.CallSetActiveWeaponEvent(weaponList[0]);
+    }
+
     public bool HasWeapon(WeaponDetailsSO weaponDetails)
     {
         foreach (var weapon in weaponList)

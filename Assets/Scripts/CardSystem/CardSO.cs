@@ -37,19 +37,28 @@ public class CardSO : ScriptableObject
     public CardPowerUp powerUpType;
 
     [ShowIf("action", CardAction.PowerUp)]
-    public Color powerUpColor;
-
-    [ShowIf("action", CardAction.PowerUp)]
-    public float powerUpDuration;
-
-    [ShowIf("action", CardAction.PowerUp)]
-    public float powerUpScaleDuration;
-
-    [ShowIf("action", CardAction.PowerUp)]
     public float powerUpAbility;
 
     [ShowIf("action", CardAction.PowerUp)]
     public float powerUpScaleAbility;
+
+    [ShowIf("action", CardAction.PowerUp)]
+    public bool isBuff;
+
+    [ShowIf("isBuff")]
+    public Color powerUpColor;
+
+    [ShowIf("isBuff")]
+    public float powerUpDuration;
+
+    [ShowIf("isBuff")]
+    public float powerUpScaleDuration;
+
+    [ShowIf("action", CardAction.PowerUp)]
+    public bool isSpell;
+
+    [ShowIf("isSpell")]
+    public WeaponDetailsSO powerUpSpell;
 }
 
 public enum CardAction

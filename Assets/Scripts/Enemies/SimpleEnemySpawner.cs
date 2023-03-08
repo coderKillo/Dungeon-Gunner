@@ -6,10 +6,8 @@ using UnityEngine;
 public class SimpleEnemySpawner : MonoBehaviour
 {
     [SerializeField] private EnemyDetailsSO _enemyDetails;
-    [SerializeField] private Transform _spawnLocation;
+    [SerializeField] private Transform[] _spawnLocation;
     [SerializeField] private DungeonLevelSO _level;
-
-    bool _enemyAlive = false;
 
     void Start()
     {
@@ -26,22 +24,17 @@ public class SimpleEnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (_enemyAlive)
+        foreach (var location in _spawnLocation)
         {
-            return;
+            var enemyGameObject = GameObject.Instantiate(_enemyDetails.prefab, location.position, Quaternion.identity);
+            enemyGameObject.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
+
+            var enemy = enemyGameObject.GetComponent<Enemy>();
+            enemy.Initialize(_enemyDetails, 1, _level);
         }
-
-        var enemyGameObject = GameObject.Instantiate(_enemyDetails.prefab, _spawnLocation.position, Quaternion.identity);
-        enemyGameObject.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
-
-        var enemy = enemyGameObject.GetComponent<Enemy>();
-        enemy.Initialize(_enemyDetails, 1, _level);
-
-        _enemyAlive = true;
     }
 
     private void DestroyedEvent_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs arg2)
     {
-        _enemyAlive = false;
     }
 }

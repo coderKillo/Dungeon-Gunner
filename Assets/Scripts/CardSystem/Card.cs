@@ -80,6 +80,8 @@ public class Card
             case CardPowerUp.BlackHole:
                 break;
             case CardPowerUp.FireBall:
+                // TODO: add damage
+                player.AddWeaponToPlayer(details.powerUpSpell);
                 break;
             case CardPowerUp.LightningShot:
                 player.playerPowerUp.StartPowerUp(LightningShotPowerUp(player), powerUpColor);

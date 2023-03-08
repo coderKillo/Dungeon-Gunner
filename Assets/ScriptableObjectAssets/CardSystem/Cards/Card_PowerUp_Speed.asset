@@ -24,8 +24,11 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
   weaponDamageFactorPerLevel: 0
   powerUpType: 1
+  powerUpAbility: 1
+  powerUpScaleAbility: 0.5
+  isBuff: 1
   powerUpColor: {r: 0, g: 1, b: 0.0791831, a: 1}
   powerUpDuration: 5
   powerUpScaleDuration: 3
-  powerUpAbility: 1
-  powerUpScaleAbility: 0.5
+  isSpell: 0
+  powerUpSpellProjectile: {fileID: 0}

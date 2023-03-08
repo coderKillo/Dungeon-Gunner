@@ -24,6 +24,7 @@ public class WeaponDetailsSO : ScriptableObject
     public float fireRate = 0.2f;
     public float prechargeTime = 0f;
     public float reloadTime = 0f;
+    public bool removeAfterAmmoIsEmpty = false;
 
     [Space(10)]
     [Header("WEAPON SOUND EFFECTS")]
