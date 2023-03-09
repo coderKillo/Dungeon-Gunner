@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
   m_Name: AmmoDetails_BlackHole
   m_EditorClassIdentifier: 
-  ammoName: FireballAmmo
+  ammoName: BlackHoleAmmo
   isPlayerAmmo: 1
   ammoSprite: {fileID: 0}
   prefabArray:
-  - {fileID: 8273311659018516755, guid: 1f1a5c9ea6762d647a89c8e4c17ee6c4, type: 3}
+  - {fileID: 8273311659018516755, guid: 393a14e4b86c35942b748f902ade3100, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
-  damage: 20
-  critChance: 0.1
-  speedMin: 10
-  speedMax: 10
-  range: 30
+  damage: 50
+  critChance: 0
+  speedMin: 0
+  speedMax: 0
+  range: 7
   rotationSpeed: 0
   spreadMin: 0
   spreadMax: 0
@@ -37,5 +37,5 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
-  hitVisualEffect: {fileID: 11400000, guid: d9dd26a451de4dd46b75e13580d53486, type: 2}
+  hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 0}
