@@ -78,9 +78,13 @@ public class Card
                 player.playerPowerUp.StartPowerUp(ReflectPowerUp(player), powerUpColor);
                 break;
             case CardPowerUp.BlackHole:
+                var radius = details.powerUpAbility + (details.powerUpScaleAbility * level);
+                details.powerUpSpell.ammo.range = Mathf.RoundToInt(radius);
+                player.AddWeaponToPlayer(details.powerUpSpell);
                 break;
             case CardPowerUp.FireBall:
-                // TODO: add damage
+                var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
+                details.powerUpSpell.ammo.damage = Mathf.RoundToInt(damage);
                 player.AddWeaponToPlayer(details.powerUpSpell);
                 break;
             case CardPowerUp.LightningShot:

@@ -87,7 +87,7 @@ public class HandUI : MonoBehaviour
         SetHideTimer(cardUI.StartFeedback.TotalDuration);
 
         var cardEvent = cardObject.GetComponent<CardEvent>();
-        cardEvent.Id = _cards.Count;
+        cardEvent.Id = cardUI.id;
         cardEvent.OnEvent += OnCardEvent;
 
         _cards.Add(cardUI);
@@ -152,10 +152,16 @@ public class HandUI : MonoBehaviour
 
     private void OnCardEvent(CardEvent arg1, CardEventArgs arg2)
     {
+        var index = _cards.FindIndex((x) => x.id == arg2.id);
+        if (index < 0)
+        {
+            return;
+        }
+
         switch (arg2.cardEventType)
         {
             case CardEventType.PointerEnter:
-                ShowPreviewCard(arg2.id);
+                ShowPreviewCard(index);
                 break;
 
             case CardEventType.PointerExit:
@@ -163,13 +169,13 @@ public class HandUI : MonoBehaviour
                 break;
 
             case CardEventType.ClickLeft:
-                SelectCard(arg2.id);
+                SelectCard(index);
                 CardClicked();
                 DeselectAll();
                 break;
 
             case CardEventType.ClickRight:
-                ToggleSelection(arg2.id);
+                ToggleSelection(index);
                 break;
 
             default:

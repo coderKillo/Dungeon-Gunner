@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
-  m_Name: AmmoDetails_Fireball
+  m_Name: AmmoDetails_BlackHole
   m_EditorClassIdentifier: 
   ammoName: FireballAmmo
   isPlayerAmmo: 1

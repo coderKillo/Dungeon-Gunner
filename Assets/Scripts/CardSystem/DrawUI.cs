@@ -55,7 +55,7 @@ public class DrawUI : MonoBehaviour
             cardObject.GetComponent<CardFlip>().ShowBack();
 
             var cardEvent = cardObject.GetComponent<CardEvent>();
-            cardEvent.Id = i;
+            cardEvent.Id = card.id;
             cardEvent.OnEvent += OnCardEvent;
 
             _cards.Add(card);
@@ -66,10 +66,16 @@ public class DrawUI : MonoBehaviour
 
     private void OnCardEvent(CardEvent arg1, CardEventArgs args2)
     {
+        var index = _cards.FindIndex((x) => x.id == args2.id);
+        if (index < 0)
+        {
+            return;
+        }
+
         switch (args2.cardEventType)
         {
             case CardEventType.ClickLeft:
-                CardClicked(args2.id);
+                CardClicked(index);
                 break;
 
             default:

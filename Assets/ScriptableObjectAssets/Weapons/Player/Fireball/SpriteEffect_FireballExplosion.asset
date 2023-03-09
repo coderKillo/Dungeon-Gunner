@@ -13,6 +13,25 @@ MonoBehaviour:
   m_Name: SpriteEffect_FireballExplosion
   m_EditorClassIdentifier: 
   frameRate: 24
-  spriteArray: []
+  spriteArray:
+  - {fileID: 600927056, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -2015424543, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: 417302980, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -761215448, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: 1615653153, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: 123996597, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -422391412, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -1485309748, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: 1981004643, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -2094974671, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -1874810415, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -2073203400, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -1176898248, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -671808955, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -523516100, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -1777149532, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: 1412678716, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -350210194, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
+  - {fileID: -1974291352, guid: 0c82771bff01a3a4884cb7512ff322b1, type: 3}
   offset: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1}
+  scale: {x: 2, y: 2}

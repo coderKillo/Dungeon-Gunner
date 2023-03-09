@@ -7,12 +7,12 @@ public class CardEvent : MonoBehaviour
 , IPointerEnterHandler
 , IPointerExitHandler
 {
-    private int _id = 0;
-    public int Id { get { return _id; } set { _id = value; } }
+    private Guid _id;
+    public Guid Id { get { return _id; } set { _id = value; } }
 
     public Action<CardEvent, CardEventArgs> OnEvent;
 
-    private void CallEvent(int id, CardEventType cardEventType)
+    private void CallEvent(Guid id, CardEventType cardEventType)
     {
         OnEvent?.Invoke(this, new CardEventArgs() { id = id, cardEventType = cardEventType });
     }
@@ -47,7 +47,7 @@ public class CardEvent : MonoBehaviour
 
 public class CardEventArgs : EventArgs
 {
-    public int id;
+    public Guid id;
     public CardEventType cardEventType;
 }
 
