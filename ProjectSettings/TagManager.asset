@@ -15,6 +15,7 @@ TagManager:
   - miniMapPlayer
   - playerWeapon
   - Environment
+  - EnemyAmmo
   layers:
   - Default
   - TransparentFX

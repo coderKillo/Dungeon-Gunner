@@ -12,6 +12,7 @@ static public class Settings
     #region TAGS
     public const string playerTag = "Player";
     public const string playerWeaponTag = "PlayerWeapon";
+    public const string enemyAmmoTag = "EnemyAmmo";
     #endregion
 
     #region ROOM SETTINGS

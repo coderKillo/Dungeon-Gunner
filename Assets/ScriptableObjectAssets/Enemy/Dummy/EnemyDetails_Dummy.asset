@@ -19,7 +19,7 @@ MonoBehaviour:
   materializeTime: 1
   materializeColor: {r: 0, g: 0.06218882, b: 0.990566, a: 0}
   materializeShader: {fileID: -6465566751694194690, guid: 5fec8f8e6ea244648a3c6ede24a56288, type: 3}
-  weaponDetails: {fileID: 0}
+  weaponDetails: {fileID: 11400000, guid: bf8ac4ffe049567498ff732b05b6b598, type: 2}
   firingIntervalMin: 0.1
   firingIntervalMax: 1
   firingDurationMin: 1

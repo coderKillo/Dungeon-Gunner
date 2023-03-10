@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7025265209078803840}
   m_Layer: 16
   m_Name: EnemyAmmo
-  m_TagString: Untagged
+  m_TagString: EnemyAmmo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
+  - {fileID: 2100000, guid: 5dceff0f64a88b949a3db290b8082010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

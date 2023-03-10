@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerDetailsSO playerDetails;
     [HideInInspector] public PlayerControl playerControl;
     [HideInInspector] public PlayerPowerUp playerPowerUp;
+    [HideInInspector] public PlayerReflectAmmo playerReflectAmmo;
     [HideInInspector] public Health health;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator animator;
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
         playerControl = GetComponent<PlayerControl>();
         playerPowerUp = GetComponent<PlayerPowerUp>();
+        playerReflectAmmo = GetComponent<PlayerReflectAmmo>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         activeWeapon = GetComponent<ActiveWeapon>();

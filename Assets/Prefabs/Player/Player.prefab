@@ -1433,6 +1433,7 @@ GameObject:
   - component: {fileID: 6488728129132894053}
   - component: {fileID: 4592885024319373433}
   - component: {fileID: 2428291616299338314}
+  - component: {fileID: 5611459364300252704}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1642,11 +1643,14 @@ MonoBehaviour:
   handRenderer: {fileID: 294700202942620467}
   playerDetails: {fileID: 0}
   playerControl: {fileID: 0}
+  playerPowerUp: {fileID: 0}
+  playerReflectAmmo: {fileID: 0}
   health: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
   activeWeapon: {fileID: 0}
   postHitImmunity: {fileID: 0}
+  fireWeapon: {fileID: 0}
   aimWeaponEvent: {fileID: 0}
   idleEvent: {fileID: 0}
   movementByVelocityEvent: {fileID: 0}
@@ -1828,6 +1832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireFeedback: {fileID: 5620488052944782777}
+  multiShotOffset: 10
 --- !u!114 &4957230478223842205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1929,7 +1934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteFlashInterval: 0.1
-  spriteFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  spriteFlashColor: {r: 1, g: 1, b: 1, a: 1}
   triggerImmunityThreshold: 1
   immunityTime: 0
 --- !u!114 &6195978319502668948
@@ -2024,6 +2029,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2004581340681601072}
+--- !u!114 &5611459364300252704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585357847043585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4661609469036c4e916268e4f2ed56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ammoPrefab: {fileID: 3415706278289267979, guid: 44ea12b8330b1df4bb2f0197e192b309, type: 3}
+  _ammoMaterial: {fileID: 2100000, guid: 5c86445c1f630c141ab88b05539eca5d, type: 2}
 --- !u!1 &4644113007034623212
 GameObject:
   m_ObjectHideFlags: 0

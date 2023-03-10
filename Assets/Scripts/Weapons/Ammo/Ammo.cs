@@ -13,10 +13,13 @@ public class Ammo : MonoBehaviour, IFireable
     private float speed;
 
     private Vector3 fireDirectionVector;
+    public Vector3 FireDirectionVector { get { return fireDirectionVector; } }
+
     private float fireDirectionAngle;
 
     private SpriteRenderer spriteRenderer;
     private AmmoDetailsSO ammoDetails;
+    public AmmoDetailsSO AmmoDetails { get { return ammoDetails; } }
 
     private float chargeTimer;
     private bool ammoMaterialIsSet = false;

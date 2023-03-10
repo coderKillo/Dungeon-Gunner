@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
     private Player player;
     private Enemy enemy;
 
-    [HideInInspector] public bool isDamageable = true;
+    [ShowInInspector] public bool isDamageable = true;
 
 
     [ShowInInspector] private int currentHealth;

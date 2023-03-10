@@ -140,7 +140,13 @@ public class Card
 
     private IEnumerator ReflectPowerUp(Player player)
     {
-        yield return new WaitForSeconds(1f);
+        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
+
+        player.playerReflectAmmo.Enable();
+
+        yield return new WaitForSeconds(duration);
+
+        player.playerReflectAmmo.Disable();
     }
 
     private IEnumerator BlackHolePowerUp(Player player)

@@ -15,7 +15,8 @@ MonoBehaviour:
   weaponName: Pistol Enemy
   weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
   shootPosition: {x: 1.115, y: 0.277, z: 0}
-  ammo: {fileID: 11400000, guid: 819cd0edb56180f4fbbff34757a4f5ca, type: 2}
+  positionOffset: 0
+  ammo: {fileID: 11400000, guid: 3ccbec8e045c0ed4e828bd0bdb394927, type: 2}
   hasInfiniteAmmo: 1
   ammoCapacity: 0
   hasInfiniteClipCapacity: 0
@@ -23,6 +24,9 @@ MonoBehaviour:
   fireRate: 0.25
   prechargeTime: 0
   reloadTime: 1.2
+  removeAfterAmmoIsEmpty: 0
   fireSoundEffect: {fileID: 11400000, guid: f6f328d879891284fad1eaed3a3da8b3, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: fa49f5e570745124eb6a202c6b185580, type: 2}
-  fireVisualEffect: {fileID: 11400000, guid: e6e00a911255b144cac24ba703dad1c0, type: 2}
+  fireVisualEffect: {fileID: 0}
+  shotAnimation: {fileID: 0}
+  chargeAnimation: {fileID: 0}

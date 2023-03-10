@@ -21,6 +21,7 @@ MonoBehaviour:
   chargeTime: 0
   chargeMaterial: {fileID: 0}
   damage: 6
+  critChance: 0.1
   speedMin: 13
   speedMax: 15
   range: 20
@@ -36,4 +37,5 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
-  hitVisualEffect: {fileID: 11400000, guid: 12ca15e7d6648684ebd774ab087cdf77, type: 2}
+  hitVisualEffect: {fileID: 0}
+  hitAudioEffect: {fileID: 0}

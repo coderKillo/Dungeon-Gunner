@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(Player))]
 [DisallowMultipleComponent]
@@ -15,8 +16,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private MMF_Player startDashFeedback;
     [SerializeField] private MMF_Player stopDashFeedback;
 
-    [HideInInspector] public bool isDashing = false;
-    [HideInInspector] public bool isEnabled = true;
+    [ReadOnly] public bool isDashing = false;
+    [ReadOnly] public bool isEnabled = true;
 
     private Player player;
     private float moveSpeed;
