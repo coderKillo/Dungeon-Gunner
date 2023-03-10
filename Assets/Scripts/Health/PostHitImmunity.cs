@@ -45,8 +45,10 @@ public class PostHitImmunity : MonoBehaviour
             Sequence mySequence = DOTween.Sequence();
             mySequence.SetLoops(intervals)
             .AppendCallback(() => health.isDamageable = false)
-            .Append(spriteRenderer.DOColor(spriteFlashColor, spriteFlashInterval))
-            .Append(spriteRenderer.DOColor(Color.white, spriteFlashInterval))
+            .AppendCallback(() => spriteRenderer.material.EnableKeyword("HITEFFECT_ON"))
+            .AppendInterval(spriteFlashInterval)
+            .AppendCallback(() => spriteRenderer.material.DisableKeyword("HITEFFECT_ON"))
+            .AppendInterval(spriteFlashInterval)
             .OnComplete(() => health.isDamageable = true);
         }
     }

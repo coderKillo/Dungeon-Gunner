@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class HealthUI : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class HealthUI : MonoBehaviour
     [SerializeField] private GameObject healthBarDelayed;
     [SerializeField] private float delayTime;
     [SerializeField] private float shrinkSpeed;
+
+    [Space(10)]
+    [Header("FEEDBACKS")]
+    [SerializeField] private MMF_Player damageFeedback;
     #endregion
 
     private Coroutine healthBarDelayRoutine;
@@ -43,6 +48,11 @@ public class HealthUI : MonoBehaviour
 
     private void HealthEvent_OnHealthChanged(HealthEvent arg1, HealthEventArgs arg2)
     {
+        if (arg2.damageAmount > 0f)
+        {
+            damageFeedback.PlayFeedbacks();
+        }
+
         SetHealthBar(arg2.healthPercent);
         SetShieldBar(arg2.shieldPercent);
 
