@@ -21,9 +21,6 @@ public class AmmoBlackHole : MonoBehaviour, IFireable
             gameObject.SetActive(false);
         }
 
-        // TODO: add indicator for black hole radius
-        Debug.DrawCircle(transform.position, _radius, 20, Color.green);
-
         PullEnemies();
     }
 
@@ -62,6 +59,7 @@ public class AmmoBlackHole : MonoBehaviour, IFireable
         _force = ammoDetails.damage;
 
         transform.position = HelperUtilities.GetWorldMousePosition();
+        transform.localScale = Vector3.one * (_radius / 5f);
 
         _timer = _duration;
 
