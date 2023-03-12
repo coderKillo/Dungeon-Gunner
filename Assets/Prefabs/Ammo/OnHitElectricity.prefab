@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 5
-  _speed: 200
   _damage: 10
   _electricityBulletPrefab: {fileID: 559542460712831116, guid: 0aa616512b5f09946a16406bf6ac1b76, type: 3}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 32768

@@ -149,19 +149,17 @@ public class Card
         player.playerReflectAmmo.Disable();
     }
 
-    private IEnumerator BlackHolePowerUp(Player player)
-    {
-        yield return new WaitForSeconds(1f);
-    }
-
-    private IEnumerator FireBallPowerUp(Player player)
-    {
-        yield return new WaitForSeconds(1f);
-    }
-
     private IEnumerator LightningShotPowerUp(Player player)
     {
-        yield return new WaitForSeconds(1f);
+        // TODO: add damage
+        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
+        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
+
+        player.fireWeapon.OnHitEffect = details.OnHitEffect;
+
+        yield return new WaitForSeconds(duration);
+
+        player.fireWeapon.OnHitEffect = null;
     }
 
     private IEnumerator LightningDashPowerUp(Player player)

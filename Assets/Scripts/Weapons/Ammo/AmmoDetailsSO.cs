@@ -51,11 +51,11 @@ public class AmmoDetailsSO : ScriptableObject
     [Range(0f, 1f)] public float trailEndWidth;
 
     [Space(10)]
-    [Header("Ammo VISUAL EFFECTS")]
+    [Header("AMMO VISUAL EFFECTS")]
     public SpriteEffectSO hitVisualEffect;
 
     [Space(10)]
-    [Header("Ammo AUDIO EFFECTS")]
+    [Header("AMMO AUDIO EFFECTS")]
     public SoundEffectSO hitAudioEffect;
 
     #region VALIDATION

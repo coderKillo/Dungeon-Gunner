@@ -54,6 +54,12 @@ public class CardSO : ScriptableObject
     [ShowIf("isBuff")]
     public float powerUpScaleDuration;
 
+    [ShowIf("isBuff")]
+    public bool isOnHit;
+
+    [ShowIf("isOnHit")]
+    public GameObject OnHitEffect;
+
     [ShowIf("action", CardAction.PowerUp)]
     public bool isSpell;
 

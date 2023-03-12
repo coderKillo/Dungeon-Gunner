@@ -25,7 +25,7 @@ public class ElectricityEffect : MonoBehaviour
         _particleSystem = GetComponent<ParticleSystem>();
     }
 
-    private void OnEnable()
+    public void Fire()
     {
         transform.position = _source;
 
@@ -34,6 +34,7 @@ public class ElectricityEffect : MonoBehaviour
         RotateToTarget();
 
         var sequence = DOTween.Sequence();
+        sequence.AppendCallback(() => { gameObject.SetActive(true); });
         sequence.Append(transform.DOMove(targetWithMinDistance, _travelTime));
         sequence.AppendInterval(_bulletDuration);
         sequence.AppendCallback(() => { gameObject.SetActive(false); });

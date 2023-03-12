@@ -487,6 +487,12 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 8273311659018516755, guid: 393a14e4b86c35942b748f902ade3100, type: 3}
     componentTypeName: IFireable
+  - size: 50
+    prefab: {fileID: 559542460712831116, guid: 0aa616512b5f09946a16406bf6ac1b76, type: 3}
+    componentTypeName: ElectricityEffect
+  - size: 10
+    prefab: {fileID: 3094952707187928390, guid: 1330285369f309b41bcff521dd50f1d5, type: 3}
+    componentTypeName: IOnHit
 --- !u!1 &304039099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2134,7 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 1
+    height: 0.999817
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2636,6 +2642,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}

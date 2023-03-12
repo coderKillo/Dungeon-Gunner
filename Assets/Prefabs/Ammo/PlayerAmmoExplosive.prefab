@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5062473550907954512}
   - component: {fileID: 8087064178203744304}
-  - component: {fileID: 6392799203748116069}
+  - component: {fileID: 8863414850323855632}
   - component: {fileID: 2266906687519434815}
   - component: {fileID: 7025265209078803840}
   m_Layer: 14
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6392799203748116069
+--- !u!114 &8863414850323855632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,10 +97,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3415706278289267979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9272d28b5dae1bd4c8a4836494dbe772, type: 3}
+  m_Script: {fileID: 11500000, guid: 6416f1186be0f3448acca5ac214077ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailRenderer: {fileID: 6438627784644722470}
+  trailRenderer: {fileID: 0}
+  radius: 2
 --- !u!60 &2266906687519434815
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4918542077949353904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -229,7 +230,7 @@ TrailRenderer:
   m_SortingLayerID: -653709415
   m_SortingLayer: 4
   m_SortingOrder: 10
-  m_Time: 5
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -238,13 +239,22 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.5165877
+        inSlope: -0.83856
+        outSlope: -0.83856
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.1017316
+      - serializedVersion: 3
+        time: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

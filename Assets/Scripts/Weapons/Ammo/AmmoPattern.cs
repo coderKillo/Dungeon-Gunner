@@ -32,6 +32,10 @@ public class AmmoPattern : MonoBehaviour, IFireable
         gameObject.SetActive(true);
     }
 
+    public void SetOnHitEffect(GameObject onHitEffect)
+    {
+    }
+
     private void Update()
     {
         if (chargingTimer > 0)

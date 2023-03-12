@@ -5,12 +5,20 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Ammo : MonoBehaviour, IFireable
 {
     [SerializeField] private TrailRenderer trailRenderer;
 
-    private float range;
-    private float speed;
+    protected float range;
+    protected float speed;
+    protected int damage = 0;
+    protected float critDamage = 1.5f;
+    protected float critChance = 0f;
+    protected bool isColliding = false;
+    protected AmmoDetailsSO ammoDetails;
+    public AmmoDetailsSO AmmoDetails { get { return ammoDetails; } }
 
     private Vector3 fireDirectionVector;
     public Vector3 FireDirectionVector { get { return fireDirectionVector; } }
@@ -18,18 +26,14 @@ public class Ammo : MonoBehaviour, IFireable
     private float fireDirectionAngle;
 
     private SpriteRenderer spriteRenderer;
-    private AmmoDetailsSO ammoDetails;
-    public AmmoDetailsSO AmmoDetails { get { return ammoDetails; } }
+    private PolygonCollider2D polygonCollider;
 
     private float chargeTimer;
     private bool ammoMaterialIsSet = false;
-    private bool isColliding = false;
-    private int damage = 0;
-    private float critDamage = 1.5f;
-    private float critChance = 0f;
     private bool overrideAmmoMovement;
+    private GameObject onHitEffect;
 
-    public void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
+    public virtual void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
         this.ammoDetails = ammoDetails;
         this.chargeTimer = ammoDetails.chargeTime;
@@ -92,9 +96,10 @@ public class Ammo : MonoBehaviour, IFireable
         return gameObject;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
     private void Update()
@@ -144,12 +149,14 @@ public class Ammo : MonoBehaviour, IFireable
         gameObject.SetActive(false);
     }
 
-    private void DealDamage(Collider2D collider)
+    protected void DealDamage(Collider2D collider)
     {
         var health = collider.GetComponent<Health>();
 
         if (health != null)
         {
+            OnHit();
+
             if (IsCrit())
             {
                 health.TakeDamage(Mathf.RoundToInt(damage * critDamage), true);
@@ -161,12 +168,23 @@ public class Ammo : MonoBehaviour, IFireable
         }
     }
 
-    private bool IsCrit()
+    protected void PlayHitSound()
+    {
+        var soundEffect = ammoDetails.hitAudioEffect;
+        if (soundEffect == null)
+        {
+            return;
+        }
+
+        SoundEffectManager.Instance.PlaySoundEffect(soundEffect);
+    }
+
+    protected bool IsCrit()
     {
         return Random.Range(0, 100) < critChance * 100;
     }
 
-    private void AmmoHitEffect()
+    protected void AmmoHitEffect()
     {
         var visualEffect = ammoDetails.hitVisualEffect;
 
@@ -178,5 +196,23 @@ public class Ammo : MonoBehaviour, IFireable
         var ammoHitEffect = (SpriteEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.spriteEffectPrefab, transform.position, Quaternion.identity);
         ammoHitEffect.Initialize(visualEffect);
         ammoHitEffect.gameObject.SetActive(true);
+    }
+
+    protected void OnHit()
+    {
+        if (onHitEffect == null)
+        {
+            return;
+        }
+
+        var ammoHitEffect = (IOnHit)PoolManager.Instance.ReuseComponent(onHitEffect, transform.position, Quaternion.identity);
+        ammoHitEffect.GetGameObject().SetActive(true);
+        ammoHitEffect.Hit();
+    }
+
+    public void SetOnHitEffect(GameObject onHitEffect)
+    {
+        Debug.Log("set Onhit:" + (onHitEffect != null ? "valid" : "not valid"));
+        this.onHitEffect = onHitEffect;
     }
 }
