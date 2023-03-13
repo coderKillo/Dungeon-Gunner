@@ -117,7 +117,7 @@ public class Health : MonoBehaviour
             return false;
         }
 
-        if (player && player.IsRolling())
+        if (player && player.IsDashing())
         {
             return false;
         }

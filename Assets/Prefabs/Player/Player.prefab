@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6937152982385481714}
+  - {fileID: 1707652859845724449}
   - {fileID: 1193622684409234863}
   - {fileID: 2296195692379324783}
   m_Father: {fileID: 4585357847043585032}
@@ -600,6 +600,37 @@ MonoBehaviour:
           m_PropagationSpeed: 343
         Velocity: {x: 0.47, y: 0.95, z: 0}
         ClearImpulseOnStop: 0
+--- !u!1 &2615459851584399290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2273478010841350600}
+  m_Layer: 10
+  m_Name: DashVFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2273478010841350600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615459851584399290}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4906072286243793295}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2666148502720246136
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +793,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7921193060669606776}
+  m_Father: {fileID: 1707652859845724449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4160159260998870917
@@ -850,6 +881,7 @@ MonoBehaviour:
   - rid: 5240116940977995785
   - rid: 5240116940977995786
   - rid: 6969706889048227846
+  - rid: 9163178488064376835
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
@@ -1074,7 +1106,7 @@ MonoBehaviour:
     - rid: 6969706889048227846
       type: {class: MMF_Property, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
       data:
-        Active: 1
+        Active: 0
         UniqueID: -1377747777
         Label: Property
         ChannelMode: 0
@@ -1212,6 +1244,113 @@ MonoBehaviour:
         RemapLevelZero: 0
         RemapLevelOne: 1
         InstantLevel: 1
+    - rid: 9163178488064376835
+      type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
+      data:
+        Active: 1
+        UniqueID: -153007980
+        Label: Cinemachine Impulse
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        Owner: {fileID: 4160159260998870917}
+        DebugActive: 0
+        m_ImpulseDefinition:
+          m_ImpulseChannel: 1
+          m_ImpulseShape: 0
+          m_CustomImpulseShape:
+            serializedVersion: 2
+            m_Curve: []
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          m_ImpulseDuration: 0.2
+          m_ImpulseType: 3
+          m_DissipationRate: 0
+          m_RawSignal: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
+          m_AmplitudeGain: 1
+          m_FrequencyGain: 1
+          m_RepeatMode: 0
+          m_Randomize: 1
+          m_TimeEnvelope:
+            m_AttackShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            m_DecayShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            m_AttackTime: 0
+            m_SustainTime: 0.2
+            m_DecayTime: 0.7
+            m_ScaleWithImpact: 1
+            m_HoldForever: 0
+          m_ImpactRadius: 100
+          m_DirectionMode: 0
+          m_DissipationMode: 2
+          m_DissipationDistance: 100
+          m_PropagationSpeed: 343
+        Velocity: {x: 0.4, y: 0.4, z: 0}
+        ClearImpulseOnStop: 0
 --- !u!1 &2923943939312907291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,6 +1573,7 @@ GameObject:
   - component: {fileID: 4592885024319373433}
   - component: {fileID: 2428291616299338314}
   - component: {fileID: 5611459364300252704}
+  - component: {fileID: 8105871379126533832}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1645,6 +1785,7 @@ MonoBehaviour:
   playerControl: {fileID: 0}
   playerPowerUp: {fileID: 0}
   playerReflectAmmo: {fileID: 0}
+  playerDash: {fileID: 0}
   health: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
@@ -1676,9 +1817,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDetails: {fileID: 11400000, guid: 816009b4a56469045a76096073e11764, type: 2}
-  startDashFeedback: {fileID: 4160159260998870917}
-  stopDashFeedback: {fileID: 1112297717573549075}
-  isDashing: 0
   isEnabled: 1
 --- !u!114 &6598218562824775065
 MonoBehaviour:
@@ -2043,6 +2181,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ammoPrefab: {fileID: 3415706278289267979, guid: 44ea12b8330b1df4bb2f0197e192b309, type: 3}
   _ammoMaterial: {fileID: 2100000, guid: 5c86445c1f630c141ab88b05539eca5d, type: 2}
+--- !u!114 &8105871379126533832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585357847043585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02726583a8e98a4094c03373b11eb2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dashEffect: {fileID: 11400000, guid: cf52a6cbcd3a9d8468dabb0addac4ad1, type: 2}
+  _dashEffectSpawnLocation: {fileID: 2273478010841350600}
+  _dashSoundEffect: {fileID: 11400000, guid: 9d28d55d4263b2e409fdd4af109200ff, type: 2}
+  _startDashFeedback: {fileID: 4160159260998870917}
+  _stopDashFeedback: {fileID: 1112297717573549075}
 --- !u!1 &4644113007034623212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,8 +2303,41 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7859873274464725609}
+  - {fileID: 2273478010841350600}
   m_Father: {fileID: 4585357847043585032}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5231246503794903635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707652859845724449}
+  m_Layer: 10
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707652859845724449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231246503794903635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6937152982385481714}
+  m_Father: {fileID: 7921193060669606776}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5947420354461193311
 GameObject:
@@ -2516,7 +2704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2296195692379324783
 Transform:
   m_ObjectHideFlags: 0
@@ -2553,7 +2741,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

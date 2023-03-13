@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0ab10f375e7379418728d542f462670, type: 3}
-  m_Name: CardDeck_Player
+  m_Script: {fileID: 11500000, guid: 9d724b4290d3d014d9d5213b1a1f57ab, type: 3}
+  m_Name: SoundEffect_Dash
   m_EditorClassIdentifier: 
-  deck:
-  - {fileID: 11400000, guid: c12575ddd1c362a478dfee655612f322, type: 2}
-  - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
+  soundEffectName: 
+  soundEffectPrefab: {fileID: 0}
+  audioClip: {fileID: 0}
+  pitchVariantMin: 0.8
+  pitchVariantMax: 1.2
+  volume: 1

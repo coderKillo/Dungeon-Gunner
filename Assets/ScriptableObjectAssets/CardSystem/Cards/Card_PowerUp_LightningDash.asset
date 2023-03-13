@@ -30,7 +30,7 @@ MonoBehaviour:
   powerUpColor: {r: 0, g: 0.7953818, b: 1, a: 1}
   powerUpDuration: 7
   powerUpScaleDuration: 2
-  isOnHit: 1
+  isOnHit: 0
   OnHitEffect: {fileID: 3094952707187928390, guid: 1330285369f309b41bcff521dd50f1d5, type: 3}
   isSpell: 0
   powerUpSpell: {fileID: 0}

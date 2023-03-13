@@ -33,6 +33,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(DestroyedEvent))]
 [RequireComponent(typeof(PlayerDied))]
+[RequireComponent(typeof(PlayerDash))]
 [RequireComponent(typeof(PostHitImmunity))]
 [RequireComponent(typeof(ReceiveContactDamage))]
 [RequireComponent(typeof(PlayerPowerUp))]
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerControl playerControl;
     [HideInInspector] public PlayerPowerUp playerPowerUp;
     [HideInInspector] public PlayerReflectAmmo playerReflectAmmo;
+    [HideInInspector] public PlayerDash playerDash;
     [HideInInspector] public Health health;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator animator;
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
         playerControl = GetComponent<PlayerControl>();
         playerPowerUp = GetComponent<PlayerPowerUp>();
         playerReflectAmmo = GetComponent<PlayerReflectAmmo>();
+        playerDash = GetComponent<PlayerDash>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         activeWeapon = GetComponent<ActiveWeapon>();
@@ -173,9 +176,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public bool IsRolling()
+    public bool IsDashing()
     {
-        return playerControl.isDashing;
+        return playerDash.IsDashing();
     }
 
     public bool EnablePlayer(bool enabled)

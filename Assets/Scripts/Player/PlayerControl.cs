@@ -11,21 +11,11 @@ public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private MovementDetailsSO movementDetails;
 
-    [Space(10)]
-    [Header("Feedbacks")]
-    [SerializeField] private MMF_Player startDashFeedback;
-    [SerializeField] private MMF_Player stopDashFeedback;
-
-    [ReadOnly] public bool isDashing = false;
     [ReadOnly] public bool isEnabled = true;
 
     private Player player;
     private float moveSpeed;
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
-
-    private Coroutine dashCoroutine;
-    private WaitForFixedUpdate waitForFixedUpdate;
-    private float dashingCooldownTimer = 0f;
 
     private int currentWeaponIndex = 0;
 
@@ -39,8 +29,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Start()
     {
-        waitForFixedUpdate = new WaitForFixedUpdate();
-
         SetPlayerAnimationSpeed();
 
         SetStartingWeapon();
@@ -54,7 +42,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (isDashing)
+        if (player.playerDash.IsDashing())
         {
             return;
         }
@@ -65,12 +53,11 @@ public class PlayerControl : MonoBehaviour
 
         UseItemInput();
 
-        DashCooldownTimer();
     }
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        StopDashingCoroutine();
+        player.playerDash.StopDash();
     }
 
     private void WeaponInput()
@@ -202,9 +189,9 @@ public class PlayerControl : MonoBehaviour
 
         if (direction != Vector2.zero)
         {
-            if (shiftButtonPressed && dashingCooldownTimer <= 0f)
+            if (shiftButtonPressed && player.playerDash.CanDash())
             {
-                dashCoroutine = StartCoroutine(RollCoroutine(direction));
+                player.playerDash.Dash(movementDetails, direction);
             }
             else
             {
@@ -215,49 +202,6 @@ public class PlayerControl : MonoBehaviour
         {
             player.idleEvent.CallIdleEvent();
         }
-    }
-
-    private IEnumerator RollCoroutine(Vector2 direction)
-    {
-        isDashing = true;
-
-        var targetPosition = transform.position + (Vector3)direction * movementDetails.dashTime * movementDetails.dashSpeed;
-        var timeElapsed = 0f;
-
-        startDashFeedback.PlayFeedbacks();
-
-        while (timeElapsed < movementDetails.dashTime)
-        {
-            timeElapsed += Time.fixedDeltaTime;
-
-            var dashSpeedMultiplier = movementDetails.dashSpeedMultiplier.Evaluate(timeElapsed / movementDetails.dashTime);
-            var dashSpeed = movementDetails.dashSpeed * dashSpeedMultiplier;
-
-            player.movementToPositionEvent.CallMovementToPositionEvent(transform.position, targetPosition, dashSpeed, direction, isDashing);
-            yield return waitForFixedUpdate;
-        }
-
-        StopDashingCoroutine();
-    }
-
-    private void DashCooldownTimer()
-    {
-        if (dashingCooldownTimer >= 0f)
-        {
-            dashingCooldownTimer -= Time.deltaTime;
-        }
-    }
-
-    private void StopDashingCoroutine()
-    {
-        if (dashCoroutine != null)
-        {
-            StopCoroutine(dashCoroutine);
-        }
-
-        dashingCooldownTimer = movementDetails.dashCooldown;
-        stopDashFeedback.PlayFeedbacks();
-        isDashing = false;
     }
 
     private void SetPlayerAnimationSpeed()
