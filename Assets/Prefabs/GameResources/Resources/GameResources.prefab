@@ -75,3 +75,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}
   preferredEnemyPath: {fileID: 11400000, guid: 3ce5fb260af53d24887b55c3d50041e2, type: 2}
   emptyAnimationClip: {fileID: 7400000, guid: ef08ea85142b0574599906cc0a7ef441, type: 2}
+  dashSmokeEffect: {fileID: 11400000, guid: cf52a6cbcd3a9d8468dabb0addac4ad1, type: 2}
+  dashLightningEffect: {fileID: 11400000, guid: 88f7a3f8df09bbc44a22831d36beece1, type: 2}

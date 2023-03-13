@@ -66,6 +66,11 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damageAmount, bool isCrit)
     {
+        if (damageAmount <= 0)
+        {
+            return;
+        }
+
         if (!IsDamageable())
         {
             return;

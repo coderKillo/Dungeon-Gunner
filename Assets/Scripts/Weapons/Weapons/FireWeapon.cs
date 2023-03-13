@@ -31,6 +31,9 @@ public class FireWeapon : MonoBehaviour
     private GameObject onHitEffect;
     public GameObject OnHitEffect { set { onHitEffect = value; } }
 
+    private int onHitDamage;
+    public int OnHitDamage { set { onHitDamage = value; } }
+
     enum WeaponState
     {
         Idle,
@@ -226,7 +229,7 @@ public class FireWeapon : MonoBehaviour
 
                 var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
                 ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle + offsetAngle, weaponAimAngle + offsetAngle, speed, weaponAimDirectionVector + offsetVector, damage, critChance);
-                ammo.SetOnHitEffect(onHitEffect);
+                ammo.SetOnHitEffect(onHitEffect, onHitDamage);
             }
 
             yield return new WaitForSeconds(spawnInterval);

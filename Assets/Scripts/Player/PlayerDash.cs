@@ -5,11 +5,20 @@ using MoreMountains.Feedbacks;
 using System;
 
 [RequireComponent(typeof(MovementToPositionEvent))]
+[RequireComponent(typeof(DealContactDamage))]
+[RequireComponent(typeof(PlayerControl))]
 public class PlayerDash : MonoBehaviour
 {
     [Space(10)]
+    [Header("Contact Damage")]
+    [SerializeField] private int _contactDamage = 0;
+    public int Damage { set { _contactDamage = value; } }
+
+    [Space(10)]
     [Header("Effects")]
     [SerializeField] private SpriteEffectSO _dashEffect;
+    public SpriteEffectSO Effect { set { _dashEffect = value; } }
+
     [SerializeField] private Transform _dashEffectSpawnLocation;
     [SerializeField] private SoundEffectSO _dashSoundEffect;
 
@@ -21,14 +30,17 @@ public class PlayerDash : MonoBehaviour
     private bool _isDashing = false;
     private float _dashingCooldownTimer = 0f;
     private Coroutine _dashCoroutine;
-    private MovementDetailsSO _movementDetails;
     private WaitForFixedUpdate _waitForFixedUpdate;
 
-    private MovementToPositionEvent movementToPositionEvent;
+    private MovementToPositionEvent _movementToPositionEvent;
+    private DealContactDamage _dealContactDamage;
+    private PlayerControl _playerControl;
 
     private void Awake()
     {
-        movementToPositionEvent = GetComponent<MovementToPositionEvent>();
+        _movementToPositionEvent = GetComponent<MovementToPositionEvent>();
+        _dealContactDamage = GetComponent<DealContactDamage>();
+        _playerControl = GetComponent<PlayerControl>();
     }
 
     private void Start()
@@ -48,13 +60,12 @@ public class PlayerDash : MonoBehaviour
 
     public bool IsDashing() { return _isDashing; }
 
-    public void Dash(MovementDetailsSO details, Vector2 direction)
+    public void Dash(Vector2 direction)
     {
-        _movementDetails = details;
-
         DashEffect(direction);
         DashSoundEffect();
 
+        _dealContactDamage.Damage = _contactDamage;
         _dashCoroutine = StartCoroutine(DashCoroutine(direction));
     }
 
@@ -65,7 +76,8 @@ public class PlayerDash : MonoBehaviour
             StopCoroutine(_dashCoroutine);
         }
 
-        _dashingCooldownTimer = _movementDetails.dashCooldown;
+        _dealContactDamage.Damage = 0;
+        _dashingCooldownTimer = _playerControl.MovementDetails.dashCooldown;
         _stopDashFeedback.PlayFeedbacks();
         _isDashing = false;
     }
@@ -74,19 +86,19 @@ public class PlayerDash : MonoBehaviour
     {
         _isDashing = true;
 
-        var targetPosition = transform.position + (Vector3)direction * _movementDetails.dashTime * _movementDetails.dashSpeed;
+        var targetPosition = transform.position + (Vector3)direction * _playerControl.MovementDetails.dashTime * _playerControl.MovementDetails.dashSpeed;
         var timeElapsed = 0f;
 
         _startDashFeedback.PlayFeedbacks();
 
-        while (timeElapsed < _movementDetails.dashTime)
+        while (timeElapsed < _playerControl.MovementDetails.dashTime)
         {
             timeElapsed += Time.fixedDeltaTime;
 
-            var dashSpeedMultiplier = _movementDetails.dashSpeedMultiplier.Evaluate(timeElapsed / _movementDetails.dashTime);
-            var dashSpeed = _movementDetails.dashSpeed * dashSpeedMultiplier;
+            var dashSpeedMultiplier = _playerControl.MovementDetails.dashSpeedMultiplier.Evaluate(timeElapsed / _playerControl.MovementDetails.dashTime);
+            var dashSpeed = _playerControl.MovementDetails.dashSpeed * dashSpeedMultiplier;
 
-            movementToPositionEvent.CallMovementToPositionEvent(transform.position, targetPosition, dashSpeed, direction, _isDashing);
+            _movementToPositionEvent.CallMovementToPositionEvent(transform.position, targetPosition, dashSpeed, direction, _isDashing);
             yield return _waitForFixedUpdate;
         }
 

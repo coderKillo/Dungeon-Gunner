@@ -2102,7 +2102,7 @@ MonoBehaviour:
   damageAmount: 1
   mask:
     serializedVersion: 2
-    m_Bits: 131072
+    m_Bits: 163840
 --- !u!114 &4042962357645546867
 MonoBehaviour:
   m_ObjectHideFlags: 0

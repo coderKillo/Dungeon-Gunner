@@ -10,6 +10,7 @@ using Sirenix.OdinInspector;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private MovementDetailsSO movementDetails;
+    public MovementDetailsSO MovementDetails { get { return movementDetails; } }
 
     [ReadOnly] public bool isEnabled = true;
 
@@ -191,7 +192,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (shiftButtonPressed && player.playerDash.CanDash())
             {
-                player.playerDash.Dash(movementDetails, direction);
+                player.playerDash.Dash(direction);
             }
             else
             {

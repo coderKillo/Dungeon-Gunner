@@ -83,4 +83,9 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("WEAPON ANIMATION")]
     public AnimationClip emptyAnimationClip;
+
+    [Space(10)]
+    [Header("PLAYER DASH EFFECTS")]
+    public SpriteEffectSO dashSmokeEffect;
+    public SpriteEffectSO dashLightningEffect;
 }

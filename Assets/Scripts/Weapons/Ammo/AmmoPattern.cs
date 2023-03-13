@@ -32,7 +32,7 @@ public class AmmoPattern : MonoBehaviour, IFireable
         gameObject.SetActive(true);
     }
 
-    public void SetOnHitEffect(GameObject onHitEffect)
+    public void SetOnHitEffect(GameObject onHitEffect, int damage)
     {
     }
 

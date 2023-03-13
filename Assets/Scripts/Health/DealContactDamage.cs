@@ -7,9 +7,11 @@ using DG.Tweening;
 public class DealContactDamage : MonoBehaviour
 {
     [SerializeField] private int damageAmount;
+    public int Damage { set { damageAmount = value; } }
+
     [SerializeField] LayerMask mask;
 
-    private bool isColliding = false;
+    private List<GameObject> alreadyCollided = new List<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,7 +25,7 @@ public class DealContactDamage : MonoBehaviour
 
     private void ContactDamage(Collider2D collider)
     {
-        if (isColliding)
+        if (alreadyCollided.Contains(collider.gameObject))
         {
             return;
         }
@@ -40,7 +42,7 @@ public class DealContactDamage : MonoBehaviour
             return;
         }
 
-        isColliding = true;
+        alreadyCollided.Add(collider.gameObject);
 
         receiver.TakeContactDamage(damageAmount);
 
@@ -49,7 +51,7 @@ public class DealContactDamage : MonoBehaviour
 
     private void ResetCollision()
     {
-        isColliding = false;
+        alreadyCollided.Clear();
     }
 
 }

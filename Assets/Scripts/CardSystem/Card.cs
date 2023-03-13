@@ -151,11 +151,11 @@ public class Card
 
     private IEnumerator LightningShotPowerUp(Player player)
     {
-        // TODO: add damage
         var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
         var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
 
         player.fireWeapon.OnHitEffect = details.OnHitEffect;
+        player.fireWeapon.OnHitDamage = Mathf.RoundToInt(damage);
 
         yield return new WaitForSeconds(duration);
 
@@ -164,7 +164,17 @@ public class Card
 
     private IEnumerator LightningDashPowerUp(Player player)
     {
-        yield return new WaitForSeconds(1f);
+        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
+        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
+
+        player.playerDash.Effect = GameResources.Instance.dashLightningEffect;
+        player.playerDash.Damage = Mathf.RoundToInt(damage);
+        // TODO: fix collision with enemies when dashing
+
+        yield return new WaitForSeconds(duration);
+
+        player.playerDash.Effect = GameResources.Instance.dashSmokeEffect;
+        player.playerDash.Damage = Mathf.RoundToInt(0);
     }
 }
 

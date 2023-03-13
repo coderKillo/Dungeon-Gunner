@@ -32,6 +32,7 @@ public class Ammo : MonoBehaviour, IFireable
     private bool ammoMaterialIsSet = false;
     private bool overrideAmmoMovement;
     private GameObject onHitEffect;
+    private int onHitDamage = 0;
 
     public virtual void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
@@ -106,6 +107,7 @@ public class Ammo : MonoBehaviour, IFireable
     {
         if (chargeTimer > 0f)
         {
+            // TODO: add UI to visualize charging
             chargeTimer -= Time.deltaTime;
             return;
         }
@@ -207,12 +209,13 @@ public class Ammo : MonoBehaviour, IFireable
 
         var ammoHitEffect = (IOnHit)PoolManager.Instance.ReuseComponent(onHitEffect, transform.position, Quaternion.identity);
         ammoHitEffect.GetGameObject().SetActive(true);
+        ammoHitEffect.SetDamage(onHitDamage);
         ammoHitEffect.Hit();
     }
 
-    public void SetOnHitEffect(GameObject onHitEffect)
+    public void SetOnHitEffect(GameObject onHitEffect, int damage)
     {
-        Debug.Log("set Onhit:" + (onHitEffect != null ? "valid" : "not valid"));
         this.onHitEffect = onHitEffect;
+        this.onHitDamage = damage;
     }
 }
