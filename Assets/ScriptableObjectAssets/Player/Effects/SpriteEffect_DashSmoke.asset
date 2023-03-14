@@ -13,6 +13,22 @@ MonoBehaviour:
   m_Name: SpriteEffect_DashSmoke
   m_EditorClassIdentifier: 
   frameRate: 24
-  spriteArray: []
+  spriteArray:
+  - {fileID: -2077753324, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 575383165, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: -164928950, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 1752141596, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 226986783, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 1210333769, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 1831160449, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: -1692344321, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: -138733132, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 992037344, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 262338530, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 969569318, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 1097083593, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 344794350, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: 18456630, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
+  - {fileID: -678839190, guid: f4e8d225a5ae0304590ec0c7a37d3139, type: 3}
   offset: {x: 0, y: 0, z: 0}
   scale: {x: 1, y: 1}

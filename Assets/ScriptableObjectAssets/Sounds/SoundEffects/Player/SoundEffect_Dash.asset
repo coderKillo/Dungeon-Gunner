@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d724b4290d3d014d9d5213b1a1f57ab, type: 3}
   m_Name: SoundEffect_Dash
   m_EditorClassIdentifier: 
-  soundEffectName: 
-  soundEffectPrefab: {fileID: 0}
-  audioClip: {fileID: 0}
-  pitchVariantMin: 0.8
-  pitchVariantMax: 1.2
-  volume: 1
+  soundEffectName: Player Dash
+  soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
+  audioClip: {fileID: 8300000, guid: 77308395eaa471b47916fda42ee4fdaa, type: 3}
+  pitchVariantMin: 1.344
+  pitchVariantMax: 1.411
+  volume: 0.549

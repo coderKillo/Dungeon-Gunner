@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: SpriteEffect_DashLightning
   m_EditorClassIdentifier: 
   frameRate: 24
-  spriteArray: []
+  spriteArray:
+  - {fileID: 1006113582, guid: 785194e6542ee6743a9f348825fd0764, type: 3}
+  - {fileID: -189030527, guid: 785194e6542ee6743a9f348825fd0764, type: 3}
+  - {fileID: 300447014, guid: 785194e6542ee6743a9f348825fd0764, type: 3}
+  - {fileID: 1976827370, guid: 785194e6542ee6743a9f348825fd0764, type: 3}
+  - {fileID: 409957852, guid: 785194e6542ee6743a9f348825fd0764, type: 3}
   offset: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1}
+  scale: {x: 2, y: 2}

@@ -169,7 +169,6 @@ public class Card
 
         player.playerDash.Effect = GameResources.Instance.dashLightningEffect;
         player.playerDash.Damage = Mathf.RoundToInt(damage);
-        // TODO: fix collision with enemies when dashing
 
         yield return new WaitForSeconds(duration);
 

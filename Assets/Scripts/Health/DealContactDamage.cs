@@ -7,7 +7,7 @@ using DG.Tweening;
 public class DealContactDamage : MonoBehaviour
 {
     [SerializeField] private int damageAmount;
-    public int Damage { set { damageAmount = value; } }
+    public int Damage { set { damageAmount = value; } get { return damageAmount; } }
 
     [SerializeField] LayerMask mask;
 

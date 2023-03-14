@@ -11,7 +11,10 @@ public class PlayerDash : MonoBehaviour
 {
     [Space(10)]
     [Header("Contact Damage")]
+    [SerializeField] private Transform _contactDamageStartLocation;
+    [SerializeField] private LayerMask _contactDamageMask;
     [SerializeField] private int _contactDamage = 0;
+    [SerializeField] private float _contactDamageCollisionRadius = 0.7f;
     public int Damage { set { _contactDamage = value; } }
 
     [Space(10)]
@@ -33,13 +36,11 @@ public class PlayerDash : MonoBehaviour
     private WaitForFixedUpdate _waitForFixedUpdate;
 
     private MovementToPositionEvent _movementToPositionEvent;
-    private DealContactDamage _dealContactDamage;
     private PlayerControl _playerControl;
 
     private void Awake()
     {
         _movementToPositionEvent = GetComponent<MovementToPositionEvent>();
-        _dealContactDamage = GetComponent<DealContactDamage>();
         _playerControl = GetComponent<PlayerControl>();
     }
 
@@ -62,10 +63,14 @@ public class PlayerDash : MonoBehaviour
 
     public void Dash(Vector2 direction)
     {
+        if (_contactDamage > 0)
+        {
+            DealDamage(direction, _contactDamage);
+        }
+
         DashEffect(direction);
         DashSoundEffect();
 
-        _dealContactDamage.Damage = _contactDamage;
         _dashCoroutine = StartCoroutine(DashCoroutine(direction));
     }
 
@@ -76,7 +81,6 @@ public class PlayerDash : MonoBehaviour
             StopCoroutine(_dashCoroutine);
         }
 
-        _dealContactDamage.Damage = 0;
         _dashingCooldownTimer = _playerControl.MovementDetails.dashCooldown;
         _stopDashFeedback.PlayFeedbacks();
         _isDashing = false;
@@ -152,4 +156,20 @@ public class PlayerDash : MonoBehaviour
         SoundEffectManager.Instance.PlaySoundEffect(_dashSoundEffect);
     }
 
+    private void DealDamage(Vector2 direction, int damage)
+    {
+        var dashVector = direction.normalized * _playerControl.MovementDetails.dashSpeed * _playerControl.MovementDetails.dashTime;
+        var colliders = Physics2D.CircleCastAll(new Vector2(_contactDamageStartLocation.position.x, _contactDamageStartLocation.position.y), _contactDamageCollisionRadius, dashVector, dashVector.magnitude, _contactDamageMask);
+
+        foreach (var hit in colliders)
+        {
+            var health = hit.collider.GetComponent<Health>();
+            if (health == null)
+            {
+                continue;
+            }
+
+            health.TakeDamage(damage, false);
+        }
+    }
 }
