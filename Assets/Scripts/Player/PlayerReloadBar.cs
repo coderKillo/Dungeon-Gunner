@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,16 @@ public class PlayerReloadBar : MonoBehaviour
 {
     #region OBJECT REFERENCES
     [SerializeField] private RectTransform _bar;
+    [SerializeField] private RectTransform _barBackground;
     [SerializeField] private RectTransform _slider;
+    [SerializeField] private RectTransform _sliderCharging;
     [SerializeField] private float _barWith;
     #endregion
 
     private Player _player;
 
     private Coroutine _reloadWeaponCoroutine;
+    private Coroutine _chargeWeaponCoroutine;
 
     private void Awake()
     {
@@ -21,6 +25,10 @@ public class PlayerReloadBar : MonoBehaviour
 
     void Start()
     {
+        _barBackground.gameObject.SetActive(false);
+        _slider.gameObject.SetActive(false);
+        _sliderCharging.gameObject.SetActive(false);
+
         SetActiveWeapon(_player.activeWeapon.CurrentWeapon);
     }
 
@@ -29,6 +37,7 @@ public class PlayerReloadBar : MonoBehaviour
         _player.setActiveWeaponEvent.OnSetActiveWeapon += SetActiveWeaponEvent_OnSetActiveWeapon;
         _player.weaponReloadedEvent.OnWeaponReloaded += WeaponReloadedEvent_OnWeaponReloaded;
         _player.reloadWeaponEvent.OnReloadWeapon += ReloadWeaponEvent_OnReloadWeapon;
+        _player.chargeWeaponEvent.OnChargeWeapon += ChargeWeaponEvent_OnChargeWeapon;
     }
 
     private void OnDisable()
@@ -36,6 +45,7 @@ public class PlayerReloadBar : MonoBehaviour
         _player.setActiveWeaponEvent.OnSetActiveWeapon -= SetActiveWeaponEvent_OnSetActiveWeapon;
         _player.weaponReloadedEvent.OnWeaponReloaded -= WeaponReloadedEvent_OnWeaponReloaded;
         _player.reloadWeaponEvent.OnReloadWeapon -= ReloadWeaponEvent_OnReloadWeapon;
+        _player.chargeWeaponEvent.OnChargeWeapon -= ChargeWeaponEvent_OnChargeWeapon;
     }
 
     #region EVENT HANDLER
@@ -49,11 +59,28 @@ public class PlayerReloadBar : MonoBehaviour
         ResetWeaponReloadBar();
     }
 
-
     private void SetActiveWeaponEvent_OnSetActiveWeapon(SetActiveWeaponEvent arg1, SetActiveWeaponEventArgs arg2)
     {
         SetActiveWeapon(arg2.weapon);
     }
+
+    private void ChargeWeaponEvent_OnChargeWeapon(ChargeWeaponEvent arg1, ChargeWeaponEventArgs arg2)
+    {
+        if (arg2.active)
+        {
+            _sliderCharging.gameObject.SetActive(true);
+            _chargeWeaponCoroutine = StartCoroutine(ChargingBarCoroutine(arg2.chargeTime));
+        }
+        else
+        {
+            _sliderCharging.gameObject.SetActive(false);
+            if (_chargeWeaponCoroutine != null)
+            {
+                StopCoroutine(_chargeWeaponCoroutine);
+            }
+        }
+    }
+
     #endregion
 
     private void SetActiveWeapon(Weapon weapon)
@@ -75,7 +102,7 @@ public class PlayerReloadBar : MonoBehaviour
             StopCoroutine(_reloadWeaponCoroutine);
         }
 
-        _bar.gameObject.SetActive(false);
+        _slider.gameObject.SetActive(false);
         _slider.localPosition = Vector3.zero;
     }
 
@@ -100,16 +127,37 @@ public class PlayerReloadBar : MonoBehaviour
         {
             var sliderPosition = (0.5f - (weapon.reloadTimer / weapon.weaponDetails.reloadTime)) * _bar.rect.width;
 
-            _bar.gameObject.SetActive(true);
+            _slider.gameObject.SetActive(true);
             _slider.localPosition = new Vector3(sliderPosition, 0f, 0f);
 
             yield return null;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator ChargingBarCoroutine(float chargeTime)
     {
+        Vector3 start = new Vector3(_bar.rect.width * 0.5f, 0f, 0f);
+        Vector3 end = new Vector3(-_bar.rect.width * 0.5f, 0f, 0f);
+        float step = (1 / chargeTime) * Time.fixedDeltaTime;
 
+        float t = 0;
+        while (t <= 1.0f)
+        {
+            t += step;
+            _sliderCharging.localPosition = Vector3.Lerp(start, end, t);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    private void Update()
+    {
+        if (_slider.gameObject.activeInHierarchy || _sliderCharging.gameObject.activeInHierarchy)
+        {
+            _barBackground.gameObject.SetActive(true);
+        }
+        else
+        {
+            _barBackground.gameObject.SetActive(false);
+        }
     }
 }

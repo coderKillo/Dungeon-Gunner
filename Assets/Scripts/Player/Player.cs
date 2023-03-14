@@ -32,6 +32,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(DestroyedEvent))]
+[RequireComponent(typeof(ChargeWeaponEvent))]
 [RequireComponent(typeof(PlayerDied))]
 [RequireComponent(typeof(PlayerDash))]
 [RequireComponent(typeof(PostHitImmunity))]
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public WeaponReloadedEvent weaponReloadedEvent;
     [HideInInspector] public HealthEvent healthEvent;
     [HideInInspector] public DestroyedEvent destroyedEvent;
+    [HideInInspector] public ChargeWeaponEvent chargeWeaponEvent;
     #endregion
 
     public List<Weapon> weaponList = new List<Weapon>();
@@ -94,6 +96,7 @@ public class Player : MonoBehaviour
         weaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
         healthEvent = GetComponent<HealthEvent>();
         destroyedEvent = GetComponent<DestroyedEvent>();
+        chargeWeaponEvent = GetComponent<ChargeWeaponEvent>();
         #endregion
     }
 

@@ -25,6 +25,7 @@ public class FireWeapon : MonoBehaviour
     private FireWeaponEvent fireWeaponEvent;
     private WeaponFiredEvent weaponFiredEvent;
     private ReloadWeaponEvent reloadWeaponEvent;
+    private ChargeWeaponEvent chargeWeaponEvent;
     private ActiveWeapon activeWeapon;
     private SpriteEffect fireWeaponEffect;
 
@@ -48,6 +49,7 @@ public class FireWeapon : MonoBehaviour
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
         weaponFiredEvent = GetComponent<WeaponFiredEvent>();
         reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
+        chargeWeaponEvent = GetComponent<ChargeWeaponEvent>();
         activeWeapon = GetComponent<ActiveWeapon>();
         fireWeaponEffect = activeWeapon.ShootEffect.GetComponent<SpriteEffect>();
     }
@@ -90,7 +92,7 @@ public class FireWeapon : MonoBehaviour
 
                 if (chargeTimer > 0f)
                 {
-                    PlayChargeAnimation();
+                    StartCharging();
                     state = WeaponState.Charge;
                 }
                 else
@@ -105,6 +107,7 @@ public class FireWeapon : MonoBehaviour
 
                 if (!arg2.fire)
                 {
+                    StopCharging();
                     StopChargingAnimation();
                     state = WeaponState.Idle;
                     return;
@@ -112,7 +115,7 @@ public class FireWeapon : MonoBehaviour
 
                 if (chargeTimer <= 0f)
                 {
-                    StopChargingAnimation();
+                    StopCharging();
                     state = WeaponState.Shot;
                 }
 
@@ -131,6 +134,18 @@ public class FireWeapon : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void StartCharging()
+    {
+        chargeWeaponEvent.CallChargeWeaponEvent(activeWeapon.CurrentWeapon.weaponDetails.prechargeTime, true);
+        PlayChargeAnimation();
+    }
+
+    private void StopCharging()
+    {
+        chargeWeaponEvent.CallChargeWeaponEvent(0f, false);
+        StopChargingAnimation();
     }
 
     private bool IsWeaponReadyToFire()

@@ -107,7 +107,6 @@ public class Ammo : MonoBehaviour, IFireable
     {
         if (chargeTimer > 0f)
         {
-            // TODO: add UI to visualize charging
             chargeTimer -= Time.deltaTime;
             return;
         }
