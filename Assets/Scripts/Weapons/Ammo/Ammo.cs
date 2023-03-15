@@ -20,7 +20,7 @@ public class Ammo : MonoBehaviour, IFireable
     protected AmmoDetailsSO ammoDetails;
     public AmmoDetailsSO AmmoDetails { get { return ammoDetails; } }
 
-    private Vector3 fireDirectionVector;
+    protected Vector3 fireDirectionVector;
     public Vector3 FireDirectionVector { get { return fireDirectionVector; } }
 
     private float fireDirectionAngle;

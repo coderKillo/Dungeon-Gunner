@@ -153,6 +153,11 @@ public class Player : MonoBehaviour
         setActiveWeaponEvent.CallSetActiveWeaponEvent(weaponList[0]);
     }
 
+    public Weapon GetWeapon(WeaponDetailsSO weaponDetails)
+    {
+        return weaponList.Find((x) => x.weaponDetails == weaponDetails);
+    }
+
     public bool HasWeapon(WeaponDetailsSO weaponDetails)
     {
         foreach (var weapon in weaponList)

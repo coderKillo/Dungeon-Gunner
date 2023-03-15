@@ -22,9 +22,11 @@ MonoBehaviour:
   hasInfiniteClipCapacity: 0
   ammoClipCapacity: 1
   fireRate: 0.7
-  prechargeTime: 0.1
+  prechargeTime: 0.2
   reloadTime: 1
+  removeAfterAmmoIsEmpty: 0
   fireSoundEffect: {fileID: 11400000, guid: c8c0da8e194d652489c2eedeb9105e64, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: 13fd6cbcb582d1f40a868c2538606f48, type: 2}
   fireVisualEffect: {fileID: 0}
   shotAnimation: {fileID: 7400000, guid: bd6b30bdec6cebc46b5838582d069988, type: 2}
+  chargeAnimation: {fileID: 0}
