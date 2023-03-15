@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: WeaponDetails_Pistol
   m_EditorClassIdentifier: 
   weaponName: Pistol
-  weaponSprite: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 46c655d8ec19ced479cd38625d235126, type: 3}
   shootPosition: {x: 1.115, y: 0.277, z: 0}
+  positionOffset: 0
   ammo: {fileID: 11400000, guid: 819cd0edb56180f4fbbff34757a4f5ca, type: 2}
   hasInfiniteAmmo: 1
   ammoCapacity: 0
@@ -23,6 +24,9 @@ MonoBehaviour:
   fireRate: 0.25
   prechargeTime: 0
   reloadTime: 1.2
+  removeAfterAmmoIsEmpty: 0
   fireSoundEffect: {fileID: 11400000, guid: 11b0b86743033fc4fb2ea97babc12fa3, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: 3e9548504e4bcf844b3d77972f6f2df6, type: 2}
-  fireVisualEffect: {fileID: 11400000, guid: 2145ed4a505474948a9e283c0ec76afe, type: 2}
+  fireVisualEffect: {fileID: 0}
+  shotAnimation: {fileID: 7400000, guid: eadae3469ed992b408270458e023a6bf, type: 2}
+  chargeAnimation: {fileID: 0}

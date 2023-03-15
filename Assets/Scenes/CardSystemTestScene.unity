@@ -487,6 +487,9 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 8273311659018516755, guid: 393a14e4b86c35942b748f902ade3100, type: 3}
     componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: 4bd308e3f20dbb24895860c322b1007f, type: 3}
+    componentTypeName: IFireable
   - size: 50
     prefab: {fileID: 559542460712831116, guid: 0aa616512b5f09946a16406bf6ac1b76, type: 3}
     componentTypeName: ElectricityEffect
@@ -2133,8 +2136,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0
-    height: 0
+    width: 1
+    height: 0.999817
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

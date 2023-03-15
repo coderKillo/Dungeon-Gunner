@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: SMG Reload
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: 212f1934ecd30614eb0bebcc5298f72e, type: 3}
+  audioClip: {fileID: 8300000, guid: 68017df84c8afc04390c474cf1ffbaca, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
   volume: 1

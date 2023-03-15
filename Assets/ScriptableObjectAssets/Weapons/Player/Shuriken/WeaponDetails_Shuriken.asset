@@ -24,7 +24,7 @@ MonoBehaviour:
   fireRate: 0.5
   prechargeTime: 0
   reloadTime: 0
-  removeAfterAmmoIsEmpty: 0
+  removeAfterAmmoIsEmpty: 1
   fireSoundEffect: {fileID: 0}
   reloadSoundEffect: {fileID: 0}
   fireVisualEffect: {fileID: 0}

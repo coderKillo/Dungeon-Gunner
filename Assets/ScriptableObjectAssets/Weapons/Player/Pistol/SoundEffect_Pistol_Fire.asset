@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Pistol Fire
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: a2e21bf7e0dc41d4699b168f8a6ed79d, type: 3}
+  audioClip: {fileID: 8300000, guid: e1694f66760ca85418567e2dcbd66a0a, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
   volume: 0.504

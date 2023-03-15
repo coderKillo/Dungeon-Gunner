@@ -13,16 +13,20 @@ MonoBehaviour:
   m_Name: WeaponDetails_SMG
   m_EditorClassIdentifier: 
   weaponName: SMG
-  weaponSprite: {fileID: 21300000, guid: dff74299f2cf7674eb05930ed6b07f8e, type: 3}
+  weaponSprite: {fileID: 21300000, guid: c6a4d7d54d96f9946b58e87b7b2ed8e7, type: 3}
   shootPosition: {x: 1.284, y: 0.342, z: 0}
+  positionOffset: 0.2
   ammo: {fileID: 11400000, guid: 7cb3909d6ae7ac04bb7eb902970d414b, type: 2}
   hasInfiniteAmmo: 0
-  ammoCapacity: 50
+  ammoCapacity: 100
   hasInfiniteClipCapacity: 0
   ammoClipCapacity: 15
   fireRate: 0.2
   prechargeTime: 0
   reloadTime: 3
-  fireSoundEffect: {fileID: 11400000, guid: 23d6c01927de9c04db82f9788a2e5729, type: 2}
+  removeAfterAmmoIsEmpty: 0
+  fireSoundEffect: {fileID: 11400000, guid: 9d65bd561fe845940b3209280598cbfd, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: f31dbdfa165a3294094d15b619909587, type: 2}
-  fireVisualEffect: {fileID: 11400000, guid: 9dd6d167aea0c3a41b0531148fb36640, type: 2}
+  fireVisualEffect: {fileID: 0}
+  shotAnimation: {fileID: 7400000, guid: 3f346f1c503339f4885063589037bbda, type: 2}
+  chargeAnimation: {fileID: 0}

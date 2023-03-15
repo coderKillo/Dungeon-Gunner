@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d724b4290d3d014d9d5213b1a1f57ab, type: 3}
   m_Name: SoundEffect_SMG_Fire
   m_EditorClassIdentifier: 
-  soundEffectName: SMG Fire
+  soundEffectName: Revolver Fire
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: 5e5fc42332c6f0d4698f5a740496c9e2, type: 3}
-  pitchVariantMin: 0.7
-  pitchVariantMax: 1
-  volume: 0.786
+  audioClip: {fileID: 8300000, guid: 239fe29014b244744a9130f118be1b90, type: 3}
+  pitchVariantMin: 1
+  pitchVariantMax: 1.221
+  volume: 0.517

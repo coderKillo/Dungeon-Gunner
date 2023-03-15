@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Pistol Reload
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: 28a2b6d663b81204a8dfb1dd072eefe1, type: 3}
+  audioClip: {fileID: 8300000, guid: a9e6fbeeb336b224a890605972f7071e, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
-  volume: 1
+  volume: 0.8
