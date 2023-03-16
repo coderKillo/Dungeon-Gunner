@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Rail Gun
   weaponSprite: {fileID: 1018752203, guid: dd4f38433c6d41d46914d93575bf36c6, type: 3}
-  shootPosition: {x: 1.323, y: 0.294, z: 0}
+  shootPosition: {x: 2.32, y: 0.15, z: 0}
   positionOffset: 0
-  ammo: {fileID: 11400000, guid: ab0be33c5ca0fd043be8468bc9dc8477, type: 2}
-  hasInfiniteAmmo: 0
-  ammoCapacity: 50
-  hasInfiniteClipCapacity: 0
-  ammoClipCapacity: 8
-  fireRate: 0.5
-  prechargeTime: 0.3
-  reloadTime: 3
+  ammo: {fileID: 11400000, guid: 845309024d3e58545b74387233c0ac4d, type: 2}
+  hasInfiniteAmmo: 1
+  ammoCapacity: 15
+  hasInfiniteClipCapacity: 1
+  ammoClipCapacity: 1
+  fireRate: 1
+  prechargeTime: 0
+  reloadTime: 2
   removeAfterAmmoIsEmpty: 0
-  fireSoundEffect: {fileID: 11400000, guid: 4ad970a369d4d724abcd30286912c7be, type: 2}
-  reloadSoundEffect: {fileID: 11400000, guid: b675819d086047e46b4c77ae54d5c9a1, type: 2}
+  fireSoundEffect: {fileID: 11400000, guid: adf2516a7a1134644824f98abe305ac2, type: 2}
+  reloadSoundEffect: {fileID: 11400000, guid: 01a8adc2471717e478444f02f96dc9b3, type: 2}
   fireVisualEffect: {fileID: 0}
-  shotAnimation: {fileID: 0}
+  shotAnimation: {fileID: 7400000, guid: 706c832650f82994da3acef81ec86241, type: 2}
   chargeAnimation: {fileID: 0}

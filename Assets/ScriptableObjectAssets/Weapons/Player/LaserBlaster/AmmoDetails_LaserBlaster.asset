@@ -16,24 +16,26 @@ MonoBehaviour:
   isPlayerAmmo: 1
   ammoSprite: {fileID: 21300000, guid: 4df9cc7131cd27f4288bca5e76c82034, type: 3}
   prefabArray:
-  - {fileID: 3415706278289267979, guid: 3518b2dd4dfc9a34ebfb335ad2f1fff6, type: 3}
+  - {fileID: 3415706278289267979, guid: 50cdfdbed9b268f4ab7070ca52da1527, type: 3}
   ammoMaterial: {fileID: 2100000, guid: c64696a09f1cb1a4d9766d1fe9778ca5, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
-  damage: 15
-  speedMin: 55
-  speedMax: 55
-  range: 14
+  damage: 30
+  critChance: 1
+  speedMin: 20
+  speedMax: 20
+  range: 3
   rotationSpeed: 1
-  spreadMin: 0.5
-  spreadMax: 1
+  spreadMin: 0.1
+  spreadMax: 0.2
   spawnAmmoMin: 1
   spawnAmmoMax: 1
   spawnIntervalMin: 0
   spawnIntervalMax: 0
   hasTrail: 1
-  trailLifetime: 0.1
+  trailLifetime: 0.2
   trailMaterial: {fileID: 2100000, guid: f40d05d451e2ae24f91e9e3314c280da, type: 2}
-  trailStartWidth: 0.079
+  trailStartWidth: 0.379
   trailEndWidth: 0.2
-  hitVisualEffect: {fileID: 11400000, guid: 1856a33bbf6b7fb428ed5c5d47bf765d, type: 2}
+  hitVisualEffect: {fileID: 0}
+  hitAudioEffect: {fileID: 0}

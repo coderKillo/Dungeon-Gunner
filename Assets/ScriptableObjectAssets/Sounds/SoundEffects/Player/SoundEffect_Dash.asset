@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Player Dash
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: 77308395eaa471b47916fda42ee4fdaa, type: 3}
-  pitchVariantMin: 1.344
-  pitchVariantMax: 1.411
+  audioClip: {fileID: 8300000, guid: 21e8264c14c947c409efd695fe4c75f1, type: 3}
+  pitchVariantMin: 0.923
+  pitchVariantMax: 1.024
   volume: 0.549

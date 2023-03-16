@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d724b4290d3d014d9d5213b1a1f57ab, type: 3}
   m_Name: SoundEffect_RailGun_Fire
   m_EditorClassIdentifier: 
-  soundEffectName: LaserBlaster Fire
+  soundEffectName: RailGun Fire
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: de229ff6f23dad645a8f50a8ed868b27, type: 3}
+  audioClip: {fileID: 8300000, guid: 104f84806f5f4934ea359f32f1f844a7, type: 3}
   pitchVariantMin: 1
-  pitchVariantMax: 1.3
+  pitchVariantMax: 1.2
   volume: 1

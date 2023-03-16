@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Ammo : MonoBehaviour, IFireable
 {
-    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] protected TrailRenderer trailRenderer;
 
     protected float range;
     protected float speed;
@@ -71,7 +71,29 @@ public class Ammo : MonoBehaviour, IFireable
         }
         #endregion
 
-        #region TRAIL
+        SetupTrail(ammoDetails);
+
+        gameObject.SetActive(true);
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    protected virtual void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
+    }
+
+    protected void SetupTrail(AmmoDetailsSO detailsSO)
+    {
+        if (trailRenderer == null)
+        {
+            return;
+        }
+
         if (ammoDetails.hasTrail)
         {
             trailRenderer.emitting = true;
@@ -87,20 +109,6 @@ public class Ammo : MonoBehaviour, IFireable
             trailRenderer.emitting = false;
             trailRenderer.gameObject.SetActive(false);
         }
-        #endregion
-
-        gameObject.SetActive(true);
-    }
-
-    public GameObject GetGameObject()
-    {
-        return gameObject;
-    }
-
-    protected virtual void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
     private void Update()
