@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CardDeck_Player
   m_EditorClassIdentifier: 
   deck:
-  - {fileID: 11400000, guid: b6d59aded221b8c4381e958abed076be, type: 2}
+  - {fileID: 11400000, guid: 39aaef770f23eab4ebac5202e813c04b, type: 2}

@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
-  m_Name: Card_Weapon_RailGun
+  m_Name: Card_Weapon_StaffExplosion
   m_EditorClassIdentifier: 
-  title: Big Gun
+  title: Boom Boom Staff
   rarity: 3
-  icon: {fileID: 1018752203, guid: dd4f38433c6d41d46914d93575bf36c6, type: 3}
+  icon: {fileID: 21300000, guid: e0b101cf294cf4b48a933925be75935f, type: 3}
   iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: + $% damage
   action: 3
   healAmount: 0
   shieldAmount: 0
   ammoAmount: 0
-  weapon: {fileID: 11400000, guid: cc7c23475e00d4243a1039e8ac75251c, type: 2}
-  weaponDamageFactorPerLevel: 0.3
+  weapon: {fileID: 11400000, guid: 1329657d673f1ec4da8f284194d6266a, type: 2}
+  weaponDamageFactorPerLevel: 0.2
   powerUpType: 0
   powerUpAbility: 0
   powerUpScaleAbility: 0
