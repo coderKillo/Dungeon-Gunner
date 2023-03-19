@@ -28,5 +28,5 @@ MonoBehaviour:
   fireSoundEffect: {fileID: 11400000, guid: 468d973a19442e74aa1308ed02b01cb7, type: 2}
   reloadSoundEffect: {fileID: 0}
   fireVisualEffect: {fileID: 0}
-  shotAnimation: {fileID: 0}
+  shotAnimation: {fileID: 7400000, guid: 09f7adde556690344baac78fbf5051ba, type: 2}
   chargeAnimation: {fileID: 0}
