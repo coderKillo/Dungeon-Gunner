@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,10 +11,16 @@ public class AimWeapon : MonoBehaviour
     [SerializeField] private Transform weaponRotationPointTransform;
 
     private AimWeaponEvent aimWeaponEvent;
+    private float localPositionX;
 
     private void Awake()
     {
         aimWeaponEvent = GetComponent<AimWeaponEvent>();
+    }
+
+    private void Start()
+    {
+        localPositionX = weaponRotationPointTransform.localPosition.x;
     }
 
     private void OnEnable()
@@ -35,19 +42,23 @@ public class AimWeapon : MonoBehaviour
     {
         weaponRotationPointTransform.eulerAngles = new Vector3(0f, 0f, aimAngle);
 
-        switch (aimDirection)
+        if (Mathf.Abs(aimAngle) >= 90f)
         {
-            case AimDirection.Left:
-            case AimDirection.UpLeft:
-                weaponRotationPointTransform.localScale = new Vector3(1f, -1f, 0f);
-                break;
-
-            case AimDirection.Up:
-            case AimDirection.Right:
-            case AimDirection.UpRight:
-            case AimDirection.Down:
-                weaponRotationPointTransform.localScale = new Vector3(1f, 1f, 0f);
-                break;
+            weaponRotationPointTransform.localScale = new Vector3(1f, -1f, 0f);
+            weaponRotationPointTransform.localPosition = new Vector3(
+                -localPositionX,
+                weaponRotationPointTransform.localPosition.y,
+                weaponRotationPointTransform.localPosition.z
+            );
+        }
+        else
+        {
+            weaponRotationPointTransform.localScale = new Vector3(1f, 1f, 0f);
+            weaponRotationPointTransform.localPosition = new Vector3(
+                localPositionX,
+                weaponRotationPointTransform.localPosition.y,
+                weaponRotationPointTransform.localPosition.z
+            );
         }
     }
 
