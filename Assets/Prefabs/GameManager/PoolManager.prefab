@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7750407713461793813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7750407713461793834}
+  - component: {fileID: 7750407713461793835}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7750407713461793834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750407713461793813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7750407713461793835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750407713461793813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b90e40091d203b4892c1ecd2f4e3196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolArray:
+  - size: 30
+    prefab: {fileID: 3415706278289267979, guid: 3518b2dd4dfc9a34ebfb335ad2f1fff6, type: 3}
+    componentTypeName: IFireable
+  - size: 30
+    prefab: {fileID: 3415706278289267979, guid: 2f69431a8826d1a4bbd9721716ea6c82, type: 3}
+    componentTypeName: IFireable
+  - size: 30
+    prefab: {fileID: 3415706278289267979, guid: 44ea12b8330b1df4bb2f0197e192b309, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: ae6c9a1039844d24693c3185c4bc9813, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: e53e09d662e6f88458d7e585bcad783b, type: 3}
+    componentTypeName: IFireable
+  - size: 15
+    prefab: {fileID: 3415706278289267979, guid: 6f0f1a32a445c234ab3fabd5fb0f113a, type: 3}
+    componentTypeName: IFireable
+  - size: 15
+    prefab: {fileID: 3415706278289267979, guid: 01cf603dc1866f24a86f7676463b17f8, type: 3}
+    componentTypeName: IFireable
+  - size: 15
+    prefab: {fileID: 3415706278289267979, guid: df7a13758bcb23a49a38ed5316ed361c, type: 3}
+    componentTypeName: IFireable
+  - size: 20
+    prefab: {fileID: 3415706278289267979, guid: 3a160bf1a7b6fdf409688d9f6f2c6e76, type: 3}
+    componentTypeName: IFireable
+  - size: 40
+    prefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
+    componentTypeName: SoundEffect
+  - size: 20
+    prefab: {fileID: 5296985124228926427, guid: 7825f503b8891b849a3f733654421fe3, type: 3}
+    componentTypeName: WeaponShootEffect
+  - size: 20
+    prefab: {fileID: 5296985124228926427, guid: 103d705d54a05cf4db2bbdc72fdfd8a1, type: 3}
+    componentTypeName: WeaponShootEffect
+  - size: 20
+    prefab: {fileID: 1521094998182052274, guid: d3e59e49908cf6346a74573b60573594, type: 3}
+    componentTypeName: WeaponShootEffect
+  - size: 200
+    prefab: {fileID: 3415706278289267979, guid: bcf797084d082dd41a155045c96dcb6b, type: 3}
+    componentTypeName: IFireable
+  - size: 20
+    prefab: {fileID: 5296985124228926427, guid: 4de8dac5cc2870344a33bda72dd7b6e1, type: 3}
+    componentTypeName: AmmoHitEffect
+  - size: 50
+    prefab: {fileID: 1281338800750000515, guid: ea61a2a28aad2b643986d089f803f005, type: 3}
+    componentTypeName: DamagePopup
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 6e9b769f13834044b9e04a38553316a0, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 4580c1d8f201a384cb6970e9153cc3ea, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 91ada61bc60503641ba952ee24a828c4, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: 08c9df6ae2c475046b1a31384e93e14b, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3842687458342963707, guid: d830cb953e18e62419703912a4ecc336, type: 3}
+    componentTypeName: IFireable
+  - size: 40
+    prefab: {fileID: 4514459192244064898, guid: 4fa4b6deb6dd3734c822fced15105bbe, type: 3}
+    componentTypeName: SpriteEffect
+  - size: 10
+    prefab: {fileID: 8273311659018516755, guid: 1f1a5c9ea6762d647a89c8e4c17ee6c4, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 8273311659018516755, guid: 393a14e4b86c35942b748f902ade3100, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: 4bd308e3f20dbb24895860c322b1007f, type: 3}
+    componentTypeName: IFireable
+  - size: 20
+    prefab: {fileID: 3415706278289267979, guid: 50cdfdbed9b268f4ab7070ca52da1527, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: f7dcfc63ea384764085b246bdc0cc5cd, type: 3}
+    componentTypeName: IFireable
+  - size: 50
+    prefab: {fileID: 559542460712831116, guid: 0aa616512b5f09946a16406bf6ac1b76, type: 3}
+    componentTypeName: ElectricityEffect
+  - size: 10
+    prefab: {fileID: 3094952707187928390, guid: 1330285369f309b41bcff521dd50f1d5, type: 3}
+    componentTypeName: IOnHit

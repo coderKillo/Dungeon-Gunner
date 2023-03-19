@@ -286,138 +286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &225815839
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 225815840}
-  - component: {fileID: 225815841}
-  m_Layer: 0
-  m_Name: PoolManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &225815840
+--- !u!4 &225815840 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+  m_PrefabInstance: {fileID: 7750407713643026698}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225815839}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 54774429}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &225815841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225815839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b90e40091d203b4892c1ecd2f4e3196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolArray:
-  - size: 30
-    prefab: {fileID: 3415706278289267979, guid: 3518b2dd4dfc9a34ebfb335ad2f1fff6, type: 3}
-    componentTypeName: IFireable
-  - size: 30
-    prefab: {fileID: 3415706278289267979, guid: 2f69431a8826d1a4bbd9721716ea6c82, type: 3}
-    componentTypeName: IFireable
-  - size: 30
-    prefab: {fileID: 3415706278289267979, guid: 44ea12b8330b1df4bb2f0197e192b309, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3415706278289267979, guid: ae6c9a1039844d24693c3185c4bc9813, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3415706278289267979, guid: e53e09d662e6f88458d7e585bcad783b, type: 3}
-    componentTypeName: IFireable
-  - size: 15
-    prefab: {fileID: 3415706278289267979, guid: 6f0f1a32a445c234ab3fabd5fb0f113a, type: 3}
-    componentTypeName: IFireable
-  - size: 15
-    prefab: {fileID: 3415706278289267979, guid: 01cf603dc1866f24a86f7676463b17f8, type: 3}
-    componentTypeName: IFireable
-  - size: 15
-    prefab: {fileID: 3415706278289267979, guid: df7a13758bcb23a49a38ed5316ed361c, type: 3}
-    componentTypeName: IFireable
-  - size: 20
-    prefab: {fileID: 3415706278289267979, guid: 3a160bf1a7b6fdf409688d9f6f2c6e76, type: 3}
-    componentTypeName: IFireable
-  - size: 40
-    prefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-    componentTypeName: SoundEffect
-  - size: 20
-    prefab: {fileID: 5296985124228926427, guid: 7825f503b8891b849a3f733654421fe3, type: 3}
-    componentTypeName: WeaponShootEffect
-  - size: 20
-    prefab: {fileID: 5296985124228926427, guid: 103d705d54a05cf4db2bbdc72fdfd8a1, type: 3}
-    componentTypeName: WeaponShootEffect
-  - size: 20
-    prefab: {fileID: 1521094998182052274, guid: d3e59e49908cf6346a74573b60573594, type: 3}
-    componentTypeName: WeaponShootEffect
-  - size: 200
-    prefab: {fileID: 3415706278289267979, guid: bcf797084d082dd41a155045c96dcb6b, type: 3}
-    componentTypeName: IFireable
-  - size: 20
-    prefab: {fileID: 5296985124228926427, guid: 4de8dac5cc2870344a33bda72dd7b6e1, type: 3}
-    componentTypeName: AmmoHitEffect
-  - size: 50
-    prefab: {fileID: 1281338800750000515, guid: ea61a2a28aad2b643986d089f803f005, type: 3}
-    componentTypeName: DamagePopup
-  - size: 10
-    prefab: {fileID: 3842687458342963707, guid: 6e9b769f13834044b9e04a38553316a0, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3842687458342963707, guid: 4580c1d8f201a384cb6970e9153cc3ea, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3842687458342963707, guid: 91ada61bc60503641ba952ee24a828c4, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3842687458342963707, guid: 08c9df6ae2c475046b1a31384e93e14b, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3842687458342963707, guid: d830cb953e18e62419703912a4ecc336, type: 3}
-    componentTypeName: IFireable
-  - size: 40
-    prefab: {fileID: 4514459192244064898, guid: 4fa4b6deb6dd3734c822fced15105bbe, type: 3}
-    componentTypeName: SpriteEffect
-  - size: 10
-    prefab: {fileID: 8273311659018516755, guid: 1f1a5c9ea6762d647a89c8e4c17ee6c4, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 8273311659018516755, guid: 393a14e4b86c35942b748f902ade3100, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3415706278289267979, guid: 4bd308e3f20dbb24895860c322b1007f, type: 3}
-    componentTypeName: IFireable
-  - size: 20
-    prefab: {fileID: 3415706278289267979, guid: 50cdfdbed9b268f4ab7070ca52da1527, type: 3}
-    componentTypeName: IFireable
-  - size: 10
-    prefab: {fileID: 3415706278289267979, guid: f7dcfc63ea384764085b246bdc0cc5cd, type: 3}
-    componentTypeName: IFireable
-  - size: 50
-    prefab: {fileID: 559542460712831116, guid: 0aa616512b5f09946a16406bf6ac1b76, type: 3}
-    componentTypeName: ElectricityEffect
-  - size: 10
-    prefab: {fileID: 3094952707187928390, guid: 1330285369f309b41bcff521dd50f1d5, type: 3}
-    componentTypeName: IOnHit
 --- !u!1 &304039099
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,495 +849,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea6faebe3283444ba04d07166679dc5, type: 3}
---- !u!1 &1361949636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1361949637}
-  - component: {fileID: 1361949638}
-  - component: {fileID: 1361949640}
-  - component: {fileID: 1361949639}
-  - component: {fileID: 1361949641}
-  m_Layer: 0
-  m_Name: CardSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1361949637
+--- !u!4 &1361949637 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+  m_PrefabInstance: {fileID: 8567977841399962375}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361949636}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 452640900}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1361949638
+--- !u!114 &1361949639 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8567977842761902272, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+  m_PrefabInstance: {fileID: 8567977841399962375}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361949636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdda13cc6ed95f04eb50c4f70217a8ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDeck: {fileID: 11400000, guid: 189d0eb5df2f5964ead03fd6bcad171b, type: 2}
---- !u!114 &1361949639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361949636}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d8f53459e509c44486512c47b541323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1361949640
+--- !u!114 &1361949640 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8567977842761902287, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+  m_PrefabInstance: {fileID: 8567977841399962375}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361949636}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0760240db2d0ada4faef34f12edfea6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1361949641
+--- !u!114 &1361949641 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+  m_PrefabInstance: {fileID: 8567977841399962375}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361949636}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22ca1b7581f592048aafcc83e431f720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
-    - {fileID: 11400000, guid: e7b3c6cb4093e954f81d880ad3c6c1a7, type: 2}
-    - {fileID: 11400000, guid: 78e08a79e32967e449f3f889e8c7f07b, type: 2}
-    - {fileID: 11400000, guid: 153cf9471fb236f4f835d3803971d706, type: 2}
-    - {fileID: 11400000, guid: 736d46f2917239345ac5c45dbdd30cc9, type: 2}
-    - {fileID: 11400000, guid: b792f51e23191214697d805823a1efd1, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: _rarityColorLookup
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[CardRarity, Assembly-CSharp],[UnityEngine.Color,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[CardRarity, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.3805869
-    - Name: 
-      Entry: 4
-      Data: 0.9811321
-    - Name: 
-      Entry: 4
-      Data: 0.347098619
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.183962286
-    - Name: 
-      Entry: 4
-      Data: 0.5954509
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.8776283
-    - Name: 
-      Entry: 4
-      Data: 0.25
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 0.6324246
-    - Name: 
-      Entry: 4
-      Data: 0.1462264
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _rarityRatio
-      Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[CardRarity, Assembly-CSharp],[System.Int32,
-        mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[CardRarity, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 3
-      Data: 15
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 3
-      Data: 50
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 3
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _cardLevelByDungeonLevel
-      Entry: 7
-      Data: 4|System.Collections.Generic.Dictionary`2[[DungeonLevelSO, Assembly-CSharp],[LevelRange,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 5|System.Collections.Generic.ObjectEqualityComparer`1[[DungeonLevelSO,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 6
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 0
-    - Name: $v
-      Entry: 7
-      Data: LevelRange, Assembly-CSharp
-    - Name: level
-      Entry: 7
-      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: LevelRange, Assembly-CSharp
-    - Name: level
-      Entry: 7
-      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: LevelRange, Assembly-CSharp
-    - Name: level
-      Entry: 7
-      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: LevelRange, Assembly-CSharp
-    - Name: level
-      Entry: 7
-      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 3
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 4
-    - Name: $v
-      Entry: 7
-      Data: LevelRange, Assembly-CSharp
-    - Name: level
-      Entry: 7
-      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 10
-      Data: 5
-    - Name: $v
-      Entry: 7
-      Data: LevelRange, Assembly-CSharp
-    - Name: level
-      Entry: 7
-      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 3
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
 --- !u!1 &1383181852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,7 +1961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7388414844266930489, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7388414844266930489, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2619,6 +2041,124 @@ Transform:
   m_Father: {fileID: 1539828287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7750407713643026698
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 54774429}
+    m_Modifications:
+    - target: {fileID: 7750407713461793813, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_Name
+      value: PoolManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
+--- !u!1001 &8567977841399962375
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 452640900}
+    m_Modifications:
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902275, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: m_Name
+      value: CardSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
 --- !u!1001 &8612514374667642232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2634,22 +2174,6 @@ PrefabInstance:
       propertyPath: _cardSystemSettings
       value: 
       objectReference: {fileID: 1361949641}
-    - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8612514374105008492, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: m_Name
       value: CardSystemUI

@@ -38,4 +38,4 @@ MonoBehaviour:
   trailStartWidth: 0.4
   trailEndWidth: 0.4
   hitVisualEffect: {fileID: 0}
-  hitAudioEffect: {fileID: 11400000, guid: 468d973a19442e74aa1308ed02b01cb7, type: 2}
+  hitAudioEffect: {fileID: 11400000, guid: 6fb4cdcff77a92c44a6a85e37e04c0df, type: 2}
