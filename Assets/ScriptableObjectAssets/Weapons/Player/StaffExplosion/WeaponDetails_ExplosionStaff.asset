@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: Explosion Staff
   weaponSprite: {fileID: 21300000, guid: e0b101cf294cf4b48a933925be75935f, type: 3}
   shootPosition: {x: 2.32, y: 0.15, z: 0}
-  positionOffset: 0
+  positionOffset: 0.2
   ammo: {fileID: 11400000, guid: c8122412aecb8bb4bb2c8d997dac08ae, type: 2}
   hasInfiniteAmmo: 0
   ammoCapacity: 10

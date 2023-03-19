@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5606799528666889479, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6341726664625727426, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
       propertyPath: m_LocalScale.y
       value: 0
@@ -283,5 +287,9 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f63b48ab2725097418c65faa1c8c3dd9, type: 2}
+    - target: {fileID: 6488728129132894053, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: deadEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: ee6193e399e1f4949a7c67e22371f7c9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}

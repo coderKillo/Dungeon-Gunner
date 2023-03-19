@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteEffect : MonoBehaviour
 {
+    public bool keepActiveAfterComplete = false;
+
     [SerializeField] private bool looping = false;
     [SerializeField] private Sprite[] spriteArray;
     [SerializeField] private float frameRate;
@@ -54,7 +56,10 @@ public class SpriteEffect : MonoBehaviour
             }
         }
 
-        gameObject.SetActive(false);
+        if (!keepActiveAfterComplete)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator AnimateSpriteArray()
