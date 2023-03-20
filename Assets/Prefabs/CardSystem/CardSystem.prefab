@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8567977842761902287}
   - component: {fileID: 8567977842761902272}
   - component: {fileID: 8567977842761902286}
+  - component: {fileID: 4305636896996372}
   m_Layer: 0
   m_Name: CardSystem
   m_TagString: Untagged
@@ -489,3 +490,16 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+--- !u!114 &4305636896996372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567977842761902275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3255a5c0b381a24daadcc1a90f6d979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardPickUpPrefab: {fileID: 6703015285744824992, guid: db52f96794dcbe74eb1130cc01110d45, type: 3}

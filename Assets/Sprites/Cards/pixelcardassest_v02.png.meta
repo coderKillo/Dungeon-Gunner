@@ -1972,6 +1972,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: pixelcardassest_v02_89
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 33
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f6183785a3aac94b979a16086c54bae
+      internalID: 299790698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2063,14 +2084,15 @@ TextureImporter:
       pixelcardassest_v02_49: 70230400
       pixelcardassest_v02_58: -1847889164
       pixelcardassest_v02_80: -1493565890
-      pixelcardassest_v02_50: -1227713396
       pixelcardassest_v02_2: -1980917895
       pixelcardassest_v02_28: -528571157
       pixelcardassest_v02_3: 1694422556
       pixelcardassest_v02_44: 1242773711
-      pixelcardassest_v02_69: -412623044
+      pixelcardassest_v02_50: -1227713396
       pixelcardassest_v02_61: 739443691
+      pixelcardassest_v02_69: -412623044
       pixelcardassest_v02_56: -1874457362
+      pixelcardassest_v02_89: 299790698
       pixelcardassest_v02_84: -667926312
   spritePackingTag: 
   pSDRemoveMatte: 0

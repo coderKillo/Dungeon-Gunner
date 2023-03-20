@@ -132,3 +132,6 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 3094952707187928390, guid: 1330285369f309b41bcff521dd50f1d5, type: 3}
     componentTypeName: IOnHit
+  - size: 10
+    prefab: {fileID: 6703015285744824992, guid: db52f96794dcbe74eb1130cc01110d45, type: 3}
+    componentTypeName: CardPickUp

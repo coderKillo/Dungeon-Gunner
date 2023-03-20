@@ -31,7 +31,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
         _cardDraw.OnCardSelected += CardDraw_OnCardSelected;
         _cardHand.OnCardSelected += CardHand_OnCardSelected;
 
-        StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnRoomEnemiesDefeated;
     }
 
     private void Start()
@@ -90,16 +89,15 @@ public class CardSystem : SingletonAbstract<CardSystem>
         }
     }
 
-    private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
-    {
-        Draw();
-    }
     #endregion
 
     #region Public Interface
     [Button("Draw Card")]
     public void Draw()
     {
+        // TODO: draw card with specific rarity guarantied (1/3)
+        // TODO: minimize risk that the same card is drawn twice or in short intervals
+        // cards already drawn should get a kind of cooldown, different for each rarity (e.g. epic card X can only drop after 15 cards where drawn)
         SetState(State.Draw);
     }
 
