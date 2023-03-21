@@ -93,11 +93,9 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     #region Public Interface
     [Button("Draw Card")]
-    public void Draw()
+    public void Draw(CardRarity rarity = CardRarity.Common)
     {
-        // TODO: draw card with specific rarity guarantied (1/3)
-        // TODO: minimize risk that the same card is drawn twice or in short intervals
-        // cards already drawn should get a kind of cooldown, different for each rarity (e.g. epic card X can only drop after 15 cards where drawn)
+        _cardDraw.Priority = rarity;
         SetState(State.Draw);
     }
 

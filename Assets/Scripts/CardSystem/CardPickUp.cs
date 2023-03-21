@@ -12,19 +12,23 @@ public class CardPickUp : MonoBehaviour
     [SerializeField] private float _jumpForce = 2f;
     [SerializeField] private int _jumpNumber = 3;
 
-    private Light2D _light;
+    private CardRarity _ensuredCardRarity;
+    public CardRarity EnsuredCardRarity { set { _ensuredCardRarity = value; } }
+
     private SpriteRenderer _spriteRenderer;
+    private ParticleSystem.MainModule _particleSystemMain;
+
 
     private void Awake()
     {
-        _light = GetComponentInChildren<Light2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _particleSystemMain = GetComponentInChildren<ParticleSystem>().main;
     }
 
     public void SetColor(Color color)
     {
-        _light.color = color;
         _spriteRenderer.color = color;
+        _particleSystemMain.startColor = color;
     }
 
     private void OnEnable()
@@ -36,7 +40,7 @@ public class CardPickUp : MonoBehaviour
     {
         if (other.tag != Settings.playerTag)
         {
-            CardSystem.Instance.Draw();
+            CardSystem.Instance.Draw(_ensuredCardRarity);
             gameObject.SetActive(false);
         }
     }

@@ -33,11 +33,17 @@ public class CardSystemSettings : SerializedMonoBehaviour
         }
 
         var selectedRarity = rarityListLookup[Random.Range(0, rarityListLookup.Count)];
+
+        return PickRandomCardWithSpecificRarity(cards, selectedRarity);
+    }
+
+    public CardSO PickRandomCardWithSpecificRarity(CardSO[] cards, CardRarity rarity)
+    {
         var selectedRarityCards = new List<CardSO>();
 
         foreach (var card in cards)
         {
-            if (card.rarity != selectedRarity)
+            if (card.rarity != rarity)
             {
                 continue;
             }

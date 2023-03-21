@@ -7,10 +7,11 @@ using UnityEngine;
 public class CardPickUpSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPickUpPrefab;
-    [SerializeField] private int _cardSpawnPointThreshold = 1000;
+    [SerializeField] private int _cardSpawnPointThreshold = 200;
 
     private CardSystemSettings _settings;
     private int _points = 0;
+    private Vector3 _lastEnemyDiedPosition = new Vector3();
 
     private void Awake()
     {
@@ -21,12 +22,14 @@ public class CardPickUpSpawner : MonoBehaviour
     {
         StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnRoomEnemiesDefeated;
         StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
+        StaticEventHandler.OnEnemyDied += StaticEventHandler_OnEnemyDied;
     }
 
     private void OnDisable()
     {
         StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnRoomEnemiesDefeated;
         StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
+        StaticEventHandler.OnEnemyDied -= StaticEventHandler_OnEnemyDied;
     }
 
     private void StaticEventHandler_OnPointsScored(PointsScoredArgs obj)
@@ -42,7 +45,6 @@ public class CardPickUpSpawner : MonoBehaviour
 
     private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
     {
-        // TODO: spawn add enemy killed location
         if (obj.room.nodeType.isBossRoom)
         {
             SpawnCard(CardRarity.Epic);
@@ -53,10 +55,16 @@ public class CardPickUpSpawner : MonoBehaviour
         }
     }
 
+    private void StaticEventHandler_OnEnemyDied(EnemyDiedEventArgs obj)
+    {
+        _lastEnemyDiedPosition = obj.enemy.transform.position;
+    }
+
     private void SpawnCard(CardRarity rarity)
     {
-        var card = (CardPickUp)PoolManager.Instance.ReuseComponent(_cardPickUpPrefab, transform.position, Quaternion.identity);
+        var card = (CardPickUp)PoolManager.Instance.ReuseComponent(_cardPickUpPrefab, _lastEnemyDiedPosition, Quaternion.identity);
         card.SetColor(_settings.GetColor(rarity));
+        card.EnsuredCardRarity = rarity;
         card.gameObject.SetActive(true);
     }
 }

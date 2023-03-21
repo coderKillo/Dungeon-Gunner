@@ -2330,6 +2330,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -2425,6 +2429,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1505412521}
+    - target: {fileID: 8612514374105008495, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1491282665
+      objectReference: {fileID: 0}
     - target: {fileID: 8612514374859458210, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: _cardHand
       value: 
@@ -3409,7 +3417,7 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 0.999817
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

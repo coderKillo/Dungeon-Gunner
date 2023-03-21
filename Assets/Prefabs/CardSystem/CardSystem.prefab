@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdda13cc6ed95f04eb50c4f70217a8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDeck: {fileID: 11400000, guid: 189d0eb5df2f5964ead03fd6bcad171b, type: 2}
+  playerDeck: {fileID: 11400000, guid: 3453ba83018d4874f8e75c99624d6c86, type: 2}
 --- !u!114 &8567977842761902287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,3 +503,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardPickUpPrefab: {fileID: 6703015285744824992, guid: db52f96794dcbe74eb1130cc01110d45, type: 3}
+  _cardSpawnPointThreshold: 1000

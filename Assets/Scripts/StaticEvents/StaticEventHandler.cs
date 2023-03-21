@@ -44,6 +44,13 @@ public static class StaticEventHandler
     {
         OnEnemySpawned?.Invoke(new EnemySpawnedEventArgs() { enemy = enemy });
     }
+
+    public static event Action<EnemyDiedEventArgs> OnEnemyDied;
+
+    public static void CallEnemyDied(Enemy enemy)
+    {
+        OnEnemyDied?.Invoke(new EnemyDiedEventArgs() { enemy = enemy });
+    }
 }
 
 public class RoomChangedEventArgs : EventArgs
@@ -75,3 +82,9 @@ public class EnemySpawnedEventArgs : EventArgs
 {
     public Enemy enemy;
 }
+
+public class EnemyDiedEventArgs : EventArgs
+{
+    public Enemy enemy;
+}
+
