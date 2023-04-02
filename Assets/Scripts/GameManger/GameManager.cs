@@ -59,6 +59,7 @@ public class GameManager : SingletonAbstract<GameManager>
     public DisplayMessage DisplayMessage { get { return displayMessage; } }
 
     private PauseMenu pauseMenu;
+    private DeathMenu deathMenu;
 
     protected override void Awake()
     {
@@ -66,6 +67,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
         displayMessage = GetComponent<DisplayMessage>();
         pauseMenu = GetComponent<PauseMenu>();
+        deathMenu = GetComponent<DeathMenu>();
 
         playerDetails = GameResources.Instance.currentPlayer.playerDetails;
 
@@ -117,6 +119,16 @@ public class GameManager : SingletonAbstract<GameManager>
         {
             PauseGame();
         }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("MainGameScene");
     }
 
     public void PauseGame()
@@ -175,7 +187,8 @@ public class GameManager : SingletonAbstract<GameManager>
 
             case GameState.gameLost:
 
-                SetGameState(GameState.restartGame);
+                StopAllCoroutines();
+                StartCoroutine(GameLost());
 
                 break;
 
@@ -188,9 +201,6 @@ public class GameManager : SingletonAbstract<GameManager>
 
 
             case GameState.restartGame:
-
-                StartCoroutine(RestartLevel());
-
                 break;
 
 
@@ -227,13 +237,11 @@ public class GameManager : SingletonAbstract<GameManager>
         PlayDungeonLevel(currentLevelIndex);
     }
 
-    private IEnumerator RestartLevel()
+    private IEnumerator GameLost()
     {
-        displayMessage.DisplayText("Restart level in 5 seconds", 5f, Color.white, 0.5f, 1f);
+        yield return new WaitForSeconds(2f);
 
-        yield return new WaitForSeconds(5f);
-
-        SceneManager.LoadScene("MainMenuScene");
+        deathMenu.DisplayMenu();
     }
 
     private void PlayDungeonLevel(int levelIndex)
