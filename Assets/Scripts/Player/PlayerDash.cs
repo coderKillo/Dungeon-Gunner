@@ -37,6 +37,8 @@ public class PlayerDash : MonoBehaviour
 
     private MovementToPositionEvent _movementToPositionEvent;
     private PlayerControl _playerControl;
+    private Vector3 _startPosition;
+    private Vector3 _targetPosition;
 
     private void Awake()
     {
@@ -68,7 +70,6 @@ public class PlayerDash : MonoBehaviour
             DealDamage(direction, _contactDamage);
         }
 
-        DashEffect(direction);
         DashSoundEffect();
 
         _dashCoroutine = StartCoroutine(DashCoroutine(direction));
@@ -81,6 +82,11 @@ public class PlayerDash : MonoBehaviour
             StopCoroutine(_dashCoroutine);
         }
 
+        if (_isDashing)
+        {
+            DashEffect();
+        }
+
         _dashingCooldownTimer = _playerControl.MovementDetails.dashCooldown;
         _stopDashFeedback.PlayFeedbacks();
         _isDashing = false;
@@ -89,8 +95,9 @@ public class PlayerDash : MonoBehaviour
     private IEnumerator DashCoroutine(Vector2 direction)
     {
         _isDashing = true;
+        _startPosition = transform.position;
+        _targetPosition = transform.position + (Vector3)direction * _playerControl.MovementDetails.dashTime * _playerControl.MovementDetails.dashSpeed;
 
-        var targetPosition = transform.position + (Vector3)direction * _playerControl.MovementDetails.dashTime * _playerControl.MovementDetails.dashSpeed;
         var timeElapsed = 0f;
 
         _startDashFeedback.PlayFeedbacks();
@@ -102,7 +109,7 @@ public class PlayerDash : MonoBehaviour
             var dashSpeedMultiplier = _playerControl.MovementDetails.dashSpeedMultiplier.Evaluate(timeElapsed / _playerControl.MovementDetails.dashTime);
             var dashSpeed = _playerControl.MovementDetails.dashSpeed * dashSpeedMultiplier;
 
-            _movementToPositionEvent.CallMovementToPositionEvent(transform.position, targetPosition, dashSpeed, direction, _isDashing);
+            _movementToPositionEvent.CallMovementToPositionEvent(transform.position, _targetPosition, dashSpeed, direction, _isDashing);
             yield return _waitForFixedUpdate;
         }
 
@@ -117,39 +124,34 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
-    private void DashEffect(Vector2 direction)
+    private void DashEffect()
     {
         if (_dashEffect == null)
         {
             return;
         }
 
+        var targetVector = _targetPosition - _startPosition;
+        var currentVector = transform.position - _startPosition;
+        var relativeDistanceTraveled = currentVector.magnitude / targetVector.magnitude;
 
-        var effect = (SpriteEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.spriteEffectPrefab, _dashEffectSpawnLocation.position, Quaternion.identity);
+        var effect = (SpriteEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.spriteEffectPrefab, _dashEffectSpawnLocation.position - currentVector, Quaternion.identity);
         effect.Initialize(_dashEffect);
         effect.gameObject.SetActive(true);
 
-
-        var angle = HelperUtilities.GetAngleFromVector(direction);
+        var angle = HelperUtilities.GetAngleFromVector(currentVector);
 
         effect.transform.Rotate(new Vector3(0f, 0f, angle));
 
-        switch (HelperUtilities.GetAimDirection(angle))
+        if (Mathf.Abs(angle) >= 90f)
         {
-            case AimDirection.Left:
-            case AimDirection.UpLeft:
-                effect.transform.localScale = new Vector3(1f, -1f, 0f);
-                break;
-
-            case AimDirection.Up:
-            case AimDirection.Right:
-            case AimDirection.UpRight:
-            case AimDirection.Down:
-                effect.transform.localScale = new Vector3(1f, 1f, 0f);
-                break;
+            effect.transform.localScale = new Vector3(relativeDistanceTraveled, -1f, 0f);
+        }
+        else
+        {
+            effect.transform.localScale = new Vector3(relativeDistanceTraveled, 1f, 0f);
         }
     }
-
 
     private void DashSoundEffect()
     {

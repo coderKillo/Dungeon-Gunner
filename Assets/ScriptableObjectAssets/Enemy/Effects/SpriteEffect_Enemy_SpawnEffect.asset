@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c890f358838622c4e8f839d8ee103e35, type: 3}
+  m_Name: SpriteEffect_Enemy_SpawnEffect
+  m_EditorClassIdentifier: 
+  frameRate: 20
+  spriteArray:
+  - {fileID: 1707275559, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 469863841, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: -42043574, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 1496211613, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 740588286, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: -1097771081, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: -1068335004, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: -373923855, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 590125727, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 451426247, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 232915082, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 1668153150, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 669271200, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: -103562873, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: 1042200508, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  - {fileID: -711278048, guid: f1cb406eb6b12b344b706c46e17d5688, type: 3}
+  offset: {x: 0, y: 0, z: 0}
+  scale: {x: 1.5, y: 1.5}

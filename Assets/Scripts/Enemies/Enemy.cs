@@ -163,12 +163,10 @@ public class Enemy : MonoBehaviour
     {
         EnableEnemy(false);
 
-        yield return materializeEffect.MaterializeRoutine(
-            enemyDetails.materializeShader,
+        yield return materializeEffect.MaterializeRoutineAllIn1Shader(
             enemyDetails.materializeColor,
             enemyDetails.materializeTime,
-            spriteRenderer,
-            enemyDetails.standardMaterial);
+            spriteRenderer);
 
         EnableEnemy(true);
     }

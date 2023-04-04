@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: EnemyMaterial
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: OUTBASE8DIR_ON
+  m_ShaderKeywords: FADE_ON OUTBASE8DIR_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -36,13 +36,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeBurnTex:
-        m_Texture: {fileID: 2800000, guid: 32e8df0008bebe746b1681a71c61f31c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 0.62, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeTex:
-        m_Texture: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 0f0e0708166913e448eb6195f7e96bdd, type: 3}
+        m_Scale: {x: 4, y: 1}
+        m_Offset: {x: 1, y: 1}
     - _GlowTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -80,12 +80,12 @@ Material:
     - _BlurHD: 0
     - _BlurIntensity: 0
     - _Brightness: 0
-    - _ChromAberrAlpha: 0.4
-    - _ChromAberrAmount: 1
+    - _ChromAberrAlpha: 1
+    - _ChromAberrAmount: 0.292
     - _ClipUvDown: 1
-    - _ClipUvLeft: 1
-    - _ClipUvRight: 1
-    - _ClipUvUp: 1
+    - _ClipUvLeft: 0.245
+    - _ClipUvRight: 0.708
+    - _ClipUvUp: 0.177
     - _ColorChangeLuminosity: 0.706
     - _ColorChangeTolerance: 0.25
     - _ColorChangeTolerance2: 0.25
@@ -97,16 +97,16 @@ Material:
     - _ColorSwapBlueLuminosity: 0.5
     - _ColorSwapGreenLuminosity: 0.5
     - _ColorSwapRedLuminosity: 0.789
-    - _Contrast: 1
+    - _Contrast: 4.38
     - _CullingOption: 0
     - _DistortAmount: 0.5
     - _DistortTexXSpeed: 5
     - _DistortTexYSpeed: 5
     - _EditorDrawers: 6
-    - _FadeAmount: 0.434
-    - _FadeBurnGlow: 8.5
-    - _FadeBurnTransition: 0.056
-    - _FadeBurnWidth: 0.058
+    - _FadeAmount: 1
+    - _FadeBurnGlow: 10
+    - _FadeBurnTransition: 0.112
+    - _FadeBurnWidth: 0
     - _FishEyeUvAmount: 0.35
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
@@ -114,8 +114,8 @@ Material:
     - _GhostBlend: 1
     - _GhostColorBoost: 1
     - _GhostTransparency: 0
-    - _GlitchAmount: 4.2
-    - _GlitchSize: 1
+    - _GlitchAmount: 8.3
+    - _GlitchSize: 0.3
     - _Glow: 28.6
     - _GlowGlobal: 1
     - _GlowTexUsed: 0
@@ -126,7 +126,7 @@ Material:
     - _GrassManualAnim: 1
     - _GrassManualToggle: 0
     - _GrassRadialBend: 0.25
-    - _GrassSpeed: 16.7
+    - _GrassSpeed: 6.3
     - _GrassWind: 20
     - _GreyscaleBlend: 1
     - _GreyscaleLuminosity: -0.381
@@ -161,7 +161,7 @@ Material:
     - _MyDstMode: 10
     - _MySrcMode: 5
     - _NegativeAmount: 1
-    - _OffsetUvX: 0
+    - _OffsetUvX: 0.6
     - _OffsetUvY: 0
     - _OnlyInnerOutline: 0
     - _OnlyOutline: 0
@@ -181,7 +181,7 @@ Material:
     - _OutlineWidth: 0.009
     - _OverlayBlend: 0.535
     - _OverlayGlow: 3.5
-    - _PinchUvAmount: 0.35
+    - _PinchUvAmount: 0.216
     - _PixelateSize: 32
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
@@ -190,15 +190,15 @@ Material:
     - _RectSize: 1
     - _RotateUvAmount: 0
     - _RoundWaveSpeed: 2
-    - _RoundWaveStrength: 0.7
+    - _RoundWaveStrength: 1
     - _ShadowAlpha: 0.5
-    - _ShadowX: -0.028
+    - _ShadowX: -0.016
     - _ShadowY: 0.054
     - _ShakeUvSpeed: 2.5
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
     - _ShineGlow: 0.5
-    - _ShineLocation: 0.914
+    - _ShineLocation: 0.859
     - _ShineRotate: 1.55
     - _ShineWidth: 0.084
     - _TextureScrollXSpeed: 1
@@ -228,7 +228,7 @@ Material:
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 0.85078204, g: 0, b: 0.8867924, a: 1}
-    - _FadeBurnColor: {r: 0, g: 1, b: 0.10163808, a: 1}
+    - _FadeBurnColor: {r: 1, g: 0.11764707, b: 0, a: 1}
     - _GlowColor: {r: 0.2264151, g: 0.06941973, b: 0.06941973, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 0, b: 1, a: 1}

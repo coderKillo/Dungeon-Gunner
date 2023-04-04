@@ -449,6 +449,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &645860657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645860658}
+  m_Layer: 5
+  m_Name: DeathPanelDummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645860658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645860657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1661702025}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!225 &728065955 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 5386079352838106963, guid: dc0e7f158b639bb43b8bb08dbac120cb, type: 3}
@@ -1669,6 +1700,7 @@ Transform:
   - {fileID: 160572172}
   - {fileID: 497736034}
   - {fileID: 754013589}
+  - {fileID: 645860658}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2032,6 +2064,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 452640900}
     m_Modifications:
+    - target: {fileID: 8567977842761902273, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: playerDeck
+      value: 
+      objectReference: {fileID: 11400000, guid: ef368b7c93d56264e84807c5f415b23d, type: 2}
     - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -12,23 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c890f358838622c4e8f839d8ee103e35, type: 3}
   m_Name: SpriteEffect_DashSmoke
   m_EditorClassIdentifier: 
-  frameRate: 24
+  frameRate: 10
   spriteArray:
-  - {fileID: -101222743, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 1675330450, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 1943421419, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: -2044926003, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: -16310671, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 1816741864, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: -1284247321, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: -1904679450, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 1531135173, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 651839526, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 592589080, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 1869971172, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: -1752853890, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 463755227, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 892800890, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
-  - {fileID: 1051506154, guid: 94ec079cbaeb5c341a867b7966114b82, type: 3}
+  - {fileID: 819396124, guid: aa288a4622e1bf84aa80207469b08773, type: 3}
+  - {fileID: 1491048640, guid: aa288a4622e1bf84aa80207469b08773, type: 3}
+  - {fileID: -1972229123, guid: aa288a4622e1bf84aa80207469b08773, type: 3}
+  - {fileID: -2114423343, guid: aa288a4622e1bf84aa80207469b08773, type: 3}
+  - {fileID: -1635090623, guid: aa288a4622e1bf84aa80207469b08773, type: 3}
+  - {fileID: -103181553, guid: aa288a4622e1bf84aa80207469b08773, type: 3}
   offset: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1}
+  scale: {x: 0.3, y: 0.3}

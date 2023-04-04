@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2eda659c2ebc8484fb5e34427a2b2f64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,7 +137,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2eda659c2ebc8484fb5e34427a2b2f64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -572,7 +572,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2eda659c2ebc8484fb5e34427a2b2f64, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -722,6 +722,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitEffectTime: 0.2
   _hitForce: 100
+  _bloodEffectArray:
+  - {fileID: 11400000, guid: b391c1822aa86a24c97daade90d0e835, type: 2}
+  - {fileID: 11400000, guid: 2ca05e04902e2bd44bc7c03c7f1d462d, type: 2}
+  - {fileID: 11400000, guid: 05e23e22168fceb479d69c45171330c6, type: 2}
+  - {fileID: 11400000, guid: 1933f7c5f4b274143b28124c970c68d8, type: 2}
+  - {fileID: 11400000, guid: 13ba73e4795582c46b8cf8661afc5650, type: 2}
+  - {fileID: 11400000, guid: bfd7d353781d37847af3308a5be3192a, type: 2}
+  - {fileID: 11400000, guid: 0fd14c3052a48774d93a3f34661df977, type: 2}
 --- !u!114 &6082241386020688191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,6 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc67f31299b85954398066af1a33b446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effect: {fileID: 11400000, guid: d0e3fc24859d66348994494ee370a8fe, type: 2}
 --- !u!114 &2160519120283584595
 MonoBehaviour:
   m_ObjectHideFlags: 0
