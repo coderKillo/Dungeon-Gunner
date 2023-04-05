@@ -231,11 +231,6 @@ public class PlayerControl : MonoBehaviour
     {
         var currentWeapon = player.activeWeapon.CurrentWeapon;
 
-        if (currentWeapon.isReloading)
-        {
-            return;
-        }
-
         if (currentWeapon.totalAmmo < currentWeapon.weaponDetails.ammoClipCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo)
         {
             return;

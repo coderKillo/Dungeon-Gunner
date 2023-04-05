@@ -9,6 +9,11 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class ReloadWeapon : MonoBehaviour
 {
+    [Space(10)]
+    [Header("Fast Reload")]
+    [SerializeField] private float minFastReloadThreshold = 0.4f;
+    [SerializeField] private float maxFastReloadThreshold = 0.6f;
+
     private SetActiveWeaponEvent setActiveWeaponEvent;
     private ReloadWeaponEvent reloadWeaponEvent;
     private WeaponReloadedEvent weaponReloadedEvent;
@@ -43,26 +48,33 @@ public class ReloadWeapon : MonoBehaviour
 
         if (arg2.weapon.isReloading)
         {
-            StartReloadWeapon(arg2.weapon, 0);
+            StartReloadWeapon(arg2.weapon);
         }
     }
 
     private void ReloadWeaponEvent_OnReloadWeapon(ReloadWeaponEvent arg1, ReloadWeaponEventArgs arg2)
     {
-        StartReloadWeapon(arg2.weapon, arg2.totalUpAmmoPercent);
+        if (FastReload(arg2.weapon))
+        {
+            Reload(arg2.weapon);
+            ReloadComplete(arg2.weapon);
+            return;
+        }
+
+        StartReloadWeapon(arg2.weapon);
     }
 
-    private void StartReloadWeapon(Weapon weapon, int totalUpAmmoPercent)
+    private void StartReloadWeapon(Weapon weapon)
     {
         if (reloadCoroutine != null)
         {
             StopCoroutine(reloadCoroutine);
         }
 
-        reloadCoroutine = StartCoroutine(ReloadCoroutine(weapon, totalUpAmmoPercent));
+        reloadCoroutine = StartCoroutine(ReloadCoroutine(weapon));
     }
 
-    private IEnumerator ReloadCoroutine(Weapon weapon, int totalUpAmmoPercent)
+    private IEnumerator ReloadCoroutine(Weapon weapon)
     {
         weapon.isReloading = true;
         weapon.reloadTimer = weapon.weaponDetails.reloadTime;
@@ -75,23 +87,8 @@ public class ReloadWeapon : MonoBehaviour
             yield return null;
         }
 
-        if (totalUpAmmoPercent > 0)
-        {
-            FillUpAmmo(weapon, totalUpAmmoPercent);
-        }
-
         Reload(weapon);
-
-        weapon.reloadTimer = 0f;
-        weapon.isReloading = false;
-
         ReloadComplete(weapon);
-    }
-
-    private void FillUpAmmo(Weapon weapon, int percentAmount)
-    {
-        var increase = Mathf.RoundToInt(weapon.totalAmmo * (percentAmount / 100f));
-        weapon.totalAmmo = Mathf.Clamp(weapon.totalAmmo + increase, 0, weapon.weaponDetails.ammoCapacity);
     }
 
     private void Reload(Weapon weapon)
@@ -107,7 +104,27 @@ public class ReloadWeapon : MonoBehaviour
 
     private void ReloadComplete(Weapon weapon)
     {
+        weapon.reloadTimer = 0f;
+        weapon.isReloading = false;
+
         weaponReloadedEvent.CallWeaponReloadedEvent(weapon);
+    }
+
+    private bool FastReload(Weapon weapon)
+    {
+        if (!weapon.isReloading)
+        {
+            return false;
+        }
+
+        var relativeReloadTime = weapon.reloadTimer / weapon.weaponDetails.reloadTime;
+
+        if (relativeReloadTime < minFastReloadThreshold || relativeReloadTime > maxFastReloadThreshold)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private void ReloadSoundEffect(Weapon weapon)

@@ -10,6 +10,8 @@ public class PlayerReloadBar : MonoBehaviour
     [SerializeField] private RectTransform _barBackground;
     [SerializeField] private RectTransform _slider;
     [SerializeField] private RectTransform _sliderCharging;
+    [SerializeField] private RectTransform _fastReloadThresholdMin;
+    [SerializeField] private RectTransform _fastReloadThresholdMax;
     [SerializeField] private float _barWith;
     #endregion
 
@@ -151,6 +153,9 @@ public class PlayerReloadBar : MonoBehaviour
 
     private void Update()
     {
+        _fastReloadThresholdMin.gameObject.SetActive(_slider.gameObject.activeInHierarchy);
+        _fastReloadThresholdMax.gameObject.SetActive(_slider.gameObject.activeInHierarchy);
+
         if (_slider.gameObject.activeInHierarchy || _sliderCharging.gameObject.activeInHierarchy)
         {
             _barBackground.gameObject.SetActive(true);
