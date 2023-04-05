@@ -77,3 +77,4 @@ MonoBehaviour:
   emptyAnimationClip: {fileID: 7400000, guid: ef08ea85142b0574599906cc0a7ef441, type: 2}
   dashSmokeEffect: {fileID: 11400000, guid: cf52a6cbcd3a9d8468dabb0addac4ad1, type: 2}
   dashLightningEffect: {fileID: 11400000, guid: 88f7a3f8df09bbc44a22831d36beece1, type: 2}
+  enemyDeathEffect: {fileID: 11400000, guid: c19aa473a196a40458b8505ac893247f, type: 2}

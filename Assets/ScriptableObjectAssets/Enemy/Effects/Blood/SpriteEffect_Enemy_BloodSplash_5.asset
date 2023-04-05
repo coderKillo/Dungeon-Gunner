@@ -13,6 +13,17 @@ MonoBehaviour:
   m_Name: SpriteEffect_Enemy_BloodSplash_5
   m_EditorClassIdentifier: 
   frameRate: 24
-  spriteArray: []
-  offset: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1}
+  spriteArray:
+  - {fileID: 1532006604, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: -1349804675, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: 1674101690, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: 1589717544, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: -1693297136, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: -2031324210, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: -271919102, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: 286627178, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: 55053975, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: 1423929554, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  - {fileID: 1559718396, guid: 57f5640ae163f3c458648d585733628a, type: 3}
+  offset: {x: 1.5, y: 1.9, z: 0}
+  scale: {x: 0.8, y: 0.8}

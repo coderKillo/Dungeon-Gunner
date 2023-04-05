@@ -13,6 +13,17 @@ MonoBehaviour:
   m_Name: SpriteEffect_Enemy_BloodSplash_4
   m_EditorClassIdentifier: 
   frameRate: 24
-  spriteArray: []
-  offset: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1}
+  spriteArray:
+  - {fileID: 240044086, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: -1242891312, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: -2033613181, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: -685947301, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: 405711251, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: 586500811, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: -453377232, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: 2025819237, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: 1778046451, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: -413243169, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  - {fileID: -2143261803, guid: 4a6e1f969eeb50a4081b3c0b7eeab760, type: 3}
+  offset: {x: 1.5, y: 1.9, z: 0}
+  scale: {x: 0.8, y: 0.8}

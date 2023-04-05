@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 1582880359696476315}
   - component: {fileID: 754261833581178493}
   - component: {fileID: 7803383980286423615}
+  - component: {fileID: 4633145864436462467}
   - component: {fileID: 6082241386020688191}
   - component: {fileID: 3833538573536706407}
   - component: {fileID: 2160519120283584595}
@@ -730,6 +731,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 13ba73e4795582c46b8cf8661afc5650, type: 2}
   - {fileID: 11400000, guid: bfd7d353781d37847af3308a5be3192a, type: 2}
   - {fileID: 11400000, guid: 0fd14c3052a48774d93a3f34661df977, type: 2}
+--- !u!114 &4633145864436462467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821766618793254805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f103f90576bf7a44f9cf15de0a2ebee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathEffect: {fileID: 11400000, guid: c19aa473a196a40458b8505ac893247f, type: 2}
+  _corpsePrefab: {fileID: 8576215803675598720, guid: da253dea7cfdf6a4d908d1dc2cf61033, type: 3}
 --- !u!114 &6082241386020688191
 MonoBehaviour:
   m_ObjectHideFlags: 0
