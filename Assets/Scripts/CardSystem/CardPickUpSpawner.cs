@@ -45,6 +45,11 @@ public class CardPickUpSpawner : MonoBehaviour
 
     private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
     {
+        if (obj.room.nodeType.isChestRoom)
+        {
+            _lastEnemyDiedPosition = HelperUtilities.GetNearestSpawnPoint(GameManager.Instance.PlayerPosition);
+        }
+
         if (obj.room.nodeType.isBossRoom)
         {
             SpawnCard(CardRarity.Epic);

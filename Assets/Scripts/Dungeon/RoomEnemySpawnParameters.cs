@@ -13,7 +13,7 @@ public class RoomEnemySpawnParameters
     public int maxConcurrentEnemies;
     public int ConcurrentEnemies { get { return Random.Range(minConcurrentEnemies, maxConcurrentEnemies); } }
 
-    public int minSpawnInterval;
-    public int maxSpawnInterval;
-    public int SpawnInterval { get { return Random.Range(minSpawnInterval, maxSpawnInterval); } }
+    public float minSpawnInterval;
+    public float maxSpawnInterval;
+    public float SpawnInterval { get { return Random.Range(minSpawnInterval, maxSpawnInterval); } }
 }
