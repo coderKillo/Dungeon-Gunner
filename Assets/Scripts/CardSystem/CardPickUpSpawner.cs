@@ -11,7 +11,7 @@ public class CardPickUpSpawner : MonoBehaviour
 
     private CardSystemSettings _settings;
     private int _points = 0;
-    private Vector3 _lastEnemyDiedPosition = new Vector3();
+    private Vector3 _cardSpawnPosition = new Vector3();
 
     private void Awake()
     {
@@ -21,6 +21,7 @@ public class CardPickUpSpawner : MonoBehaviour
     private void OnEnable()
     {
         StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnRoomEnemiesDefeated;
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
         StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
         StaticEventHandler.OnEnemyDied += StaticEventHandler_OnEnemyDied;
     }
@@ -28,6 +29,7 @@ public class CardPickUpSpawner : MonoBehaviour
     private void OnDisable()
     {
         StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnRoomEnemiesDefeated;
+        StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
         StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
         StaticEventHandler.OnEnemyDied -= StaticEventHandler_OnEnemyDied;
     }
@@ -45,11 +47,6 @@ public class CardPickUpSpawner : MonoBehaviour
 
     private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
     {
-        if (obj.room.nodeType.isChestRoom)
-        {
-            _lastEnemyDiedPosition = HelperUtilities.GetNearestSpawnPoint(GameManager.Instance.PlayerPosition);
-        }
-
         if (obj.room.nodeType.isBossRoom)
         {
             SpawnCard(CardRarity.Epic);
@@ -60,14 +57,34 @@ public class CardPickUpSpawner : MonoBehaviour
         }
     }
 
+    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs obj)
+    {
+        if (!obj.room.nodeType.isChestRoom)
+        {
+            return;
+        }
+
+        if (obj.room.isAlreadyLooted)
+        {
+            return;
+        }
+
+        obj.room.isAlreadyLooted = true;
+
+        _cardSpawnPosition = HelperUtilities.GetNearestSpawnPoint(GameManager.Instance.PlayerPosition);
+
+        SpawnCard(CardRarity.Rare);
+    }
+
+
     private void StaticEventHandler_OnEnemyDied(EnemyDiedEventArgs obj)
     {
-        _lastEnemyDiedPosition = obj.enemy.transform.position;
+        _cardSpawnPosition = obj.enemy.transform.position;
     }
 
     private void SpawnCard(CardRarity rarity)
     {
-        var card = (CardPickUp)PoolManager.Instance.ReuseComponent(_cardPickUpPrefab, _lastEnemyDiedPosition, Quaternion.identity);
+        var card = (CardPickUp)PoolManager.Instance.ReuseComponent(_cardPickUpPrefab, _cardSpawnPosition, Quaternion.identity);
         card.SetColor(_settings.GetColor(rarity));
         card.EnsuredCardRarity = rarity;
         card.gameObject.SetActive(true);
