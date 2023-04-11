@@ -18,14 +18,19 @@ MonoBehaviour:
   iconMini: {fileID: -1176485256, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: Restore $ HP
   action: 0
-  healAmount: 10
+  healAmount: 30
   shieldAmount: 0
   ammoAmount: 0
   weapon: {fileID: 0}
   weaponDamageFactorPerLevel: 0
   powerUpType: 0
+  powerUpAbility: 0
+  powerUpScaleAbility: 0
+  isBuff: 0
   powerUpColor: {r: 0, g: 0, b: 0, a: 0}
   powerUpDuration: 0
   powerUpScaleDuration: 0
-  powerUpAbility: 0
-  powerUpScaleAbility: 0
+  isOnHit: 0
+  OnHitEffect: {fileID: 0}
+  isSpell: 0
+  powerUpSpell: {fileID: 0}

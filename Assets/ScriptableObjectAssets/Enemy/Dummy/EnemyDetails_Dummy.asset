@@ -27,6 +27,6 @@ MonoBehaviour:
   firingLineOfSightRequire: 0
   healthDetailList:
   - dungeonLevel: {fileID: 11400000, guid: 55aba9bebb934c542bc24a25af064e0f, type: 2}
-    healthAmount: 100
+    healthAmount: 10
   isImmuneAfterHit: 0
   hitImmuneTime: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2708e4084c4a1534ba646096300f778c, type: 3}
   m_Name: Room_Entrance_Catacombs_3
   m_EditorClassIdentifier: 
-  guid: 639a17cb24380d74f8a84de6a6e4dc34
-  prefab: {fileID: 7224931148630070477, guid: a600f6f58277b374da9a4126ed7ba4ab, type: 3}
-  previousPrefab: {fileID: 7224931148630070477, guid: a600f6f58277b374da9a4126ed7ba4ab, type: 3}
+  guid: 98aa0f31f83f49f40ab2aa45b22bab01
+  prefab: {fileID: 7224931148630070477, guid: 1e74d362785dc2b47a26905e054917ed, type: 3}
+  previousPrefab: {fileID: 7224931148630070477, guid: 1e74d362785dc2b47a26905e054917ed, type: 3}
   roomNodeType: {fileID: 11400000, guid: 22991a7851bd7c7479297f93d1d6665b, type: 2}
   lowerBounds: {x: -2, y: -7}
   upperBounds: {x: 23, y: 19}
@@ -57,3 +57,6 @@ MonoBehaviour:
   - {x: 2, y: -3}
   - {x: 19, y: -3}
   - {x: 10, y: 2}
+  enemiesByLevelList: []
+  enemySpawnParameterList: []
+  chestSpawnParameterList: []

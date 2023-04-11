@@ -20,12 +20,17 @@ MonoBehaviour:
   action: 2
   healAmount: 0
   shieldAmount: 0
-  ammoAmount: 10
+  ammoAmount: 20
   weapon: {fileID: 0}
   weaponDamageFactorPerLevel: 0
   powerUpType: 0
+  powerUpAbility: 0
+  powerUpScaleAbility: 0
+  isBuff: 0
   powerUpColor: {r: 0, g: 0, b: 0, a: 0}
   powerUpDuration: 0
   powerUpScaleDuration: 0
-  powerUpAbility: 0
-  powerUpScaleAbility: 0
+  isOnHit: 0
+  OnHitEffect: {fileID: 0}
+  isSpell: 0
+  powerUpSpell: {fileID: 0}

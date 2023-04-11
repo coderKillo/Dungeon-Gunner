@@ -19,13 +19,18 @@ MonoBehaviour:
   description: Add $ Armor
   action: 1
   healAmount: 0
-  shieldAmount: 20
+  shieldAmount: 50
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
   weaponDamageFactorPerLevel: 0
   powerUpType: 0
+  powerUpAbility: 0
+  powerUpScaleAbility: 0
+  isBuff: 0
   powerUpColor: {r: 0, g: 0, b: 0, a: 0}
   powerUpDuration: 0
   powerUpScaleDuration: 0
-  powerUpAbility: 0
-  powerUpScaleAbility: 0
+  isOnHit: 0
+  OnHitEffect: {fileID: 0}
+  isSpell: 0
+  powerUpSpell: {fileID: 0}

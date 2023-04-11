@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c890f358838622c4e8f839d8ee103e35, type: 3}
   m_Name: SpriteEffect_Enemy_DeathBloodSplash
   m_EditorClassIdentifier: 
-  frameRate: 24
-  spriteArray: []
+  frameRate: 16
+  spriteArray:
+  - {fileID: 1625082018, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: -1849967833, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: -225245029, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 1838422680, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: -293142893, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: -580944058, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 1520671860, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 338510275, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 697114450, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 973944698, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: -1665859964, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 1974329330, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: -2092036944, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 1574246903, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 1826419560, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
+  - {fileID: 2052934532, guid: e1bfae69bc2024444bdc5247d770db10, type: 3}
   offset: {x: 0, y: 0, z: 0}
   scale: {x: 1, y: 1}

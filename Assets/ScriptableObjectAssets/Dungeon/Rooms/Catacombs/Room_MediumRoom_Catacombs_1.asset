@@ -98,22 +98,22 @@ MonoBehaviour:
     maxTotalEnemies: 8
     minConcurrentEnemies: 3
     maxConcurrentEnemies: 5
-    minSpawnInterval: 4
-    maxSpawnInterval: 6
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 2
   - dungeonLevel: {fileID: 11400000, guid: e7b3c6cb4093e954f81d880ad3c6c1a7, type: 2}
     minTotalEnemies: 7
     maxTotalEnemies: 9
     minConcurrentEnemies: 4
     maxConcurrentEnemies: 7
-    minSpawnInterval: 4
-    maxSpawnInterval: 5
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 2
   - dungeonLevel: {fileID: 11400000, guid: 78e08a79e32967e449f3f889e8c7f07b, type: 2}
     minTotalEnemies: 9
     maxTotalEnemies: 11
     minConcurrentEnemies: 5
     maxConcurrentEnemies: 9
-    minSpawnInterval: 3
-    maxSpawnInterval: 5
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 2
   chestSpawnParameterList:
   - dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
     spawnChance: 30

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2708e4084c4a1534ba646096300f778c, type: 3}
   m_Name: Room_SmallRoom_Catacombs_2
   m_EditorClassIdentifier: 
-  guid: 810c2095ec7f7e6409ed4a3d6c360424
-  prefab: {fileID: 4327421925113694216, guid: 56292e0b1d97021498bad2aaeecfb467, type: 3}
-  previousPrefab: {fileID: 4327421925113694216, guid: 56292e0b1d97021498bad2aaeecfb467, type: 3}
+  guid: 558f70d0a025c994e8f6610d5f86f8c0
+  prefab: {fileID: 4327421925113694216, guid: 8be8be66ebf389649ab0680da249d4fc, type: 3}
+  previousPrefab: {fileID: 4327421925113694216, guid: 8be8be66ebf389649ab0680da249d4fc, type: 3}
   roomNodeType: {fileID: 11400000, guid: 63d7a335ea76829468fa2de24ddd8afd, type: 2}
   lowerBounds: {x: -2, y: -2}
   upperBounds: {x: 31, y: 31}
@@ -95,22 +95,22 @@ MonoBehaviour:
     maxTotalEnemies: 6
     minConcurrentEnemies: 2
     maxConcurrentEnemies: 3
-    minSpawnInterval: 4
-    maxSpawnInterval: 6
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 2
   - dungeonLevel: {fileID: 11400000, guid: e7b3c6cb4093e954f81d880ad3c6c1a7, type: 2}
     minTotalEnemies: 5
     maxTotalEnemies: 6
     minConcurrentEnemies: 3
     maxConcurrentEnemies: 4
-    minSpawnInterval: 4
-    maxSpawnInterval: 5
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 2
   - dungeonLevel: {fileID: 11400000, guid: 78e08a79e32967e449f3f889e8c7f07b, type: 2}
     minTotalEnemies: 6
     maxTotalEnemies: 7
     minConcurrentEnemies: 4
     maxConcurrentEnemies: 5
-    minSpawnInterval: 3
-    maxSpawnInterval: 5
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 2
   chestSpawnParameterList:
   - dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
     spawnChance: 10
