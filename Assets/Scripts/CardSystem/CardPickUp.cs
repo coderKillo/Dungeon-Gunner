@@ -38,7 +38,7 @@ public class CardPickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != Settings.playerTag)
+        if (other.tag == Settings.playerTag)
         {
             CardSystem.Instance.Draw(_ensuredCardRarity);
             gameObject.SetActive(false);
