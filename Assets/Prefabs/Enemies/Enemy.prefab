@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 7803383980286423615}
   - component: {fileID: 4633145864436462467}
   - component: {fileID: 6082241386020688191}
+  - component: {fileID: 4412843669269856625}
   - component: {fileID: 3833538573536706407}
   - component: {fileID: 2160519120283584595}
   - component: {fileID: 4451416153941413909}
@@ -761,6 +762,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9216
   weaponShootPosition: {fileID: 450417973433810459}
+--- !u!114 &4412843669269856625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821766618793254805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919ba904b6e769f418975c50f8cccf7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pushForce: 100
+  _collisionRadius: 0.3
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!114 &3833538573536706407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,6 +1130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57f2e7a4aca30c408b74f372965e929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minFastReloadThreshold: 0.4
+  maxFastReloadThreshold: 0.6
 --- !u!114 &209741091262512994
 MonoBehaviour:
   m_ObjectHideFlags: 0
