@@ -73,18 +73,20 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
 
         var randomSpawnableObject = new RandomSpawnableObject<EnemyDetailsSO>(room.enemiesByLevelList);
 
-        for (int spawnNumber = 0; spawnNumber < totalEnemies; spawnNumber++)
+        for (int spawnNumber = 0; spawnNumber < totalEnemies; spawnNumber += concurrentEnemies)
         {
-            while (currentEnemies >= concurrentEnemies)
+            int waveSize = Math.Min((totalEnemies - spawnNumber), concurrentEnemies);
+            for (int i = 0; i < waveSize; i++)
             {
-                yield return null;
+                var cellPosition = (Vector3Int)room.RandomSpawnPosition();
+
+                CreateEnemy(randomSpawnableObject.GetItem(), grid.CellToWorld(cellPosition) + UnityEngine.Random.insideUnitSphere, spawnNumber);
             }
 
-            var cellPosition = (Vector3Int)room.RandomSpawnPosition();
-
-            CreateEnemy(randomSpawnableObject.GetItem(), grid.CellToWorld(cellPosition), spawnNumber);
-
-            yield return new WaitForSeconds(spawnParameters.SpawnInterval);
+            while (currentEnemies > 0)
+            {
+                yield return new WaitForSeconds(spawnParameters.SpawnInterval);
+            }
         }
     }
 
