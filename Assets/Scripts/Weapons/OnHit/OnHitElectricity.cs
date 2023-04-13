@@ -17,6 +17,11 @@ public class OnHitElectricity : MonoBehaviour, IOnHit
 
         foreach (var collider in colliderList)
         {
+            if (collider == null)
+            {
+                continue;
+            }
+
             var health = collider.GetComponent<Health>();
             if (health != null)
             {
