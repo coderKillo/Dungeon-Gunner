@@ -677,6 +677,7 @@ MonoBehaviour:
   roomColliderBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  moveableItemList: []
 --- !u!1 &1735956483399845635
 GameObject:
   m_ObjectHideFlags: 0

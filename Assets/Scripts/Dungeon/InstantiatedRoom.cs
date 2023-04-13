@@ -61,6 +61,7 @@ public class InstantiatedRoom : MonoBehaviour
         AddDoorsToRoom();
 
         collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
+        decorator2Tilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
     }
 
     private void PopulateTilemaps(Tilemap[] tilemaps)
@@ -129,14 +130,14 @@ public class InstantiatedRoom : MonoBehaviour
                 pathfinderItemObstaclesMatrix[x, y] = Settings.defaultAstarMovementPenalty;
 
                 var worldPosition = new Vector3Int(x + room.templateLowerBound.x, y + room.templateLowerBound.y);
-                var currentTile = collisionTilemap.GetTile(worldPosition);
 
-                if (GameResources.Instance.enemyUnwalkableCollisionTilesArray.Contains(currentTile))
+                if (GameResources.Instance.enemyUnwalkableCollisionTilesArray.Contains(collisionTilemap.GetTile(worldPosition)) ||
+                GameResources.Instance.enemyUnwalkableCollisionTilesArray.Contains(decorator2Tilemap.GetTile(worldPosition)))
                 {
                     pathfinderMovementPenaltyMatrix[x, y] = 0;
                 }
 
-                if (GameResources.Instance.preferredEnemyPath == currentTile)
+                if (GameResources.Instance.preferredEnemyPath == collisionTilemap.GetTile(worldPosition))
                 {
                     pathfinderMovementPenaltyMatrix[x, y] = Settings.preferredPathMovementPenalty;
                 }
