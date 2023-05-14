@@ -17,11 +17,29 @@ public class PlayerCardHand : MonoBehaviour
     private void OnEnable()
     {
         _player.weaponFiredEvent.OnWeaponFired += WeaponFiredEvent_OnWeaponFired;
+        _player.fireWeaponEvent.OnFireWeapon += FireWeaponEvent_OnFireWeapon;
     }
 
     private void OnDisable()
     {
-        _player.weaponFiredEvent.OnWeaponFired += WeaponFiredEvent_OnWeaponFired;
+        _player.weaponFiredEvent.OnWeaponFired -= WeaponFiredEvent_OnWeaponFired;
+        _player.fireWeaponEvent.OnFireWeapon -= FireWeaponEvent_OnFireWeapon;
+    }
+
+    private void FireWeaponEvent_OnFireWeapon(FireWeaponEvent @event, FireWeaponEventArgs args)
+    {
+        if (IsCurrentCardWeapon())
+        {
+            // Ignore because is handled in WeaponFired
+            return;
+        }
+
+        // only activate on last frame of fire pressed
+        if (!args.fire && args.fireLastFrame)
+        {
+            ActiveCurrentCard();
+        }
+
     }
 
     private void WeaponFiredEvent_OnWeaponFired(WeaponFiredEvent @event, WeaponFiredEventArgs args)
@@ -120,5 +138,10 @@ public class PlayerCardHand : MonoBehaviour
         }
 
         return Mathf.RoundToInt(points * card.value);
+    }
+
+    private bool IsCurrentCardWeapon()
+    {
+        return CardSystem.Instance.Hand.CurrentActive().details.action == CardAction.AddWeapon;
     }
 }
