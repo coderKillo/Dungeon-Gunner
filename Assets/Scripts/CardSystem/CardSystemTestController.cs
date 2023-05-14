@@ -6,7 +6,7 @@ public class CardSystemTestController : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             var room = new Room();
             room.nodeType = new RoomNodeTypeSO();

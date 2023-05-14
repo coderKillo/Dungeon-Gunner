@@ -5,53 +5,110 @@ using UnityEngine;
 
 public class CardHand : MonoBehaviour
 {
+    public static int ACTIVE_CARD_INDEX = 0;
+
     private List<Card> _hand = new List<Card>();
 
-    [HideInInspector] public Action<Card> OnCardAdd;
-    [HideInInspector] public Action<Card> OnCardRemove;
-    [HideInInspector] public Action<Card[]> OnCardSelected;
-    [HideInInspector] public Action<Boolean> OnShow;
+    [HideInInspector] public Action<Card[]> OnCardUpdate;
+
+    private Card _lastSelected;
 
     public void Add(Card card)
     {
-        _hand.Add(card);
+        _hand.Insert(0, card);
 
-        OnCardAdd?.Invoke(card);
+        if (card.details.action == CardAction.AddWeapon)
+        {
+            GameManager.Instance.Player.AddWeaponToPlayer(card.details.weapon);
+        }
+
+        UpdateHand();
     }
 
     public void Remove(Card card)
     {
         _hand.Remove(card);
 
-        OnCardRemove?.Invoke(card);
+        if (card.details.action == CardAction.AddWeapon)
+        {
+            GameManager.Instance.Player.RemoveWeaponFromPlayer(card.details.weapon);
+        }
+
+        UpdateHand();
     }
 
-    public void CardSelected(int[] index)
+    public void Next()
     {
-        if (index.Length <= 0)
+        if (_hand.Count <= 1)
         {
             return;
         }
 
-        List<Card> cards = new List<Card>();
+        var firstCard = _hand[0];
+        _hand.RemoveAt(0);
+        _hand.Add(firstCard);
 
-        for (int i = 0; i < index.Length; i++)
-        {
-            if (index[i] >= _hand.Count)
-            {
-                continue;
-            }
-
-            cards.Add(_hand[index[i]]);
-        }
-
-        OnCardSelected?.Invoke(cards.ToArray());
+        UpdateHand();
     }
 
-    public void Show(bool show)
+    public void Previous()
     {
-        OnShow?.Invoke(show);
+        if (_hand.Count <= 1)
+        {
+            return;
+        }
+
+        var lastCard = _hand[_hand.Count - 1];
+        _hand.RemoveAt(_hand.Count - 1);
+        _hand.Insert(0, lastCard);
+
+        UpdateHand();
+    }
+
+    public void ActivateCurrentCard()
+    {
+        if (_hand.Count <= 0)
+        {
+            return;
+        }
+
+        var card = CurrentActive();
+
+        card.Activate(GameManager.Instance.Player);
+        if (card.value <= 0f)
+        {
+            Remove(card);
+        }
+
+        UpdateHand();
+    }
+
+    public Card CurrentActive()
+    {
+        return _hand[ACTIVE_CARD_INDEX];
+    }
+
+    public bool HasCard()
+    {
+        return _hand.Count > 0;
     }
 
     public bool Full() { return _hand.Count > Settings.cardHandSize; }
+
+    private void UpdateHand()
+    {
+        if (HasCard() && _lastSelected != CurrentActive())
+        {
+            if (_lastSelected != null)
+            {
+                _lastSelected.Deselect(GameManager.Instance.Player);
+            }
+
+            CurrentActive().Select(GameManager.Instance.Player);
+
+            _lastSelected = CurrentActive();
+        }
+
+        OnCardUpdate?.Invoke(_hand.ToArray());
+    }
 }

@@ -150,6 +150,11 @@ public class FireWeapon : MonoBehaviour
 
     private bool IsWeaponReadyToFire()
     {
+        if (activeWeapon.CurrentWeapon == null)
+        {
+            return false;
+        }
+
         if (fireRateCooldownTimer > 0f)
         {
             return false;
@@ -250,6 +255,7 @@ public class FireWeapon : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
 
+        // TODO: infinite clip still decrease total ammo (for melee weapon)
         if (!activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteClipCapacity)
         {
             activeWeapon.CurrentWeapon.clipAmmo--;

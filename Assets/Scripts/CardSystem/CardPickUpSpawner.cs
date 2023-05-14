@@ -7,7 +7,6 @@ using UnityEngine;
 public class CardPickUpSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPickUpPrefab;
-    [SerializeField] private int _cardSpawnPointThreshold = 200;
 
     private CardSystemSettings _settings;
     private int _points = 0;
@@ -22,7 +21,6 @@ public class CardPickUpSpawner : MonoBehaviour
     {
         StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnRoomEnemiesDefeated;
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
-        StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
         StaticEventHandler.OnEnemyDied += StaticEventHandler_OnEnemyDied;
     }
 
@@ -30,19 +28,7 @@ public class CardPickUpSpawner : MonoBehaviour
     {
         StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnRoomEnemiesDefeated;
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
-        StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
         StaticEventHandler.OnEnemyDied -= StaticEventHandler_OnEnemyDied;
-    }
-
-    private void StaticEventHandler_OnPointsScored(PointsScoredArgs obj)
-    {
-        _points += obj.points;
-
-        if (_points > _cardSpawnPointThreshold)
-        {
-            _points = 0;
-            SpawnCard(CardRarity.Common);
-        }
     }
 
     private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)
@@ -82,7 +68,7 @@ public class CardPickUpSpawner : MonoBehaviour
         _cardSpawnPosition = obj.enemy.transform.position;
     }
 
-    private void SpawnCard(CardRarity rarity)
+    public void SpawnCard(CardRarity rarity)
     {
         var card = (CardPickUp)PoolManager.Instance.ReuseComponent(_cardPickUpPrefab, _cardSpawnPosition, Quaternion.identity);
         card.SetColor(_settings.GetColor(rarity));

@@ -1,0 +1,124 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Player))]
+public class PlayerCardHand : MonoBehaviour
+{
+    private Player _player;
+    private Card _lastSelected;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
+
+    private void OnEnable()
+    {
+        _player.weaponFiredEvent.OnWeaponFired += WeaponFiredEvent_OnWeaponFired;
+    }
+
+    private void OnDisable()
+    {
+        _player.weaponFiredEvent.OnWeaponFired += WeaponFiredEvent_OnWeaponFired;
+    }
+
+    private void WeaponFiredEvent_OnWeaponFired(WeaponFiredEvent @event, WeaponFiredEventArgs args)
+    {
+        ActiveCurrentCard();
+    }
+
+    public void Start()
+    {
+        var weaponDetails = _player.playerDetails.startingWeapon;
+
+        var card = new Card();
+        card.id = Guid.NewGuid();
+        card.level = 1;
+        card.details = ScriptableObject.CreateInstance<CardSO>();
+        card.details.title = weaponDetails.weaponName;
+        card.details.action = CardAction.AddWeapon;
+        card.details.rarity = CardRarity.Default;
+        card.details.weapon = weaponDetails;
+        card.details.description = weaponDetails.weaponName;
+        card.details.icon = weaponDetails.weaponSprite;
+
+        CardSystem.Instance.Hand.Add(card);
+    }
+
+    public void NextCard()
+    {
+        if (!CardSystem.Instance.Hand.HasCard())
+        {
+            return;
+        }
+
+        CardSystem.Instance.Hand.Next();
+    }
+
+    public void PreviousCard()
+    {
+        if (!CardSystem.Instance.Hand.HasCard())
+        {
+            return;
+        }
+
+        CardSystem.Instance.Hand.Previous();
+    }
+
+    public void ActiveCurrentCard()
+    {
+        if (!CardSystem.Instance.Hand.HasCard())
+        {
+            return;
+        }
+
+        CardSystem.Instance.Hand.ActivateCurrentCard();
+    }
+
+    public void SacrificeCurrentCard()
+    {
+        if (!CardSystem.Instance.Hand.HasCard())
+        {
+            return;
+        }
+
+        var card = CardSystem.Instance.Hand.CurrentActive();
+
+        if (card.details.weapon == _player.playerDetails.startingWeapon)
+        {
+            return;
+        }
+
+        CardSystem.Instance.Hand.Remove(card);
+
+        StaticEventHandler.CallPointScoredEvent(GetPointFromCard(card));
+    }
+
+    private int GetPointFromCard(Card card)
+    {
+        var points = card.level;
+
+        switch (card.details.rarity)
+        {
+            case CardRarity.Common:
+                points *= 100;
+                break;
+            case CardRarity.Rare:
+                points *= 500;
+                break;
+            case CardRarity.Epic:
+                points *= 1000;
+                break;
+            case CardRarity.Legendary:
+                points *= 2000;
+                break;
+
+            default:
+                break;
+        }
+
+        return Mathf.RoundToInt(points * card.value);
+    }
+}

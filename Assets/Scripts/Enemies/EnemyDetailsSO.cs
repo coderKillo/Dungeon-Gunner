@@ -38,22 +38,6 @@ public class EnemyDetailsSO : ScriptableObject
     public bool isImmuneAfterHit = false;
     public int hitImmuneTime;
 
-    // public RuntimeAnimatorController runtimeAnimatorController;
-
-    // [Space(10)]
-    // [Header("HEALTH")]
-    // public int healthAmount;
-
-    // [Space(10)]
-    // [Header("WEAPON")]
-    // public WeaponDetailsSO startingWeapon;
-    // public List<WeaponDetailsSO> startingWeaponList;
-
-    // [Space(10)]
-    // [Header("OTHER")]
-    // public Sprite minimapIcon;
-    // public Sprite handSprite;
-
     #region VALIDATION
 #if UNITY_EDITOR
     private void OnValidate()
@@ -66,12 +50,6 @@ public class EnemyDetailsSO : ScriptableObject
         HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingIntervalMin), firingIntervalMin, nameof(firingIntervalMax), firingIntervalMax, false);
         HelperUtilities.ValidateCheckPositiveRange(this, nameof(firingDurationMin), firingDurationMin, nameof(firingDurationMax), firingDurationMax, false);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(hitImmuneTime), hitImmuneTime, true);
-        // HelperUtilities.ValidateCheckPositiveValue(this, nameof(healthAmount), healthAmount, false);
-        // HelperUtilities.ValidateCheckNullValue(this, nameof(minimapIcon), minimapIcon);
-        // HelperUtilities.ValidateCheckNullValue(this, nameof(handSprite), handSprite);
-        // HelperUtilities.ValidateCheckNullValue(this, nameof(runtimeAnimatorController), runtimeAnimatorController);
-        // HelperUtilities.ValidateCheckNullValue(this, nameof(startingWeapon), startingWeapon);
-        // HelperUtilities.ValidateCheckEnumerableValues(this, nameof(startingWeaponList), startingWeaponList);
     }
 #endif
     #endregion

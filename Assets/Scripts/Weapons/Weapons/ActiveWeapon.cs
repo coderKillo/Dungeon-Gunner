@@ -55,7 +55,7 @@ public class ActiveWeapon : MonoBehaviour
             return;
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && currentWeapon != null)
         {
             spriteRenderer.sprite = currentWeapon.weaponDetails.weaponSprite;
         }
@@ -80,6 +80,12 @@ public class ActiveWeapon : MonoBehaviour
     {
         currentWeapon = weapon;
 
+        if (currentWeapon == null)
+        {
+            DisableWeapon();
+            return;
+        }
+
         SetAnimations();
 
         spriteRenderer.sprite = weapon.weaponDetails.weaponSprite;
@@ -88,6 +94,14 @@ public class ActiveWeapon : MonoBehaviour
 
         shootPositionTransform.localPosition = weapon.weaponDetails.shootPosition;
         weaponPositionTransform.localPosition = new Vector3(weapon.weaponDetails.positionOffset, 0f, 0f);
+    }
+
+    private void DisableWeapon()
+    {
+        spriteRenderer.sprite = null;
+        shootPositionTransform.localPosition = Vector3.zero;
+        weaponPositionTransform.localPosition = Vector3.zero;
+        polygonCollider2D.points = new Vector2[0];
     }
 
     private void SetWeaponPolygonCollider()
@@ -117,12 +131,10 @@ public class ActiveWeapon : MonoBehaviour
         if (currentWeapon.weaponDetails.shotAnimation != null)
         {
             animatorOverrideController["Shot"] = currentWeapon.weaponDetails.shotAnimation;
-            // animator.speed = currentWeapon.weaponDetails.shotAnimation.length / currentWeapon.weaponDetails.fireRate;
         }
         else
         {
             animatorOverrideController["Shot"] = GameResources.Instance.emptyAnimationClip;
-            // animator.speed = 1;
         }
 
         if (currentWeapon.weaponDetails.chargeAnimation != null)

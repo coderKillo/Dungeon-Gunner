@@ -19,7 +19,7 @@ MonoBehaviour:
   ammo: {fileID: 11400000, guid: ab0be33c5ca0fd043be8468bc9dc8477, type: 2}
   hasInfiniteAmmo: 0
   ammoCapacity: 50
-  hasInfiniteClipCapacity: 1
+  hasInfiniteClipCapacity: 0
   ammoClipCapacity: 8
   fireRate: 1
   prechargeTime: 0.3

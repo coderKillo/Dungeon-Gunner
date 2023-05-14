@@ -3,20 +3,49 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(CardSystemSettings))]
+[RequireComponent(typeof(CardSystemLevel))]
+[RequireComponent(typeof(CardHand))]
 public class CardDraw : MonoBehaviour
 {
+    public enum State
+    {
+        Idle,
+        Draw,
+        HandFull,
+    };
+
     private List<Card> _draw = new List<Card>();
 
-    [HideInInspector] public Action<Card[]> OnDraw;
-    [HideInInspector] public Action<Card> OnCardSelected;
+    [HideInInspector] public Action<Card[]> OnCardChange;
+    [HideInInspector] public Action<State> OnStateChange;
 
     private CardSystemSettings _cardSystemSettings;
+    private CardSystemLevel _cardSystemLevel;
+    private CardHand _cardHand;
     private CardRarity _priority = CardRarity.Common;
     public CardRarity Priority { set { _priority = value; } }
+
+    private State _currentState;
 
     private void Awake()
     {
         _cardSystemSettings = GetComponent<CardSystemSettings>();
+        _cardSystemLevel = GetComponent<CardSystemLevel>();
+        _cardHand = GetComponent<CardHand>();
+    }
+
+    private void Start()
+    {
+        _cardHand.OnCardUpdate += CardHand_Update;
+    }
+
+    private void CardHand_Update(Card[] obj)
+    {
+        if (_currentState == State.HandFull && !_cardHand.Full())
+        {
+            UpdateState(State.Draw);
+        }
     }
 
     public void Draw(CardSO[] cards)
@@ -27,7 +56,7 @@ public class CardDraw : MonoBehaviour
         {
             var card = new Card();
             card.id = Guid.NewGuid();
-            card.level = _cardSystemSettings.GetCardLevelByDungeonLevel(GameManager.Instance.CurrentLevel);
+            card.level = _cardSystemLevel.GetRandomCardSpawnLevel();
             card.details = GetUniqueDetails(cards);
 
             _draw.Add(card);
@@ -38,7 +67,13 @@ public class CardDraw : MonoBehaviour
             _draw[UnityEngine.Random.Range(0, Settings.cardDrawSize)].details = _cardSystemSettings.PickRandomCardWithSpecificRarity(cards, _priority);
         }
 
-        OnDraw?.Invoke(_draw.ToArray());
+        OnCardChange?.Invoke(_draw.ToArray());
+        UpdateState(State.Draw);
+
+        if (_cardHand.Full())
+        {
+            UpdateState(State.HandFull);
+        }
     }
 
     private CardSO GetUniqueDetails(CardSO[] cards)
@@ -68,9 +103,20 @@ public class CardDraw : MonoBehaviour
 
     public void CardSelected(int id)
     {
-        OnCardSelected?.Invoke(_draw[id]);
+        _cardHand.Add(_draw[id]);
 
-        _draw.Clear();
+        Done();
     }
 
+    public void Done()
+    {
+        _draw.Clear();
+        UpdateState(State.Idle);
+    }
+
+    private void UpdateState(State state)
+    {
+        _currentState = state;
+        OnStateChange?.Invoke(_currentState);
+    }
 }

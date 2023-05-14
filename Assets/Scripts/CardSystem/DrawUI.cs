@@ -8,11 +8,14 @@ using UnityEngine.UI;
 public class DrawUI : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPrefab;
+    [SerializeField] private RectTransform _handBackground;
+    [SerializeField] private RectTransform _handFullWarning;
     [SerializeField] private CardDraw _cardDraw;
     [SerializeField] private CardSystemSettings _cardSystemSettings;
 
     private Animator _animator;
     private List<CardUI> _cards;
+    private CardDraw.State _currentState = CardDraw.State.Idle;
 
     private void Awake()
     {
@@ -22,20 +25,59 @@ public class DrawUI : MonoBehaviour
 
     void Start()
     {
-        _cardDraw.OnDraw += Draw;
+        _cardDraw.OnCardChange += OnCardChange;
+        _cardDraw.OnStateChange += OnStateChange;
+
+        _handBackground.gameObject.SetActive(false);
+        _handFullWarning.gameObject.SetActive(false);
     }
 
     public void Clear()
     {
         foreach (var card in _cards)
         {
-            card.DestroyFeedback.PlayFeedbacks();
+            Destroy(card.gameObject);
         }
 
         _cards.Clear();
     }
 
-    public void Draw(Card[] cards)
+    private void OnStateChange(CardDraw.State state)
+    {
+        switch (state)
+        {
+            case CardDraw.State.Idle:
+                EndDraw();
+                break;
+
+            case CardDraw.State.Draw:
+                if (_currentState == CardDraw.State.Idle)
+                {
+                    StartDraw();
+                }
+                foreach (var card in _cards)
+                {
+                    card.setValue(1f);
+                }
+                _handFullWarning.gameObject.SetActive(false);
+                break;
+
+            case CardDraw.State.HandFull:
+                foreach (var card in _cards)
+                {
+                    card.setValue(0f);
+                }
+                _handFullWarning.gameObject.SetActive(true);
+                break;
+
+            default:
+                break;
+        }
+
+        _currentState = state;
+    }
+
+    private void OnCardChange(Card[] cards)
     {
         Clear();
 
@@ -50,6 +92,7 @@ public class DrawUI : MonoBehaviour
             card.id = cards[i].id;
             card.details = cards[i].details;
             card.setLevel(cards[i].level);
+            card.setValue(cards[i].value);
             card.setDescription();
 
             cardObject.GetComponent<CardFlip>().ShowBack();
@@ -60,8 +103,6 @@ public class DrawUI : MonoBehaviour
 
             _cards.Add(card);
         }
-
-        _animator.Play("Start");
     }
 
     private void OnCardEvent(CardEvent arg1, CardEventArgs args2)
@@ -91,18 +132,36 @@ public class DrawUI : MonoBehaviour
         {
             cardFlip.ShowFront();
         }
-        else
+        else if (_currentState != CardDraw.State.HandFull)
         {
             _cards[index].SelectedFeedback.PlayFeedbacks();
-            _cardDraw.CardSelected(index);
-
-            foreach (var card in _cards)
-            {
-                card.setSelectable(false);
-            }
-
+            _cards[index].setSelectable(false);
             _cards.RemoveAt(index);
-            _animator.Play("End");
+
+            _cardDraw.CardSelected(index);
         }
+    }
+
+    public void ExitDraw()
+    {
+        _cardDraw.Done();
+    }
+
+    private void EndDraw()
+    {
+        foreach (var card in _cards)
+        {
+            card.setSelectable(false);
+        }
+
+        _animator.Play("End");
+        _handBackground.gameObject.SetActive(false);
+        _handFullWarning.gameObject.SetActive(false);
+    }
+
+    private void StartDraw()
+    {
+        _animator.Play("Start");
+        _handBackground.gameObject.SetActive(true);
     }
 }

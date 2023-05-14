@@ -52,4 +52,5 @@ public enum CardRarity
     Rare,
     Epic,
     Legendary,
+    Default,
 }

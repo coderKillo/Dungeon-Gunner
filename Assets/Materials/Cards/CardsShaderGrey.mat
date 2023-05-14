@@ -54,9 +54,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CardsShaderFront
+  m_Name: CardsShaderGrey
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: CHANGECOLOR_ON HSV_ON OUTBASEPIXELPERF_ON
+  m_ShaderKeywords: GREYSCALEOUTLINE_ON GREYSCALE_ON OUTBASEPIXELPERF_ON OVERLAYMULT_ON
+    OVERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -117,12 +118,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 1
-    - _AlphaCutoffValue: 0.25
+    - _AlphaCutoffValue: 0
     - _AlphaOutlineBlend: 1
     - _AlphaOutlineGlow: 5
     - _AlphaOutlineMinAlpha: 0.05
     - _AlphaOutlinePower: 1
-    - _AlphaRoundThreshold: 0.5
+    - _AlphaRoundThreshold: 0.262
     - _BillboardY: 0
     - _BlurHD: 0
     - _BlurIntensity: 10
@@ -150,7 +151,7 @@ Material:
     - _DistortTexXSpeed: 5
     - _DistortTexYSpeed: 5
     - _EditorDrawers: 6
-    - _FadeAmount: -0.1
+    - _FadeAmount: 0.437
     - _FadeBurnGlow: 2
     - _FadeBurnTransition: 0.075
     - _FadeBurnWidth: 0.025
@@ -158,8 +159,8 @@ Material:
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
     - _FlickerPercent: 0.265
-    - _GhostBlend: 1
-    - _GhostColorBoost: 1
+    - _GhostBlend: 0.681
+    - _GhostColorBoost: 2.26
     - _GhostTransparency: 0
     - _GlitchAmount: 3
     - _GlitchSize: 1
@@ -176,24 +177,24 @@ Material:
     - _GrassSpeed: 2
     - _GrassWind: 20
     - _GreyscaleBlend: 1
-    - _GreyscaleLuminosity: -0.048
-    - _GreyscaleOutline: 0
+    - _GreyscaleLuminosity: -0.15
+    - _GreyscaleOutline: 1
     - _HandDrawnAmount: 10
     - _HandDrawnSpeed: 5
     - _HitEffectBlend: 1
     - _HitEffectGlow: 5
-    - _HologramBlend: 1
+    - _HologramBlend: 0.138
     - _HologramFlickerAlpha: 0
     - _HologramFlickerFreq: 0.2
     - _HologramFlickerPercent: 0.05
     - _HologramMaxAlpha: 0.75
     - _HologramMinAlpha: 0.1
     - _HologramStripesAlpha: 0.4
-    - _HologramStripesAmount: 50
+    - _HologramStripesAmount: 0.145
     - _HologramStripesFill: 0.4
     - _HologramStripesLuminosity: 1
     - _HologramStripesSpeed: 5
-    - _HologramUnmodAmount: 0
+    - _HologramUnmodAmount: 0.29
     - _HsvBright: 0.513
     - _HsvSaturation: 1.315
     - _HsvShift: 33
@@ -209,7 +210,7 @@ Material:
     - _MyDstMode: 10
     - _MySrcMode: 5
     - _NegativeAmount: 1
-    - _OffsetUvX: 0.009
+    - _OffsetUvX: -0.122
     - _OffsetUvY: 0
     - _OnlyInnerOutline: 0
     - _OnlyOutline: 0
@@ -228,14 +229,14 @@ Material:
     - _OutlineTexYSpeed: 0
     - _OutlineWidth: 0.004
     - _OverlayBlend: 1
-    - _OverlayGlow: 1
+    - _OverlayGlow: 4.48
     - _PinchUvAmount: 0.35
     - _PixelateSize: 32
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
     - _PosterizeOutline: 0
     - _RandomSeed: 0
-    - _RectSize: 1
+    - _RectSize: 1.07
     - _RotateUvAmount: 0
     - _RoundWaveSpeed: 2
     - _RoundWaveStrength: 0.7
@@ -249,7 +250,7 @@ Material:
     - _ShineLocation: 0.037
     - _ShineRotate: 0.19
     - _ShineWidth: 0.05
-    - _TextureScrollXSpeed: 1
+    - _TextureScrollXSpeed: -0.75
     - _TextureScrollYSpeed: 0
     - _TwistUvAmount: 1
     - _TwistUvPosX: 0.5
@@ -286,7 +287,7 @@ Material:
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 1, g: 0.8160377, b: 0.8160377, a: 1}
-    - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OverlayColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

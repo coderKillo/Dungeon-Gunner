@@ -38,6 +38,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(PostHitImmunity))]
 [RequireComponent(typeof(ReceiveContactDamage))]
 [RequireComponent(typeof(PlayerPowerUp))]
+[RequireComponent(typeof(PlayerCardHand))]
 #endregion
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public PlayerPowerUp playerPowerUp;
     [HideInInspector] public PlayerReflectAmmo playerReflectAmmo;
     [HideInInspector] public PlayerDash playerDash;
+    [HideInInspector] public PlayerCardHand playerCardHand;
     [HideInInspector] public Health health;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator animator;
@@ -79,6 +81,7 @@ public class Player : MonoBehaviour
         playerPowerUp = GetComponent<PlayerPowerUp>();
         playerReflectAmmo = GetComponent<PlayerReflectAmmo>();
         playerDash = GetComponent<PlayerDash>();
+        playerCardHand = GetComponent<PlayerCardHand>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         activeWeapon = GetComponent<ActiveWeapon>();
@@ -109,10 +112,6 @@ public class Player : MonoBehaviour
         handRenderer.sprite = details.handSprite;
 
         weaponList.Clear();
-        foreach (var weaponDetails in details.startingWeaponList)
-        {
-            AddWeaponToPlayer(weaponDetails);
-        }
     }
 
     private void OnEnable()
@@ -151,6 +150,11 @@ public class Player : MonoBehaviour
         weapon.weaponListPosition = 0;
 
         setActiveWeaponEvent.CallSetActiveWeaponEvent(weaponList[0]);
+    }
+
+    public Weapon[] GetAllWeapons()
+    {
+        return weaponList.ToArray();
     }
 
     public Weapon GetWeapon(WeaponDetailsSO weaponDetails)

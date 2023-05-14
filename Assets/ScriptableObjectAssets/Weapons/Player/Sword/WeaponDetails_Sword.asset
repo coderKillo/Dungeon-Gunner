@@ -17,14 +17,16 @@ MonoBehaviour:
   shootPosition: {x: 1.7, y: 0.2, z: 0}
   positionOffset: 0
   ammo: {fileID: 11400000, guid: 89e70f31b09063a4f9f9c843c72f1f36, type: 2}
-  hasInfiniteAmmo: 1
+  hasInfiniteAmmo: 0
   ammoCapacity: 100
   hasInfiniteClipCapacity: 1
   ammoClipCapacity: 6
   fireRate: 0.4
   prechargeTime: 0
   reloadTime: 0
+  removeAfterAmmoIsEmpty: 0
   fireSoundEffect: {fileID: 11400000, guid: c06178dd9caea7f428ad46679ba3d6e2, type: 2}
   reloadSoundEffect: {fileID: 0}
   fireVisualEffect: {fileID: 11400000, guid: 0dbe837ed90ccda47ad3155a8829c256, type: 2}
   shotAnimation: {fileID: 7400000, guid: e101a498c36f7574d9935c773a3c83a9, type: 2}
+  chargeAnimation: {fileID: 0}

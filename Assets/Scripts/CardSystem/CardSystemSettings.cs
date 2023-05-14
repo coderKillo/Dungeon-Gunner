@@ -14,13 +14,9 @@ public class CardSystemSettings : SerializedMonoBehaviour
     [Header("Rarity Ratio")]
     [SerializeField] private Dictionary<CardRarity, int> _rarityRatio;
 
-    [Space(10)]
-    [Header("Card Level")]
-    [SerializeField] private Dictionary<DungeonLevelSO, LevelRange> _cardLevelByDungeonLevel;
-
     public Color GetColor(CardRarity rarity)
     {
-        return _rarityColorLookup.GetValueOrDefault(rarity, Color.white);
+        return _rarityColorLookup.GetValueOrDefault(rarity, Color.gray);
     }
 
     public CardSO PickRandomCard(CardSO[] cards)
@@ -58,20 +54,4 @@ public class CardSystemSettings : SerializedMonoBehaviour
 
         return selectedRarityCards[Random.Range(0, selectedRarityCards.Count)];
     }
-
-    public int GetCardLevelByDungeonLevel(DungeonLevelSO level)
-    {
-        if (!_cardLevelByDungeonLevel.ContainsKey(level))
-        {
-            return Random.Range(1, 3);
-        }
-
-        return Random.Range(_cardLevelByDungeonLevel[level].level.x, _cardLevelByDungeonLevel[level].level.y);
-    }
-}
-
-public struct LevelRange
-{
-    [MinMaxSlider(1, 5)]
-    public Vector2Int level;
 }

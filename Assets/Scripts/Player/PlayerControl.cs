@@ -18,8 +18,6 @@ public class PlayerControl : MonoBehaviour
     private float moveSpeed;
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
 
-    private int currentWeaponIndex = 0;
-
     private bool fireLastFrame = false;
 
     private void Awake()
@@ -31,12 +29,12 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         SetPlayerAnimationSpeed();
-
-        SetStartingWeapon();
     }
 
     private void Update()
     {
+        CardInput();
+
         if (!isEnabled)
         {
             player.idleEvent.CallIdleEvent();
@@ -54,6 +52,23 @@ public class PlayerControl : MonoBehaviour
 
         UseItemInput();
 
+    }
+
+    private void CardInput()
+    {
+        if (Input.mouseScrollDelta.y > 0f)
+        {
+            player.playerCardHand.NextCard();
+        }
+        else if (Input.mouseScrollDelta.y < 0f)
+        {
+            player.playerCardHand.PreviousCard();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            player.playerCardHand.SacrificeCurrentCard();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -84,73 +99,6 @@ public class PlayerControl : MonoBehaviour
             player.fireWeaponEvent.CallFireWeaponEvent(fireWeapon, fireLastFrame, playerAimDirection, playerAngle, weaponAngle, weaponDirection);
         }
         fireLastFrame = fireWeapon;
-        #endregion
-
-        #region SWITCH WEAPON
-        if (Input.mouseScrollDelta.y > 0f)
-        {
-            currentWeaponIndex--;
-            if (currentWeaponIndex < 0)
-            {
-                currentWeaponIndex = player.weaponList.Count - 1;
-            }
-            SetWeaponByIndex(currentWeaponIndex);
-        }
-        else if (Input.mouseScrollDelta.y < 0f)
-        {
-            currentWeaponIndex++;
-            if (currentWeaponIndex >= player.weaponList.Count)
-            {
-                currentWeaponIndex = 0;
-            }
-            SetWeaponByIndex(currentWeaponIndex);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            SetWeaponByIndex(0);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            SetWeaponByIndex(1);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            SetWeaponByIndex(2);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            SetWeaponByIndex(3);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha5))
-        {
-            SetWeaponByIndex(4);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha6))
-        {
-            SetWeaponByIndex(5);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha7))
-        {
-            SetWeaponByIndex(6);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha8))
-        {
-            SetWeaponByIndex(7);
-        }
-
-        if (Input.GetKey(KeyCode.Alpha9))
-        {
-            SetWeaponByIndex(8);
-        }
-
         #endregion
 
         #region RELOAD WEAPON
@@ -210,12 +158,6 @@ public class PlayerControl : MonoBehaviour
         player.animator.speed = moveSpeed / Animations.playerAnimationBaseSpeed;
     }
 
-    private void SetStartingWeapon()
-    {
-        int index = player.weaponList.FindIndex((weapon) => { return weapon.weaponDetails == player.playerDetails.startingWeapon; });
-        SetWeaponByIndex(index);
-    }
-
     private void SetWeaponByIndex(int index)
     {
         if (index >= player.weaponList.Count)
@@ -223,7 +165,6 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        currentWeaponIndex = index;
         player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[index]);
     }
 

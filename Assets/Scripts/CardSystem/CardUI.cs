@@ -14,6 +14,8 @@ public class CardUI : MonoBehaviour
     public TextMeshProUGUI description;
     public Image icon;
     public Image background;
+    public Image backgroundGrey;
+    public Transform disabledOverlay;
     public Transform levelGroup;
     public Transform selectBorder;
     public Image[] raycastTargets;
@@ -31,6 +33,9 @@ public class CardUI : MonoBehaviour
 
     [SerializeField] private MMF_Player _startFeedback;
     public MMF_Player StartFeedback { get { return _startFeedback; } }
+
+    [SerializeField] private MMF_Player _activateFeedback;
+    public MMF_Player ActivateFeedback { get { return _activateFeedback; } }
 
     [HideInInspector] public CardSO details;
     [HideInInspector] public Guid id;
@@ -68,6 +73,12 @@ public class CardUI : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void setValue(float value)
+    {
+        backgroundGrey.fillAmount = 1f - value;
+        disabledOverlay.gameObject.SetActive(value <= 0f);
     }
 
     public void setSelectable(bool active)

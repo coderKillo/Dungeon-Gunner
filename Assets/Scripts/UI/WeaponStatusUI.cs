@@ -76,6 +76,11 @@ public class WeaponStatusUI : MonoBehaviour
 
     private void SetActiveWeaponEvent_OnSetActiveWeapon(SetActiveWeaponEvent arg1, SetActiveWeaponEventArgs arg2)
     {
+        if (arg2.weapon == null)
+        {
+            return;
+        }
+
         SetActiveWeapon(arg2.weapon);
     }
     #endregion

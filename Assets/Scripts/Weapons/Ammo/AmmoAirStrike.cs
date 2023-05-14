@@ -73,7 +73,6 @@ public class AmmoAirStrike : Ammo
         if (explosionDistance <= 0f)
         {
             explosionDistance = explosionPadding;
-            Debug.Log("explo");
             SpawnExplosion();
         }
     }

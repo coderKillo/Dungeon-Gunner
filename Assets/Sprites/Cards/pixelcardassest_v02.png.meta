@@ -1829,10 +1829,10 @@ TextureImporter:
       name: pixelcardassest_v02_82
       rect:
         serializedVersion: 2
-        x: 449
-        y: 153
-        width: 94
-        height: 122
+        x: 441
+        y: 146
+        width: 108
+        height: 136
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

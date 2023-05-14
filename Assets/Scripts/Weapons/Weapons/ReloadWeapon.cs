@@ -46,6 +46,11 @@ public class ReloadWeapon : MonoBehaviour
             StopCoroutine(reloadCoroutine);
         }
 
+        if (arg2.weapon == null)
+        {
+            return;
+        }
+
         if (arg2.weapon.isReloading)
         {
             StartReloadWeapon(arg2.weapon);

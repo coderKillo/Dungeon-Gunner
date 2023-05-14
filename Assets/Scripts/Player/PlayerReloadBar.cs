@@ -30,8 +30,6 @@ public class PlayerReloadBar : MonoBehaviour
         _barBackground.gameObject.SetActive(false);
         _slider.gameObject.SetActive(false);
         _sliderCharging.gameObject.SetActive(false);
-
-        SetActiveWeapon(_player.activeWeapon.CurrentWeapon);
     }
 
     private void OnEnable()
@@ -63,6 +61,12 @@ public class PlayerReloadBar : MonoBehaviour
 
     private void SetActiveWeaponEvent_OnSetActiveWeapon(SetActiveWeaponEvent arg1, SetActiveWeaponEventArgs arg2)
     {
+        if (arg2.weapon == null)
+        {
+            ResetWeaponReloadBar();
+            return;
+        }
+
         SetActiveWeapon(arg2.weapon);
     }
 

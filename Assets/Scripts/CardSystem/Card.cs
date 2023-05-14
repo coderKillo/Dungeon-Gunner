@@ -10,8 +10,87 @@ public class Card
     public CardSO details;
     public Guid id;
     public int level = 1;
+    public float value = 1.0f;
 
-    public void Action(Player player)
+    public void Select(Player player)
+    {
+        switch (details.action)
+        {
+            case CardAction.PowerUp:
+                switch (details.powerUpType)
+                {
+                    case CardPowerUp.BlackHole:
+                        var radius = details.powerUpAbility + (details.powerUpScaleAbility * level);
+                        details.powerUpSpell.ammo.range = Mathf.RoundToInt(radius);
+                        player.AddWeaponToPlayer(details.powerUpSpell);
+                        break;
+                    case CardPowerUp.FireBall:
+                        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
+                        details.powerUpSpell.ammo.damage = Mathf.RoundToInt(damage);
+                        player.AddWeaponToPlayer(details.powerUpSpell);
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+
+            case CardAction.AddWeapon:
+                var weapon = player.GetWeapon(details.weapon);
+
+                weapon.damageFactor += (0.2f * level);
+
+                player.setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
+
+                if (weapon.weaponDetails.ammoCapacity > 0)
+                {
+                    value = (float)weapon.totalAmmo / (float)weapon.weaponDetails.ammoCapacity;
+                }
+
+                break;
+
+            case CardAction.Heal:
+            case CardAction.Shield:
+            case CardAction.Ammo:
+                break;
+
+
+            default:
+                break;
+        }
+    }
+
+    public void Deselect(Player player)
+    {
+        switch (details.action)
+        {
+            case CardAction.PowerUp:
+                switch (details.powerUpType)
+                {
+                    case CardPowerUp.BlackHole:
+                        player.RemoveWeaponFromPlayer(details.powerUpSpell);
+                        break;
+                    case CardPowerUp.FireBall:
+                        player.RemoveWeaponFromPlayer(details.powerUpSpell);
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
+
+            case CardAction.AddWeapon:
+                player.setActiveWeaponEvent.CallSetActiveWeaponEvent(null);
+                break;
+
+
+            default:
+                break;
+        }
+
+    }
+
+    public void Activate(Player player)
     {
         switch (details.action)
         {
@@ -19,6 +98,8 @@ public class Card
                 var healValue = details.healAmount * level;
 
                 player.health.Heal(healValue);
+
+                value = 0f;
 
                 break;
 
@@ -28,30 +109,37 @@ public class Card
 
                 player.health.AddArmor(shieldValue);
 
+                value = 0f;
+
                 break;
 
 
             case CardAction.PowerUp:
                 ActivatePowerUp(details.powerUpType, details.powerUpColor, player);
+
+                value = 0f;
+
                 break;
 
 
             case CardAction.Ammo:
-                var currentWeapon = player.activeWeapon.CurrentWeapon;
-                var increaseValue = Mathf.RoundToInt(currentWeapon.weaponDetails.ammoCapacity * (details.ammoAmount * level / 100f));
+                foreach (var weapon in player.GetAllWeapons())
+                {
+                    var increaseValue = Mathf.RoundToInt(weapon.weaponDetails.ammoCapacity * (details.ammoAmount * level / 100f));
+                    weapon.totalAmmo = Mathf.Clamp(weapon.totalAmmo + increaseValue, 0, weapon.weaponDetails.ammoCapacity);
+                }
 
-                currentWeapon.totalAmmo = Mathf.Clamp(currentWeapon.totalAmmo + increaseValue, 0, currentWeapon.weaponDetails.ammoCapacity);
-
-                player.weaponReloadedEvent.CallWeaponReloadedEvent(currentWeapon);
+                value = 0f;
 
                 break;
 
 
             case CardAction.AddWeapon:
-                var weapon = player.AddWeaponToPlayer(details.weapon);
-
-                weapon.damageFactor += (0.2f * level);
-
+                var currentWeapon = player.activeWeapon.CurrentWeapon;
+                if (currentWeapon.weaponDetails.ammoCapacity > 0)
+                {
+                    value = (float)currentWeapon.totalAmmo / (float)currentWeapon.weaponDetails.ammoCapacity;
+                }
                 break;
 
 
@@ -78,14 +166,8 @@ public class Card
                 player.playerPowerUp.StartPowerUp(ReflectPowerUp(player), powerUpColor);
                 break;
             case CardPowerUp.BlackHole:
-                var radius = details.powerUpAbility + (details.powerUpScaleAbility * level);
-                details.powerUpSpell.ammo.range = Mathf.RoundToInt(radius);
-                player.AddWeaponToPlayer(details.powerUpSpell);
                 break;
             case CardPowerUp.FireBall:
-                var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-                details.powerUpSpell.ammo.damage = Mathf.RoundToInt(damage);
-                player.AddWeaponToPlayer(details.powerUpSpell);
                 break;
             case CardPowerUp.LightningShot:
                 player.playerPowerUp.StartPowerUp(LightningShotPowerUp(player), powerUpColor);

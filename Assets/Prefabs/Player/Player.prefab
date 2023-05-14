@@ -1685,6 +1685,7 @@ GameObject:
   - component: {fileID: 2428291616299338314}
   - component: {fileID: 5611459364300252704}
   - component: {fileID: 8105871379126533832}
+  - component: {fileID: 3639312235797312693}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -2336,6 +2337,18 @@ MonoBehaviour:
   _dashSoundEffect: {fileID: 11400000, guid: 9d28d55d4263b2e409fdd4af109200ff, type: 2}
   _startDashFeedback: {fileID: 4160159260998870917}
   _stopDashFeedback: {fileID: 1112297717573549075}
+--- !u!114 &3639312235797312693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585357847043585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c572ce43800e4c944997275c53518aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4644113007034623212
 GameObject:
   m_ObjectHideFlags: 0

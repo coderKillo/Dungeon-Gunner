@@ -15,14 +15,18 @@ MonoBehaviour:
   weaponName: Blaster
   weaponSprite: {fileID: 21300000, guid: a9d9372b640a67a4dae1cdbb59e3b919, type: 3}
   shootPosition: {x: 1.245, y: 0.277, z: 0}
+  positionOffset: 0
   ammo: {fileID: 11400000, guid: 816cf7f4c9fb82745b29ebc21e67412e, type: 2}
-  hasInfiniteAmmo: 1
+  hasInfiniteAmmo: 0
   ammoCapacity: 0
   hasInfiniteClipCapacity: 0
   ammoClipCapacity: 6
   fireRate: 0.5
   prechargeTime: 0.2
   reloadTime: 1
+  removeAfterAmmoIsEmpty: 0
   fireSoundEffect: {fileID: 11400000, guid: 86005e20f4b42e045b225511e1014832, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: eac6b26bf4627754f918525dd4d374c6, type: 2}
-  fireVisualEffect: {fileID: 11400000, guid: 48780f2eac870ac41aba7a5ed0d8dbf2, type: 2}
+  fireVisualEffect: {fileID: 0}
+  shotAnimation: {fileID: 0}
+  chargeAnimation: {fileID: 0}
