@@ -20,7 +20,7 @@ public class PoolManager : SingletonAbstract<PoolManager>
     private Transform objectPoolTransform;
     private Dictionary<int, Queue<Component>> poolDictionary = new Dictionary<int, Queue<Component>>();
 
-    private void Start()
+    private void OnEnable()
     {
         objectPoolTransform = this.gameObject.transform;
 

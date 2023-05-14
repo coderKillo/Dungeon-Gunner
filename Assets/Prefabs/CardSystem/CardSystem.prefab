@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0760240db2d0ada4faef34f12edfea6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _drawCardSound: {fileID: 11400000, guid: 1affc0245464dd746972ede3fb11509c, type: 2}
 --- !u!114 &8567977842761902272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +74,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8f53459e509c44486512c47b541323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _addCardSound: {fileID: 11400000, guid: 4b14890fe080b194b9f1b98b1f356def, type: 2}
+  _removeCardSound: {fileID: 11400000, guid: 6179367f92b65ac4cbc79598ee28c04b, type: 2}
+  _switchCardSound: {fileID: 11400000, guid: da3b3c1fcf70e6c4bb87f5fefd6dd2b2, type: 2}
 --- !u!114 &8567977842761902286
 MonoBehaviour:
   m_ObjectHideFlags: 0

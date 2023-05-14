@@ -8,6 +8,10 @@ using UnityEngine;
 [RequireComponent(typeof(CardHand))]
 public class CardDraw : MonoBehaviour
 {
+    [Header("SOUND EFFECTS")]
+    [SerializeField] private SoundEffectSO _drawCardSound;
+    [SerializeField] private float _drawSoundInterval;
+
     public enum State
     {
         Idle,
@@ -67,12 +71,23 @@ public class CardDraw : MonoBehaviour
             _draw[UnityEngine.Random.Range(0, Settings.cardDrawSize)].details = _cardSystemSettings.PickRandomCardWithSpecificRarity(cards, _priority);
         }
 
+        StartCoroutine(PlayDrawSound());
+
         OnCardChange?.Invoke(_draw.ToArray());
         UpdateState(State.Draw);
 
         if (_cardHand.Full())
         {
             UpdateState(State.HandFull);
+        }
+    }
+
+    private IEnumerator PlayDrawSound()
+    {
+        for (int i = 0; i < Settings.cardDrawSize; i++)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(_drawCardSound);
+            yield return new WaitForSeconds(_drawSoundInterval);
         }
     }
 

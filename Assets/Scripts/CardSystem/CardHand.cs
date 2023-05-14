@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class CardHand : MonoBehaviour
 {
+    [Header("SOUND EFFECTS")]
+    [SerializeField] private SoundEffectSO _addCardSound;
+    [SerializeField] private SoundEffectSO _removeCardSound;
+    [SerializeField] private SoundEffectSO _switchCardSound;
+
     public static int ACTIVE_CARD_INDEX = 0;
 
     private List<Card> _hand = new List<Card>();
@@ -22,6 +27,8 @@ public class CardHand : MonoBehaviour
             GameManager.Instance.Player.AddWeaponToPlayer(card.details.weapon);
         }
 
+        SoundEffectManager.Instance.PlaySoundEffect(_addCardSound);
+
         UpdateHand();
     }
 
@@ -33,6 +40,8 @@ public class CardHand : MonoBehaviour
         {
             GameManager.Instance.Player.RemoveWeaponFromPlayer(card.details.weapon);
         }
+
+        SoundEffectManager.Instance.PlaySoundEffect(_removeCardSound);
 
         UpdateHand();
     }
@@ -48,6 +57,8 @@ public class CardHand : MonoBehaviour
         _hand.RemoveAt(0);
         _hand.Add(firstCard);
 
+        SoundEffectManager.Instance.PlaySoundEffect(_switchCardSound);
+
         UpdateHand();
     }
 
@@ -61,6 +72,8 @@ public class CardHand : MonoBehaviour
         var lastCard = _hand[_hand.Count - 1];
         _hand.RemoveAt(_hand.Count - 1);
         _hand.Insert(0, lastCard);
+
+        SoundEffectManager.Instance.PlaySoundEffect(_switchCardSound);
 
         UpdateHand();
     }

@@ -1425,6 +1425,7 @@ MonoBehaviour:
   _back: {fileID: 5245327607323985045}
   _front: {fileID: 7806617844903327859}
   _flipFeedback: {fileID: 6786959626956630039}
+  _flipSound: {fileID: 11400000, guid: f1161e067e3a34e4aa3cbef74aa3f0fa, type: 2}
 --- !u!114 &4509197194708666758
 MonoBehaviour:
   m_ObjectHideFlags: 0

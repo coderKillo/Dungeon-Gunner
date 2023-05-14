@@ -13,6 +13,10 @@ public class CardFlip : MonoBehaviour
     [Header("Feedback")]
     [SerializeField] private MMF_Player _flipFeedback;
 
+    [Space(10)]
+    [Header("Sounds")]
+    [SerializeField] private SoundEffectSO _flipSound;
+
     private bool _isFlipped = false;
     public bool IsFlipped { get { return _isFlipped; } }
 
@@ -23,6 +27,8 @@ public class CardFlip : MonoBehaviour
         _back.DOScaleX(0f, 0.3f).SetUpdate(true).OnComplete(() => _front.DOScaleX(1f, 0.3f).SetUpdate(true));
 
         _flipFeedback.PlayFeedbacks();
+
+        SoundEffectManager.Instance.PlaySoundEffect(_flipSound);
 
         _isFlipped = true;
     }

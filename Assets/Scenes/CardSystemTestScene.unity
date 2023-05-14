@@ -496,6 +496,22 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4050433499372674559, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_fontSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433499372674559, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433499915899281, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 133.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433499915899281, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -46.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4050433500056618648, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -599,6 +615,22 @@ PrefabInstance:
     - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433500285725804, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433500285725804, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433500285725804, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 102.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433500285725804, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
@@ -1515,8 +1547,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 0.99999994
+    height: 0.99909747
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

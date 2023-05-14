@@ -65,7 +65,7 @@ public class WeaponStatusUI : MonoBehaviour
 
     private void WeaponFiredEvent_OnWeaponFired(WeaponFiredEvent arg1, WeaponFiredEventArgs arg2)
     {
-        if (arg2.weapon == player.activeWeapon.CurrentWeapon)
+        if (arg2.weapon != null && arg2.weapon == player.activeWeapon.CurrentWeapon)
         {
             UpdateAmmoText(arg2.weapon);
             DecreaseAmmoLoadedIcons(arg2.weapon);
