@@ -269,4 +269,12 @@ public static class HelperUtilities
 
         return (objectLayerMask & mask.value) != 0;
     }
+    public static IEnumerator WaitForRealSeconds(float delay)
+    {
+        float start = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup < (start + delay))
+        {
+            yield return null;
+        }
+    }
 }

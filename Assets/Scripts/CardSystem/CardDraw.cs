@@ -87,7 +87,7 @@ public class CardDraw : MonoBehaviour
         for (int i = 0; i < Settings.cardDrawSize; i++)
         {
             SoundEffectManager.Instance.PlaySoundEffect(_drawCardSound);
-            yield return new WaitForSeconds(_drawSoundInterval);
+            yield return HelperUtilities.WaitForRealSeconds(_drawSoundInterval);
         }
     }
 

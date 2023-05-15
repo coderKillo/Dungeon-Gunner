@@ -19,7 +19,7 @@ public class CardSystemLevel : MonoBehaviour
     {
         int lowerLevelBoundary = _level / 10;
         int upperLevelBoundary = lowerLevelBoundary + 1;
-        float chancesToUpperBoundary = (_level % 10) / 10;
+        float chancesToUpperBoundary = (_level % 10) / 10f;
 
         if (UnityEngine.Random.Range(0f, 1f) >= chancesToUpperBoundary)
         {

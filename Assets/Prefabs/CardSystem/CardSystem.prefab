@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawCardSound: {fileID: 11400000, guid: 1affc0245464dd746972ede3fb11509c, type: 2}
+  _drawSoundInterval: 0.5
 --- !u!114 &8567977842761902272
 MonoBehaviour:
   m_ObjectHideFlags: 0
