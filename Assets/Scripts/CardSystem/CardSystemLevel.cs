@@ -10,7 +10,7 @@ public class CardSystemLevel : MonoBehaviour
     static public Action<int> OnLevelChange;
     static public Action<float> OnLevelPercentageChange;
 
-    private CardPickUpSpawner _cardSpawner;
+    private CardSystem _cardSystem;
 
     private float _levelPercentage = 0f;
     private int _level = 1;
@@ -33,7 +33,7 @@ public class CardSystemLevel : MonoBehaviour
 
     private void Awake()
     {
-        _cardSpawner = GetComponent<CardPickUpSpawner>();
+        _cardSystem = GetComponent<CardSystem>();
     }
 
     private void OnEnable()
@@ -66,11 +66,11 @@ public class CardSystemLevel : MonoBehaviour
 
         if (_level % _epicCardSpawnLevelInterval == 0)
         {
-            _cardSpawner.SpawnCard(CardRarity.Epic);
+            _cardSystem.Draw(CardRarity.Epic);
         }
         else
         {
-            _cardSpawner.SpawnCard(CardRarity.Common);
+            _cardSystem.Draw(CardRarity.Common);
         }
     }
 }
