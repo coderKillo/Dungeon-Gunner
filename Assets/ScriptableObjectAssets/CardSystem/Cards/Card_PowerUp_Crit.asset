@@ -30,5 +30,7 @@ MonoBehaviour:
   powerUpColor: {r: 1, g: 0.8318379, b: 0, a: 1}
   powerUpDuration: 10
   powerUpScaleDuration: 3
+  isOnHit: 0
+  OnHitEffect: {fileID: 0}
   isSpell: 0
-  powerUpSpellProjectile: {fileID: 0}
+  powerUpSpell: {fileID: 0}

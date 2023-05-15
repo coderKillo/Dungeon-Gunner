@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Card Draw
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: af0ca82dd1a84c24780163d3e2e508d2, type: 3}
+  audioClip: {fileID: 8300000, guid: 20a0dd4e5c9c0e34ba860897ee6213ba, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
   volume: 1

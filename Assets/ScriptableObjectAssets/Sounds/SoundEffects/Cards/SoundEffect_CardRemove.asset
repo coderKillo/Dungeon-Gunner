@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Card Remove
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: 85b1c2d55b6e07b499975ba0bca3285d, type: 3}
+  audioClip: {fileID: 8300000, guid: ff1fb897ceadb0141ac6c50e7f35ce49, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
   volume: 1
