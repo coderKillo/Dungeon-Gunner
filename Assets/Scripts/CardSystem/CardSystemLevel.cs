@@ -7,6 +7,9 @@ public class CardSystemLevel : MonoBehaviour
     [SerializeField] private int _pointsPerLevel = 1000;
     [SerializeField] private int _epicCardSpawnLevelInterval = 5;
 
+    [Header("SOUNDS EFFECTS")]
+    [SerializeField] private SoundEffectSO _levelUpSound;
+
     static public Action<int> OnLevelChange;
     static public Action<float> OnLevelPercentageChange;
 
@@ -61,6 +64,8 @@ public class CardSystemLevel : MonoBehaviour
 
     private void LevelUp()
     {
+        SoundEffectManager.Instance.PlaySoundEffect(_levelUpSound);
+
         _level++;
         OnLevelChange?.Invoke(_level);
 

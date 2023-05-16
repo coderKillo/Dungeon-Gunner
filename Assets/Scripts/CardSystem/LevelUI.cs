@@ -7,6 +7,7 @@ public class LevelUI : MonoBehaviour
 {
     [SerializeField] private Transform _levelBar;
     [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private ParticleSystem _levelUpEffect;
 
     private float _currentProgress = 0f;
 
@@ -37,6 +38,7 @@ public class LevelUI : MonoBehaviour
 
     private void CardSystemLevel_OnLevelChange(int level)
     {
+        _levelUpEffect.Play();
         _levelText.text = level.ToString();
         _levelBar.transform.localScale = new Vector3(0f, 1f, 1f);
     }
