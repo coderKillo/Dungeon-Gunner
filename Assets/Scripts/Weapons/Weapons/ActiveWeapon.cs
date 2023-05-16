@@ -102,6 +102,9 @@ public class ActiveWeapon : MonoBehaviour
         shootPositionTransform.localPosition = Vector3.zero;
         weaponPositionTransform.localPosition = Vector3.zero;
         polygonCollider2D.points = new Vector2[0];
+
+        animatorOverrideController["Shot"] = GameResources.Instance.emptyAnimationClip;
+        animatorOverrideController["Charge"] = GameResources.Instance.emptyAnimationClip;
     }
 
     private void SetWeaponPolygonCollider()
