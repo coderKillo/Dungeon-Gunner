@@ -13,6 +13,7 @@ public class SpriteEffect : MonoBehaviour
     [SerializeField] private bool looping = false;
     [SerializeField] private Sprite[] spriteArray;
     [SerializeField] private float frameRate;
+    public float FrameRate { get { return frameRate; } set { frameRate = value; } }
 
     private SpriteRenderer spriteRenderer;
     private Coroutine showEffectCoroutine;

@@ -24,6 +24,7 @@ public class PlayerDash : MonoBehaviour
 
     [SerializeField] private Transform _dashEffectSpawnLocation;
     [SerializeField] private SoundEffectSO _dashSoundEffect;
+    [SerializeField] private SpriteEffect _dashCooldownEffect;
 
     [Space(10)]
     [Header("Feedbacks")]
@@ -90,6 +91,9 @@ public class PlayerDash : MonoBehaviour
         _dashingCooldownTimer = _playerControl.MovementDetails.dashCooldown;
         _stopDashFeedback.PlayFeedbacks();
         _isDashing = false;
+
+        _dashCooldownEffect.FrameRate = 8f / _dashingCooldownTimer;
+        _dashCooldownEffect.gameObject.SetActive(true);
     }
 
     private IEnumerator DashCoroutine(Vector2 direction)
