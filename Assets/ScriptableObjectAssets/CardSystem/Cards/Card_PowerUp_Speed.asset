@@ -28,7 +28,9 @@ MonoBehaviour:
   powerUpScaleAbility: 0.5
   isBuff: 1
   powerUpColor: {r: 0, g: 1, b: 0.0791831, a: 1}
-  powerUpDuration: 5
-  powerUpScaleDuration: 3
+  powerUpDuration: 20
+  powerUpScaleDuration: 10
+  isOnHit: 0
+  OnHitEffect: {fileID: 0}
   isSpell: 0
-  powerUpSpellProjectile: {fileID: 0}
+  powerUpSpell: {fileID: 0}

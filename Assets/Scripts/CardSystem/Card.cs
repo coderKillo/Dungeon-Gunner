@@ -151,6 +151,11 @@ public class Card
 
     private void ActivatePowerUp(CardPowerUp powerUpType, Color powerUpColor, Player player)
     {
+        if (details.powerUpDuration > 0f)
+        {
+            player.buffEvent.CallAddBuff(details.icon, details.powerUpColor, PowerUpDuration());
+        }
+
         switch (powerUpType)
         {
             case CardPowerUp.Crit:
@@ -181,15 +186,19 @@ public class Card
         }
     }
 
+    private float PowerUpDuration()
+    {
+        return details.powerUpDuration + (details.powerUpScaleDuration * level);
+    }
+
     private IEnumerator CritPowerUp(Player player)
     {
         var critChance = (details.powerUpAbility + (details.powerUpScaleAbility * level)) * 100f;
-        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
 
         var weaponCritChanceFactor = player.fireWeapon.WeaponCritChanceFactor;
         player.fireWeapon.WeaponCritChanceFactor = critChance;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(PowerUpDuration());
 
         player.fireWeapon.WeaponCritChanceFactor = weaponCritChanceFactor;
     }
@@ -197,12 +206,11 @@ public class Card
     private IEnumerator SpeedPowerUp(Player player)
     {
         var moveSpeedFactor = details.powerUpAbility + (details.powerUpScaleAbility * level);
-        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
 
         var moveSpeed = player.playerControl.MoveSpeed;
         player.playerControl.MoveSpeed = moveSpeedFactor * moveSpeed;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(PowerUpDuration());
 
         player.playerControl.MoveSpeed = moveSpeed;
     }
@@ -210,23 +218,20 @@ public class Card
     private IEnumerator MultiShotPowerUp(Player player)
     {
         var multiShot = Mathf.RoundToInt(details.powerUpAbility + (details.powerUpScaleAbility * level));
-        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
 
         var weaponCritChanceFactor = player.fireWeapon.WeaponCritChanceFactor;
         player.fireWeapon.MultiShot = multiShot;
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(PowerUpDuration());
 
         player.fireWeapon.MultiShot = 1;
     }
 
     private IEnumerator ReflectPowerUp(Player player)
     {
-        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
-
         player.playerReflectAmmo.Enable();
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(PowerUpDuration());
 
         player.playerReflectAmmo.Disable();
     }
@@ -234,12 +239,11 @@ public class Card
     private IEnumerator LightningShotPowerUp(Player player)
     {
         var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
 
         player.fireWeapon.OnHitEffect = details.OnHitEffect;
         player.fireWeapon.OnHitDamage = Mathf.RoundToInt(damage);
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(PowerUpDuration());
 
         player.fireWeapon.OnHitEffect = null;
     }
@@ -247,12 +251,11 @@ public class Card
     private IEnumerator LightningDashPowerUp(Player player)
     {
         var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-        var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
 
         player.playerDash.Effect = GameResources.Instance.dashLightningEffect;
         player.playerDash.Damage = Mathf.RoundToInt(damage);
 
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(PowerUpDuration());
 
         player.playerDash.Effect = GameResources.Instance.dashSmokeEffect;
         player.playerDash.Damage = Mathf.RoundToInt(0);
