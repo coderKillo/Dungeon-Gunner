@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
   m_Name: Card_Weapon_RailGun
   m_EditorClassIdentifier: 
-  title: Big Gun
+  title: Rail Gun
   rarity: 3
   icon: {fileID: 1018752203, guid: dd4f38433c6d41d46914d93575bf36c6, type: 3}
   iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}

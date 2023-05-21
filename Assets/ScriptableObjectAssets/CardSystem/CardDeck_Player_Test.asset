@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: CardDeck_Player_Test
   m_EditorClassIdentifier: 
   deck:
-  - {fileID: 11400000, guid: 0148e735f27ee4849a6e5f8aeb16ae83, type: 2}
-  - {fileID: 11400000, guid: 88c843f0d65bb5c4da4f806107bdf2b8, type: 2}
+  - {fileID: 11400000, guid: 5f88145129cb4cc498dde7b398bc0033, type: 2}
+  - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
+  - {fileID: 11400000, guid: 56403651a9412374f80c5d5430f9ddd7, type: 2}
+  - {fileID: 11400000, guid: 862276b8207d9724b8fd3ca0885e525f, type: 2}

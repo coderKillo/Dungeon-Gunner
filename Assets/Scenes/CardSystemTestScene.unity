@@ -5145,6 +5145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 452640900}
     m_Modifications:
+    - target: {fileID: 8567977842761902273, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
+      propertyPath: playerDeck
+      value: 
+      objectReference: {fileID: 11400000, guid: ef368b7c93d56264e84807c5f415b23d, type: 2}
     - target: {fileID: 8567977842761902274, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
       propertyPath: m_RootOrder
       value: 0
