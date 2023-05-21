@@ -49,6 +49,12 @@ public class CardSystemLevel : MonoBehaviour
         StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
     }
 
+    private void Start()
+    {
+        OnLevelChange?.Invoke(_level);
+        OnLevelPercentageChange?.Invoke(_levelPercentage);
+    }
+
     private void StaticEventHandler_OnPointsScored(PointsScoredArgs obj)
     {
         _levelPercentage += (float)obj.points / (float)_pointsPerLevel;

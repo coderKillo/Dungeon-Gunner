@@ -53,11 +53,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _OutlineDistortTex:
         m_Texture: {fileID: 2800000, guid: 7aad8c583ef292e48b06af0d1f2fab97, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 4.71, y: 6.62}
         m_Offset: {x: 0, y: 0}
     - _OutlineTex:
         m_Texture: {fileID: 2800000, guid: 74087f6d03f233e4a8a142fa01f9e5cf, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 12.41, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OverlayTex:
         m_Texture: {fileID: 2800000, guid: cecdbf60b0c9d47c9a26b99a41425de0, type: 3}
@@ -167,8 +167,8 @@ Material:
     - _OnlyOutline: 0
     - _Outline8Directions: 1
     - _OutlineAlpha: 1
-    - _OutlineDistortAmount: 0.5
-    - _OutlineDistortTexXSpeed: 5
+    - _OutlineDistortAmount: 0.188
+    - _OutlineDistortTexXSpeed: 6.4
     - _OutlineDistortTexYSpeed: 5
     - _OutlineDistortToggle: 0
     - _OutlineGlow: 1.5
@@ -176,7 +176,7 @@ Material:
     - _OutlinePixelWidth: 1.2
     - _OutlineTexGrey: 0
     - _OutlineTexToggle: 0
-    - _OutlineTexXSpeed: 10
+    - _OutlineTexXSpeed: 0
     - _OutlineTexYSpeed: 0
     - _OutlineWidth: 0.0044
     - _OverlayBlend: 0.535

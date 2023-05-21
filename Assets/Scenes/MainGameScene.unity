@@ -3155,6 +3155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1661702025}
     m_Modifications:
+    - target: {fileID: 592674425686259831, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8612514373786636927, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: _cardDraw
       value: 
@@ -3169,10 +3173,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8612514374076807900, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
@@ -3271,10 +3271,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1505412521}
-    - target: {fileID: 8612514374105008495, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1491282665
-      objectReference: {fileID: 0}
     - target: {fileID: 8612514374859458210, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: _cardHand
       value: 
@@ -4373,8 +4369,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.999817
+    width: 0.99999994
+    height: 0.99909747
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

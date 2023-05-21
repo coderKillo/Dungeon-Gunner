@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using TMPro;
 
 public class HealthUI : MonoBehaviour
 {
@@ -11,10 +12,17 @@ public class HealthUI : MonoBehaviour
     [Space(10)]
     [Header("HEALTH")]
     [SerializeField] private GameObject healthBar;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     [Space(10)]
     [Header("SHIELD")]
     [SerializeField] private GameObject shieldBar;
+    [SerializeField] private TextMeshProUGUI shieldText;
+
+    [Space(10)]
+    [Header("Level")]
+    [SerializeField] private GameObject levelBar;
+    [SerializeField] private TextMeshProUGUI levelText;
 
     [Space(10)]
     [Header("DELAY")]
@@ -39,12 +47,29 @@ public class HealthUI : MonoBehaviour
     private void OnEnable()
     {
         player.healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+
+        CardSystemLevel.OnLevelChange += CardSystemLevel_OnLevelChange;
+        CardSystemLevel.OnLevelPercentageChange += CardSystemLevel_OnLevelPercentageChange;
     }
 
     private void OnDisable()
     {
         player.healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+        CardSystemLevel.OnLevelChange -= CardSystemLevel_OnLevelChange;
+        CardSystemLevel.OnLevelPercentageChange -= CardSystemLevel_OnLevelPercentageChange;
     }
+
+    private void CardSystemLevel_OnLevelPercentageChange(float levelPercentage)
+    {
+        SetLevelBar(levelPercentage);
+    }
+
+    private void CardSystemLevel_OnLevelChange(int level)
+    {
+        SetLevelBar(0f);
+        SetLevelText(level);
+    }
+
 
     private void HealthEvent_OnHealthChanged(HealthEvent arg1, HealthEventArgs arg2)
     {
@@ -55,6 +80,9 @@ public class HealthUI : MonoBehaviour
 
         SetHealthBar(arg2.healthPercent);
         SetShieldBar(arg2.shieldPercent);
+
+        SetHealthText(arg2.healthAmount, arg2.totalHealth);
+        SetShieldText(arg2.shieldAmount, arg2.totalShield);
 
         if (healthBarDelayRoutine != null)
         {
@@ -71,6 +99,26 @@ public class HealthUI : MonoBehaviour
     private void SetHealthBar(float healthPercent)
     {
         healthBar.transform.localScale = new Vector3(healthPercent, 1f, 1f);
+    }
+
+    private void SetLevelBar(float levelPercentage)
+    {
+        levelBar.transform.localScale = new Vector3(levelPercentage, 1f, 1f);
+    }
+
+    private void SetLevelText(int level)
+    {
+        levelText.text = "LV. " + level;
+    }
+
+    private void SetShieldText(int shieldAmount, int totalShield)
+    {
+        shieldText.text = shieldAmount + "/" + totalShield;
+    }
+
+    private void SetHealthText(int healthAmount, int totalHealth)
+    {
+        healthText.text = healthAmount + "/" + totalHealth;
     }
 
     private IEnumerator StartHealthBarDelayRoutine(float healthPercent)

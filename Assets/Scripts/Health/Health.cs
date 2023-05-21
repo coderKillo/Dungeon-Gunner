@@ -112,7 +112,7 @@ public class Health : MonoBehaviour
 
     private void CallHealthEvent(int damageAmount, int healAmount, bool isCrit)
     {
-        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount, ((float)currentArmor / (float)maxArmor), currentArmor, isCrit);
+        healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount, startingHealth, ((float)currentArmor / (float)maxArmor), currentArmor, maxArmor, isCrit);
     }
 
     private bool IsDamageable()
