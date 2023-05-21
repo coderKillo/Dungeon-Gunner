@@ -1993,6 +1993,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: pixelcardassest_v02_90
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 31
+        width: 96
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7ef4774b35dfe489255ecef0543790
+      internalID: -1185875442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2082,6 +2103,7 @@ TextureImporter:
       pixelcardassest_v02_81: 1032868285
       pixelcardassest_v02_62: -1951261775
       pixelcardassest_v02_49: 70230400
+      pixelcardassest_v02_90: -1185875442
       pixelcardassest_v02_58: -1847889164
       pixelcardassest_v02_80: -1493565890
       pixelcardassest_v02_2: -1980917895
