@@ -5175,10 +5175,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1361949640}
     - target: {fileID: 8612514373786636927, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: _cardExitDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8612514373786636927, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: _cardSystemSettings
       value: 
       objectReference: {fileID: 1361949641}

@@ -55,5 +55,6 @@ static public class Settings
     public const int cardHandSize = 5;
     public const int cardDrawSize = 3;
     public const int maxCardLevel = 5;
+    public const int cardDrawOnStart = 3;
     #endregion
 }

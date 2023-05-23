@@ -260,6 +260,8 @@ public class GameManager : SingletonAbstract<GameManager>
 
         displayMessage.DisplayText("Level " + (levelIndex + 1) + "\n\n" + dungeonLevelList[levelIndex].levelName, 1f, Color.white);
 
+        Invoke(nameof(DrawStartCards), 1.5f);
+
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
 
         player.gameObject.transform.position = new Vector3(
@@ -271,6 +273,15 @@ public class GameManager : SingletonAbstract<GameManager>
         player.gameObject.transform.position = HelperUtilities.GetNearestSpawnPoint(player.gameObject.transform.position);
 
         SetGameState(GameState.playingLevel);
+    }
+
+
+    private void DrawStartCards()
+    {
+        for (int i = 0; i < Settings.cardDrawOnStart; i++)
+        {
+            CardSystem.Instance.Draw(CardRarity.Rare);
+        }
     }
 
     public void SetScore(long amount)
