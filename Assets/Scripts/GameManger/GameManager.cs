@@ -156,7 +156,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 PlayDungeonLevel(currentLevelIndex);
 
-                Invoke(nameof(DrawStartCards), 1.5f);
+                Invoke(nameof(DrawStartCards), 3f);
 
                 break;
 

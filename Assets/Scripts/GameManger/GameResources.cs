@@ -88,4 +88,8 @@ public class GameResources : MonoBehaviour
     [Header("PLAYER DASH EFFECTS")]
     public SpriteEffectSO dashSmokeEffect;
     public SpriteEffectSO dashLightningEffect;
+
+    [Space(10)]
+    [Header("SPECIAL CARDS")]
+    public CardSO instagibCard;
 }

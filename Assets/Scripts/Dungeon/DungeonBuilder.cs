@@ -14,6 +14,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
     {
         return roomDictionary.TryGetValue(id, out Room room) ? room : null;
     }
+    public Room[] GetAllRooms() { return roomDictionary.Values.ToArray(); }
 
     private Dictionary<string, RoomTemplateSO> templateDictionary = new Dictionary<string, RoomTemplateSO>();
     public RoomTemplateSO GetRoomTemplate(string id)
