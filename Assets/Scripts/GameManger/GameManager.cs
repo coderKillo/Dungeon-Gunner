@@ -156,6 +156,9 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 PlayDungeonLevel(currentLevelIndex);
 
+                Invoke(nameof(DrawStartCards), 1.5f);
+
+
                 break;
 
 
@@ -259,8 +262,6 @@ public class GameManager : SingletonAbstract<GameManager>
         }
 
         displayMessage.DisplayText("Level " + (levelIndex + 1) + "\n\n" + dungeonLevelList[levelIndex].levelName, 1f, Color.white);
-
-        Invoke(nameof(DrawStartCards), 1.5f);
 
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
 
