@@ -12,6 +12,7 @@ public class DrawUI : MonoBehaviour
     [SerializeField] private RectTransform _handFullWarning;
     [SerializeField] private CardDraw _cardDraw;
     [SerializeField] private CardSystemSettings _cardSystemSettings;
+    [SerializeField] private float _cardExitDuration = 1f;
 
     private Animator _animator;
     private List<CardUI> _cards;
@@ -44,10 +45,15 @@ public class DrawUI : MonoBehaviour
 
     private void OnStateChange(CardDraw.State state)
     {
+        Debug.Log(state);
         switch (state)
         {
             case CardDraw.State.Idle:
-                EndDraw();
+                CloseDraw();
+                break;
+
+            case CardDraw.State.EndDraw:
+                StartCoroutine(EndDraw());
                 break;
 
             case CardDraw.State.Draw:
@@ -147,7 +153,7 @@ public class DrawUI : MonoBehaviour
         _cardDraw.Done();
     }
 
-    private void EndDraw()
+    private IEnumerator EndDraw()
     {
         foreach (var card in _cards)
         {
@@ -155,6 +161,14 @@ public class DrawUI : MonoBehaviour
         }
 
         _animator.Play("End");
+
+        yield return new WaitForSecondsRealtime(_cardExitDuration);
+
+        _cardDraw.EndDrawDone();
+    }
+
+    private void CloseDraw()
+    {
         _handBackground.gameObject.SetActive(false);
         _handFullWarning.gameObject.SetActive(false);
     }

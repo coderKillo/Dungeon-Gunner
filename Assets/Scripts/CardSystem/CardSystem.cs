@@ -12,7 +12,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
     public CardHand Hand { get { return _cardHand; } }
     private CardDraw _cardDraw;
 
-
     protected override void Awake()
     {
         base.Awake();
@@ -27,6 +26,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private void CardDraw_OnStateChange(CardDraw.State state)
     {
+        Debug.Log("CardSys : " + state);
         switch (state)
         {
             case CardDraw.State.Draw:
@@ -48,8 +48,12 @@ public class CardSystem : SingletonAbstract<CardSystem>
     [Button("Draw Card")]
     public void Draw(CardRarity rarity = CardRarity.Common)
     {
-        _cardDraw.Priority = rarity;
-        _cardDraw.Draw(playerDeck.deck.ToArray());
+        _cardDraw.Draw(rarity);
+    }
+
+    public CardSO[] CardDeck()
+    {
+        return playerDeck.deck.ToArray();
     }
     #endregion
 

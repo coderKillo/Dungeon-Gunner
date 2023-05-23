@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerMaterial
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: OUTBASEPIXELPERF_ON OUTBASE_ON
+  m_ShaderKeywords: OUTBASEPIXELPERF_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -218,7 +218,7 @@ Material:
     m_Colors:
     - ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
     - _AlphaOutlineColor: {r: 0.23584908, g: 0.0077874744, b: 0.0077874744, a: 1}
-    - _Color: {r: 0.67938, g: 1, b: 0.5707547, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorChangeNewCol: {r: 0.8086353, g: 1, b: 0.740566, a: 1}
     - _ColorChangeNewCol2: {r: 1, g: 1, b: 0, a: 1}
     - _ColorChangeNewCol3: {r: 1, g: 1, b: 0, a: 1}

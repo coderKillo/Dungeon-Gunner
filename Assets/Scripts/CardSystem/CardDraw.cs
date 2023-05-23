@@ -16,6 +16,7 @@ public class CardDraw : MonoBehaviour
     {
         Idle,
         Draw,
+        EndDraw,
         HandFull,
     };
 
@@ -26,9 +27,9 @@ public class CardDraw : MonoBehaviour
 
     private CardSystemSettings _cardSystemSettings;
     private CardSystemLevel _cardSystemLevel;
+    private CardSystem _cardSystem;
     private CardHand _cardHand;
-    private CardRarity _priority = CardRarity.Common;
-    public CardRarity Priority { set { _priority = value; } }
+    private Queue<CardRarity> _drawQueue = new Queue<CardRarity>();
 
     private State _currentState;
 
@@ -36,6 +37,7 @@ public class CardDraw : MonoBehaviour
     {
         _cardSystemSettings = GetComponent<CardSystemSettings>();
         _cardSystemLevel = GetComponent<CardSystemLevel>();
+        _cardSystem = GetComponent<CardSystem>();
         _cardHand = GetComponent<CardHand>();
     }
 
@@ -52,9 +54,16 @@ public class CardDraw : MonoBehaviour
         }
     }
 
-    public void Draw(CardSO[] cards)
+    public void Draw(CardRarity priority = CardRarity.Common)
     {
+        if (IsBusy())
+        {
+            _drawQueue.Enqueue(priority);
+            return;
+        }
+
         _draw.Clear();
+        var cards = _cardSystem.CardDeck();
 
         for (int i = 0; i < Settings.cardDrawSize; i++)
         {
@@ -66,9 +75,9 @@ public class CardDraw : MonoBehaviour
             _draw.Add(card);
         }
 
-        if (!ContainsRarity(_priority))
+        if (!ContainsRarity(priority))
         {
-            _draw[UnityEngine.Random.Range(0, Settings.cardDrawSize)].details = _cardSystemSettings.PickRandomCardWithSpecificRarity(cards, _priority);
+            _draw[UnityEngine.Random.Range(0, Settings.cardDrawSize)].details = _cardSystemSettings.PickRandomCardWithSpecificRarity(cards, priority);
         }
 
         StartCoroutine(PlayDrawSound());
@@ -76,10 +85,16 @@ public class CardDraw : MonoBehaviour
         OnCardChange?.Invoke(_draw.ToArray());
         UpdateState(State.Draw);
 
+
         if (_cardHand.Full())
         {
             UpdateState(State.HandFull);
         }
+    }
+
+    public bool IsBusy()
+    {
+        return _currentState != State.Idle;
     }
 
     private IEnumerator PlayDrawSound()
@@ -126,7 +141,13 @@ public class CardDraw : MonoBehaviour
     public void Done()
     {
         _draw.Clear();
+        UpdateState(State.EndDraw);
+    }
+
+    public void EndDrawDone()
+    {
         UpdateState(State.Idle);
+        NextQueueItem();
     }
 
     private void UpdateState(State state)
@@ -134,4 +155,14 @@ public class CardDraw : MonoBehaviour
         _currentState = state;
         OnStateChange?.Invoke(_currentState);
     }
+
+    private void NextQueueItem()
+    {
+        if (_drawQueue.Count > 0)
+        {
+            Debug.Log("draw next");
+            Draw(_drawQueue.Dequeue());
+        }
+    }
+
 }

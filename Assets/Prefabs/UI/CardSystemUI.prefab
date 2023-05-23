@@ -440,6 +440,7 @@ MonoBehaviour:
   _handFullWarning: {fileID: 5016734633935238195}
   _cardDraw: {fileID: 0}
   _cardSystemSettings: {fileID: 0}
+  _cardExitDuration: 1
 --- !u!95 &8612514373786636912
 Animator:
   serializedVersion: 4
