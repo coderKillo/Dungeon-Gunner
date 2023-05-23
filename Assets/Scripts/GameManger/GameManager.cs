@@ -158,7 +158,6 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 Invoke(nameof(DrawStartCards), 1.5f);
 
-
                 break;
 
 
