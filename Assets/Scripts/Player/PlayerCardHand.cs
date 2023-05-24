@@ -49,18 +49,10 @@ public class PlayerCardHand : MonoBehaviour
 
     public void Start()
     {
-        var weaponDetails = _player.playerDetails.startingWeapon;
-
         var card = new Card();
         card.id = Guid.NewGuid();
         card.level = 1;
-        card.details = ScriptableObject.CreateInstance<CardSO>();
-        card.details.title = weaponDetails.weaponName;
-        card.details.action = CardAction.AddWeapon;
-        card.details.rarity = CardRarity.Default;
-        card.details.weapon = weaponDetails;
-        card.details.description = weaponDetails.weaponName;
-        card.details.icon = weaponDetails.weaponSprite;
+        card.details = _player.playerDetails.startingWeapon;
 
         CardSystem.Instance.Hand.Add(card);
     }
@@ -104,7 +96,7 @@ public class PlayerCardHand : MonoBehaviour
 
         var card = CardSystem.Instance.Hand.CurrentActive();
 
-        if (card.details.weapon == _player.playerDetails.startingWeapon)
+        if (card.details == _player.playerDetails.startingWeapon)
         {
             return;
         }

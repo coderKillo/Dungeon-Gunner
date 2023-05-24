@@ -25,7 +25,6 @@ public class CharacterSelectorUI : MonoBehaviour
 
             var playerSelection = playerObject.GetComponent<PlayerSelectionUI>();
 
-            playerSelection.playerWeaponSpriteRenderer.sprite = playerDetails.startingWeapon.weaponSprite;
             playerSelection.playerHandSpriteRenderer.sprite = playerDetails.handSprite;
             playerSelection.playerHandNoWeaponSpriteRenderer.sprite = playerDetails.handSprite;
             playerSelection.animator.runtimeAnimatorController = playerDetails.runtimeAnimatorController;

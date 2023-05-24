@@ -18,8 +18,7 @@ public class PlayerDetailsSO : ScriptableObject
 
     [Space(10)]
     [Header("WEAPON")]
-    public WeaponDetailsSO startingWeapon;
-    public List<WeaponDetailsSO> startingWeaponList;
+    public CardSO startingWeapon;
 
     [Space(10)]
     [Header("OTHER")]
@@ -37,7 +36,6 @@ public class PlayerDetailsSO : ScriptableObject
         HelperUtilities.ValidateCheckNullValue(this, nameof(handSprite), handSprite);
         HelperUtilities.ValidateCheckNullValue(this, nameof(runtimeAnimatorController), runtimeAnimatorController);
         HelperUtilities.ValidateCheckNullValue(this, nameof(startingWeapon), startingWeapon);
-        HelperUtilities.ValidateCheckEnumerableValues(this, nameof(startingWeaponList), startingWeaponList);
     }
 #endif
     #endregion
