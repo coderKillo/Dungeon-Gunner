@@ -133,11 +133,16 @@ public static class HelperUtilities
     internal static Vector3 GetNearestSpawnPoint(Vector3 position)
     {
         var currentRoom = GameManager.Instance.CurrentRoom;
-        var grid = currentRoom.instantiatedRoom.grid;
+        return GetNearestSpawnPointFromRoom(position, currentRoom);
+    }
+
+    internal static Vector3 GetNearestSpawnPointFromRoom(Vector3 position, Room room)
+    {
+        var grid = room.instantiatedRoom.grid;
 
         var nearestSpawnPosition = new Vector3(10000f, 10000f, 0f);
 
-        foreach (var spawnPosition in currentRoom.spawnPositions)
+        foreach (var spawnPosition in room.spawnPositions)
         {
             var spawnPositionWorld = grid.CellToWorld((Vector3Int)spawnPosition);
 

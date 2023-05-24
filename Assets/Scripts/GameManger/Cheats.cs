@@ -95,7 +95,7 @@ public class Cheats : MonoBehaviour
                 0f
             );
 
-            player.gameObject.transform.position = HelperUtilities.GetNearestSpawnPoint(player.gameObject.transform.position);
+            player.gameObject.transform.position = HelperUtilities.GetNearestSpawnPointFromRoom(player.gameObject.transform.position, room);
         }
     }
 
