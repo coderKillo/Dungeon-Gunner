@@ -86,14 +86,12 @@ public class PlayerDash : MonoBehaviour
         if (_isDashing)
         {
             DashEffect();
+            DashCooldownEffect();
         }
 
         _dashingCooldownTimer = _playerControl.MovementDetails.dashCooldown;
         _stopDashFeedback.PlayFeedbacks();
         _isDashing = false;
-
-        _dashCooldownEffect.FrameRate = 8f / _dashingCooldownTimer;
-        _dashCooldownEffect.gameObject.SetActive(true);
     }
 
     private IEnumerator DashCoroutine(Vector2 direction)
@@ -128,6 +126,12 @@ public class PlayerDash : MonoBehaviour
         }
     }
 
+    private void DashCooldownEffect()
+    {
+        _dashCooldownEffect.FrameRate = 8f / _playerControl.MovementDetails.dashCooldown;
+        _dashCooldownEffect.gameObject.SetActive(true);
+    }
+
     private void DashEffect()
     {
         if (_dashEffect == null)
@@ -139,9 +143,13 @@ public class PlayerDash : MonoBehaviour
         var currentVector = transform.position - _startPosition;
         var relativeDistanceTraveled = currentVector.magnitude / targetVector.magnitude;
 
-        var effect = (SpriteEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.spriteEffectPrefab, _dashEffectSpawnLocation.position - currentVector, Quaternion.identity);
+        var effect = (SpriteEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.spriteEffectMaskedPrefab, _dashEffectSpawnLocation.position - currentVector, Quaternion.identity);
         effect.Initialize(_dashEffect);
         effect.gameObject.SetActive(true);
+
+        var spriteRenderer = effect.GetComponent<SpriteRenderer>();
+        var spriteRect = spriteRenderer.sprite.rect.size / spriteRenderer.sprite.pixelsPerUnit;
+        spriteRenderer.size = new Vector2(relativeDistanceTraveled * spriteRect.x, spriteRect.y);
 
         var angle = HelperUtilities.GetAngleFromVector(currentVector);
 
@@ -149,11 +157,11 @@ public class PlayerDash : MonoBehaviour
 
         if (Mathf.Abs(angle) >= 90f)
         {
-            effect.transform.localScale = new Vector3(relativeDistanceTraveled, -1f, 0f);
+            effect.transform.localScale = new Vector3(1, -1f, 0f);
         }
         else
         {
-            effect.transform.localScale = new Vector3(relativeDistanceTraveled, 1f, 0f);
+            effect.transform.localScale = new Vector3(1, 1f, 0f);
         }
     }
 

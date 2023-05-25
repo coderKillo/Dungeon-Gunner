@@ -66,6 +66,7 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("VISUAL EFFECTS")]
     public GameObject spriteEffectPrefab;
+    public GameObject spriteEffectMaskedPrefab;
 
     [Space(10)]
     [Header("MUSIC")]

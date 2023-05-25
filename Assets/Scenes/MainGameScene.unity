@@ -3159,6 +3159,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5016734633935238195, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -52.000008
+      objectReference: {fileID: 0}
     - target: {fileID: 8612514373786636927, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: _cardDraw
       value: 
@@ -4368,9 +4372,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 0.99999994
-    height: 0.99909747
+    y: 0.10771993
+    width: 0.6464647
+    height: 0.64631957
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

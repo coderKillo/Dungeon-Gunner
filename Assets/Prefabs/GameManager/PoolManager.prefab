@@ -135,3 +135,6 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 6703015285744824992, guid: db52f96794dcbe74eb1130cc01110d45, type: 3}
     componentTypeName: CardPickUp
+  - size: 5
+    prefab: {fileID: 4514459192244064898, guid: bc6942844f26aac40b80bdd0deefa4c8, type: 3}
+    componentTypeName: SpriteEffect
