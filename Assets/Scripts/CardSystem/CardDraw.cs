@@ -160,7 +160,6 @@ public class CardDraw : MonoBehaviour
     {
         if (_drawQueue.Count > 0)
         {
-            Debug.Log("draw next");
             Draw(_drawQueue.Dequeue());
         }
     }

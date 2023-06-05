@@ -26,7 +26,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
     private void CardDraw_OnStateChange(CardDraw.State state)
     {
-        Debug.Log("CardSys : " + state);
         switch (state)
         {
             case CardDraw.State.Draw:

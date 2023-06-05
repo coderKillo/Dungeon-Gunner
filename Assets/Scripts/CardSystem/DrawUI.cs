@@ -45,7 +45,6 @@ public class DrawUI : MonoBehaviour
 
     private void OnStateChange(CardDraw.State state)
     {
-        Debug.Log(state);
         switch (state)
         {
             case CardDraw.State.Idle:
