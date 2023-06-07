@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1397
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 171
+  controlID: 23
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 23
+  controlID: 24
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 24
+  controlID: 25
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -190,8 +190,8 @@ MonoBehaviour:
     y: 0
     width: 325
     height: 891
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GridPaintPaletteWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -298,14 +298,14 @@ MonoBehaviour:
     y: 0
     width: 695
     height: 1347
-  m_MinSize: {x: 241, y: 221}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 21}
   - {fileID: 22}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -375,11 +375,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 990
-      height: 849
+      height: 870
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 495, y: 424.5}
+    m_Translation: {x: 495, y: 435}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -387,9 +387,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -495
-      y: -424.5
+      y: -435
       width: 990
-      height: 849
+      height: 870
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 990, y: 870}
@@ -429,9 +429,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: eaa10000
       m_LastClickedID: 0
-      m_ExpandedIDs: 108ff9ff1a8ff9fff0faffff946c0000a06c0000f46c0000
+      m_ExpandedIDs: 1a4cfffff2faffffda7d0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -713,9 +713,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 7.141334, y: 13.638571, z: 0.6108229}
+    m_Target: {x: 525.1702, y: 354.19724, z: -1.0292071}
     speed: 2
-    m_Value: {x: 9.37323, y: 8.225653, z: -0.06451782}
+    m_Value: {x: 525.1702, y: 354.19724, z: -1.0292071}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -766,9 +766,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 8.330965
+    m_Target: 141.96715
     speed: 2
-    m_Value: 14.658133
+    m_Value: 141.96715
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -851,7 +851,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 110910
+  m_LastSelectedObjectID: 110974
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1240,7 +1240,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Dungeon/Rooms/CatacombsV2
+    - Assets/Prefabs/Enemies
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -1255,7 +1255,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 266}
     m_SelectedIDs: ce170100
     m_LastClickedID: 71630
-    m_ExpandedIDs: 000000003e040000626f0000a8b6000052f0000002f2000012f20000d6fe0000d8fe0000dafe0000dcfe0000defe0000e0fe0000e2fe0000e4fe0000e6fe0000e8fe0000eafe0000ecfe0000eefe0000f0fe0000f2fe0000f4fe0000f6fe0000f8fe0000fafe0000fcfe0000fefe000000ff000002ff000004ff000006ff000008ff00000aff00000cff00000eff000010ff000012ff000014ff000016ff000018ff00001aff00001cff00001eff000020ff000022ff000024ff000026ff000028ff00002aff00002cff00002eff000030ff000032ff000034ff000036ff000038ff00003aff00003cff00003eff000040ff000042ff000044ff000046ff0000
+    m_ExpandedIDs: 00000000a8f40000e8fe0000eafe0000ecfe0000eefe0000f0fe0000f2fe0000f4fe0000f6fe0000f8fe0000fafe0000fcfe0000fefe000000ff0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1283,18 +1283,18 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000096f40000d6fe0000dafe0000dcfe0000defe0000e0fe000034ff00008cff00005e0201001a230100
+    m_ExpandedIDs: ffffffff00000000a8f40000e8fe0000eafe0000ecfe0000eefe0000f0fe0000f2fe00005aff0000baff0000f6030100fc030100000401004404010048040100580401005c0401006c0401007a040100860401009e040100de040100e2040100ea040100f204010002050100200501002e05010032050100360501003a05010042050100460501005a050100600501006a0501007e05010096050100ae050100ba050100be050100c0050100ca050100d2050100ee050100020601000a0601001e0601002e060100320601005a0601006a0601007a0601007e0601008606010092060100960601009a060100c4060100c8060100cc060100ea06010002070100060701000c0701001407010026070100620701006e0701007a0701008607010090070100a8070100b6070100ba070100be070100d2070100e4070100f8070100fc070100100801005008010072080100760801007e080100800801008408010088080100b0080100b4080100c4080100cc080100e8080100f808010000090100100901002409010026090100460901004e090100600901008c09010094090100ac090100b0090100b4090100c8090100d6090100da090100e6090100f4090100000a01000c0a0100180a0100440a0100480a01004c0a0100c40f0100c80f0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: SpriteEffectMasked
-      m_OriginalName: SpriteEffectMasked
+      m_Name: PreviewScene
+      m_OriginalName: PreviewScene
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 74558
+      m_UserData: 67688
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0

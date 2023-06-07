@@ -48,10 +48,11 @@ public class Enemy : MonoBehaviour
     private EnemyMovementAI enemyMovementAI;
     private EnemyWeaponAI enemyWeaponAI;
     private MaterializeEffect materializeEffect;
-    private FireWeapon fireWeapon;
     private SetActiveWeaponEvent setActiveWeaponEvent;
-    private Health health;
     private DestroyedEvent destroyedEvent;
+    [HideInInspector] public FireWeapon fireWeapon;
+    [HideInInspector] public Health health;
+    [HideInInspector] public DealContactDamage dealContactDamage;
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
     [HideInInspector] public HealthEvent healthEvent;
@@ -79,6 +80,7 @@ public class Enemy : MonoBehaviour
         health = GetComponent<Health>();
         healthEvent = GetComponent<HealthEvent>();
         destroyedEvent = GetComponent<DestroyedEvent>();
+        dealContactDamage = GetComponent<DealContactDamage>();
     }
 
     private void OnEnable()

@@ -38,7 +38,7 @@ public class Card
             case CardAction.AddWeapon:
                 var weapon = player.GetWeapon(details.weapon);
 
-                weapon.damageFactor += (0.2f * level);
+                weapon.damageFactor = (details.weaponDamageFactorPerLevel * level);
 
                 player.setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
 

@@ -14,6 +14,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
     [SerializeField] private List<DungeonLevelSO> dungeonLevelList;
     [SerializeField] private int currentLevelIndex = 0;
+    [SerializeField] private int prestigeLevel = 0;
     public DungeonLevelSO CurrentLevel { get { return dungeonLevelList[currentLevelIndex]; } }
 
     private GameState previousGameState = GameState.none;
@@ -168,7 +169,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 Portal.SpawnPortal(PlayerPosition);
 
-                displayMessage.DisplayText("Boss Defeated! Use portal to enter the next level", 2f, Color.white, 0.5f, 1f);
+                displayMessage.DisplayText("Boss Defeated!\nEnter the portal to continue to the next level.\n(Press 'E')", 2f, Color.white, 0.5f, 1f);
 
                 SetGameState(GameState.playingLevel);
                 break;
@@ -219,7 +220,8 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 if (currentLevelIndex >= dungeonLevelList.Count)
                 {
-                    SetGameState(GameState.gameWon);
+                    NextPrestigeLevel();
+                    currentLevelIndex = 0;
                 }
 
                 StopAllCoroutines();
@@ -230,11 +232,16 @@ public class GameManager : SingletonAbstract<GameManager>
 
     }
 
+    private void NextPrestigeLevel()
+    {
+        prestigeLevel++;
+
+        StaticEventHandler.CallDifficultyChange(prestigeLevel * Settings.difficultyFactor);
+    }
+
     private IEnumerator LevelComplete()
     {
-        displayMessage.DisplayText("Level Completed! Next level starts in 2 seconds", 2f, Color.white, 1f, 1f);
-
-        yield return new WaitForSeconds(2f);
+        yield return null;
 
         PlayDungeonLevel(currentLevelIndex);
     }
@@ -260,7 +267,22 @@ public class GameManager : SingletonAbstract<GameManager>
             Debug.LogError("Couldn't build dungeon from specified dungeon level");
         }
 
-        displayMessage.DisplayText("Level " + (levelIndex + 1) + "\n\n" + dungeonLevelList[levelIndex].levelName, 1f, Color.white);
+        var levelText = $@" 
+Level {(levelIndex + 1)} 
+
+{dungeonLevelList[levelIndex].levelName}";
+
+        if (prestigeLevel > 0)
+        {
+            levelText += $@" 
+            
+Prestige {prestigeLevel}
+Monster Damage +{prestigeLevel * Settings.difficultyFactor * 100}%
+Monster Health +{prestigeLevel * Settings.difficultyFactor * 100}%
+Monster Spawn Amount +{prestigeLevel * Settings.difficultyFactor * 100}% ";
+        }
+
+        displayMessage.DisplayText(levelText, 1f, Color.white);
 
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
 

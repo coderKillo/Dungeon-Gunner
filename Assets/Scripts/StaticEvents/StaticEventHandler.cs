@@ -51,6 +51,13 @@ public static class StaticEventHandler
     {
         OnEnemyDied?.Invoke(new EnemyDiedEventArgs() { enemy = enemy });
     }
+
+    public static event Action<DifficultyChangedEventArgs> OnDifficultyChange;
+
+    public static void CallDifficultyChange(float difficulty)
+    {
+        OnDifficultyChange?.Invoke(new DifficultyChangedEventArgs() { difficulty = difficulty });
+    }
 }
 
 public class RoomChangedEventArgs : EventArgs
@@ -86,5 +93,10 @@ public class EnemySpawnedEventArgs : EventArgs
 public class EnemyDiedEventArgs : EventArgs
 {
     public Enemy enemy;
+}
+
+public class DifficultyChangedEventArgs : EventArgs
+{
+    public float difficulty;
 }
 

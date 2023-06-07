@@ -34,6 +34,10 @@ static public class Settings
     public const float uiAmmoIconSpacing = 4f;
     #endregion
 
+    #region DIFFICULTY
+    public const float difficultyFactor = 1.5f;
+    #endregion
+
     #region ASTAR PATHFINDER PARAMETERS
     public const int defaultAstarMovementPenalty = 40;
     public const int preferredPathMovementPenalty = 1;
@@ -48,6 +52,7 @@ static public class Settings
 
     #region CONTACT DAMAGE PARAMETERS
     public const float contactDamageCollisionResetDelay = 0.5f;
+    public const int defaultContactDamage = 10;
     #endregion
 
     #region CARD SYSTEM

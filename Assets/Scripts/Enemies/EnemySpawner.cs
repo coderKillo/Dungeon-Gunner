@@ -12,14 +12,27 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
     private Room room;
     private RoomEnemySpawnParameters spawnParameters;
 
+    private float enemyHealthDifficultlyFactor = 1f;
+    private float enemyDamageDifficultlyFactor = 1f;
+    private float enemyWaveSizeDifficultlyFactor = 1f;
+
     private void OnEnable()
     {
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+        StaticEventHandler.OnDifficultyChange += StaticEventHandler_OnDifficultyChange;
     }
 
     private void OnDisable()
     {
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+        StaticEventHandler.OnDifficultyChange -= StaticEventHandler_OnDifficultyChange;
+    }
+
+    private void StaticEventHandler_OnDifficultyChange(DifficultyChangedEventArgs args)
+    {
+        enemyDamageDifficultlyFactor = args.difficulty;
+        enemyHealthDifficultlyFactor = args.difficulty;
+        enemyWaveSizeDifficultlyFactor = args.difficulty;
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs obj)
@@ -40,8 +53,8 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         }
 
         spawnParameters = room.GetEnemySpawnParameter(GameManager.Instance.CurrentLevel);
-        totalEnemies = spawnParameters.TotalEnemies;
-        concurrentEnemies = spawnParameters.ConcurrentEnemies;
+        totalEnemies = Mathf.RoundToInt(spawnParameters.TotalEnemies * enemyWaveSizeDifficultlyFactor);
+        concurrentEnemies = Mathf.RoundToInt(spawnParameters.ConcurrentEnemies * enemyWaveSizeDifficultlyFactor);
 
         if (totalEnemies == 0)
         {
@@ -100,6 +113,9 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
 
         var enemy = enemyGameObject.GetComponent<Enemy>();
         enemy.Initialize(enemyDetails, spawnNumber, GameManager.Instance.CurrentLevel);
+        enemy.fireWeapon.WeaponDamageFactor = enemyDamageDifficultlyFactor;
+        enemy.dealContactDamage.Damage = Mathf.RoundToInt(Settings.defaultContactDamage * enemyDamageDifficultlyFactor);
+        enemy.health.StartingHealth = Mathf.RoundToInt(enemy.health.StartingHealth * enemyHealthDifficultlyFactor);
 
         StaticEventHandler.CallEnemySpawned(enemy);
     }

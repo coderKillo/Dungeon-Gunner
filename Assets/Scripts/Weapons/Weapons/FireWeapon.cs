@@ -19,6 +19,7 @@ public class FireWeapon : MonoBehaviour
     private float chargeTimer = 0f;
 
     private float weaponDamageFactor = 1f;
+    public float WeaponDamageFactor { get { return weaponDamageFactor; } set { weaponDamageFactor = value; } }
     private float weaponCritChanceFactor = 1f;
     public float WeaponCritChanceFactor { get { return weaponCritChanceFactor; } set { weaponCritChanceFactor = value; } }
 
