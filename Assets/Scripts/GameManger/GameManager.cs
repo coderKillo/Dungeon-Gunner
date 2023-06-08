@@ -169,7 +169,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 Portal.SpawnPortal(PlayerPosition);
 
-                displayMessage.DisplayText("Boss Defeated!\nEnter the portal to continue to the next level.\n(Press 'E')", 2f, Color.white, 0.5f, 1f);
+                displayMessage.DisplayText("Boss Slain!", "Enter the portal to continue to the next level.\n(Press 'E')", 2f, 0.5f, 1f);
 
                 SetGameState(GameState.playingLevel);
                 break;
@@ -184,7 +184,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
 
             case GameState.gameWon:
-                displayMessage.DisplayText("Game Won!", 5f, Color.white);
+                displayMessage.DisplayText("Game Won!", "", 5f);
                 break;
 
 
@@ -268,8 +268,6 @@ public class GameManager : SingletonAbstract<GameManager>
         }
 
         var levelText = $@" 
-Level {(levelIndex + 1)} 
-
 {dungeonLevelList[levelIndex].levelName}";
 
         if (prestigeLevel > 0)
@@ -282,7 +280,7 @@ Monster Health +{prestigeLevel * Settings.difficultyFactor * 100}%
 Monster Spawn Amount +{prestigeLevel * Settings.difficultyFactor * 100}% ";
         }
 
-        displayMessage.DisplayText(levelText, 1f, Color.white);
+        displayMessage.DisplayText($"Level {levelIndex + 1}", levelText, 1f);
 
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
 

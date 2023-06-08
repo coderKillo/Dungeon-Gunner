@@ -8,17 +8,18 @@ using Sirenix.OdinInspector;
 public class DisplayMessage : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private CanvasGroup canvasGroup;
 
     [Button("Display Test Text", ButtonSizes.Large)]
     private void DisplayTest()
     {
-        DisplayText("This is a short text to test the UI, will disappear after 2 seconds.", 2f, Color.white);
+        DisplayText("Test", "This is a short text to test the UI, will disappear after 2 seconds.", 2f);
     }
 
-    public void DisplayText(string message, float duration, Color color, float alpha = 1f, float fadeIn = 0f)
+    public void DisplayText(string title, string message, float duration, float alpha = 1f, float fadeIn = 0f)
     {
-        messageText.color = color;
+        titleText.text = title;
         messageText.text = message;
 
         GameManager.Instance.Player.EnablePlayer(false);
