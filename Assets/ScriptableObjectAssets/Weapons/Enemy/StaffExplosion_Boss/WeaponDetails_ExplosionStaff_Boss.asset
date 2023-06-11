@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8991a50c74ccd344acd417fcf545897, type: 3}
+  m_Name: WeaponDetails_ExplosionStaff_Boss
+  m_EditorClassIdentifier: 
+  weaponName: Explosion Staff
+  weaponSprite: {fileID: 0}
+  shootPosition: {x: 0, y: 0, z: 0}
+  positionOffset: 0
+  ammo: {fileID: 11400000, guid: d3f40ff6bca97ab4d85e951ca26f74cb, type: 2}
+  hasInfiniteAmmo: 1
+  ammoCapacity: 10
+  hasInfiniteClipCapacity: 1
+  ammoClipCapacity: 10
+  fireRate: 3
+  prechargeTime: 0
+  reloadTime: 0
+  removeAfterAmmoIsEmpty: 0
+  fireSoundEffect: {fileID: 11400000, guid: 1887b8f5e647108428b4ee705a20798f, type: 2}
+  reloadSoundEffect: {fileID: 0}
+  fireVisualEffect: {fileID: 0}
+  shotAnimation: {fileID: 0}
+  chargeAnimation: {fileID: 0}

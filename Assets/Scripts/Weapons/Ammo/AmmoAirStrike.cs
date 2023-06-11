@@ -26,7 +26,6 @@ public class AmmoAirStrike : Ammo
         this.critChance = critChance;
         this.fireDirectionVector = HelperUtilities.GetVectorFromAngle(aimAngel);
         this.disable = false;
-        this.disableTimer = 0f;
         this.explosionDistance = 0f;
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
@@ -54,34 +53,35 @@ public class AmmoAirStrike : Ammo
 
     private void Update()
     {
-        disableTimer -= Time.time;
-        if (disable && disableTimer <= 0f)
+        if (disable)
         {
             gameObject.SetActive(false);
             return;
         }
 
-        var distance = fireDirectionVector.normalized * speed * Time.deltaTime;
-
-        CheckExplosion(distance);
-        CheckRange(distance);
+        CheckExplosion();
+        CheckRange();
     }
 
-    private void CheckExplosion(Vector3 distance)
+    private void CheckExplosion()
     {
+        var distance = fireDirectionVector.normalized * speed * Time.deltaTime;
+
         explosionDistance -= distance.magnitude;
         if (explosionDistance <= 0f)
         {
             explosionDistance = explosionPadding;
-            SpawnExplosion();
+            SpawnExplosion(transform.position);
         }
     }
 
-    private void SpawnExplosion()
+    protected void SpawnExplosion(Vector3 position)
     {
         PlayHitSound();
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)transform.position, explosionRadius, explosionMask);
+        Debug.DrawCircle(position, explosionRadius, 16, Color.green);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)position, explosionRadius, explosionMask);
 
         foreach (var hit in colliders)
         {
@@ -90,8 +90,10 @@ public class AmmoAirStrike : Ammo
 
     }
 
-    private void CheckRange(Vector3 distance)
+    protected void CheckRange()
     {
+        var distance = fireDirectionVector.normalized * speed * Time.deltaTime;
+
         range -= distance.magnitude;
         if (range > 0f)
         {

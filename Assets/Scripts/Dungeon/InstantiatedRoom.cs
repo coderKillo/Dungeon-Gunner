@@ -23,12 +23,23 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public int[,] pathfinderItemObstaclesMatrix;
     [HideInInspector] public List<MoveItem> moveableItemList = new List<MoveItem>();
 
+    [SerializeField] private bool instantiateSelf = false;
+
     private BoxCollider2D boxCollider;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         roomColliderBounds = boxCollider.bounds;
+
+        if (instantiateSelf)
+        {
+            room = new Room();
+            Initialize(gameObject);
+            room.instantiatedRoom = this;
+            GameManager.Instance.SetCurrentRoom(room);
+            StaticEventHandler.CallRoomChangedEvent(room);
+        }
     }
 
     private void Start()

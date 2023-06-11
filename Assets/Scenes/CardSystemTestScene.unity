@@ -286,6 +286,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &160572174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 143204940, guid: dc0e7f158b639bb43b8bb08dbac120cb, type: 3}
+  m_PrefabInstance: {fileID: 160572171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &225815840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7750407713461793834, guid: 0c224b9347dc6f3468521d4695ea33cf, type: 3}
@@ -586,6 +597,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
@@ -1506,9 +1521,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.88805974
+    width: 0.23489933
+    height: 0.23507462
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -4935,6 +4950,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7388414844266930485, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
+      propertyPath: titleText
+      value: 
+      objectReference: {fileID: 160572174}
     - target: {fileID: 7388414844266930485, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: canvasGroup
       value: 

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ab10f375e7379418728d542f462670, type: 3}
+  m_Name: CardDeck_Player_BossBattle
+  m_EditorClassIdentifier: 
+  deck:
+  - {fileID: 11400000, guid: 5f88145129cb4cc498dde7b398bc0033, type: 2}
+  - {fileID: 11400000, guid: 1aa45154e66387d44a345bf82ae9a5d8, type: 2}
+  - {fileID: 11400000, guid: 9dc20f815fe450041b334eec634917b6, type: 2}
+  - {fileID: 11400000, guid: 39aaef770f23eab4ebac5202e813c04b, type: 2}

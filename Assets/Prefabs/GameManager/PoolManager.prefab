@@ -138,3 +138,9 @@ MonoBehaviour:
   - size: 5
     prefab: {fileID: 4514459192244064898, guid: bc6942844f26aac40b80bdd0deefa4c8, type: 3}
     componentTypeName: SpriteEffect
+  - size: 20
+    prefab: {fileID: 3415706278289267979, guid: d7ecacce15953fe4aae6b5c725007920, type: 3}
+    componentTypeName: IFireable
+  - size: 50
+    prefab: {fileID: 3920708967980803482, guid: 2a43af3af5f3e7e458c357b258ae5a0a, type: 3}
+    componentTypeName: Explosion
