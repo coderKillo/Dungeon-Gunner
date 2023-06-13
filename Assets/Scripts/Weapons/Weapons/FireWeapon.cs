@@ -256,11 +256,14 @@ public class FireWeapon : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
 
-        // TODO: infinite clip still decrease total ammo (for melee weapon)
+        if (!activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteAmmo)
+        {
+            activeWeapon.CurrentWeapon.totalAmmo--;
+        }
+
         if (!activeWeapon.CurrentWeapon.weaponDetails.hasInfiniteClipCapacity)
         {
             activeWeapon.CurrentWeapon.clipAmmo--;
-            activeWeapon.CurrentWeapon.totalAmmo--;
         }
 
         if (IsAmmoEmpty() && activeWeapon.CurrentWeapon.weaponDetails.removeAfterAmmoIsEmpty)

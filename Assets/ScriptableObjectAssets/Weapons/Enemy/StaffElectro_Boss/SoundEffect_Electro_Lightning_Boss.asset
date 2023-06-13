@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Staff Explosion
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: d03c832d5e2ac604a96301039f24a9ae, type: 3}
-  pitchVariantMin: 1
-  pitchVariantMax: 1.2
-  volume: 1
+  audioClip: {fileID: 8300000, guid: 46dcfa1187f4a1e4cb3793dd1351f669, type: 3}
+  pitchVariantMin: 0.889
+  pitchVariantMax: 1.104
+  volume: 0.306

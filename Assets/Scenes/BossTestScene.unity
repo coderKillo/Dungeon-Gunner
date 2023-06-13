@@ -692,6 +692,14 @@ PrefabInstance:
       propertyPath: instantiateSelf
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2762989514530567758, guid: f4bacea23ea99814cb3de0cdb02190f9, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127561758665315689, guid: f4bacea23ea99814cb3de0cdb02190f9, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3127561758665315689, guid: f4bacea23ea99814cb3de0cdb02190f9, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[4].Array.data[0].x
       value: 18
@@ -992,9 +1000,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossRoom_Catacombs_1
       objectReference: {fileID: 0}
+    - target: {fileID: 4327421925113694216, guid: f4bacea23ea99814cb3de0cdb02190f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8227588318318580144, guid: f4bacea23ea99814cb3de0cdb02190f9, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8227588318318580144, guid: f4bacea23ea99814cb3de0cdb02190f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1769,7 +1781,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1505412517
 GameObject:
@@ -1880,7 +1892,7 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 1
+    height: 0.99956715
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

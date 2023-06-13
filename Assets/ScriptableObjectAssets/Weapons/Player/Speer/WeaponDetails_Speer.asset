@@ -18,7 +18,7 @@ MonoBehaviour:
   positionOffset: 0
   ammo: {fileID: 11400000, guid: e49628c34b4bbe347a13de7598894a1b, type: 2}
   hasInfiniteAmmo: 0
-  ammoCapacity: 100
+  ammoCapacity: 40
   hasInfiniteClipCapacity: 1
   ammoClipCapacity: 6
   fireRate: 0.4
