@@ -102,6 +102,14 @@ public class Health : MonoBehaviour
         CallHealthEvent(0, capedHealAmount, false);
     }
 
+    public void IncreaseMaxHealth(int amount)
+    {
+        startingHealth += amount;
+        currentHealth += amount;
+
+        CallHealthEvent(0, 0, false);
+    }
+
     public void AddArmor(int amount)
     {
         currentArmor += amount;

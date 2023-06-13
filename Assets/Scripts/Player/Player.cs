@@ -120,13 +120,14 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         healthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+        CardSystemLevel.OnLevelChange += CardSystemLevel_OnLevelChange;
     }
 
     private void OnDisable()
     {
         healthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+        CardSystemLevel.OnLevelChange -= CardSystemLevel_OnLevelChange;
     }
-
 
     public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
     {
@@ -188,6 +189,14 @@ public class Player : MonoBehaviour
         if (arg2.healthAmount <= 0)
         {
             destroyedEvent.CallDestroyedEvent();
+        }
+    }
+
+    private void CardSystemLevel_OnLevelChange(int level)
+    {
+        if (level > 1)
+        {
+            health.IncreaseMaxHealth(Settings.playerIncreaseHealthOnLevelUp);
         }
     }
 
