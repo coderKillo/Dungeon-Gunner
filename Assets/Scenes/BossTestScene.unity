@@ -1879,7 +1879,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.9992543
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2029,7 +2029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b197bd7a4719a6347bbd57c5235ef2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyDetails: {fileID: 11400000, guid: 55e2e31667d571a4faba5bb14e37e965, type: 2}
+  _enemyDetails: {fileID: 11400000, guid: 22badf37ca4eef740b20136804fe3265, type: 2}
   _spawnLocation:
   - {fileID: 2089586102}
   _level: {fileID: 11400000, guid: b792f51e23191214697d805823a1efd1, type: 2}
