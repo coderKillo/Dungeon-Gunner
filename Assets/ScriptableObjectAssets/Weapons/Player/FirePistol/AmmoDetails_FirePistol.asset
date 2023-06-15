@@ -20,7 +20,8 @@ MonoBehaviour:
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
-  damage: 12
+  damage: 30
+  critChance: 0.2
   speedMin: 20
   speedMax: 25
   range: 30
@@ -37,3 +38,4 @@ MonoBehaviour:
   trailStartWidth: 0
   trailEndWidth: 0
   hitVisualEffect: {fileID: 11400000, guid: b744d166d45142f43b21058fd3f77ba6, type: 2}
+  hitAudioEffect: {fileID: 0}

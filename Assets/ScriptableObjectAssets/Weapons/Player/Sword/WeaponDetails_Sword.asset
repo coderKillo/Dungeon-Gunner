@@ -20,8 +20,8 @@ MonoBehaviour:
   hasInfiniteAmmo: 0
   ammoCapacity: 40
   hasInfiniteClipCapacity: 1
-  ammoClipCapacity: 6
-  fireRate: 0.4
+  ammoClipCapacity: 1
+  fireRate: 1
   prechargeTime: 0
   reloadTime: 0
   removeAfterAmmoIsEmpty: 0

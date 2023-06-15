@@ -20,7 +20,8 @@ MonoBehaviour:
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
-  damage: 40
+  damage: 15
+  critChance: 0.1
   speedMin: 1
   speedMax: 1
   range: 0.5

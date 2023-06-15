@@ -66,7 +66,11 @@ public class CardUI : MonoBehaviour
                 break;
 
             case CardAction.AddWeapon:
-                description.text = details.description.Replace("$", "" + details.weaponDamageFactorPerLevel * level * 100);
+                description.text = details.description
+                    .Replace("$1", "" + (1 + details.weaponDamageFactorPerLevel * (level - 1)) * details.weapon.ammo.damage)
+                    .Replace("$2", "" + details.weapon.fireRate)
+                    .Replace("$3", "" + details.weapon.ammo.critChance * 100 + "%");
+
                 break;
 
             default:

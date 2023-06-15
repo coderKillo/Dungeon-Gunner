@@ -16,7 +16,11 @@ MonoBehaviour:
   rarity: 3
   icon: {fileID: 21300000, guid: e0b101cf294cf4b48a933925be75935f, type: 3}
   iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
-  description: + $% damage
+  description: 'DMG : $1
+
+    FR : $2
+
+    CRIT : $3'
   action: 3
   healAmount: 0
   shieldAmount: 0

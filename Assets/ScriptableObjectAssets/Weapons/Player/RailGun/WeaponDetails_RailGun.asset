@@ -18,12 +18,12 @@ MonoBehaviour:
   positionOffset: 0
   ammo: {fileID: 11400000, guid: 845309024d3e58545b74387233c0ac4d, type: 2}
   hasInfiniteAmmo: 0
-  ammoCapacity: 15
+  ammoCapacity: 10
   hasInfiniteClipCapacity: 0
   ammoClipCapacity: 1
   fireRate: 1
   prechargeTime: 0
-  reloadTime: 2
+  reloadTime: 2.5
   removeAfterAmmoIsEmpty: 0
   fireSoundEffect: {fileID: 11400000, guid: adf2516a7a1134644824f98abe305ac2, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: 01a8adc2471717e478444f02f96dc9b3, type: 2}
