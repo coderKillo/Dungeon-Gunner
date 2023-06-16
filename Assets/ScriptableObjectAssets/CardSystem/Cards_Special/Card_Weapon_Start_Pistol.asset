@@ -28,7 +28,7 @@ MonoBehaviour:
   shieldAmount: 0
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 306fd3ff98ced8e49ae09f8f072c106e, type: 2}
-  weaponDamageFactorPerLevel: 1
+  weaponDamageFactorPerLevel: 0.5
   powerUpType: 0
   powerUpAbility: 0
   powerUpScaleAbility: 0

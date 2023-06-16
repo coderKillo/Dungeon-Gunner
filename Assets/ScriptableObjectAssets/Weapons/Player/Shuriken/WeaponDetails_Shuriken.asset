@@ -21,7 +21,7 @@ MonoBehaviour:
   ammoCapacity: 3
   hasInfiniteClipCapacity: 0
   ammoClipCapacity: 3
-  fireRate: 0.7
+  fireRate: 1.4
   prechargeTime: 0
   reloadTime: 0
   removeAfterAmmoIsEmpty: 1

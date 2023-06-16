@@ -21,7 +21,7 @@ MonoBehaviour:
   chargeTime: 0
   chargeMaterial: {fileID: 0}
   damage: 10
-  critChance: 0.3
+  critChance: 0.2
   speedMin: 20
   speedMax: 20
   range: 20
