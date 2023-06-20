@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 61
+  controlID: 55
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 62
+  controlID: 56
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 63
+  controlID: 57
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -243,8 +243,8 @@ MonoBehaviour:
     y: 879
     width: 1702
     height: 452
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -545,9 +545,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3e200000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0631fdfff2faffff
+      m_ExpandedIDs: f2faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -978,11 +978,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 1283
-      height: 837
+      height: 858
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 641.5, y: 418.5}
+    m_Translation: {x: 641.5, y: 429}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -990,9 +990,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -641.5
-      y: -418.5
+      y: -429
       width: 1283
-      height: 837
+      height: 858
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1283, y: 858}
@@ -1517,7 +1517,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 266}
     m_SelectedIDs: ce170100
     m_LastClickedID: 71630
-    m_ExpandedIDs: 00000000d8f50000520101005401010056010100580101005a0101005c0101005e01010060010100620101006401010066010100680101006a0101006c0101006e01010070010100720101007401010076010100780101007a0101007c0101007e01010080010100820101008401010086010100880101008a0101008c0101008e0101009001010092010100940101009601010098010100
+    m_ExpandedIDs: 00000000d8f50000520101005401010056010100580101005a0101005c0101005e01010060010100620101006401010066010100680101006a0101006c0101006e01010070010100720101007401010076010100780101007a0101007c0101007e01010080010100820101008401010086010100880101008a0101008c0101008e01010090010100920101009401010096010100980101009a0101009c0101009e010100a0010100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1545,21 +1545,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 1904}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000d8f50000520101005401010056010100580101005a0101005c0101005e0101006401010066010100680101006a0101006e0101007001010074010100760101007a0101007c0101007e01010080010100820101008401010086010100880101008a0101009001010092010100940101009601010098010100e20101006c0201006e020100920201009a020100a0020100a2020100aa020100ac020100b0020100b2020100
+    m_ExpandedIDs: ffffffff00000000d8f50000520101005401010056010100580101005a0101005c0101005e01010060010100620101006401010066010100680101006a0101006c0101006e01010070010100720101007401010076010100780101007a0101007c0101007e01010080010100820101008401010086010100880101008a0101008c0101008e01010090010100920101009401010096010100980101009a0101009c0101009e010100a0010100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Card_Weapon_StaffExplosion
-      m_OriginalName: Card_Weapon_StaffExplosion
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 62068
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 

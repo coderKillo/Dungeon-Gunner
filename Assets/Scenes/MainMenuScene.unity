@@ -399,9 +399,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 1.1708333
-    width: 0.61875004
-    height: 0.4640625
+    y: 0
+    width: 1
+    height: 0.99956715
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1816,7 +1816,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -110, y: -50}
-  m_SizeDelta: {x: 140, y: 20}
+  m_SizeDelta: {x: 180, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518394366
 MonoBehaviour:
@@ -2337,6 +2337,8 @@ MonoBehaviour:
   quitButton: {fileID: 1211906284}
   instructionsButton: {fileID: 518394364}
   returnToMainMenuButton: {fileID: 2123055171}
+  backgroundModel: {fileID: 96063378}
+  backgroundTitle: {fileID: 1501979864}
 --- !u!1 &817742502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,7 +2613,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -110, y: -10}
-  m_SizeDelta: {x: 140, y: 20}
+  m_SizeDelta: {x: 180, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072923230
 MonoBehaviour:
@@ -7766,7 +7768,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -110, y: -90}
-  m_SizeDelta: {x: 140, y: 20}
+  m_SizeDelta: {x: 180, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1268534699
 GameObject:
@@ -8589,7 +8591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: INSTRUCTIONS
+  m_text: INSTRUCTIONS / CONTROLS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dfe1ba23c638bec49a583843476bb5c9, type: 2}
   m_sharedMaterial: {fileID: 8120199949304618070, guid: dfe1ba23c638bec49a583843476bb5c9, type: 2}
@@ -8839,7 +8841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RETURN TO MAIN MENU
+  m_text: RETURN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dfe1ba23c638bec49a583843476bb5c9, type: 2}
   m_sharedMaterial: {fileID: 8120199949304618070, guid: dfe1ba23c638bec49a583843476bb5c9, type: 2}
@@ -10959,6 +10961,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -109.33}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 160, y: 110}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -9,6 +9,8 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject quitButton;
     [SerializeField] private GameObject instructionsButton;
     [SerializeField] private GameObject returnToMainMenuButton;
+    [SerializeField] private GameObject backgroundModel;
+    [SerializeField] private GameObject backgroundTitle;
 
     private bool isInstructionLoaded = false;
 
@@ -32,6 +34,8 @@ public class MainMenuUI : MonoBehaviour
         playButton.SetActive(false);
         instructionsButton.SetActive(false);
         returnToMainMenuButton.SetActive(true);
+        backgroundModel.SetActive(false);
+        backgroundTitle.SetActive(false);
 
         SceneManager.LoadScene("InstructionsScene", LoadSceneMode.Additive);
     }
@@ -42,6 +46,8 @@ public class MainMenuUI : MonoBehaviour
         playButton.SetActive(true);
         instructionsButton.SetActive(true);
         returnToMainMenuButton.SetActive(false);
+        backgroundModel.SetActive(true);
+        backgroundTitle.SetActive(true);
 
         if (isInstructionLoaded)
         {
