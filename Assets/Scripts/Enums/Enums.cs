@@ -21,7 +21,8 @@ public enum GameState
     gameLost,
     gamePaused,
     dungeonOverviewMap,
-    restartGame
+    restartGame,
+    tutorialDone
 }
 
 public enum ChestState

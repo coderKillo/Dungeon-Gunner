@@ -62,6 +62,8 @@ public class GameManager : SingletonAbstract<GameManager>
     private PauseMenu pauseMenu;
     private DeathMenu deathMenu;
 
+    private Tutorial tutorial;
+
     protected override void Awake()
     {
         base.Awake();
@@ -69,6 +71,9 @@ public class GameManager : SingletonAbstract<GameManager>
         displayMessage = GetComponent<DisplayMessage>();
         pauseMenu = GetComponent<PauseMenu>();
         deathMenu = GetComponent<DeathMenu>();
+
+        tutorial = GetComponent<Tutorial>();
+        tutorial.enabled = false;
 
         playerDetails = GameResources.Instance.currentPlayer.playerDetails;
 
@@ -92,6 +97,7 @@ public class GameManager : SingletonAbstract<GameManager>
         StaticEventHandler.OnRoomEnemiesEngaging += StaticEventHandOnRoomEnemiesEngaging;
         StaticEventHandler.OnRoomEnemiesDefeated += StaticEventHandler_OnEnemiesDefeated;
         player.destroyedEvent.OnDestroyed += PlayerDestroyedEvent_OnDestroyed;
+        tutorial.OnTutorialDone += Tutorial_OnTutorialDone;
     }
 
     private void OnDisable()
@@ -100,6 +106,7 @@ public class GameManager : SingletonAbstract<GameManager>
         StaticEventHandler.OnRoomEnemiesEngaging -= StaticEventHandOnRoomEnemiesEngaging;
         StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnEnemiesDefeated;
         player.destroyedEvent.OnDestroyed -= PlayerDestroyedEvent_OnDestroyed;
+        tutorial.OnTutorialDone -= Tutorial_OnTutorialDone;
     }
 
     private void Update()
@@ -157,13 +164,19 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 PlayDungeonLevel(currentLevelIndex);
 
-                Invoke(nameof(DrawStartCards), 3f);
+                tutorial.enabled = true;
+                break;
+
+
+            case GameState.tutorialDone:
+                Invoke(nameof(DrawStartCards), 1f);
 
                 break;
 
 
             case GameState.playingLevel:
                 break;
+
 
             case GameState.bossDefeated:
 
@@ -318,6 +331,11 @@ Monster Spawn Amount +{prestigeLevel * Settings.difficultyFactor * 100}% ";
     private void PlayerDestroyedEvent_OnDestroyed(DestroyedEvent arg1, DestroyedEventArgs arg2)
     {
         SetGameState(GameState.gameLost);
+    }
+
+    private void Tutorial_OnTutorialDone()
+    {
+        SetGameState(GameState.tutorialDone);
     }
 
     private void StaticEventHandler_OnEnemiesDefeated(RoomEnemiesDefeatedEventArgs obj)

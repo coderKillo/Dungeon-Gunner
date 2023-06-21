@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7388414844266930484}
   - component: {fileID: 7388414844266930485}
   - component: {fileID: 7388414844266930482}
+  - component: {fileID: 4238951375173720006}
   - component: {fileID: 5364507384989143416}
   m_Layer: 0
   m_Name: GameManager
@@ -52,6 +53,7 @@ MonoBehaviour:
   dungeonLevelList:
   - {fileID: 11400000, guid: 55aba9bebb934c542bc24a25af064e0f, type: 2}
   currentLevelIndex: 0
+  prestigeLevel: 0
 --- !u!81 &7388414844266930487
 AudioListener:
   m_ObjectHideFlags: 0
@@ -86,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageText: {fileID: 0}
+  titleText: {fileID: 0}
   canvasGroup: {fileID: 0}
 --- !u!114 &7388414844266930482
 MonoBehaviour:
@@ -100,6 +103,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseMenu: {fileID: 0}
+--- !u!114 &4238951375173720006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388414844266930488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c5b73e7d8b4ee4e88f79ef1c20ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _dialogTexts
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Tutorial+Stage, Assembly-CSharp],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Tutorial+Stage,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 1
+      Data: Press "WASD" to move
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: Press "Left Mouse" to shot
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: Press "R" to reload
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 1
+      Data: Press "Shift" to dash
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: OnTutorialDone
+      Entry: 6
+      Data: 
+  _dialogPrefab: {fileID: 4405234748131894712, guid: aed5dc89ff97f0c4b86b569bf2a11e59, type: 3}
+  _dialogOffsetToPlayer: {x: -2, y: 4.5, z: 0}
 --- !u!114 &5364507384989143416
 MonoBehaviour:
   m_ObjectHideFlags: 0
