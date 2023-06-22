@@ -8,6 +8,8 @@ public class CardSystem : SingletonAbstract<CardSystem>
 {
     [SerializeField] private CardDeckSO playerDeck;
 
+    private CardSystemLevel _cardLevel;
+    public CardSystemLevel Level { get { return _cardLevel; } }
     private CardHand _cardHand;
     public CardHand Hand { get { return _cardHand; } }
     private CardDraw _cardDraw;
@@ -18,6 +20,7 @@ public class CardSystem : SingletonAbstract<CardSystem>
 
         _cardDraw = GetComponent<CardDraw>();
         _cardHand = GetComponent<CardHand>();
+        _cardLevel = GetComponent<CardSystemLevel>();
 
         _cardDraw.OnStateChange += CardDraw_OnStateChange;
     }

@@ -159,7 +159,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   pickUpRadius: 1
-  shurikenDetails: {fileID: 11400000, guid: 0c089cf7cf66fe94d8fbac33dd1b8584, type: 2}
+  shurikenCard: {fileID: 11400000, guid: f9100a813fc1dcd40bd246a1eb10701b, type: 2}
 --- !u!1 &4918542077949353904
 GameObject:
   m_ObjectHideFlags: 0

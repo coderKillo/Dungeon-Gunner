@@ -38,6 +38,7 @@ public class HandUI : MonoBehaviour
 
     private void OnCardUpdate(Card[] cards)
     {
+        Debug.Log(cards.Length);
         if (cards.Length < _cards.Count)
         {
             var removedCard = _cards[CardHand.ACTIVE_CARD_INDEX];

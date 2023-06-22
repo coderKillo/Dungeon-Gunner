@@ -18,6 +18,16 @@ public class CardHand : MonoBehaviour
 
     private Card _lastSelected;
 
+    public void Add(CardSO cardDetails, int level = 1)
+    {
+        var card = new Card();
+        card.id = Guid.NewGuid();
+        card.level = level;
+        card.details = cardDetails;
+
+        Add(card);
+    }
+
     public void Add(Card card)
     {
         _hand.Insert(0, card);

@@ -8,7 +8,7 @@ public class AmmoShuriken : Ammo
 {
     [SerializeField] private LayerMask pickUpMask;
     [SerializeField] private float pickUpRadius;
-    [SerializeField] private WeaponDetailsSO shurikenDetails;
+    [SerializeField] private CardSO shurikenCard;
 
     private List<GameObject> alreadyCollided;
 
@@ -90,15 +90,20 @@ public class AmmoShuriken : Ammo
         {
             return;
         }
-        var weapon = player.GetWeapon(shurikenDetails);
+        var weapon = player.GetWeapon(shurikenCard.weapon);
         if (weapon == null)
         {
-            weapon = player.AddWeaponToPlayer(shurikenDetails);
-            weapon.clipAmmo = 0;
-            weapon.totalAmmo = 0;
+            CardSystem.Instance.Hand.Add(shurikenCard, CardSystem.Instance.Level.GetRandomCardSpawnLevel());
+
+            weapon = player.GetWeapon(shurikenCard.weapon);
+            weapon.clipAmmo = 1;
+            weapon.totalAmmo = 1;
+        }
+        else
+        {
+            weapon.totalAmmo += 1;
         }
 
-        weapon.totalAmmo += 1;
         player.reloadWeaponEvent.CallReloadWeaponEvent(weapon);
         gameObject.SetActive(false);
     }

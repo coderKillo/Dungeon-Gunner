@@ -266,11 +266,7 @@ public class FireWeapon : MonoBehaviour
             activeWeapon.CurrentWeapon.clipAmmo--;
         }
 
-        if (IsAmmoEmpty() && activeWeapon.CurrentWeapon.weaponDetails.removeAfterAmmoIsEmpty)
-        {
-            GetComponent<Player>().RemoveWeaponFromPlayer(activeWeapon.CurrentWeapon.weaponDetails);
-        }
-        else if (IsClipEmpty())
+        if (IsClipEmpty())
         {
             ReloadWeapon();
         }

@@ -60,12 +60,7 @@ public class Cheats : MonoBehaviour
 
     private void AddInstagramGunToPlayer()
     {
-        var card = new Card();
-        card.id = Guid.NewGuid();
-        card.level = Settings.maxCardLevel;
-        card.details = GameResources.Instance.instagibCard;
-
-        CardSystem.Instance.Hand.Add(card);
+        CardSystem.Instance.Hand.Add(GameResources.Instance.instagibCard, Settings.maxCardLevel);
     }
 
     private void AddScore()

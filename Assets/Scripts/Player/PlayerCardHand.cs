@@ -18,12 +18,14 @@ public class PlayerCardHand : MonoBehaviour
     {
         _player.weaponFiredEvent.OnWeaponFired += WeaponFiredEvent_OnWeaponFired;
         _player.fireWeaponEvent.OnFireWeapon += FireWeaponEvent_OnFireWeapon;
+        _player.weaponReloadedEvent.OnWeaponReloaded += WeaponReloadedEvent_OnWeaponReloaded;
     }
 
     private void OnDisable()
     {
         _player.weaponFiredEvent.OnWeaponFired -= WeaponFiredEvent_OnWeaponFired;
         _player.fireWeaponEvent.OnFireWeapon -= FireWeaponEvent_OnFireWeapon;
+        _player.weaponReloadedEvent.OnWeaponReloaded -= WeaponReloadedEvent_OnWeaponReloaded;
     }
 
     private void FireWeaponEvent_OnFireWeapon(FireWeaponEvent @event, FireWeaponEventArgs args)
@@ -47,14 +49,14 @@ public class PlayerCardHand : MonoBehaviour
         ActiveCurrentCard();
     }
 
+    private void WeaponReloadedEvent_OnWeaponReloaded(WeaponReloadedEvent @event, WeaponReloadedEventArgs args)
+    {
+        ActiveCurrentCard();
+    }
+
     public void Start()
     {
-        var card = new Card();
-        card.id = Guid.NewGuid();
-        card.level = 1;
-        card.details = _player.playerDetails.startingWeapon;
-
-        CardSystem.Instance.Hand.Add(card);
+        CardSystem.Instance.Hand.Add(_player.playerDetails.startingWeapon);
     }
 
     public void NextCard()
