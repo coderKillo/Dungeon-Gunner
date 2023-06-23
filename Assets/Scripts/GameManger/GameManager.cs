@@ -111,12 +111,12 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) && gameState == GameState.playingLevel)
+        if (Input.GetKeyDown(KeyCode.Tab) && gameState == GameState.playingLevel)
         {
             SetGameState(GameState.dungeonOverviewMap);
         }
 
-        if (Input.GetKeyUp(KeyCode.M) && gameState == GameState.dungeonOverviewMap)
+        if (Input.GetKeyUp(KeyCode.Tab) && gameState == GameState.dungeonOverviewMap)
         {
             DungeonMap.Instance.ClearDungeonMap();
             SetGameState(GameState.playingLevel);
