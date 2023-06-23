@@ -10,7 +10,7 @@ using MoreMountains.Feedbacks;
 public class FireWeapon : MonoBehaviour
 {
     [SerializeField] private MMF_Player fireFeedback;
-    [SerializeField] private float multiShotOffset = 10f;
+    [SerializeField] private float multiShotAngle = 45f;
 
     private int multiShot = 1;
     public int MultiShot { set { multiShot = value; } }
@@ -239,13 +239,14 @@ public class FireWeapon : MonoBehaviour
             var prefab = activeWeapon.CurrentAmmo.prefabArray[Random.Range(0, activeWeapon.CurrentAmmo.prefabArray.Length)];
             var damage = Mathf.RoundToInt(activeWeapon.CurrentAmmo.damage * activeWeapon.CurrentWeapon.damageFactor * weaponDamageFactor);
             var critChance = activeWeapon.CurrentAmmo.critChance * weaponCritChanceFactor;
+            var projectiles = multiShot * activeWeapon.CurrentWeapon.weaponDetails.projectileFired;
 
-            for (int j = 0; j < multiShot; j++)
+            for (int j = 0; j < projectiles; j++)
             {
                 var sign = j % 2 > 0 ? -1 : 1;
                 var offset = (j + 1) / 2;
 
-                var offsetAngle = sign * offset * multiShotOffset;
+                var offsetAngle = sign * offset * (multiShotAngle / (float)projectiles);
                 var offsetVector = HelperUtilities.GetVectorFromAngle(offsetAngle);
 
                 var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);

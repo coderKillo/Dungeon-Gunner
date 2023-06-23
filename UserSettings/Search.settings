@@ -7,7 +7,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.83F126EB" = "t:Prefab"
+	"last_search.83F126EB" = "shotgun"
 	"OpenInspectorPreview.83F126EB" = "0"
 	"currentGroup.83F126EB" = "asset"
 	"last_search.785D90A9" = "curve editor"
@@ -62,6 +62,7 @@ providers = {
 	}
 }
 recentSearches = [
+	"shotgun"
 	"t:Prefab"
 ]
 searchItemFavorites = [

@@ -21,19 +21,21 @@ MonoBehaviour:
   chargeTime: 0
   chargeMaterial: {fileID: 0}
   damage: 5
-  speedMin: 8
-  speedMax: 14
+  critChance: 0.1
+  speedMin: 25
+  speedMax: 25
   range: 8
   rotationSpeed: 1
   spreadMin: 1
   spreadMax: 30
-  spawnAmmoMin: 6
-  spawnAmmoMax: 8
+  spawnAmmoMin: 1
+  spawnAmmoMax: 1
   spawnIntervalMin: 0
   spawnIntervalMax: 0.1
-  hasTrail: 0
-  trailLifetime: 0
-  trailMaterial: {fileID: 0}
-  trailStartWidth: 0
-  trailEndWidth: 0
-  hitVisualEffect: {fileID: 11400000, guid: 102906a100973414788bb04a2a059222, type: 2}
+  hasTrail: 1
+  trailLifetime: 0.2
+  trailMaterial: {fileID: 2100000, guid: 5c86445c1f630c141ab88b05539eca5d, type: 2}
+  trailStartWidth: 0.1
+  trailEndWidth: 0.001
+  hitVisualEffect: {fileID: 0}
+  hitAudioEffect: {fileID: 0}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Shotgun Boss Fire
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: 87cb7c4792ca3624fbf3c9d9ef50cf79, type: 3}
+  audioClip: {fileID: 8300000, guid: c0ec0f215d91a4056b5f9f5532f8a6a6, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
   volume: 1

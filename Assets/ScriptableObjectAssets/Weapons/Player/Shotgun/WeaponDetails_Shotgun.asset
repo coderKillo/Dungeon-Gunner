@@ -13,16 +13,20 @@ MonoBehaviour:
   m_Name: WeaponDetails_Shotgun
   m_EditorClassIdentifier: 
   weaponName: Shotgun
-  weaponSprite: {fileID: 21300000, guid: 957e7c5a4532c7b4fa28cd31bf5aee5d, type: 3}
-  shootPosition: {x: 1.376, y: 0.208, z: 0}
+  weaponSprite: {fileID: 21300000, guid: 15709d3d37cbe144a890ae4ff88a5d9f, type: 3}
+  shootPosition: {x: 1.31, y: 0.315, z: 0}
+  positionOffset: 0
   ammo: {fileID: 11400000, guid: 0540f21928043084c845a5106fe18ff0, type: 2}
   hasInfiniteAmmo: 0
-  ammoCapacity: 30
+  ammoCapacity: 35
   hasInfiniteClipCapacity: 0
-  ammoClipCapacity: 4
-  fireRate: 0.4
+  ammoClipCapacity: 1
+  fireRate: 0.2
   prechargeTime: 0
-  reloadTime: 1
+  reloadTime: 0.5
+  removeAfterAmmoIsEmpty: 0
   fireSoundEffect: {fileID: 11400000, guid: ba5e621822ceebc4eaf526fa34e02f16, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: a9c313f84378ebd44add763cf87f46e1, type: 2}
-  fireVisualEffect: {fileID: 11400000, guid: 3dcec1f56b7cfcc46b2c9cfa03c42678, type: 2}
+  fireVisualEffect: {fileID: 0}
+  shotAnimation: {fileID: 7400000, guid: 77cb1bbf8f4f7cc4db1fc1531816984d, type: 2}
+  chargeAnimation: {fileID: 0}
