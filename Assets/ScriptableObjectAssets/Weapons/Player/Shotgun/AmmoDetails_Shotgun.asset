@@ -27,7 +27,7 @@ MonoBehaviour:
   range: 8
   rotationSpeed: 1
   spreadMin: 1
-  spreadMax: 30
+  spreadMax: 5
   spawnAmmoMin: 1
   spawnAmmoMax: 1
   spawnIntervalMin: 0
@@ -37,5 +37,5 @@ MonoBehaviour:
   trailMaterial: {fileID: 2100000, guid: 5c86445c1f630c141ab88b05539eca5d, type: 2}
   trailStartWidth: 0.1
   trailEndWidth: 0.001
-  hitVisualEffect: {fileID: 0}
+  hitVisualEffect: {fileID: 11400000, guid: 649a068659ef3a446a62a1809d760e15, type: 2}
   hitAudioEffect: {fileID: 0}

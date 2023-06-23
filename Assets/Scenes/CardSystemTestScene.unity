@@ -1672,11 +1672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b197bd7a4719a6347bbd57c5235ef2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyDetails: {fileID: 11400000, guid: aa2e367d9abfabe4f8f4b1b711cea9f2, type: 2}
+  _enemyDetails: {fileID: 11400000, guid: 51195471ae8f74541a625cfdf0adfdf4, type: 2}
   _spawnLocation:
   - {fileID: 2089586102}
-  - {fileID: 1438395164}
-  - {fileID: 975508748}
   _level: {fileID: 11400000, guid: 55aba9bebb934c542bc24a25af064e0f, type: 2}
 --- !u!1 &1661702024
 GameObject:
@@ -4942,6 +4940,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 54774429}
     m_Modifications:
+    - target: {fileID: 4238951375173720006, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4238951375173720006, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
     - target: {fileID: 7388414844266930482, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: _pauseMenu
       value: 

@@ -25,6 +25,7 @@ MonoBehaviour:
   prechargeTime: 0
   reloadTime: 0.5
   removeAfterAmmoIsEmpty: 0
+  projectileFired: 6
   fireSoundEffect: {fileID: 11400000, guid: ba5e621822ceebc4eaf526fa34e02f16, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: a9c313f84378ebd44add763cf87f46e1, type: 2}
   fireVisualEffect: {fileID: 0}

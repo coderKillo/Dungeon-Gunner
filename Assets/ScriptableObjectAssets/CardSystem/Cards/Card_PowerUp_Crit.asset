@@ -28,8 +28,8 @@ MonoBehaviour:
   powerUpScaleAbility: 0
   isBuff: 1
   powerUpColor: {r: 1, g: 0.8318379, b: 0, a: 1}
-  powerUpDuration: 10
-  powerUpScaleDuration: 3
+  powerUpDuration: 60
+  powerUpScaleDuration: 60
   isOnHit: 0
   OnHitEffect: {fileID: 0}
   isSpell: 0

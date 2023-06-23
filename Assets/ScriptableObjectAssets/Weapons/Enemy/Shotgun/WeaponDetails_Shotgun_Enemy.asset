@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponName: Shotgun Enemy
   weaponSprite: {fileID: 21300000, guid: 957e7c5a4532c7b4fa28cd31bf5aee5d, type: 3}
   shootPosition: {x: 1.376, y: 0.208, z: 0}
+  positionOffset: 0
   ammo: {fileID: 11400000, guid: 86427f2fb85a7a64dae2d502e0f85008, type: 2}
   hasInfiniteAmmo: 1
   ammoCapacity: 30
@@ -23,6 +24,10 @@ MonoBehaviour:
   fireRate: 0.4
   prechargeTime: 0
   reloadTime: 1
+  removeAfterAmmoIsEmpty: 0
+  projectileFired: 4
   fireSoundEffect: {fileID: 11400000, guid: 8ea6c1fa9ab4bf24ea3efa3b9a52bd17, type: 2}
   reloadSoundEffect: {fileID: 11400000, guid: ca7758aa0de64684085e0ea39d172448, type: 2}
-  fireVisualEffect: {fileID: 11400000, guid: 1b4a469aa752059409d0f2e047b54456, type: 2}
+  fireVisualEffect: {fileID: 0}
+  shotAnimation: {fileID: 0}
+  chargeAnimation: {fileID: 0}
