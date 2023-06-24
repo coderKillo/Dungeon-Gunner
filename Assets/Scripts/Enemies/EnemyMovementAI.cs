@@ -50,17 +50,22 @@ public class EnemyMovementAI : MonoBehaviour
             return;
         }
 
+        rebuildCooldownTimer -= Time.deltaTime;
+
         if (Time.frameCount % Settings.targetFrameRateToSpreadRebuildPath != updateFrameNumber)
         {
             return;
         }
 
-        rebuildCooldownTimer -= Time.deltaTime;
-
         if (Vector3.Distance(prevPlayerPosition, playerPosition) >= Settings.playerMoveDistanceToRebuildPath || rebuildCooldownTimer < 0f)
         {
             rebuildCooldownTimer = Settings.enemyPathRebuildCooldown;
             prevPlayerPosition = playerPosition;
+
+            if (debugPath)
+            {
+                Debug.Log("rebuild Path");
+            }
 
             CreatePath();
             MoveEnemy();
@@ -171,7 +176,7 @@ public class EnemyMovementAI : MonoBehaviour
             var targetPosition = steps.Pop();
             var direction = (targetPosition - transform.position).normalized;
 
-            while (Vector3.Distance(targetPosition, transform.position) > 0.2f)
+            while (Vector2.Distance(targetPosition, transform.position) > 0.2f)
             {
                 enemy.movementToPositionEvent.CallMovementToPositionEvent(
                     transform.position, targetPosition, moveSpeed, direction, false);
