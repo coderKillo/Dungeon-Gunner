@@ -179,15 +179,20 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
     {
         foreach (var room in roomDictionary.Values)
         {
-            var roomPosition = new Vector3(room.lowerBound.x - room.templateLowerBound.x, room.lowerBound.y - room.templateLowerBound.y);
-            var roomGameObject = GameObject.Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
-
-            var instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
-            instantiatedRoom.room = room;
-            instantiatedRoom.Initialize(roomGameObject);
-
-            room.instantiatedRoom = instantiatedRoom;
+            InstantiatedRoom(room, transform);
         }
+    }
+
+    static public void InstantiatedRoom(Room room, Transform parent)
+    {
+        var roomPosition = new Vector3(room.lowerBound.x - room.templateLowerBound.x, room.lowerBound.y - room.templateLowerBound.y);
+        var roomGameObject = GameObject.Instantiate(room.prefab, roomPosition, Quaternion.identity, parent);
+
+        var instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+        instantiatedRoom.room = room;
+        instantiatedRoom.Initialize(roomGameObject);
+
+        room.instantiatedRoom = instantiatedRoom;
     }
 
     private bool PlaceRoom(Room parentRoom, Doorway parentDoorway, Room room)
@@ -321,7 +326,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
     #endregion
 
     #region CREATE FUNCTIONS
-    private Room CreateRoomFromTemplate(RoomTemplateSO roomTemplate, RoomNodeSO roomNode)
+    static public Room CreateRoomFromTemplate(RoomTemplateSO roomTemplate, RoomNodeSO roomNode)
     {
         var room = new Room();
 
@@ -392,7 +397,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
     #endregion
 
     #region COPY LIST HELPER
-    private List<Doorway> CopyDoorwayList(List<Doorway> oldDoorwayList)
+    static private List<Doorway> CopyDoorwayList(List<Doorway> oldDoorwayList)
     {
         List<Doorway> newDoorwayList = new List<Doorway>();
 
@@ -415,7 +420,7 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
         return newDoorwayList;
     }
 
-    private List<string> CopyStringList(List<string> oldStringList)
+    static private List<string> CopyStringList(List<string> oldStringList)
     {
         List<string> newStringList = new List<string>();
 

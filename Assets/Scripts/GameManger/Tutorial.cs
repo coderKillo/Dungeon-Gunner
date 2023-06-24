@@ -10,7 +10,6 @@ public class Tutorial : SerializedMonoBehaviour
     [SerializeField] private GameObject _dialogPrefab;
     [SerializeField] private Dictionary<Stage, String> _dialogTexts;
     [SerializeField] private Vector3 _dialogOffsetToPlayer;
-    [SerializeField] private bool _skipTutorial = false;
 
     public enum Stage
     {
@@ -97,14 +96,7 @@ public class Tutorial : SerializedMonoBehaviour
     {
         _dialogObject = GameObject.Instantiate(_dialogPrefab, transform.position, Quaternion.identity);
 
-        if (!_skipTutorial)
-        {
-            NextDialog(Stage.Movement);
-        }
-        else
-        {
-            EndTutorial();
-        }
+        NextDialog(Stage.Movement);
     }
 
     private void EndTutorial()

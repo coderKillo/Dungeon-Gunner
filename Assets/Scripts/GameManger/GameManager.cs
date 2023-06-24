@@ -53,6 +53,11 @@ public class GameManager : SingletonAbstract<GameManager>
     public Sprite PlayerIcon { get { return player.playerDetails.minimapIcon; } }
     public Vector3 PlayerPosition { get { return player.transform.position; } }
 
+    [Space(10)]
+    [Header("Config")]
+    [SerializeField] private bool skipTutorial = false;
+    [SerializeField] private bool skipStartCardDraw = false;
+
     private long score = 0;
     #endregion
 
@@ -164,13 +169,24 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 PlayDungeonLevel(currentLevelIndex);
 
-                tutorial.enabled = true;
+                if (skipTutorial)
+                {
+                    SetGameState(GameState.tutorialDone);
+                }
+                else
+                {
+                    tutorial.enabled = true;
+                }
                 break;
 
 
             case GameState.tutorialDone:
-                Invoke(nameof(DrawStartCards), 1f);
+                if (!skipStartCardDraw)
+                {
+                    Invoke(nameof(DrawStartCards), 1f);
+                }
 
+                SetGameState(GameState.playingLevel);
                 break;
 
 
@@ -297,6 +313,11 @@ Monster Spawn Amount +{prestigeLevel * Settings.difficultyFactor * 100}% ";
 
         StaticEventHandler.CallRoomChangedEvent(currentRoom);
 
+        PlacePlayerInCurrentRoom();
+    }
+
+    public void PlacePlayerInCurrentRoom()
+    {
         player.gameObject.transform.position = new Vector3(
             (currentRoom.lowerBound.x + currentRoom.upperBound.x) / 2f,
             (currentRoom.lowerBound.y + currentRoom.upperBound.y) / 2f,
@@ -304,8 +325,6 @@ Monster Spawn Amount +{prestigeLevel * Settings.difficultyFactor * 100}% ";
         );
 
         player.gameObject.transform.position = HelperUtilities.GetNearestSpawnPoint(player.gameObject.transform.position);
-
-        SetGameState(GameState.playingLevel);
     }
 
 
