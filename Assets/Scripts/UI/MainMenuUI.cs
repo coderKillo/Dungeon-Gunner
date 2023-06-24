@@ -11,6 +11,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject returnToMainMenuButton;
     [SerializeField] private GameObject backgroundModel;
     [SerializeField] private GameObject backgroundTitle;
+    [SerializeField] private GameObject highscore;
 
     private bool isInstructionLoaded = false;
 
@@ -36,6 +37,7 @@ public class MainMenuUI : MonoBehaviour
         returnToMainMenuButton.SetActive(true);
         backgroundModel.SetActive(false);
         backgroundTitle.SetActive(false);
+        highscore.SetActive(false);
 
         SceneManager.LoadScene("InstructionsScene", LoadSceneMode.Additive);
     }
@@ -48,6 +50,7 @@ public class MainMenuUI : MonoBehaviour
         returnToMainMenuButton.SetActive(false);
         backgroundModel.SetActive(true);
         backgroundTitle.SetActive(true);
+        highscore.SetActive(true);
 
         if (isInstructionLoaded)
         {
