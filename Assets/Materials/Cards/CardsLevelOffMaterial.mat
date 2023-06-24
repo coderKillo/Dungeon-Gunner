@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CardsLevelMaterial
+  m_Name: CardsLevelOffMaterial
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
-  m_ShaderKeywords: CHANGECOLOR_ON
+  m_ShaderKeywords: CHANGECOLOR2_ON HSV_ON OUTBASEPIXELPERF_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -87,7 +87,7 @@ Material:
     - _ClipUvRight: 1
     - _ClipUvUp: 1
     - _ColorChangeLuminosity: 0.173
-    - _ColorChangeTolerance: 0.495
+    - _ColorChangeTolerance: 0
     - _ColorChangeTolerance2: 0.25
     - _ColorChangeTolerance3: 0.25
     - _ColorRampBlend: 1
@@ -96,7 +96,7 @@ Material:
     - _ColorSwapBlend: 1
     - _ColorSwapBlueLuminosity: 0.5
     - _ColorSwapGreenLuminosity: 0.5
-    - _ColorSwapRedLuminosity: 0.5
+    - _ColorSwapRedLuminosity: -0.66
     - _Contrast: 1
     - _CullingOption: 0
     - _DistortAmount: 0.5
@@ -147,9 +147,9 @@ Material:
     - _HologramStripesLuminosity: 1
     - _HologramStripesSpeed: 5
     - _HologramUnmodAmount: 0
-    - _HsvBright: 1.438
-    - _HsvSaturation: 1.4
-    - _HsvShift: 131
+    - _HsvBright: 0.6
+    - _HsvSaturation: 2
+    - _HsvShift: 40
     - _InnerOutlineAlpha: 1
     - _InnerOutlineGlow: 1
     - _InnerOutlineThickness: 1
@@ -199,7 +199,7 @@ Material:
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
     - _ShineGlow: 59.2
-    - _ShineLocation: 0.261
+    - _ShineLocation: 0.403
     - _ShineRotate: 0.26
     - _ShineWidth: 0.05
     - _TextureScrollXSpeed: 1
@@ -219,15 +219,15 @@ Material:
     m_Colors:
     - _AlphaOutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorChangeNewCol: {r: 1.8443027, g: 0.7628268, b: 0.2510569, a: 1}
-    - _ColorChangeNewCol2: {r: 1, g: 1, b: 0, a: 1}
+    - _ColorChangeNewCol: {r: 0.46080232, g: 0, b: 0.043426316, a: 1}
+    - _ColorChangeNewCol2: {r: 0.9433962, g: 0.9433962, b: 0.3960484, a: 1}
     - _ColorChangeNewCol3: {r: 1, g: 1, b: 0, a: 1}
-    - _ColorChangeTarget: {r: 0.9960785, g: 0.9960785, b: 0.4039216, a: 1}
-    - _ColorChangeTarget2: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorChangeTarget: {r: 1, g: 0.99999994, b: 0.36320752, a: 1}
+    - _ColorChangeTarget2: {r: 0.6886792, g: 0.068218224, b: 0.068218224, a: 1}
     - _ColorChangeTarget3: {r: 1, g: 0, b: 0, a: 1}
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorSwapRed: {r: 0.4433962, g: 0.018823417, b: 0.018823417, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
@@ -235,10 +235,10 @@ Material:
     - _GradTopLeftCol: {r: 1, g: 0, b: 0, a: 1}
     - _GradTopRightCol: {r: 1, g: 0, b: 0, a: 1}
     - _GreyscaleTintColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HitEffectColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HitEffectColor: {r: 0.103773594, g: 0, b: 0, a: 1}
     - _HologramStripeColor: {r: 0, g: 1, b: 1, a: 1}
     - _InnerOutlineColor: {r: 1, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OverlayColor: {r: 1, g: 0.87176263, b: 0, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}

@@ -1437,11 +1437,18 @@ MonoBehaviour:
   background: {fileID: 3746333455277194525}
   backgroundGrey: {fileID: 8742849065432211449}
   disabledOverlay: {fileID: 6819706300417251491}
-  levelGroup: {fileID: 5769093449965330651}
+  levelIcons:
+  - {fileID: 3776346863598972978}
+  - {fileID: 4338423823001880890}
+  - {fileID: 8644044147628941461}
+  - {fileID: 7136872466190674119}
+  - {fileID: 8478618898605632121}
   selectBorder: {fileID: 0}
   raycastTargets:
   - {fileID: 115303851640665773}
   - {fileID: 8578370582544141578}
+  _cardLevelOn: {fileID: 2100000, guid: 6ebaadc5c6a2a1e4da93f3a80f7735d4, type: 2}
+  _cardLevelOff: {fileID: 2100000, guid: 08ad4ac26d1484f4c84eada1e924f5a1, type: 2}
   _pointerEnterFeedback: {fileID: 0}
   _destroyFeedback: {fileID: 451166490323387180}
   _selectedFeedback: {fileID: 6733719002816918629}
@@ -1640,7 +1647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1238199811, guid: b1e1872a3da853849b8ba981e07087d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3448df1f2cd6f844912a5b8b15c0731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1823,7 +1830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1238199811, guid: b1e1872a3da853849b8ba981e07087d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3448df1f2cd6f844912a5b8b15c0731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2127,7 +2134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1238199811, guid: b1e1872a3da853849b8ba981e07087d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3448df1f2cd6f844912a5b8b15c0731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3469,7 +3476,7 @@ GameObject:
   - component: {fileID: 1952494132591661550}
   - component: {fileID: 8478618898605632121}
   m_Layer: 5
-  m_Name: Star
+  m_Name: Star_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3523,7 +3530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1238199811, guid: b1e1872a3da853849b8ba981e07087d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3448df1f2cd6f844912a5b8b15c0731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3729,7 +3736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1238199811, guid: b1e1872a3da853849b8ba981e07087d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3448df1f2cd6f844912a5b8b15c0731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

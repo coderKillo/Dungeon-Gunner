@@ -16,9 +16,14 @@ public class CardUI : MonoBehaviour
     public Image background;
     public Image backgroundGrey;
     public Transform disabledOverlay;
-    public Transform levelGroup;
+    public List<Image> levelIcons;
     public Transform selectBorder;
     public Image[] raycastTargets;
+
+    [Space(10)]
+    [Header("Material")]
+    [SerializeField] private Material _cardLevelOn;
+    [SerializeField] private Material _cardLevelOff;
 
     [Space(10)]
     [Header("Feedbacks")]
@@ -97,9 +102,9 @@ public class CardUI : MonoBehaviour
     {
         this.level = level;
 
-        for (int i = 0; i < levelGroup.childCount; i++)
+        for (int i = 0; i < levelIcons.Count; i++)
         {
-            levelGroup.GetChild(i).gameObject.SetActive(i < level);
+            levelIcons[i].material = i < level ? _cardLevelOn : _cardLevelOff;
         }
     }
 
