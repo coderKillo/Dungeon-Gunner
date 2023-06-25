@@ -39,8 +39,6 @@ public class DeathMenuUI : MonoBehaviour
         var highscore = PlayerPrefs.GetInt(PrefKeys.highscore, 0);
         var score = GetScoreFromText(_scoreText.text);
 
-        Debug.Log($"score: {score}, highscore: {highscore}");
-
         if (score > highscore)
         {
             _newHighscoreBanner.SetActive(true);
@@ -58,7 +56,6 @@ public class DeathMenuUI : MonoBehaviour
     private int GetScoreFromText(string text)
     {
         string score = Regex.Match(text, @"\d+").Value;
-        Debug.Log(score);
 
         int scoreNumber;
         if (int.TryParse(score, out scoreNumber))

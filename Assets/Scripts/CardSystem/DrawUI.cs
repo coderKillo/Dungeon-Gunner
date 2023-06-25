@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net.Mime;
 using System;
 using System.Collections;
@@ -45,6 +46,11 @@ public class DrawUI : MonoBehaviour
 
     private void OnStateChange(CardDraw.State state)
     {
+        if (state == _currentState)
+        {
+            return;
+        }
+
         switch (state)
         {
             case CardDraw.State.Idle:
@@ -131,16 +137,18 @@ public class DrawUI : MonoBehaviour
 
     private void CardClicked(int index)
     {
-        var cardFlip = _cards[index].gameObject.GetComponent<CardFlip>();
+        var card = _cards[index];
+        var cardFlip = card.GetComponent<CardFlip>();
 
         if (!cardFlip.IsFlipped)
         {
             cardFlip.ShowFront();
+            card.ShowNewBanner(cardFlip.Duration);
         }
         else if (_currentState != CardDraw.State.HandFull)
         {
+            CardsSelectable(false);
             _cards[index].SelectedFeedback.PlayFeedbacks();
-            _cards[index].setSelectable(false);
             _cards.RemoveAt(index);
 
             _cardDraw.CardSelected(index);
@@ -154,16 +162,19 @@ public class DrawUI : MonoBehaviour
 
     private IEnumerator EndDraw()
     {
-        foreach (var card in _cards)
-        {
-            card.setSelectable(false);
-        }
-
         _animator.Play("End");
 
         yield return new WaitForSecondsRealtime(_cardExitDuration);
 
         _cardDraw.EndDrawDone();
+    }
+
+    private void CardsSelectable(bool active)
+    {
+        foreach (var card in _cards)
+        {
+            card.setSelectable(active);
+        }
     }
 
     private void CloseDraw()

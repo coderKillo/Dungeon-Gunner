@@ -7306,6 +7306,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1077349254}
     - target: {fileID: 7388414844266930486, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
+      propertyPath: skipTutorial
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388414844266930486, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: prestigeLevel
       value: 0
       objectReference: {fileID: 0}

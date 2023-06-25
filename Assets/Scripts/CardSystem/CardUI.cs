@@ -42,10 +42,18 @@ public class CardUI : MonoBehaviour
     [SerializeField] private MMF_Player _activateFeedback;
     public MMF_Player ActivateFeedback { get { return _activateFeedback; } }
 
+    [SerializeField] private MMF_Player _newCardFeedback;
+    public MMF_Player NewCardFeedback { get { return _newCardFeedback; } }
+
     [HideInInspector] public CardSO details;
     [HideInInspector] public Guid id;
     [HideInInspector] public int level;
     [HideInInspector] public bool selected = false;
+
+    private void Start()
+    {
+        NewCardFeedback.Initialization();
+    }
 
     public void setDescription()
     {
@@ -108,4 +116,22 @@ public class CardUI : MonoBehaviour
         }
     }
 
+    public void ShowNewBanner(float delay)
+    {
+
+        if (details.rarity == CardRarity.Common || details.rarity == CardRarity.Default)
+        {
+            return;
+        }
+
+        if (details.IsKnown())
+        {
+            return;
+        }
+
+        details.MakeKnown();
+
+        NewCardFeedback.InitialDelay = delay;
+        NewCardFeedback.PlayFeedbacks();
+    }
 }

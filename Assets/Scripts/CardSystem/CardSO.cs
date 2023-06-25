@@ -65,6 +65,17 @@ public class CardSO : ScriptableObject
 
     [ShowIf("isSpell")]
     public WeaponDetailsSO powerUpSpell;
+
+    public bool IsKnown()
+    {
+        return PlayerPrefs.HasKey(PrefKeys.CardKey(this));
+    }
+
+    public void MakeKnown()
+    {
+        PlayerPrefs.SetInt(PrefKeys.CardKey(this), 1);
+    }
+
 }
 
 public enum CardAction

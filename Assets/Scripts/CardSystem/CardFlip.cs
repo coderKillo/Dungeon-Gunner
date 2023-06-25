@@ -20,11 +20,14 @@ public class CardFlip : MonoBehaviour
     private bool _isFlipped = false;
     public bool IsFlipped { get { return _isFlipped; } }
 
+    [SerializeField] private float _flipDuration = 0.6f;
+    public float Duration { get { return _flipDuration; } }
+
     public void ShowFront()
     {
         ShowBack();
 
-        _back.DOScaleX(0f, 0.3f).SetUpdate(true).OnComplete(() => _front.DOScaleX(1f, 0.3f).SetUpdate(true));
+        _back.DOScaleX(0f, _flipDuration / 2).SetUpdate(true).OnComplete(() => _front.DOScaleX(1f, _flipDuration / 2).SetUpdate(true));
 
         _flipFeedback.PlayFeedbacks();
 

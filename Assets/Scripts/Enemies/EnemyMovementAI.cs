@@ -62,11 +62,6 @@ public class EnemyMovementAI : MonoBehaviour
             rebuildCooldownTimer = Settings.enemyPathRebuildCooldown;
             prevPlayerPosition = playerPosition;
 
-            if (debugPath)
-            {
-                Debug.Log("rebuild Path");
-            }
-
             CreatePath();
             MoveEnemy();
         }
