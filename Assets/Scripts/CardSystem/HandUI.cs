@@ -70,7 +70,7 @@ public class HandUI : MonoBehaviour
 
         cardUI.title.text = card.details.title;
         cardUI.icon.sprite = card.details.icon;
-        cardUI.background.color = _cardSystemSettings.GetColor(card.details.rarity);
+        cardUI.background.color = CardSystemSettings.GetColor(card.details.rarity);
         cardUI.id = card.id;
         cardUI.details = card.details;
         cardUI.setLevel(card.level);

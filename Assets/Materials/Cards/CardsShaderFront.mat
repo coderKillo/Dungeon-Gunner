@@ -55,7 +55,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CardsShaderFront
-  m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
+  m_Shader: {fileID: 4800000, guid: a53f4bb29f3644b43b5075c6dcfecb32, type: 3}
   m_ShaderKeywords: CHANGECOLOR_ON HSV_ON OUTBASEPIXELPERF_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -83,7 +83,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeBurnTex:
-        m_Texture: {fileID: 2800000, guid: 32e8df0008bebe746b1681a71c61f31c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 677cca399782dea41aedc1d292ecb67d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeTex:
@@ -137,6 +137,7 @@ Material:
     - _ColorChangeTolerance: 0.395
     - _ColorChangeTolerance2: 0.842
     - _ColorChangeTolerance3: 0.25
+    - _ColorMask: 15
     - _ColorRampBlend: 0.157
     - _ColorRampLuminosity: -0.125
     - _ColorRampOutline: 0
@@ -249,6 +250,11 @@ Material:
     - _ShineLocation: 0.037
     - _ShineRotate: 0.19
     - _ShineWidth: 0.05
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
     - _TwistUvAmount: 1

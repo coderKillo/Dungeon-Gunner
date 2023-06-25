@@ -5,15 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] private GameObject playButton;
-    [SerializeField] private GameObject quitButton;
-    [SerializeField] private GameObject instructionsButton;
+    [SerializeField] private GameObject menuButtons;
     [SerializeField] private GameObject returnToMainMenuButton;
     [SerializeField] private GameObject backgroundModel;
     [SerializeField] private GameObject backgroundTitle;
     [SerializeField] private GameObject highscore;
 
     private bool isInstructionLoaded = false;
+    private bool isCardCollectionLoaded = false;
 
     private void Start()
     {
@@ -31,36 +30,48 @@ public class MainMenuUI : MonoBehaviour
     {
         isInstructionLoaded = true;
 
-        quitButton.SetActive(false);
-        playButton.SetActive(false);
-        instructionsButton.SetActive(false);
-        returnToMainMenuButton.SetActive(true);
-        backgroundModel.SetActive(false);
-        backgroundTitle.SetActive(false);
-        highscore.SetActive(false);
+        ShowExtras(false);
 
         SceneManager.LoadScene("InstructionsScene", LoadSceneMode.Additive);
     }
 
+    public void LoadCardCollections()
+    {
+        isCardCollectionLoaded = true;
+
+        ShowExtras(false);
+
+        SceneManager.LoadScene("CardCollectionScene", LoadSceneMode.Additive);
+    }
+
     public void LoadMainMenu()
     {
-        quitButton.SetActive(true);
-        playButton.SetActive(true);
-        instructionsButton.SetActive(true);
-        returnToMainMenuButton.SetActive(false);
-        backgroundModel.SetActive(true);
-        backgroundTitle.SetActive(true);
-        highscore.SetActive(true);
+        ShowExtras(true);
 
         if (isInstructionLoaded)
         {
             SceneManager.UnloadSceneAsync("InstructionsScene");
             isInstructionLoaded = false;
         }
+
+        if (isCardCollectionLoaded)
+        {
+            SceneManager.UnloadSceneAsync("CardCollectionScene");
+            isCardCollectionLoaded = false;
+        }
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void ShowExtras(bool show)
+    {
+        menuButtons.SetActive(show);
+        returnToMainMenuButton.SetActive(!show);
+        backgroundModel.SetActive(show);
+        backgroundTitle.SetActive(show);
+        highscore.SetActive(show);
     }
 }

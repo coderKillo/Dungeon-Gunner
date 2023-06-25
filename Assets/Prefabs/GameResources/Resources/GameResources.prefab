@@ -44,6 +44,149 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852001c8eb0b9274395c75fc66ecc234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: rarityColorLookup
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[CardRarity, Assembly-CSharp],[UnityEngine.Color,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[CardRarity, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.09164489
+    - Name: 
+      Entry: 4
+      Data: 0.7264151
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.541109
+    - Name: 
+      Entry: 4
+      Data: 0.8113208
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.5798221
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.8207547
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.7264151
+    - Name: 
+      Entry: 4
+      Data: 0.469127446
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   roomNodeTypeList: {fileID: 11400000, guid: ce7688593d57fec43a959c909217ee49, type: 2}
   playerSelectionPrefab: {fileID: 476887802627059913, guid: bef33f807707c064999b962e1006e683, type: 3}
   currentPlayer: {fileID: 11400000, guid: 8e1c7abeaf522e3469c7f286e9513ec3, type: 2}
@@ -79,4 +222,3 @@ MonoBehaviour:
   dashSmokeEffect: {fileID: 11400000, guid: cf52a6cbcd3a9d8468dabb0addac4ad1, type: 2}
   dashLightningEffect: {fileID: 11400000, guid: 88f7a3f8df09bbc44a22831d36beece1, type: 2}
   instagibCard: {fileID: 11400000, guid: 4c97c85671283754f994d16940a68ba2, type: 2}
-  explosionPrefab: {fileID: 3920708967980803482, guid: 2a43af3af5f3e7e458c357b258ae5a0a, type: 3}

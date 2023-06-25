@@ -71,7 +71,7 @@ public class CardPickUpSpawner : MonoBehaviour
     public void SpawnCard(CardRarity rarity)
     {
         var card = (CardPickUp)PoolManager.Instance.ReuseComponent(_cardPickUpPrefab, _cardSpawnPosition, Quaternion.identity);
-        card.SetColor(_settings.GetColor(rarity));
+        card.SetColor(CardSystemSettings.GetColor(rarity));
         card.EnsuredCardRarity = rarity;
         card.gameObject.SetActive(true);
     }

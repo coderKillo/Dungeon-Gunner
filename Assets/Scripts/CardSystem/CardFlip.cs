@@ -31,7 +31,10 @@ public class CardFlip : MonoBehaviour
 
         _flipFeedback.PlayFeedbacks();
 
-        SoundEffectManager.Instance.PlaySoundEffect(_flipSound);
+        if (SoundEffectManager.Instance != null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(_flipSound);
+        }
 
         _isFlipped = true;
     }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Tilemaps;
+using Sirenix.OdinInspector;
 
-public class GameResources : MonoBehaviour
+public class GameResources : SerializedMonoBehaviour
 {
     private static GameResources instance;
 
@@ -93,4 +94,8 @@ public class GameResources : MonoBehaviour
     [Space(10)]
     [Header("SPECIAL CARDS")]
     public CardSO instagibCard;
+
+    [Space(10)]
+    [Header("CARDS SETTINGS")]
+    public Dictionary<CardRarity, Color> rarityColorLookup;
 }

@@ -7,16 +7,12 @@ using System.Linq;
 public class CardSystemSettings : SerializedMonoBehaviour
 {
     [Space(10)]
-    [Header("Rarity Color")]
-    [SerializeField] private Dictionary<CardRarity, Color> _rarityColorLookup;
-
-    [Space(10)]
     [Header("Rarity Ratio")]
     [SerializeField] private Dictionary<CardRarity, int> _rarityRatio;
 
-    public Color GetColor(CardRarity rarity)
+    static public Color GetColor(CardRarity rarity)
     {
-        return _rarityColorLookup.GetValueOrDefault(rarity, Color.gray);
+        return GameResources.Instance.rarityColorLookup.GetValueOrDefault(rarity, Color.gray);
     }
 
     public CardSO PickRandomCard(CardSO[] cards)
