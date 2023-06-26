@@ -9,7 +9,6 @@ public class CardPickUpSpawner : MonoBehaviour
     [SerializeField] private GameObject _cardPickUpPrefab;
 
     private CardSystemSettings _settings;
-    private int _points = 0;
     private Vector3 _cardSpawnPosition = new Vector3();
 
     private void Awake()

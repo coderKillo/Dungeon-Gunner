@@ -13,7 +13,6 @@ public class AmmoAirStrike : Ammo
     [SerializeField] private float explosionPadding;
 
     private bool disable = false;
-    private float disableTimer = 0f;
     private float explosionDistance = 0f;
 
     public override void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)

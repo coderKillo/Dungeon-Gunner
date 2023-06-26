@@ -15,7 +15,7 @@ public class MusicManager : SingletonAbstract<MusicManager>
     private Coroutine _fadeOutRoutine;
 
 
-    private void Awake()
+    override protected void Awake()
     {
         base.Awake();
 

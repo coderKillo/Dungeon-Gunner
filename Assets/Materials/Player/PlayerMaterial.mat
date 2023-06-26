@@ -87,7 +87,7 @@ Material:
     - _ClipUvRight: 1
     - _ClipUvUp: 1
     - _ColorChangeLuminosity: 0.706
-    - _ColorChangeTolerance: 0.747
+    - _ColorChangeTolerance: 0.603
     - _ColorChangeTolerance2: 0.25
     - _ColorChangeTolerance3: 0.25
     - _ColorRampBlend: 1
@@ -138,14 +138,14 @@ Material:
     - _HologramBlend: 0
     - _HologramFlickerAlpha: 0
     - _HologramFlickerFreq: 0.2
-    - _HologramMaxAlpha: 1
-    - _HologramMinAlpha: 0
+    - _HologramMaxAlpha: 52.1
+    - _HologramMinAlpha: 0.583
     - _HologramStripesAlpha: 0.4
-    - _HologramStripesAmount: 50
+    - _HologramStripesAmount: 0.758
     - _HologramStripesFill: 0.4
     - _HologramStripesLuminosity: 1
-    - _HologramStripesSpeed: 5
-    - _HologramUnmodAmount: 0.4
+    - _HologramStripesSpeed: -1.6
+    - _HologramUnmodAmount: 0.696
     - _HsvBright: 2
     - _HsvSaturation: 2
     - _HsvShift: 291
@@ -182,9 +182,9 @@ Material:
     - _OverlayBlend: 0.535
     - _OverlayGlow: 3.5
     - _PinchUvAmount: 0.35
-    - _PixelateSize: 32
+    - _PixelateSize: 141
     - _PosterizeGamma: 0.75
-    - _PosterizeNumColors: 8
+    - _PosterizeNumColors: 2.7
     - _PosterizeOutline: 0
     - _RandomSeed: 0
     - _RectSize: 1
@@ -197,10 +197,10 @@ Material:
     - _ShakeUvSpeed: 2.5
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
-    - _ShineGlow: 0.5
-    - _ShineLocation: 0.914
-    - _ShineRotate: 1.55
-    - _ShineWidth: 0.084
+    - _ShineGlow: 1
+    - _ShineLocation: 0.501
+    - _ShineRotate: 0.09
+    - _ShineWidth: 0.05
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
     - _TwistUvAmount: 1
@@ -227,7 +227,7 @@ Material:
     - _ColorChangeTarget3: {r: 1, g: 0, b: 0, a: 1}
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorSwapRed: {r: 0.76766634, g: 0, b: 1, a: 1}
     - _FadeBurnColor: {r: 0, g: 1, b: 0.10163808, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
@@ -241,5 +241,5 @@ Material:
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _OverlayColor: {r: 0, g: 0.9433962, b: 0.022956785, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShineColor: {r: 1, g: 0.8227806, b: 0, a: 1}
   m_BuildTextureStacks: []

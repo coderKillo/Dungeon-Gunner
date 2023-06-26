@@ -15,7 +15,6 @@ public class Explosion : MonoBehaviour
     [SerializeField] private Vector2 _size = new Vector2(1f, 1f);
     [SerializeField] private LayerMask _mask;
     [SerializeField] private SoundEffectSO _soundEffect;
-    [SerializeField] private bool _debug = false;
 
     [HideInInspector] public Action<Collider2D[], Explosion> OnExplosionHit;
 

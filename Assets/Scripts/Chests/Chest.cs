@@ -10,10 +10,6 @@ using UnityEngine;
 public class Chest : MonoBehaviour, IUseable
 {
     [Space(10)]
-    [Header("BASE")]
-    [SerializeField] private float openDelay = 1f;
-
-    [Space(10)]
     [Header("MATERIALIZE")]
     [ColorUsage(true, true)][SerializeField] private Color materializeColor;
     [SerializeField] private float materializeTime = 3f;
@@ -45,7 +41,6 @@ public class Chest : MonoBehaviour, IUseable
     private SpriteRenderer spriteRenderer;
 
     private ChestState chestState = ChestState.init;
-    private bool isEnabled = false;
 
     private GameObject chestItemGameObject;
     private ChestItem chestItem;

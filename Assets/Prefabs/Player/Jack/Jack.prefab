@@ -348,6 +348,14 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
       value: 0.0316391
       objectReference: {fileID: 0}
+    - target: {fileID: 4968173095973270298, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: hitSoundEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: 25290df7a8eb34a4f84cd08af8bda468, type: 2}
+    - target: {fileID: 4968173095973270298, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
+      propertyPath: hitArmorSoundEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: e97a0b4b3b5d8644c83d4a96de6025ca, type: 2}
     - target: {fileID: 5122846109964932440, guid: 7279e2b2aafa52c43a1475d47e6358a7, type: 3}
       propertyPath: m_Offset.y
       value: 0.89

@@ -7322,6 +7322,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7388414844266930486, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
+      propertyPath: skipStartCardDraw
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388414844266930486, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: dungeonLevelList.Array.size
       value: 6
       objectReference: {fileID: 0}
