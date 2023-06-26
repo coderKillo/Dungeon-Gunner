@@ -13,6 +13,7 @@ public class MainMenuUI : MonoBehaviour
 
     private bool isInstructionLoaded = false;
     private bool isCardCollectionLoaded = false;
+    private bool isSettingLoaded = false;
 
     private void Start()
     {
@@ -44,6 +45,15 @@ public class MainMenuUI : MonoBehaviour
         SceneManager.LoadScene("CardCollectionScene", LoadSceneMode.Additive);
     }
 
+    public void LoadSettings()
+    {
+        isSettingLoaded = true;
+
+        ShowExtras(false);
+
+        SceneManager.LoadScene("SettingsScene", LoadSceneMode.Additive);
+    }
+
     public void LoadMainMenu()
     {
         ShowExtras(true);
@@ -58,6 +68,12 @@ public class MainMenuUI : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync("CardCollectionScene");
             isCardCollectionLoaded = false;
+        }
+
+        if (isSettingLoaded)
+        {
+            SceneManager.UnloadSceneAsync("SettingsScene");
+            isSettingLoaded = false;
         }
     }
 

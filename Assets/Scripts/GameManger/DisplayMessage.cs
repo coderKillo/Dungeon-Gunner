@@ -25,6 +25,7 @@ public class DisplayMessage : MonoBehaviour
         GameManager.Instance.Player.EnablePlayer(false);
 
         var displaySequence = DOTween.Sequence();
+        displaySequence.SetUpdate(true);
         displaySequence.Append(canvasGroup.DOFade(alpha, fadeIn));
         displaySequence.AppendInterval(duration);
         displaySequence.AppendCallback(() =>

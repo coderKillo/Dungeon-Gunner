@@ -4640,7 +4640,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99974173
+    width: 0.9995703
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -7115,6 +7115,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1661702025}
     m_Modifications:
+    - target: {fileID: 143204940, guid: dc0e7f158b639bb43b8bb08dbac120cb, type: 3}
+      propertyPath: m_characterSpacing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5386079351469682890, guid: dc0e7f158b639bb43b8bb08dbac120cb, type: 3}
       propertyPath: m_Name
       value: FadeScreenUI

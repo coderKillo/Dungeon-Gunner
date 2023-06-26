@@ -91,6 +91,8 @@ public class GameManager : SingletonAbstract<GameManager>
 
     private void Start()
     {
+        skipTutorial = (PlayerPrefs.GetInt(PrefKeys.tutorialOn, 1) == 0);
+
         SetGameState(GameState.gameStarted);
 
         SetScore(0);
@@ -171,7 +173,7 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 if (skipTutorial)
                 {
-                    SetGameState(GameState.tutorialDone);
+                    Invoke(nameof(Tutorial_OnTutorialDone), 1f);
                 }
                 else
                 {

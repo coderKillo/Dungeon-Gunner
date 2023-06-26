@@ -10,7 +10,7 @@ public class SoundEffectManager : SingletonAbstract<SoundEffectManager>
 
     private void Start()
     {
-        volume = PlayerPrefs.GetInt("soundVolume", volume);
+        volume = PlayerPrefs.GetInt(PrefKeys.soundVolume, volume);
 
         SetVolume(volume);
     }
@@ -18,7 +18,7 @@ public class SoundEffectManager : SingletonAbstract<SoundEffectManager>
     private void OnDisable()
     {
         Debug.Log("Stop game");
-        PlayerPrefs.SetInt("soundVolume", volume);
+        PlayerPrefs.SetInt(PrefKeys.soundVolume, volume);
     }
 
     public void PlaySoundEffect(SoundEffectSO soundEffect)
@@ -58,8 +58,9 @@ public class SoundEffectManager : SingletonAbstract<SoundEffectManager>
         sound.gameObject.SetActive(false);
     }
 
-    private void SetVolume(int volume)
+    public void SetVolume(int volume)
     {
+        this.volume = volume;
         float muteDecibel = -80f;
 
         float volumeDecibel = HelperUtilities.LinearToDecibels(volume);

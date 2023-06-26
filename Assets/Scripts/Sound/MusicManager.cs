@@ -26,14 +26,14 @@ public class MusicManager : SingletonAbstract<MusicManager>
 
     private void Start()
     {
-        volume = PlayerPrefs.GetInt("musicVolume", volume);
+        volume = PlayerPrefs.GetInt(PrefKeys.musicVolume, volume);
 
         SetVolume(volume);
     }
 
     private void OnDisable()
     {
-        PlayerPrefs.SetInt("musicVolume", volume);
+        PlayerPrefs.SetInt(PrefKeys.musicVolume, volume);
     }
 
     public void PlayMusic(MusicTrackSO track, float fadeIn, float fadeOut)
@@ -106,8 +106,10 @@ public class MusicManager : SingletonAbstract<MusicManager>
         yield return new WaitForSeconds(time);
     }
 
-    private void SetVolume(int volume)
+    public void SetVolume(int volume)
     {
+        this.volume = volume;
+
         float muteDecibel = -80f;
 
         if (volume <= 0)

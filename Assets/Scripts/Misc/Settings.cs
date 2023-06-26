@@ -63,4 +63,8 @@ static public class Settings
     public const int maxCardLevel = 5;
     public const int cardDrawOnStart = 3;
     #endregion
+
+    #region SOUND
+    public const int defaultVolume = 10;
+    #endregion
 }
