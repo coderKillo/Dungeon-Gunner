@@ -590,8 +590,7 @@ MonoBehaviour:
   _cardsToAdd:
   - {fileID: 11400000, guid: c12575ddd1c362a478dfee655612f322, type: 2}
   - {fileID: 11400000, guid: 1aa45154e66387d44a345bf82ae9a5d8, type: 2}
-  - {fileID: 11400000, guid: e1843e7dc9fcd7648a8659df2e9b5749, type: 2}
-  - {fileID: 11400000, guid: afb94eb81c903c94c9bf03277f2e5659, type: 2}
+  - {fileID: 11400000, guid: 56403651a9412374f80c5d5430f9ddd7, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1619,7 +1618,7 @@ Camera:
     x: 0
     y: 0
     width: 1
-    height: 1
+    height: 0.99974066
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

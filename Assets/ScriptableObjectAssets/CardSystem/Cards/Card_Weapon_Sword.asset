@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
   m_Name: Card_Weapon_Sword
   m_EditorClassIdentifier: 
-  title: Sword
+  title: Bone Sword
   rarity: 1
-  icon: {fileID: 21300000, guid: bd3d2d1fcbf730443952b8cdff95b79b, type: 3}
+  icon: {fileID: 1004351621, guid: 4bd640223d5474c4cbc5c17ea3fe0076, type: 3}
   iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: 'DMG : $1
 

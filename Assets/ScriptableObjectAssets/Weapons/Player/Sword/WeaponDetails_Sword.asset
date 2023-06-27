@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponDetails_Sword
   m_EditorClassIdentifier: 
   weaponName: Sword
-  weaponSprite: {fileID: 21300000, guid: 86d1867a11470cd4cb739417762c80ac, type: 3}
+  weaponSprite: {fileID: 1004351621, guid: 4bd640223d5474c4cbc5c17ea3fe0076, type: 3}
   shootPosition: {x: 1.7, y: 0.2, z: 0}
   positionOffset: 0
   ammo: {fileID: 11400000, guid: 89e70f31b09063a4f9f9c843c72f1f36, type: 2}
@@ -25,6 +25,7 @@ MonoBehaviour:
   prechargeTime: 0
   reloadTime: 0
   removeAfterAmmoIsEmpty: 0
+  projectileFired: 1
   fireSoundEffect: {fileID: 11400000, guid: c06178dd9caea7f428ad46679ba3d6e2, type: 2}
   reloadSoundEffect: {fileID: 0}
   fireVisualEffect: {fileID: 11400000, guid: 0dbe837ed90ccda47ad3155a8829c256, type: 2}
