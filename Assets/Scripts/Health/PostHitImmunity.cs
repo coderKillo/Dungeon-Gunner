@@ -51,10 +51,11 @@ public class PostHitImmunity : MonoBehaviour
 
         if (prevArmorAmount > arg2.shieldAmount)
         {
-            prevArmorAmount = arg2.shieldAmount;
-
+            PlayArmorHitEffect();
             PlayArmorHitSound();
         }
+
+        prevArmorAmount = arg2.shieldAmount;
     }
 
     [Button]

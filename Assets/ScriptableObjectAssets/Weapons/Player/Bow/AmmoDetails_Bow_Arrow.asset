@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: Bow Arrow
   isPlayerAmmo: 1
-  ammoSprite: {fileID: -1895796797, guid: 1d359de7d3388bc428f4a7e5bcf37744, type: 3}
+  ammoSprite: {fileID: 1150821374, guid: c420a01317c55ef40a4a4d7a68c72d69, type: 3}
   prefabArray:
   - {fileID: 3415706278289267979, guid: 3a160bf1a7b6fdf409688d9f6f2c6e76, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}

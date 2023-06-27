@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BowCharge
+  m_Name: _BowCharge
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1260660401, guid: c420a01317c55ef40a4a4d7a68c72d69, type: 3}
+      value: {fileID: 1071791241, guid: c7770178dd4663c4fb0c7e01f2c6310e, type: 3}
     - time: 0.2
-      value: {fileID: -1792787102, guid: c420a01317c55ef40a4a4d7a68c72d69, type: 3}
+      value: {fileID: -855965239, guid: c7770178dd4663c4fb0c7e01f2c6310e, type: 3}
     - time: 0.3
-      value: {fileID: -1792787102, guid: c420a01317c55ef40a4a4d7a68c72d69, type: 3}
+      value: {fileID: -855965239, guid: c7770178dd4663c4fb0c7e01f2c6310e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1260660401, guid: c420a01317c55ef40a4a4d7a68c72d69, type: 3}
-    - {fileID: -1792787102, guid: c420a01317c55ef40a4a4d7a68c72d69, type: 3}
-    - {fileID: -1792787102, guid: c420a01317c55ef40a4a4d7a68c72d69, type: 3}
+    - {fileID: 1071791241, guid: c7770178dd4663c4fb0c7e01f2c6310e, type: 3}
+    - {fileID: -855965239, guid: c7770178dd4663c4fb0c7e01f2c6310e, type: 3}
+    - {fileID: -855965239, guid: c7770178dd4663c4fb0c7e01f2c6310e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

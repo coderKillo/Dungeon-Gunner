@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frameRate: 24
   spriteArray:
-  - {fileID: 1048873408, guid: 0fc6f9d2a1b442c428c872a336ecbfb9, type: 3}
-  - {fileID: 1582238808, guid: 0fc6f9d2a1b442c428c872a336ecbfb9, type: 3}
-  - {fileID: -364550536, guid: 0fc6f9d2a1b442c428c872a336ecbfb9, type: 3}
-  - {fileID: 278118932, guid: 0fc6f9d2a1b442c428c872a336ecbfb9, type: 3}
-  - {fileID: -237566604, guid: 0fc6f9d2a1b442c428c872a336ecbfb9, type: 3}
-  - {fileID: -81713302, guid: 0fc6f9d2a1b442c428c872a336ecbfb9, type: 3}
+  - {fileID: -1063460744, guid: b00c260243dce934c9f3ff5498c9adb5, type: 3}
+  - {fileID: 878151504, guid: b00c260243dce934c9f3ff5498c9adb5, type: 3}
+  - {fileID: -1638170677, guid: b00c260243dce934c9f3ff5498c9adb5, type: 3}
+  - {fileID: 460263559, guid: b00c260243dce934c9f3ff5498c9adb5, type: 3}
+  - {fileID: 1008816116, guid: b00c260243dce934c9f3ff5498c9adb5, type: 3}
+  - {fileID: 1486493531, guid: b00c260243dce934c9f3ff5498c9adb5, type: 3}
   offset: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1}
+  scale: {x: 0.5, y: 0.5}
