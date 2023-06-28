@@ -1,9 +1,3 @@
-using System.Net.WebSockets;
-using System.Net;
-using System.Collections.Specialized;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AmmoBlackHole : MonoBehaviour, IFireable
@@ -36,14 +30,15 @@ public class AmmoBlackHole : MonoBehaviour, IFireable
                 continue;
             }
 
-            var pullDirection = transform.position - hit.transform.position;
-            var targetRigidbody = hit.GetComponent<Rigidbody2D>();
+            var movementToPositionEvent = hit.GetComponent<MovementToPositionEvent>();
 
-            if (targetRigidbody)
+            if (movementToPositionEvent)
             {
-                var force = _force * (1 - pullDirection.magnitude / _radius);
-                force = Mathf.Clamp(force, 5f, _force);
-                targetRigidbody.AddForce(new Vector2(pullDirection.x, pullDirection.y).normalized * force, ForceMode2D.Impulse);
+                var currentPosition = hit.transform.position;
+                var targetPosition = transform.position;
+                var direction = (targetPosition - currentPosition).normalized;
+
+                movementToPositionEvent.CallMovementToPositionEvent(currentPosition, targetPosition, _force, direction, false);
             }
         }
     }

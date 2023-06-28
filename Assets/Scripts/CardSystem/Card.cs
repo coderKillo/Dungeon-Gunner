@@ -14,6 +14,7 @@ public class Card
 
     public void Select(Player player)
     {
+        Weapon weapon;
         switch (details.action)
         {
             case CardAction.PowerUp:
@@ -22,12 +23,23 @@ public class Card
                     case CardPowerUp.BlackHole:
                         var radius = details.powerUpAbility + (details.powerUpScaleAbility * level);
                         details.powerUpSpell.ammo.range = Mathf.RoundToInt(radius);
-                        player.AddWeaponToPlayer(details.powerUpSpell);
+
+                        weapon = player.AddWeaponToPlayer(details.powerUpSpell);
+                        weapon.totalAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
+                        weapon.clipAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
+
+                        player.setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
                         break;
+
                     case CardPowerUp.FireBall:
                         var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
                         details.powerUpSpell.ammo.damage = Mathf.RoundToInt(damage);
-                        player.AddWeaponToPlayer(details.powerUpSpell);
+
+                        weapon = player.AddWeaponToPlayer(details.powerUpSpell);
+                        weapon.totalAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
+                        weapon.clipAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
+
+                        player.setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
                         break;
 
                     default:
@@ -36,7 +48,7 @@ public class Card
                 break;
 
             case CardAction.AddWeapon:
-                var weapon = player.GetWeapon(details.weapon);
+                weapon = player.GetWeapon(details.weapon);
 
                 weapon.damageFactor = 1 + (details.weaponDamageFactorPerLevel * (level - 1));
 
@@ -117,8 +129,6 @@ public class Card
             case CardAction.PowerUp:
                 ActivatePowerUp(details.powerUpType, details.powerUpColor, player);
 
-                value = 0f;
-
                 break;
 
 
@@ -160,25 +170,33 @@ public class Card
         {
             case CardPowerUp.Crit:
                 player.playerPowerUp.StartPowerUp(CritPowerUp(player), powerUpColor);
+                value = 0f;
                 break;
             case CardPowerUp.Speed:
                 player.playerPowerUp.StartPowerUp(SpeedPowerUp(player), powerUpColor);
+                value = 0f;
                 break;
             case CardPowerUp.MultiShot:
                 player.playerPowerUp.StartPowerUp(MultiShotPowerUp(player), powerUpColor);
+                value = 0f;
                 break;
             case CardPowerUp.Reflect:
                 player.playerPowerUp.StartPowerUp(ReflectPowerUp(player), powerUpColor);
+                value = 0f;
                 break;
             case CardPowerUp.BlackHole:
+                value = (float)player.activeWeapon.CurrentWeapon.totalAmmo / (float)player.activeWeapon.CurrentWeapon.weaponDetails.ammoCapacity;
                 break;
             case CardPowerUp.FireBall:
+                value = (float)player.activeWeapon.CurrentWeapon.totalAmmo / (float)player.activeWeapon.CurrentWeapon.weaponDetails.ammoCapacity;
                 break;
             case CardPowerUp.LightningShot:
                 player.playerPowerUp.StartPowerUp(LightningShotPowerUp(player), powerUpColor);
+                value = 0f;
                 break;
             case CardPowerUp.LightningDash:
                 player.playerPowerUp.StartPowerUp(LightningDashPowerUp(player), powerUpColor);
+                value = 0f;
                 break;
 
             default:
