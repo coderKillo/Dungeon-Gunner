@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "EnemyDetails_", menuName = "Scriptable Object/Enemy/Enemy Details")]
 public class EnemyDetailsSO : ScriptableObject
@@ -31,6 +32,12 @@ public class EnemyDetailsSO : ScriptableObject
     public float firingDurationMax = 2f;
     public float RandomFiringDuration { get { return Random.Range(firingDurationMin, firingDurationMax); } }
     public bool firingLineOfSightRequire;
+
+    [Space(10)]
+    [Header("MELEE ATTACKS")]
+    public bool hasMeleeAttacks;
+    [ShowIf("hasMeleeAttacks")] public float meleeRange = 1f;
+    [ShowIf("hasMeleeAttacks")] public float meleeDamage = 10f;
 
     [Space(10)]
     [Header("HEALTH DETAILS")]

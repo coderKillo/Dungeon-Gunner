@@ -11,7 +11,6 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(AnimateEnemy))]
 [RequireComponent(typeof(MaterializeEffect))]
 [RequireComponent(typeof(EnemyMovementAI))]
 [RequireComponent(typeof(EnemyWeaponAI))]
@@ -52,6 +51,7 @@ public class Enemy : MonoBehaviour
     private DestroyedEvent destroyedEvent;
     [HideInInspector] public FireWeapon fireWeapon;
     [HideInInspector] public Health health;
+    [HideInInspector] public Animator animator;
     [HideInInspector] public DealContactDamage dealContactDamage;
     #region EVENTS
     [HideInInspector] public IdleEvent idleEvent;
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public MovementToPositionEvent movementToPositionEvent;
     [HideInInspector] public AimWeaponEvent aimWeaponEvent;
     [HideInInspector] public FireWeaponEvent fireWeaponEvent;
-    [HideInInspector] public Animator animator;
+    [HideInInspector] public WeaponFiredEvent weaponFiredEvent;
     #endregion
 
     private void Awake()
@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
         health = GetComponent<Health>();
         healthEvent = GetComponent<HealthEvent>();
         destroyedEvent = GetComponent<DestroyedEvent>();
+        weaponFiredEvent = GetComponent<WeaponFiredEvent>();
         dealContactDamage = GetComponent<DealContactDamage>();
     }
 

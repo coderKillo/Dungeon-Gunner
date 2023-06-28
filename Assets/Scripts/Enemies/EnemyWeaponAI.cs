@@ -60,7 +60,11 @@ public class EnemyWeaponAI : MonoBehaviour
             aimDirection, playerAngle, weaponAngle, weaponDirectionVector
         );
 
-        if (HasWeapon() && PlayerInRange())
+        if (HasMeleeAttack() && PlayerInMeleeRange())
+        {
+            enemy.weaponFiredEvent.CallWeaponFiredEvent(null);
+        }
+        else if (HasWeapon() && PlayerInRange())
         {
             if (enemyDetails.firingLineOfSightRequire && !PlayerInLineOfSight(weaponDirectionVector))
             {
@@ -74,10 +78,21 @@ public class EnemyWeaponAI : MonoBehaviour
 
     }
 
+    private bool PlayerInMeleeRange()
+    {
+        var playerDirectionVector = GameManager.Instance.PlayerPosition - transform.position;
+        return (playerDirectionVector.magnitude <= enemyDetails.meleeRange);
+    }
+
     private bool PlayerInRange()
     {
         var playerDirectionVector = GameManager.Instance.PlayerPosition - transform.position;
         return (playerDirectionVector.magnitude <= enemyDetails.weaponDetails.ammo.range);
+    }
+
+    private bool HasMeleeAttack()
+    {
+        return enemyDetails.hasMeleeAttacks;
     }
 
     private bool HasWeapon()
