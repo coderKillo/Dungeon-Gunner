@@ -62,7 +62,7 @@ MonoBehaviour:
   enemiesByLevelList:
   - dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
     spawnableObjectRatioList:
-    - dungeonObject: {fileID: 11400000, guid: 9ec537764a966974382ead906bf6f117, type: 2}
+    - dungeonObject: {fileID: 11400000, guid: 7e71f747b5bb07c44bbad386f189b614, type: 2}
       ratio: 2
     - dungeonObject: {fileID: 11400000, guid: 30e91555e46e8e14bbe04bea511616aa, type: 2}
       ratio: 1
