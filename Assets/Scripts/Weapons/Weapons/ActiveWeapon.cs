@@ -9,8 +9,10 @@ using Sirenix.OdinInspector;
 public class ActiveWeapon : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Transform weaponPositionTransform;
     [SerializeField] private PolygonCollider2D polygonCollider2D;
+
+    [SerializeField] private Transform weaponPositionTransform;
+    public Transform Position { get { return weaponPositionTransform; } }
 
     [SerializeField] private Animator animator;
     public Animator Animator { get { return animator; } }

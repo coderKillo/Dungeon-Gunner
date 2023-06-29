@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,33 @@ using UnityEngine;
 public class AmmoMelee : Ammo
 {
     private List<GameObject> alreadyCollided;
+
+    private BoxCollider2D boxCollider;
+
+    private float aimAngle;
+    private float timer = 0f;
+
+    protected override void Awake()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.Instance.Player.aimWeaponEvent.OnWeaponAim += Player_OnAimWeaponEvent;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.Player.aimWeaponEvent.OnWeaponAim -= Player_OnAimWeaponEvent;
+    }
+
+    private void Player_OnAimWeaponEvent(AimWeaponEvent @event, AimWeaponEventArgs args)
+    {
+        aimAngle = args.aimAngle;
+
+        transform.localScale = new Vector3(1f, Mathf.Abs(aimAngle) >= 90f ? -1f : 1f, 0f);
+    }
 
     public override void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
@@ -14,19 +42,33 @@ public class AmmoMelee : Ammo
         this.alreadyCollided = new List<GameObject>();
         this.damage = damage;
         this.critChance = critChance;
+        this.aimAngle = aimAngel;
+        this.timer = 0f;
 
-        transform.eulerAngles = new Vector3(0, 0, aimAngel);
+        boxCollider.size = new Vector2(ammoDetails.hitboxWidth, this.range);
+        boxCollider.offset = new Vector2(0f, this.range / 2f);
 
         gameObject.SetActive(true);
     }
 
     private void Update()
     {
-        var distance = transform.right * speed * Time.deltaTime;
-        transform.position += distance;
+        transform.position = GameManager.Instance.Player.activeWeapon.Position.position;
 
-        range -= distance.magnitude;
-        if (range < 0f)
+        timer += Time.deltaTime;
+
+        var angle = Mathf.Lerp(ammoDetails.startAngle, ammoDetails.endAngle, timer / ammoDetails.rotationDuration);
+
+        if (Mathf.Abs(aimAngle) >= 90f)
+        {
+            transform.eulerAngles = new Vector3(0, 0, aimAngle - angle);
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 0, aimAngle + angle);
+        }
+
+        if (timer > ammoDetails.rotationDuration)
         {
             gameObject.SetActive(false);
         }

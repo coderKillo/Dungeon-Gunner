@@ -60,15 +60,6 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 3415706278289267979, guid: e53e09d662e6f88458d7e585bcad783b, type: 3}
     componentTypeName: IFireable
-  - size: 15
-    prefab: {fileID: 3415706278289267979, guid: 6f0f1a32a445c234ab3fabd5fb0f113a, type: 3}
-    componentTypeName: IFireable
-  - size: 15
-    prefab: {fileID: 3415706278289267979, guid: 01cf603dc1866f24a86f7676463b17f8, type: 3}
-    componentTypeName: IFireable
-  - size: 15
-    prefab: {fileID: 3415706278289267979, guid: df7a13758bcb23a49a38ed5316ed361c, type: 3}
-    componentTypeName: IFireable
   - size: 20
     prefab: {fileID: 3415706278289267979, guid: 3a160bf1a7b6fdf409688d9f6f2c6e76, type: 3}
     componentTypeName: IFireable
@@ -149,4 +140,7 @@ MonoBehaviour:
     componentTypeName: IFireable
   - size: 5
     prefab: {fileID: 6304033431812688304, guid: b9ce776c9b1a53349907f4224156545f, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: e896b0219d6c23e4ca39842ef397e525, type: 3}
     componentTypeName: IFireable

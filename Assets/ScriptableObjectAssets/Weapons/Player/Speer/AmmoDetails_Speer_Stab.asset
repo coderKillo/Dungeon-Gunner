@@ -16,7 +16,7 @@ MonoBehaviour:
   isPlayerAmmo: 1
   ammoSprite: {fileID: 470902332, guid: 64a233b22f628bd4eb26022699fa35dd, type: 3}
   prefabArray:
-  - {fileID: 3415706278289267979, guid: df7a13758bcb23a49a38ed5316ed361c, type: 3}
+  - {fileID: 3415706278289267979, guid: e896b0219d6c23e4ca39842ef397e525, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
@@ -24,7 +24,7 @@ MonoBehaviour:
   critChance: 0.2
   speedMin: 4
   speedMax: 4
-  range: 2
+  range: 3
   rotationSpeed: 0
   spreadMin: 0
   spreadMax: 0
@@ -37,5 +37,10 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
+  isMelee: 1
+  startAngle: -90
+  endAngle: -90
+  hitboxWidth: 0.5
+  rotationDuration: 0.4
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 11400000, guid: 5378f5127ba631844ba485d46d7e96b5, type: 2}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "AmmoDetails_", menuName = "Scriptable Object/Weapon/Ammo Detail")]
 public class AmmoDetailsSO : ScriptableObject
@@ -49,6 +50,14 @@ public class AmmoDetailsSO : ScriptableObject
     public Material trailMaterial;
     [Range(0f, 1f)] public float trailStartWidth;
     [Range(0f, 1f)] public float trailEndWidth;
+
+    [Space(10)]
+    [Header("AMMO MELEE DETAILS")]
+    public bool isMelee = false;
+    [ShowIf("isMelee")] public float startAngle = 45f;
+    [ShowIf("isMelee")] public float endAngle = -135f;
+    [ShowIf("isMelee")] public float hitboxWidth = 1f;
+    [ShowIf("isMelee")] public float rotationDuration = 1f;
 
     [Space(10)]
     [Header("AMMO VISUAL EFFECTS")]
