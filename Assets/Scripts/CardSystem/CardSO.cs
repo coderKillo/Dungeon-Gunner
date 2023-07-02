@@ -8,6 +8,7 @@ public class CardSO : ScriptableObject
     public string title;
     public CardRarity rarity;
     public Sprite icon;
+    public Vector2 iconSize = new Vector2(48f, 48f);
     public Sprite iconMini;
 
     [TextArea]

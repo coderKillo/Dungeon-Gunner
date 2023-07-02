@@ -96,6 +96,7 @@ public class ActiveWeapon : MonoBehaviour
 
         shootPositionTransform.localPosition = weapon.weaponDetails.shootPosition;
         weaponPositionTransform.localPosition = new Vector3(weapon.weaponDetails.positionOffset, 0f, 0f);
+        weaponPositionTransform.localRotation = Quaternion.identity;
     }
 
     private void DisableWeapon()

@@ -25,7 +25,7 @@ public class SimpleEnemySpawner : MonoBehaviour
     {
         foreach (var location in _spawnLocation)
         {
-            var enemyGameObject = GameObject.Instantiate(_enemyDetails.prefab, _spawnLocation[0].position + Random.insideUnitSphere, Quaternion.identity);
+            var enemyGameObject = GameObject.Instantiate(_enemyDetails.prefab, location.position, Quaternion.identity);
             enemyGameObject.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
 
             var enemy = enemyGameObject.GetComponent<Enemy>();

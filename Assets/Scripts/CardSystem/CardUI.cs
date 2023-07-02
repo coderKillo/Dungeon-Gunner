@@ -55,6 +55,20 @@ public class CardUI : MonoBehaviour
         NewCardFeedback.Initialization();
     }
 
+    public void Initialize(CardSO details, Guid id, int level, float value)
+    {
+        this.title.text = details.title;
+        this.icon.sprite = details.icon;
+        this.icon.rectTransform.sizeDelta = details.iconSize;
+        this.background.color = CardSystemSettings.GetColor(details.rarity);
+        this.id = id;
+        this.details = details;
+
+        setLevel(level);
+        setValue(value);
+        setDescription();
+    }
+
     public void setDescription()
     {
         switch (details.action)

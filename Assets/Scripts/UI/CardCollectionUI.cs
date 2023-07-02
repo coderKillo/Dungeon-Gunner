@@ -15,15 +15,7 @@ public class CardCollectionUI : MonoBehaviour
         {
             var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, _scrollViewContent);
             var cardUI = cardObject.GetComponent<CardUI>();
-
-            cardUI.title.text = card.title;
-            cardUI.icon.sprite = card.icon;
-            cardUI.background.color = CardSystemSettings.GetColor(card.rarity);
-            cardUI.id = Guid.NewGuid();
-            cardUI.details = card;
-            cardUI.setLevel(1);
-            cardUI.setValue(1f);
-            cardUI.setDescription();
+            cardUI.Initialize(card, Guid.NewGuid(), 1, 1f);
 
             if (PlayerPrefs.HasKey(PrefKeys.CardKey(card)))
             {

@@ -97,14 +97,7 @@ public class DrawUI : MonoBehaviour
             var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, transform);
 
             var card = cardObject.GetComponent<CardUI>();
-            card.title.text = cards[i].details.title;
-            card.icon.sprite = cards[i].details.icon;
-            card.background.color = CardSystemSettings.GetColor(cards[i].details.rarity);
-            card.id = cards[i].id;
-            card.details = cards[i].details;
-            card.setLevel(cards[i].level);
-            card.setValue(cards[i].value);
-            card.setDescription();
+            card.Initialize(cards[i].details, cards[i].id, cards[i].level, cards[i].value);
 
             cardObject.GetComponent<CardFlip>().ShowBack();
 

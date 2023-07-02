@@ -47,7 +47,7 @@ public class HandUI : MonoBehaviour
 
         for (int i = 0; i < _cards.Count; i++)
         {
-            Destroy(_cards[i].gameObject);
+            _cards[i].gameObject.SetActive(false);
         }
 
         _cards.Clear();
@@ -63,20 +63,30 @@ public class HandUI : MonoBehaviour
 
     private void Add(Card card)
     {
-        var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, _handGroup);
-        cardObject.transform.SetSiblingIndex(0);
-
-        var cardUI = cardObject.GetComponent<CardUI>();
-
-        cardUI.title.text = card.details.title;
-        cardUI.icon.sprite = card.details.icon;
-        cardUI.background.color = CardSystemSettings.GetColor(card.details.rarity);
-        cardUI.id = card.id;
-        cardUI.details = card.details;
-        cardUI.setLevel(card.level);
-        cardUI.setValue(card.value);
-        cardUI.setDescription();
+        var cardUI = GetCardUIFromPool();
+        cardUI.transform.SetSiblingIndex(0);
+        cardUI.Initialize(card.details, card.id, card.level, card.value);
+        cardUI.gameObject.SetActive(true);
 
         _cards.Add(cardUI);
     }
+
+
+    #region POOL FUNCTIONS
+    private CardUI GetCardUIFromPool()
+    {
+        for (int i = 0; i < _handGroup.childCount; i++)
+        {
+            var child = _handGroup.GetChild(i);
+            if (!child.gameObject.activeInHierarchy)
+            {
+                return child.GetComponent<CardUI>();
+            }
+        }
+
+        var cardObject = GameObject.Instantiate(_cardPrefab, Vector3.zero, Quaternion.identity, _handGroup);
+        cardObject.SetActive(false);
+        return cardObject.GetComponent<CardUI>();
+    }
+    #endregion
 }
