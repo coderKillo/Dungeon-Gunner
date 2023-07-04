@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8991a50c74ccd344acd417fcf545897, type: 3}
+  m_Name: WeaponDetails_LaserSMG
+  m_EditorClassIdentifier: 
+  weaponName: Laser SMG
+  weaponSprite: {fileID: 21300000, guid: 28430f425727a3c4aa75a5c632a96856, type: 3}
+  shootPosition: {x: 1.3, y: -0.36, z: 0}
+  positionOffset: -0.7
+  ammo: {fileID: 11400000, guid: f3785b993ac422642a8fc60600e795f3, type: 2}
+  hasInfiniteAmmo: 0
+  ammoCapacity: 300
+  hasInfiniteClipCapacity: 0
+  ammoClipCapacity: 100
+  fireRate: 0.1
+  prechargeTime: 0
+  reloadTime: 4
+  removeAfterAmmoIsEmpty: 0
+  projectileFired: 1
+  fireSoundEffect: {fileID: 0}
+  reloadSoundEffect: {fileID: 0}
+  fireVisualEffect: {fileID: 11400000, guid: d0cde365608f53f4f99be5f474dd7b32, type: 2}
+  shotAnimation: {fileID: 0}
+  chargeAnimation: {fileID: 0}

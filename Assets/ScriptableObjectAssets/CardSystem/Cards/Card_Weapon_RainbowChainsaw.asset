@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
+  m_Name: Card_Weapon_RainbowChainsaw
+  m_EditorClassIdentifier: 
+  title: Rainbow Chainsaw
+  rarity: 3
+  icon: {fileID: -588182815, guid: 6e01f2708417d424fa14d78c6a688ab7, type: 3}
+  iconSize: {x: 48, y: 48}
+  iconMini: {fileID: 1301167468, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
+  description: 'DMG : $1
+
+    FR : $2
+
+    CRIT : $3'
+  action: 3
+  healAmount: 0
+  shieldAmount: 0
+  ammoAmount: 0
+  weapon: {fileID: 11400000, guid: 98d10949a40b14549a46d220f4b6ce5d, type: 2}
+  weaponDamageFactorPerLevel: 0.5
+  powerUpType: 0
+  powerUpAbility: 0
+  powerUpScaleAbility: 0
+  isBuff: 0
+  powerUpColor: {r: 0, g: 0, b: 0, a: 0}
+  powerUpDuration: 0
+  powerUpScaleDuration: 0
+  isOnHit: 0
+  OnHitEffect: {fileID: 0}
+  isSpell: 0
+  powerUpSpell: {fileID: 0}

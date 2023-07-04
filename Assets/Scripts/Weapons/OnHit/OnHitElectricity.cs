@@ -53,6 +53,11 @@ public class OnHitElectricity : MonoBehaviour, IOnHit
         _damage = damage;
     }
 
+    public void SetRadius(float radius)
+    {
+        _radius = radius;
+    }
+
     [Button()]
     public void Hit()
     {

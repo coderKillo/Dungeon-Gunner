@@ -61,6 +61,9 @@ public class CardSO : ScriptableObject
     [ShowIf("isOnHit")]
     public GameObject OnHitEffect;
 
+    [ShowIf("isOnHit")]
+    public float onHitRadius;
+
     [ShowIf("action", CardAction.PowerUp)]
     public bool isSpell;
 

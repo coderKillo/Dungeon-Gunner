@@ -117,11 +117,20 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 3415706278289267979, guid: f7dcfc63ea384764085b246bdc0cc5cd, type: 3}
     componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: f1fdff22abd5797479aff2ee2be0f54d, type: 3}
+    componentTypeName: IFireable
+  - size: 10
+    prefab: {fileID: 3415706278289267979, guid: 4d6fdd6f2c3c7ad479c85e50e9601a9f, type: 3}
+    componentTypeName: IFireable
   - size: 50
     prefab: {fileID: 559542460712831116, guid: 0aa616512b5f09946a16406bf6ac1b76, type: 3}
     componentTypeName: ElectricityEffect
-  - size: 10
+  - size: 15
     prefab: {fileID: 3094952707187928390, guid: 1330285369f309b41bcff521dd50f1d5, type: 3}
+    componentTypeName: IOnHit
+  - size: 15
+    prefab: {fileID: 3094952707187928390, guid: f5092f4fb60c4ae4fa286fa6f2c6a0d0, type: 3}
     componentTypeName: IOnHit
   - size: 10
     prefab: {fileID: 6703015285744824992, guid: db52f96794dcbe74eb1130cc01110d45, type: 3}

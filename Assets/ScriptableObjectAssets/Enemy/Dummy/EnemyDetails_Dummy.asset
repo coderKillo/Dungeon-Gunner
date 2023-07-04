@@ -25,8 +25,11 @@ MonoBehaviour:
   firingDurationMin: 1
   firingDurationMax: 2
   firingLineOfSightRequire: 0
+  hasMeleeAttacks: 0
+  meleeRange: 1
+  meleeDamage: 10
   healthDetailList:
   - dungeonLevel: {fileID: 11400000, guid: 55aba9bebb934c542bc24a25af064e0f, type: 2}
-    healthAmount: 10
+    healthAmount: 1000
   isImmuneAfterHit: 0
   hitImmuneTime: 0

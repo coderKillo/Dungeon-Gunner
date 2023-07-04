@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
+  m_Name: AmmoDetails_FlameSword
+  m_EditorClassIdentifier: 
+  ammoName: Flame Swing
+  isPlayerAmmo: 1
+  ammoSprite: {fileID: 0}
+  prefabArray:
+  - {fileID: 3415706278289267979, guid: e896b0219d6c23e4ca39842ef397e525, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  chargeTime: 0
+  chargeMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  damage: 20
+  critChance: 0.4
+  speedMin: 20
+  speedMax: 20
+  range: 6
+  rotationSpeed: 0
+  spreadMin: 0
+  spreadMax: 0
+  spawnAmmoMin: 1
+  spawnAmmoMax: 1
+  spawnIntervalMin: 0
+  spawnIntervalMax: 0
+  hasTrail: 0
+  trailLifetime: 3
+  trailMaterial: {fileID: 0}
+  trailStartWidth: 0
+  trailEndWidth: 0
+  isMelee: 1
+  startAngle: 0
+  endAngle: -179
+  hitboxWidth: 1
+  rotationDuration: 0.7
+  hitVisualEffect: {fileID: 0}
+  hitAudioEffect: {fileID: 0}

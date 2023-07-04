@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c890f358838622c4e8f839d8ee103e35, type: 3}
+  m_Name: SpriteEffect_LightningShotgun_Fire
+  m_EditorClassIdentifier: 
+  frameRate: 24
+  spriteArray:
+  - {fileID: -1896000753, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: 1025871585, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: -1674145116, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: -1005266494, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: 256871996, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: -1353808894, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: 1061222011, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: 117294471, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: 999286500, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: -549601710, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: 966407573, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  - {fileID: 664232344, guid: 11b32c53eda774f47b519a38283aff00, type: 3}
+  offset: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1}

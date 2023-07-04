@@ -32,6 +32,13 @@ public class AmmoDetailsSO : ScriptableObject
     public float rotationSpeed = 0f;
 
     [Space(10)]
+    [Header("AMMO HIT DETAILS")]
+    public float damageRadius = 0f;
+    public int hitLimit = 0;
+    public GameObject onHitPrefab;
+    public int onHitDamage = 0;
+
+    [Space(10)]
     [Header("AMMO SPREAD DETAILS")]
     public float spreadMin = 0f;
     public float spreadMax = 0f;
@@ -58,6 +65,7 @@ public class AmmoDetailsSO : ScriptableObject
     [ShowIf("isMelee")] public float endAngle = -135f;
     [ShowIf("isMelee")] public float hitboxWidth = 1f;
     [ShowIf("isMelee")] public float rotationDuration = 1f;
+    [ShowIf("isMelee")] public float dashDistance = 0f;
 
     [Space(10)]
     [Header("AMMO VISUAL EFFECTS")]

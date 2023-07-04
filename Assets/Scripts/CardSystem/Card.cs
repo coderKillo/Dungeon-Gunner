@@ -260,6 +260,7 @@ public class Card
 
         player.fireWeapon.OnHitEffect = details.OnHitEffect;
         player.fireWeapon.OnHitDamage = Mathf.RoundToInt(damage);
+        player.fireWeapon.OnHitRadius = details.onHitRadius;
 
         yield return new WaitForSeconds(PowerUpDuration());
 

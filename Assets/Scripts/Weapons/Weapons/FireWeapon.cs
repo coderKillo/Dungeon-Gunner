@@ -36,6 +36,9 @@ public class FireWeapon : MonoBehaviour
     private int onHitDamage;
     public int OnHitDamage { set { onHitDamage = value; } }
 
+    private float onHitRadius;
+    public float OnHitRadius { set { onHitRadius = value; } }
+
     enum WeaponState
     {
         Idle,
@@ -250,8 +253,8 @@ public class FireWeapon : MonoBehaviour
                 var offsetVector = HelperUtilities.GetVectorFromAngle(offsetAngle);
 
                 var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
+                SetOnHitEffect(ammo);
                 ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle + offsetAngle, weaponAimAngle + offsetAngle, speed, weaponAimDirectionVector + offsetVector, damage, critChance);
-                ammo.SetOnHitEffect(onHitEffect, onHitDamage);
             }
 
             yield return new WaitForSeconds(spawnInterval);
@@ -273,6 +276,22 @@ public class FireWeapon : MonoBehaviour
         }
 
         weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.CurrentWeapon);
+    }
+
+    private void SetOnHitEffect(IFireable ammo)
+    {
+        if (activeWeapon.CurrentAmmo.onHitPrefab != null)
+        {
+            ammo.SetOnHitEffect(activeWeapon.CurrentAmmo.onHitPrefab, activeWeapon.CurrentAmmo.onHitDamage, activeWeapon.CurrentAmmo.damageRadius);
+        }
+        else if (onHitEffect != null)
+        {
+            ammo.SetOnHitEffect(onHitEffect, onHitDamage, onHitRadius);
+        }
+        else
+        {
+            ammo.SetOnHitEffect(null, 0, 0f);
+        }
     }
 
     private void ResetFireRateCooldownTimer()

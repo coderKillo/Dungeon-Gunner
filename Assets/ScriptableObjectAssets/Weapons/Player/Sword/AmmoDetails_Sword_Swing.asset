@@ -20,8 +20,8 @@ MonoBehaviour:
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
-  damage: 15
-  critChance: 0.2
+  damage: 10
+  critChance: 0.3
   speedMin: 2
   speedMax: 2
   range: 2.5
@@ -40,6 +40,7 @@ MonoBehaviour:
   isMelee: 1
   startAngle: 65
   endAngle: -135
+  hitboxWidth: 1
   rotationDuration: 0.4
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 11400000, guid: 072ba8fb5fe54164c97c3fa8478a75c8, type: 2}

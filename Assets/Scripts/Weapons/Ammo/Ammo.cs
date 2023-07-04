@@ -33,6 +33,7 @@ public class Ammo : MonoBehaviour, IFireable
     private bool overrideAmmoMovement;
     private GameObject onHitEffect;
     private int onHitDamage = 0;
+    private float onHitRadius = 0;
 
     public virtual void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
@@ -217,12 +218,14 @@ public class Ammo : MonoBehaviour, IFireable
         var ammoHitEffect = (IOnHit)PoolManager.Instance.ReuseComponent(onHitEffect, transform.position, Quaternion.identity);
         ammoHitEffect.GetGameObject().SetActive(true);
         ammoHitEffect.SetDamage(onHitDamage);
+        ammoHitEffect.SetRadius(onHitRadius);
         ammoHitEffect.Hit();
     }
 
-    public void SetOnHitEffect(GameObject onHitEffect, int damage)
+    public void SetOnHitEffect(GameObject onHitEffect, int damage, float radius)
     {
         this.onHitEffect = onHitEffect;
         this.onHitDamage = damage;
+        this.onHitRadius = radius;
     }
 }
