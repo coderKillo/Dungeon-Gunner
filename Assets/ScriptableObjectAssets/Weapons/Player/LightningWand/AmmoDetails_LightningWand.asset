@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
+  m_Name: AmmoDetails_LightningWand
+  m_EditorClassIdentifier: 
+  ammoName: Lightning Strike
+  isPlayerAmmo: 1
+  ammoSprite: {fileID: 21300000, guid: 190cda849b298e4439a89409dfbef306, type: 3}
+  prefabArray:
+  - {fileID: 3415706278289267979, guid: f1fdff22abd5797479aff2ee2be0f54d, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  chargeTime: 0
+  chargeMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  damage: 20
+  critChance: 0.4
+  speedMin: 20
+  speedMax: 20
+  range: 10
+  rotationSpeed: 0
+  damageRadius: 3
+  hitLimit: 1
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
+  spreadMin: 0
+  spreadMax: 0
+  spawnAmmoMin: 1
+  spawnAmmoMax: 1
+  spawnIntervalMin: 0
+  spawnIntervalMax: 0
+  hasTrail: 0
+  trailLifetime: 3
+  trailMaterial: {fileID: 0}
+  trailStartWidth: 0
+  trailEndWidth: 0
+  isMelee: 0
+  startAngle: 45
+  endAngle: -135
+  hitboxWidth: 1
+  rotationDuration: 1
+  dashDistance: 0
+  hitVisualEffect: {fileID: 0}
+  hitAudioEffect: {fileID: 0}

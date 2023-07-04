@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8991a50c74ccd344acd417fcf545897, type: 3}
+  m_Name: WeaponDetails_FlameSword
+  m_EditorClassIdentifier: 
+  weaponName: Flame Sword
+  weaponSprite: {fileID: 21300000, guid: 9041efe3ed7ba2d4f8a0eb2e9688465c, type: 3}
+  shootPosition: {x: 0.2, y: 0.2, z: 0}
+  positionOffset: 0.1
+  ammo: {fileID: 11400000, guid: 4ef22858cfa1ee149a0e9239f63297a2, type: 2}
+  hasInfiniteAmmo: 0
+  ammoCapacity: 25
+  hasInfiniteClipCapacity: 1
+  ammoClipCapacity: 1
+  fireRate: 1
+  prechargeTime: 0
+  reloadTime: 0
+  removeAfterAmmoIsEmpty: 0
+  projectileFired: 1
+  fireSoundEffect: {fileID: 11400000, guid: bba51de165bdb6843b91fb9c9625493c, type: 2}
+  reloadSoundEffect: {fileID: 0}
+  fireVisualEffect: {fileID: 11400000, guid: e555a7cfb2884d04e950dad5b980814b, type: 2}
+  shotAnimation: {fileID: 7400000, guid: d55dffa5885b0384a8accb9ef4044cc2, type: 2}
+  chargeAnimation: {fileID: 0}
