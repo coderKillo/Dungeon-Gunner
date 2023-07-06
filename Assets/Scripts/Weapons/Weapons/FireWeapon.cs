@@ -22,6 +22,8 @@ public class FireWeapon : MonoBehaviour
     public float WeaponDamageFactor { get { return weaponDamageFactor; } set { weaponDamageFactor = value; } }
     private float weaponCritChanceFactor = 1f;
     public float WeaponCritChanceFactor { get { return weaponCritChanceFactor; } set { weaponCritChanceFactor = value; } }
+    private float weaponAttackSpeedFactor = 1f;
+    public float WeaponAttackSpeedFactor { get { return weaponAttackSpeedFactor; } set { weaponAttackSpeedFactor = value; } }
 
     private FireWeaponEvent fireWeaponEvent;
     private WeaponFiredEvent weaponFiredEvent;
@@ -31,7 +33,7 @@ public class FireWeapon : MonoBehaviour
     private SpriteEffect fireWeaponEffect;
 
     private GameObject onHitEffect;
-    public GameObject OnHitEffect { set { onHitEffect = value; } }
+    public GameObject OnHitEffect { set { onHitEffect = value; } get { return onHitEffect; } }
 
     private int onHitDamage;
     public int OnHitDamage { set { onHitDamage = value; } }
@@ -142,7 +144,7 @@ public class FireWeapon : MonoBehaviour
 
     private void StartCharging()
     {
-        chargeWeaponEvent.CallChargeWeaponEvent(activeWeapon.CurrentWeapon.weaponDetails.prechargeTime, true);
+        chargeWeaponEvent.CallChargeWeaponEvent(chargeTimer, true);
         PlayChargeAnimation();
     }
 
@@ -207,6 +209,7 @@ public class FireWeapon : MonoBehaviour
             return;
         }
 
+        activeWeapon.Animator.speed = 1 / weaponAttackSpeedFactor;
         activeWeapon.Animator.SetTrigger(Animations.shot);
     }
 
@@ -217,6 +220,7 @@ public class FireWeapon : MonoBehaviour
             return;
         }
 
+        activeWeapon.Animator.speed = 1 / weaponAttackSpeedFactor;
         activeWeapon.Animator.SetTrigger(Animations.charge);
     }
 
@@ -296,12 +300,12 @@ public class FireWeapon : MonoBehaviour
 
     private void ResetFireRateCooldownTimer()
     {
-        fireRateCooldownTimer = activeWeapon.CurrentWeapon.weaponDetails.fireRate;
+        fireRateCooldownTimer = activeWeapon.CurrentWeapon.weaponDetails.fireRate * weaponAttackSpeedFactor;
     }
 
     private void ResetChargeTimer()
     {
-        chargeTimer = activeWeapon.CurrentWeapon.weaponDetails.prechargeTime;
+        chargeTimer = activeWeapon.CurrentWeapon.weaponDetails.prechargeTime * weaponAttackSpeedFactor;
     }
 
     private void ReloadWeapon()
@@ -350,6 +354,7 @@ public class FireWeapon : MonoBehaviour
         }
 
         fireWeaponEffect.Initialize(visualEffect);
+        fireWeaponEffect.FrameRate *= 1 / weaponAttackSpeedFactor;
         fireWeaponEffect.gameObject.SetActive(true);
     }
 
