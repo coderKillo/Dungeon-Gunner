@@ -100,5 +100,6 @@ public enum CardPowerUp
     BlackHole,
     FireBall,
     LightningShot,
+    ExplosiveShot,
     LightningDash
 }

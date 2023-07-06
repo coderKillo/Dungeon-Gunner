@@ -47,5 +47,5 @@ MonoBehaviour:
   hitboxWidth: 1
   rotationDuration: 1
   dashDistance: 0
-  hitVisualEffect: {fileID: 11400000, guid: acf3269b453cfaf4699e14f7088cef1c, type: 2}
-  hitAudioEffect: {fileID: 0}
+  hitVisualEffect: {fileID: 0}
+  hitAudioEffect: {fileID: 11400000, guid: d310eba28330684408e244623c7a6d33, type: 2}

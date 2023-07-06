@@ -194,6 +194,10 @@ public class Card
                 player.playerPowerUp.StartPowerUp(LightningShotPowerUp(player), powerUpColor);
                 value = 0f;
                 break;
+            case CardPowerUp.ExplosiveShot:
+                player.playerPowerUp.StartPowerUp(ExplosiveShotPowerUp(player), powerUpColor);
+                value = 0f;
+                break;
             case CardPowerUp.LightningDash:
                 player.playerPowerUp.StartPowerUp(LightningDashPowerUp(player), powerUpColor);
                 value = 0f;
@@ -257,6 +261,7 @@ public class Card
     private IEnumerator LightningShotPowerUp(Player player)
     {
         var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
+        var prevOnHitEffect = player.fireWeapon.OnHitEffect;
 
         player.fireWeapon.OnHitEffect = details.OnHitEffect;
         player.fireWeapon.OnHitDamage = Mathf.RoundToInt(damage);
@@ -264,7 +269,21 @@ public class Card
 
         yield return new WaitForSeconds(PowerUpDuration());
 
-        player.fireWeapon.OnHitEffect = null;
+        player.fireWeapon.OnHitEffect = prevOnHitEffect;
+    }
+
+    private IEnumerator ExplosiveShotPowerUp(Player player)
+    {
+        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
+        var prevOnHitEffect = player.fireWeapon.OnHitEffect;
+
+        player.fireWeapon.OnHitEffect = details.OnHitEffect;
+        player.fireWeapon.OnHitDamage = Mathf.RoundToInt(damage);
+        player.fireWeapon.OnHitRadius = details.onHitRadius;
+
+        yield return new WaitForSeconds(PowerUpDuration());
+
+        player.fireWeapon.OnHitEffect = prevOnHitEffect;
     }
 
     private IEnumerator LightningDashPowerUp(Player player)

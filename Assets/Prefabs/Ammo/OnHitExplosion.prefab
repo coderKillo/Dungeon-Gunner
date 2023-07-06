@@ -49,3 +49,4 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 32768
+  _effect: {fileID: 11400000, guid: acf3269b453cfaf4699e14f7088cef1c, type: 2}

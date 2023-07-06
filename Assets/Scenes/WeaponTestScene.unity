@@ -2099,7 +2099,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.9994068
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9041efe3ed7ba2d4f8a0eb2e9688465c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd4575414be83f6409e51c96f84c457e, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 0
