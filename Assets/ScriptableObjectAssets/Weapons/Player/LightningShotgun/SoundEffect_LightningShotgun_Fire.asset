@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectName: Lightning Shotgun Fire
   soundEffectPrefab: {fileID: 7695211021968318798, guid: 644c0087ff8c1da42a1f5b0367cbd01b, type: 3}
-  audioClip: {fileID: 8300000, guid: 5726a1919a76249248b71f2c0db2de16, type: 3}
+  audioClip: {fileID: 8300000, guid: 00fd4728e4effb94d9dd3d8138f62484, type: 3}
   pitchVariantMin: 0.8
   pitchVariantMax: 1.2
   volume: 0.808
