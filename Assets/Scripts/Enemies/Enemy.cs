@@ -174,6 +174,11 @@ public class Enemy : MonoBehaviour
         EnableEnemy(true);
     }
 
+    public void EnableEnemyAI(bool enable)
+    {
+        enemyMovementAI.enabled = enable;
+        enemyWeaponAI.enabled = enable;
+    }
 
     private void EnableEnemy(bool enable)
     {

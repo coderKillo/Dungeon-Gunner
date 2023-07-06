@@ -36,6 +36,15 @@ public class EnemyMovementAI : MonoBehaviour
         prevPlayerPosition = GameManager.Instance.PlayerPosition;
     }
 
+    private void OnDisable()
+    {
+        if (moveEnemyCoroutine != null)
+        {
+            StopCoroutine(moveEnemyCoroutine);
+            Idle();
+        }
+    }
+
     void Update()
     {
         var playerPosition = GameManager.Instance.PlayerPosition;
