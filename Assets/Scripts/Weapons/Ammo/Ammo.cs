@@ -152,6 +152,7 @@ public class Ammo : MonoBehaviour, IFireable
 
         isColliding = true;
 
+        PlayHitSound();
         AmmoHitEffect();
 
         DealDamage(other);
@@ -165,7 +166,7 @@ public class Ammo : MonoBehaviour, IFireable
 
         if (health != null)
         {
-            OnHit();
+            OnHit(collider);
 
             if (IsCrit())
             {
@@ -208,7 +209,7 @@ public class Ammo : MonoBehaviour, IFireable
         ammoHitEffect.gameObject.SetActive(true);
     }
 
-    protected void OnHit()
+    protected void OnHit(Collider2D collider)
     {
         if (onHitEffect == null)
         {
@@ -219,7 +220,7 @@ public class Ammo : MonoBehaviour, IFireable
         ammoHitEffect.GetGameObject().SetActive(true);
         ammoHitEffect.SetDamage(onHitDamage);
         ammoHitEffect.SetRadius(onHitRadius);
-        ammoHitEffect.Hit();
+        ammoHitEffect.Hit(collider);
     }
 
     public void SetOnHitEffect(GameObject onHitEffect, int damage, float radius)

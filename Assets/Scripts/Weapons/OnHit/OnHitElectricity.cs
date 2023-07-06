@@ -59,9 +59,9 @@ public class OnHitElectricity : MonoBehaviour, IOnHit
     }
 
     [Button()]
-    public void Hit()
+    public void Hit(Collider2D collider)
     {
-        var colliderList = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), _radius, _layerMask);
+        var colliderList = Physics2D.OverlapCircleAll(new Vector2(collider.transform.position.x, collider.transform.position.y), _radius, _layerMask);
         StartCoroutine(ChainLightning(colliderList));
     }
 

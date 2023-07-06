@@ -9,6 +9,7 @@ public class OnHitExplosion : MonoBehaviour, IOnHit
     [SerializeField] private float _radius;
     [SerializeField] private int _damage = 10;
     [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private SpriteEffectSO _effect;
 
     void Update()
     {
@@ -26,18 +27,22 @@ public class OnHitExplosion : MonoBehaviour, IOnHit
     }
 
     [Button()]
-    public void Hit()
+    public void Hit(Collider2D collider)
     {
-        var colliderList = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), _radius, _layerMask);
+        transform.position = collider.transform.position;
 
-        foreach (var collider in colliderList)
+        HitEffect();
+
+        var hits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), _radius, _layerMask);
+
+        foreach (var hit in hits)
         {
-            if (collider == null)
+            if (hit == null)
             {
                 continue;
             }
 
-            var health = collider.GetComponent<Health>();
+            var health = hit.GetComponent<Health>();
             if (health != null)
             {
                 health.TakeDamage(_damage, false);
@@ -45,6 +50,13 @@ public class OnHitExplosion : MonoBehaviour, IOnHit
         }
 
         gameObject.SetActive(false);
+    }
+
+    private void HitEffect()
+    {
+        var hitEffect = (SpriteEffect)PoolManager.Instance.ReuseComponent(GameResources.Instance.spriteEffectPrefab, transform.position, Quaternion.identity);
+        hitEffect.Initialize(_effect);
+        hitEffect.gameObject.SetActive(true);
     }
 
     public GameObject GetGameObject()
