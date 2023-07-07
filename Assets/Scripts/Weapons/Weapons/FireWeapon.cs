@@ -18,11 +18,11 @@ public class FireWeapon : MonoBehaviour
     private float fireRateCooldownTimer = 0f;
     private float chargeTimer = 0f;
 
-    private float weaponDamageFactor = 1f;
+    public float weaponDamageFactor = 1f;
     public float WeaponDamageFactor { get { return weaponDamageFactor; } set { weaponDamageFactor = value; } }
     private float weaponCritChanceFactor = 1f;
     public float WeaponCritChanceFactor { get { return weaponCritChanceFactor; } set { weaponCritChanceFactor = value; } }
-    private float weaponAttackSpeedFactor = 1f;
+    public float weaponAttackSpeedFactor = 1f;
     public float WeaponAttackSpeedFactor { get { return weaponAttackSpeedFactor; } set { weaponAttackSpeedFactor = value; } }
 
     private FireWeaponEvent fireWeaponEvent;

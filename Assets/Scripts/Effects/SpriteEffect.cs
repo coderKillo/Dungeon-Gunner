@@ -32,6 +32,8 @@ public class SpriteEffect : MonoBehaviour
         frameRate = spriteEffect.frameRate;
     }
 
+    public float Duration() { return spriteArray.Length / frameRate; }
+
     private void OnEnable()
     {
         showEffectCoroutine = StartCoroutine(ShowEffect());

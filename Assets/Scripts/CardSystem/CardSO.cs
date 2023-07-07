@@ -101,5 +101,8 @@ public enum CardPowerUp
     FireBall,
     LightningShot,
     ExplosiveShot,
+    FrostShot,
+    VampiricShot,
+    Berserk,
     LightningDash
 }

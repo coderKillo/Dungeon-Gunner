@@ -10,29 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b4076d1d7527d848b7d790e85deb463, type: 3}
-  m_Name: Card_PowerUp_ExplosiveShot
+  m_Name: Card_PowerUp_FrostShot
   m_EditorClassIdentifier: 
-  title: Explosive Shot
+  title: Frost Shot
   rarity: 2
-  icon: {fileID: 301564570, guid: d1f8b17aaa3667d46b06938b97632bf2, type: 3}
+  icon: {fileID: 21300000, guid: e9989709b71d8ac498389ae3162f5853, type: 3}
   iconSize: {x: 48, y: 48}
-  iconMini: {fileID: 0}
-  description: bullets creates explosion on hit with $1 damage for $2 s.
+  iconMini: {fileID: -1210985138, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
+  description: bullets freeze enemy. Explode after enougth damage taken for $1. lasts
+    $2 s.
   action: 4
   healAmount: 0
   shieldAmount: 0
   ammoAmount: 0
-  weapon: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
   weaponDamageFactorPerLevel: 0
-  powerUpType: 7
+  powerUpType: 9
   powerUpAbility: 10
   powerUpScaleAbility: 5
   isBuff: 1
-  powerUpColor: {r: 0.990566, g: 0.40099436, b: 0, a: 0}
+  powerUpColor: {r: 0, g: 0.43849897, b: 1, a: 1}
   powerUpDuration: 30
   powerUpScaleDuration: 30
   isOnHit: 1
-  OnHitEffect: {fileID: 3094952707187928390, guid: f5092f4fb60c4ae4fa286fa6f2c6a0d0, type: 3}
+  OnHitEffect: {fileID: 3094952707187928390, guid: 2699bfa686ee92545bcfdd48d7d4e2ac, type: 3}
   onHitRadius: 5
   isSpell: 0
   powerUpSpell: {fileID: 0}

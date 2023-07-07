@@ -191,11 +191,23 @@ public class Card
                 value = (float)player.activeWeapon.CurrentWeapon.totalAmmo / (float)player.activeWeapon.CurrentWeapon.weaponDetails.ammoCapacity;
                 break;
             case CardPowerUp.LightningShot:
-                player.playerPowerUp.StartPowerUp(LightningShotPowerUp(player), powerUpColor);
+                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
                 value = 0f;
                 break;
             case CardPowerUp.ExplosiveShot:
-                player.playerPowerUp.StartPowerUp(ExplosiveShotPowerUp(player), powerUpColor);
+                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
+                value = 0f;
+                break;
+            case CardPowerUp.FrostShot:
+                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
+                value = 0f;
+                break;
+            case CardPowerUp.Berserk:
+                player.playerPowerUp.StartPowerUp(BerserkPowerUp(player), powerUpColor);
+                value = 0f;
+                break;
+            case CardPowerUp.VampiricShot:
+                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
                 value = 0f;
                 break;
             case CardPowerUp.LightningDash:
@@ -258,21 +270,7 @@ public class Card
         player.playerReflectAmmo.Disable();
     }
 
-    private IEnumerator LightningShotPowerUp(Player player)
-    {
-        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-        var prevOnHitEffect = player.fireWeapon.OnHitEffect;
-
-        player.fireWeapon.OnHitEffect = details.OnHitEffect;
-        player.fireWeapon.OnHitDamage = Mathf.RoundToInt(damage);
-        player.fireWeapon.OnHitRadius = details.onHitRadius;
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.fireWeapon.OnHitEffect = prevOnHitEffect;
-    }
-
-    private IEnumerator ExplosiveShotPowerUp(Player player)
+    private IEnumerator ShotPowerUp(Player player)
     {
         var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
         var prevOnHitEffect = player.fireWeapon.OnHitEffect;
@@ -298,5 +296,21 @@ public class Card
         player.playerDash.Effect = GameResources.Instance.dashSmokeEffect;
         player.playerDash.Damage = Mathf.RoundToInt(0);
     }
+
+    private IEnumerator BerserkPowerUp(Player player)
+    {
+        var power = details.powerUpAbility + (details.powerUpScaleAbility * level);
+        var damageFactor = player.fireWeapon.WeaponDamageFactor;
+        var attackSpeed = player.fireWeapon.WeaponAttackSpeedFactor;
+
+        player.fireWeapon.WeaponDamageFactor += power;
+        player.fireWeapon.WeaponAttackSpeedFactor *= Mathf.Clamp(1 - power, 0f, 2f);
+
+        yield return new WaitForSeconds(PowerUpDuration());
+
+        player.fireWeapon.WeaponDamageFactor = damageFactor;
+        player.fireWeapon.WeaponAttackSpeedFactor = attackSpeed;
+    }
+
 }
 
