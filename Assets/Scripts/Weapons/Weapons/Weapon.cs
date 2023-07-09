@@ -1,3 +1,4 @@
+using System;
 
 [System.Serializable]
 public class Weapon
@@ -13,6 +14,8 @@ public class Weapon
 
     public float damageFactor = 1f;
 
+    public Guid id;
+
     static public Weapon CreateWeapon(WeaponDetailsSO weaponDetails)
     {
         return new Weapon()
@@ -23,6 +26,7 @@ public class Weapon
             clipAmmo = weaponDetails.ammoClipCapacity,
             totalAmmo = weaponDetails.ammoCapacity,
             damageFactor = 1f,
+            id = Guid.NewGuid(),
         };
     }
 }

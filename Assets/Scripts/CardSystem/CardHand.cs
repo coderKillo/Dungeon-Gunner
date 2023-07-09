@@ -34,7 +34,8 @@ public class CardHand : MonoBehaviour
 
         if (card.details.action == CardAction.AddWeapon)
         {
-            GameManager.Instance.Player.AddWeaponToPlayer(card.details.weapon);
+            var weapon = GameManager.Instance.Player.AddWeaponToPlayer(card.details.weapon);
+            card.weaponId = weapon.id;
         }
 
         SoundEffectManager.Instance.PlaySoundEffect(_addCardSound);
@@ -48,7 +49,7 @@ public class CardHand : MonoBehaviour
 
         if (card.details.action == CardAction.AddWeapon)
         {
-            GameManager.Instance.Player.RemoveWeaponFromPlayer(card.details.weapon);
+            GameManager.Instance.Player.RemoveWeaponFromPlayer(card.weaponId);
         }
 
         SoundEffectManager.Instance.PlaySoundEffect(_removeCardSound);

@@ -141,15 +141,32 @@ public class Player : MonoBehaviour
         return weapon;
     }
 
-    public void RemoveWeaponFromPlayer(WeaponDetailsSO weaponDetails)
+    public void RemoveWeaponFromPlayer(Guid id)
     {
-        var weapon = weaponList.Find((x) => x.weaponDetails == weaponDetails);
+        var weapon = GetWeapon(id);
 
         if (weapon == null)
         {
             return;
         }
 
+        RemoveWeapon(weapon);
+    }
+
+    public void RemoveWeaponFromPlayer(WeaponDetailsSO weaponDetails)
+    {
+        var weapon = GetWeapon(weaponDetails);
+
+        if (weapon == null)
+        {
+            return;
+        }
+
+        RemoveWeapon(weapon);
+    }
+
+    private void RemoveWeapon(Weapon weapon)
+    {
         weaponList.Remove(weapon);
         weapon.weaponListPosition = 0;
 
@@ -164,6 +181,11 @@ public class Player : MonoBehaviour
     public Weapon GetWeapon(WeaponDetailsSO weaponDetails)
     {
         return weaponList.Find((x) => x.weaponDetails == weaponDetails);
+    }
+
+    public Weapon GetWeapon(Guid id)
+    {
+        return weaponList.Find((x) => x.id == id);
     }
 
     public bool HasWeapon(WeaponDetailsSO weaponDetails)

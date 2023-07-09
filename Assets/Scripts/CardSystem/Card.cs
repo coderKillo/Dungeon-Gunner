@@ -12,6 +12,8 @@ public class Card
     public int level = 1;
     public float value = 1.0f;
 
+    public Guid weaponId;
+
     public void Select(Player player)
     {
         Weapon weapon;
@@ -48,7 +50,7 @@ public class Card
                 break;
 
             case CardAction.AddWeapon:
-                weapon = player.GetWeapon(details.weapon);
+                weapon = player.GetWeapon(weaponId);
 
                 weapon.damageFactor = 1 + (details.weaponDamageFactorPerLevel * (level - 1));
 
