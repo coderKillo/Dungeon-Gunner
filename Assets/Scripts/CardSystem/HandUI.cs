@@ -12,7 +12,6 @@ public class HandUI : MonoBehaviour
     [SerializeField] private GameObject _cardPrefab;
     [SerializeField] private Transform _handGroup;
     [SerializeField] private CardHand _cardHand;
-    [SerializeField] private CardSystemSettings _cardSystemSettings;
 
     private List<CardUI> _cards;
 

@@ -1032,15 +1032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsToAdd:
-  - {fileID: 11400000, guid: ae67aaa2a40a68e4b90e3a8fb93e8b3d, type: 2}
-  - {fileID: 11400000, guid: 7f381f7a27f696940b712c6092506cb2, type: 2}
-  - {fileID: 11400000, guid: 3bcec820b2a3a4e4c988dd0c756604f5, type: 2}
-  - {fileID: 11400000, guid: 1f583b4dc171eb949a9e02deeec2e588, type: 2}
-  - {fileID: 11400000, guid: 593bf66603d86b24890210744e81454d, type: 2}
   - {fileID: 11400000, guid: 6f18112e028d75b44aa8916bacf813e1, type: 2}
-  - {fileID: 11400000, guid: 56981c4ab9941904f9f0c71e49747ed4, type: 2}
-  - {fileID: 11400000, guid: 309516302ec462b44b412461979a4c53, type: 2}
-  - {fileID: 11400000, guid: 262dc9ad8e5215d4b999f9b99bad6b28, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1138,15 +1130,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4050433500056618649, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1154,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4050433500095402646, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -90.00336
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e03e372d6a436f43906d7486ea992a7, type: 3}
@@ -2097,7 +2089,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
+    width: 0.99964046
     height: 1
   near clip plane: 0.3
   far clip plane: 1000

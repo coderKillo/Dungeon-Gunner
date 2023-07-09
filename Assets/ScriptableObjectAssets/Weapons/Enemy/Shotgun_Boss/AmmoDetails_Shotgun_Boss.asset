@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: ShotgunAmmoBoss
   isPlayerAmmo: 0
-  ammoSprite: {fileID: 21300000, guid: c3be09077243891458bdbf46a57d2e8a, type: 3}
+  ammoSprite: {fileID: 21300000, guid: e36e8bbd18074d341b170885ac002038, type: 3}
   prefabArray:
   - {fileID: 3415706278289267979, guid: bcf797084d082dd41a155045c96dcb6b, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
@@ -26,6 +26,10 @@ MonoBehaviour:
   speedMax: 14
   range: 25
   rotationSpeed: 1
+  damageRadius: 0
+  hitLimit: 0
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
   spreadMin: 1
   spreadMax: 5
   spawnAmmoMin: 1
@@ -37,5 +41,11 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
+  isMelee: 0
+  startAngle: 45
+  endAngle: -135
+  hitboxWidth: 1
+  rotationDuration: 1
+  dashDistance: 0
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 0}

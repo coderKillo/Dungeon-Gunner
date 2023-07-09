@@ -58,8 +58,6 @@ public class AmmoLightningStrike : Ammo
 
     private Collider2D[] ConeCastAll()
     {
-        Debug.DrawCircle(transform.position + fireDirectionVector.normalized * range, radius, 16, Color.green);
-
         List<Collider2D> coneCastHit = new List<Collider2D>();
 
         var circleCastHits = Physics2D.CircleCastAll((Vector2)transform.position, radius, fireDirectionVector, range, mask);
@@ -68,11 +66,14 @@ public class AmmoLightningStrike : Ammo
         for (int i = 0; i < circleCastHits.Length; i++)
         {
             Vector3 hitDirection = circleCastHits[i].point - (Vector2)transform.position;
-            float hitAngle = Vector3.Angle(fireDirectionVector, hitDirection);
+            float hitAngle = Mathf.Abs(Vector3.Angle(fireDirectionVector, hitDirection));
 
-            if (hitAngle < coneAngle)
+            if (hitAngle < coneAngle || hitDirection.magnitude < range)
             {
-                coneCastHit.Add(circleCastHits[i].collider);
+                if (circleCastHits[i].collider.GetComponent<Health>() != null)
+                {
+                    coneCastHit.Add(circleCastHits[i].collider);
+                }
             }
         }
 

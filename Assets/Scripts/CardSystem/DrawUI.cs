@@ -159,6 +159,8 @@ public class DrawUI : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(_cardExitDuration);
 
+        Clear();
+
         _cardDraw.EndDrawDone();
     }
 

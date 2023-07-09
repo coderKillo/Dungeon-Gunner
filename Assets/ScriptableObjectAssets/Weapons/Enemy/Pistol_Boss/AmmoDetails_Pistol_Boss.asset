@@ -14,17 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: PistolAmmoBoss
   isPlayerAmmo: 0
-  ammoSprite: {fileID: 21300000, guid: 4df9cc7131cd27f4288bca5e76c82034, type: 3}
+  ammoSprite: {fileID: 21300000, guid: e36e8bbd18074d341b170885ac002038, type: 3}
   prefabArray:
   - {fileID: 3415706278289267979, guid: bcf797084d082dd41a155045c96dcb6b, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
   damage: 8
+  critChance: 0.1
   speedMin: 15
   speedMax: 20
   range: 30
   rotationSpeed: 1
+  damageRadius: 0
+  hitLimit: 0
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
   spreadMin: 2
   spreadMax: 4
   spawnAmmoMin: 1
@@ -36,4 +41,11 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
-  hitVisualEffect: {fileID: 11400000, guid: f12cf058f89799046b99092bc538483f, type: 2}
+  isMelee: 0
+  startAngle: 45
+  endAngle: -135
+  hitboxWidth: 1
+  rotationDuration: 1
+  dashDistance: 0
+  hitVisualEffect: {fileID: 0}
+  hitAudioEffect: {fileID: 0}

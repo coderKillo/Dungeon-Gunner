@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685901428043935878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.015, y: 0.984, z: 0}
-  m_LocalScale: {x: 0.5092, y: 0.5295, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1661271544136887883}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -653709415
   m_SortingLayer: 4
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: e9989709b71d8ac498389ae3162f5853, type: 3}
+  m_Sprite: {fileID: 363387604, guid: 0c784265ece44e54c8d8ad3df3c70798, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,11 @@ MonoBehaviour:
   keepActiveAfterComplete: 1
   looping: 0
   spriteArray:
-  - {fileID: 21300000, guid: e9989709b71d8ac498389ae3162f5853, type: 3}
+  - {fileID: 1310718167, guid: 0c784265ece44e54c8d8ad3df3c70798, type: 3}
+  - {fileID: -1448437871, guid: 0c784265ece44e54c8d8ad3df3c70798, type: 3}
+  - {fileID: 976487408, guid: 0c784265ece44e54c8d8ad3df3c70798, type: 3}
+  - {fileID: -1113203238, guid: 0c784265ece44e54c8d8ad3df3c70798, type: 3}
+  - {fileID: 363387604, guid: 0c784265ece44e54c8d8ad3df3c70798, type: 3}
   frameRate: 6
 --- !u!1 &1022735705053955660
 GameObject:
@@ -839,7 +843,7 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 32768
-  _iceBlockExplosionEffect: {fileID: 11400000, guid: acf3269b453cfaf4699e14f7088cef1c, type: 2}
+  _iceBlockExplosionEffect: {fileID: 11400000, guid: 04c9548f5a04995499202c1c78fe8223, type: 2}
   _iceBlockEffect: {fileID: 5943365643794913134}
 --- !u!1 &4821766618793254805
 GameObject:
@@ -1279,6 +1283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireFeedback: {fileID: 4680020017737300018}
   multiShotAngle: 45
+  weaponDamageFactor: 1
+  weaponAttackSpeedFactor: 1
 --- !u!114 &882722638798266051
 MonoBehaviour:
   m_ObjectHideFlags: 0

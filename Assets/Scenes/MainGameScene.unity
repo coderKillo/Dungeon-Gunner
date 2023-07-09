@@ -3418,14 +3418,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1661702025}
     m_Modifications:
-    - target: {fileID: 592674425686259831, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5016734633935238195, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -52.000015
-      objectReference: {fileID: 0}
     - target: {fileID: 8612514373786636927, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
       propertyPath: _cardDraw
       value: 
@@ -3546,10 +3538,6 @@ PrefabInstance:
       propertyPath: _cardHand
       value: 
       objectReference: {fileID: 1491518160}
-    - target: {fileID: 8612514374859458210, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
-      propertyPath: _cardSystemSettings
-      value: 
-      objectReference: {fileID: 1491518156}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3967faedaede20468eebdcb2a8f8b14, type: 3}
 --- !u!1 &1048066511
@@ -4640,8 +4628,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0
-    height: 0
+    width: 0.99964046
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -5421,29 +5409,6 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
-    - target: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"_rarityRatio.{1es}","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",25}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"_rarityRatio.{2es}","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",10}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[2]
-      value: '"path":"_rarityRatio.{3es}","value":{"$id":0,"$type":"System.Int32,
-        mscorlib",5}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567977842761902286, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3be146a9bd5fca04c95036354e53b822, type: 3}
 --- !u!1 &1661702024
@@ -7323,7 +7288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7388414844266930486, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: skipStartCardDraw
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7388414844266930486, guid: b6e5a0dcf3f4bb44d9c024716c7848c8, type: 3}
       propertyPath: dungeonLevelList.Array.size
