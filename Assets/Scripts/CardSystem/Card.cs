@@ -245,10 +245,12 @@ public class Card
 
         var moveSpeed = player.playerControl.MoveSpeed;
         player.playerControl.MoveSpeed = moveSpeedFactor * moveSpeed;
+        player.health.evadeAttack = true;
 
         yield return new WaitForSeconds(PowerUpDuration());
 
         player.playerControl.MoveSpeed = moveSpeed;
+        player.health.evadeAttack = false;
     }
 
     private IEnumerator MultiShotPowerUp(Player player)

@@ -59,6 +59,54 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _moveAnimation.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _attackAnimation.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _moveAnimation.Array.data[0]
+      value: 
+      objectReference: {fileID: -1457503572, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _moveAnimation.Array.data[1]
+      value: 
+      objectReference: {fileID: -1975567440, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _moveAnimation.Array.data[2]
+      value: 
+      objectReference: {fileID: 1490965567, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _moveAnimation.Array.data[3]
+      value: 
+      objectReference: {fileID: 2016563455, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _moveAnimation.Array.data[4]
+      value: 
+      objectReference: {fileID: 264652168, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _attackAnimation.Array.data[0]
+      value: 
+      objectReference: {fileID: 1539161733, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _attackAnimation.Array.data[1]
+      value: 
+      objectReference: {fileID: -95635478, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _attackAnimation.Array.data[2]
+      value: 
+      objectReference: {fileID: -67442904, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _attackAnimation.Array.data[3]
+      value: 
+      objectReference: {fileID: -992495581, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
+    - target: {fileID: 6627490992494447721, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
+      propertyPath: _attackAnimation.Array.data[4]
+      value: 
+      objectReference: {fileID: 241467068, guid: f2c912c6c32e93a4cbe69f1468c771bc, type: 3}
     - target: {fileID: 6795295633672413931, guid: e9e7d195b146d6145a4c0654ae6135a2, type: 3}
       propertyPath: m_Name
       value: EyeBat

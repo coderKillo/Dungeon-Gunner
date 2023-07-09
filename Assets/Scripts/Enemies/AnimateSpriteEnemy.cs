@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 [RequireComponent(typeof(WeaponFiredEvent))]
 [RequireComponent(typeof(AimWeaponEvent))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class AnimateSpriteEnemy : SerializedMonoBehaviour
+public class AnimateSpriteEnemy : MonoBehaviour
 {
     public enum EnemyAnimation
     {
@@ -18,14 +18,10 @@ public class AnimateSpriteEnemy : SerializedMonoBehaviour
         Death,
     }
 
-    [Serializable]
-    public class AnimationStage
-    {
-        public List<Sprite> frames = new List<Sprite>();
-        public float frameRate = 24f;
-    }
+    [SerializeField] private float frameRate = 12f;
 
-    [SerializeField] private Dictionary<EnemyAnimation, AnimationStage> _animations;
+    [SerializeField] private List<Sprite> _moveAnimation = new List<Sprite>();
+    [SerializeField] private List<Sprite> _attackAnimation = new List<Sprite>();
 
     private WeaponFiredEvent _weaponFiredEvent;
     private MovementToPositionEvent _movementToPositionEvent;
@@ -64,32 +60,27 @@ public class AnimateSpriteEnemy : SerializedMonoBehaviour
 
     private void Enemy_OnWeaponFired(WeaponFiredEvent @event, WeaponFiredEventArgs args)
     {
-        PlayAnimation(EnemyAnimation.Attack);
+        PlayAnimation(_attackAnimation);
     }
 
     private void Enemy_OnMoveToPosition(MovementToPositionEvent @event, MovementToPositionArgs args)
     {
-        PlayAnimationNoOverride(EnemyAnimation.Move);
+        PlayAnimationNoOverride(_moveAnimation);
     }
 
     [Button]
-    private void PlayAnimation(EnemyAnimation animation)
+    private void PlayAnimation(List<Sprite> animation)
     {
-        if (!_animations.ContainsKey(animation))
-        {
-            return;
-        }
-
         if (_animationCoroutine != null)
         {
             StopCoroutine(_animationCoroutine);
         }
 
-        _animationCoroutine = StartCoroutine(AnimationCoroutine(_animations[animation].frames, _animations[animation].frameRate));
+        _animationCoroutine = StartCoroutine(AnimationCoroutine(animation));
     }
 
     [Button]
-    private void PlayAnimationNoOverride(EnemyAnimation animation)
+    private void PlayAnimationNoOverride(List<Sprite> animation)
     {
         if (!_animationRunning)
         {
@@ -97,7 +88,7 @@ public class AnimateSpriteEnemy : SerializedMonoBehaviour
         }
     }
 
-    private IEnumerator AnimationCoroutine(List<Sprite> frames, float frameRate)
+    private IEnumerator AnimationCoroutine(List<Sprite> frames)
     {
         _animationRunning = true;
 

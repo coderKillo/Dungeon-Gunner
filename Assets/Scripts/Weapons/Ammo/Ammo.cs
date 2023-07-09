@@ -155,28 +155,38 @@ public class Ammo : MonoBehaviour, IFireable
         PlayHitSound();
         AmmoHitEffect();
 
-        DealDamage(other);
-
-        gameObject.SetActive(false);
+        if (DealDamage(other))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
-    protected void DealDamage(Collider2D collider)
+    protected bool DealDamage(Collider2D collider)
     {
         var health = collider.GetComponent<Health>();
 
-        if (health != null)
+        if (health == null)
         {
-            OnHit(collider);
-
-            if (IsCrit())
-            {
-                health.TakeDamage(Mathf.RoundToInt(damage * critDamage), true);
-            }
-            else
-            {
-                health.TakeDamage(damage, false);
-            }
+            return true;
         }
+
+        if (health.EvadeAttack())
+        {
+            return false;
+        }
+
+        OnHit(collider);
+
+        if (IsCrit())
+        {
+            health.TakeDamage(Mathf.RoundToInt(damage * critDamage), true);
+        }
+        else
+        {
+            health.TakeDamage(damage, false);
+        }
+
+        return true;
     }
 
     protected void PlayHitSound()
