@@ -200,7 +200,8 @@ public class GameManager : SingletonAbstract<GameManager>
 
                 Portal.SpawnPortal(PlayerPosition);
 
-                displayMessage.DisplayText("Boss Slain!", "Enter the portal to continue to the next level.\n(Press 'E')", 2f, 0.5f, 1f);
+                displayMessage.DisplayText("Boss Slain!", "Enter the portal to continue to the next level.\n(Press 'E')", 2f, 0.2f, 0.5f);
+                Player.EnablePlayer(true);
 
                 SetGameState(GameState.playingLevel);
                 break;

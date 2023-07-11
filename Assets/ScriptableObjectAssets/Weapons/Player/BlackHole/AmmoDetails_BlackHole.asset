@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: BlackHoleAmmo
   isPlayerAmmo: 1
-  ammoSprite: {fileID: 0}
+  ammoSprite: {fileID: 1754716743, guid: 28e1931993b59764c95bdf01a470a02e, type: 3}
   prefabArray:
   - {fileID: 8273311659018516755, guid: 393a14e4b86c35942b748f902ade3100, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -22,10 +22,14 @@ MonoBehaviour:
   chargeMaterial: {fileID: 0}
   damage: 10
   critChance: 0
-  speedMin: 0
-  speedMax: 0
+  speedMin: 0.1
+  speedMax: 0.1
   range: 7
   rotationSpeed: 0
+  damageRadius: 0
+  hitLimit: 0
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
   spreadMin: 0
   spreadMax: 0
   spawnAmmoMin: 1
@@ -37,5 +41,11 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
+  isMelee: 0
+  startAngle: 45
+  endAngle: -135
+  hitboxWidth: 1
+  rotationDuration: 1
+  dashDistance: 0
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 0}

@@ -80,7 +80,6 @@ public class AmmoDetailsSO : ScriptableObject
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckEmptyString(this, nameof(ammoName), ammoName);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(ammoSprite), ammoSprite);
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(prefabArray), prefabArray);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoMaterial), ammoMaterial);
 

@@ -270,6 +270,8 @@ public class InstantiatedRoom : MonoBehaviour
         {
             door.Unlock();
         }
+
+        EnableRoomCollider();
     }
 
     public void EnableRoomCollider()

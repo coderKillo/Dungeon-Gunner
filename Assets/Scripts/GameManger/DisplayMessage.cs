@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -10,6 +11,7 @@ public class DisplayMessage : MonoBehaviour
     [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private Image background;
 
     [Button("Display Test Text", ButtonSizes.Large)]
     private void DisplayTest()
@@ -22,11 +24,15 @@ public class DisplayMessage : MonoBehaviour
         titleText.text = title;
         messageText.text = message;
 
+        var bgColor = background.color;
+        bgColor.a = alpha;
+        background.color = bgColor;
+
         GameManager.Instance.Player.EnablePlayer(false);
 
         var displaySequence = DOTween.Sequence();
         displaySequence.SetUpdate(true);
-        displaySequence.Append(canvasGroup.DOFade(alpha, fadeIn));
+        displaySequence.Append(canvasGroup.DOFade(1f, fadeIn));
         displaySequence.AppendInterval(duration);
         displaySequence.AppendCallback(() =>
         {
@@ -39,8 +45,6 @@ public class DisplayMessage : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        HelperUtilities.ValidateCheckNullValue(this, nameof(messageText), messageText);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(canvasGroup), canvasGroup);
     }
 #endif
     #endregion

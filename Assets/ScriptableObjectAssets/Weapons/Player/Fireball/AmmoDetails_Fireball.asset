@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: FireballAmmo
   isPlayerAmmo: 1
-  ammoSprite: {fileID: 0}
+  ammoSprite: {fileID: 37970968, guid: a7bf0e1df4f4cb5489a1026048d96fed, type: 3}
   prefabArray:
   - {fileID: 8273311659018516755, guid: 1f1a5c9ea6762d647a89c8e4c17ee6c4, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -26,6 +26,10 @@ MonoBehaviour:
   speedMax: 10
   range: 30
   rotationSpeed: 0
+  damageRadius: 0
+  hitLimit: 0
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
   spreadMin: 0
   spreadMax: 0
   spawnAmmoMin: 1
@@ -37,5 +41,11 @@ MonoBehaviour:
   trailMaterial: {fileID: 0}
   trailStartWidth: 0
   trailEndWidth: 0
+  isMelee: 0
+  startAngle: 45
+  endAngle: -135
+  hitboxWidth: 1
+  rotationDuration: 1
+  dashDistance: 0
   hitVisualEffect: {fileID: 11400000, guid: d9dd26a451de4dd46b75e13580d53486, type: 2}
   hitAudioEffect: {fileID: 0}
