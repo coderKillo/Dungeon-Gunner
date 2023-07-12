@@ -26,6 +26,10 @@ MonoBehaviour:
   speedMax: 1
   range: 2
   rotationSpeed: 0
+  damageRadius: 0
+  hitLimit: 0
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
   spreadMin: 0
   spreadMax: 0
   spawnAmmoMin: 1
@@ -40,6 +44,9 @@ MonoBehaviour:
   isMelee: 1
   startAngle: 105
   endAngle: -360
+  hitboxWidth: 1
   rotationDuration: 0.3
+  dashDistance: 0
+  healOnHit: 3
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 11400000, guid: 5ab52027219fd274d9bb4d7e785edd81, type: 2}

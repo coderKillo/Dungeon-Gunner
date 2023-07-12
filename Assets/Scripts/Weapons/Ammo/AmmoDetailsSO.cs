@@ -66,6 +66,7 @@ public class AmmoDetailsSO : ScriptableObject
     [ShowIf("isMelee")] public float hitboxWidth = 1f;
     [ShowIf("isMelee")] public float rotationDuration = 1f;
     [ShowIf("isMelee")] public float dashDistance = 0f;
+    [ShowIf("isMelee")] public int healOnHit = 0;
 
     [Space(10)]
     [Header("AMMO VISUAL EFFECTS")]

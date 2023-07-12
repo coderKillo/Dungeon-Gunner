@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoMelee : Ammo
+public class AmmoMeleeEnemy : Ammo
 {
     private List<GameObject> alreadyCollided;
 
@@ -15,23 +15,6 @@ public class AmmoMelee : Ammo
     protected override void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-    }
-
-    private void OnEnable()
-    {
-        GameManager.Instance.Player.aimWeaponEvent.OnWeaponAim += Player_OnAimWeaponEvent;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.Instance.Player.aimWeaponEvent.OnWeaponAim -= Player_OnAimWeaponEvent;
-    }
-
-    private void Player_OnAimWeaponEvent(AimWeaponEvent @event, AimWeaponEventArgs args)
-    {
-        aimAngle = args.aimAngle;
-
-        transform.localScale = new Vector3(1f, Mathf.Abs(aimAngle) >= 90f ? -1f : 1f, 0f);
     }
 
     public override void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
@@ -53,20 +36,11 @@ public class AmmoMelee : Ammo
 
     private void Update()
     {
-        transform.position = GameManager.Instance.Player.activeWeapon.Position.position;
-
         timer += Time.deltaTime;
 
         var angle = Mathf.Lerp(ammoDetails.startAngle, ammoDetails.endAngle, timer / ammoDetails.rotationDuration);
 
-        if (Mathf.Abs(aimAngle) >= 90f)
-        {
-            transform.eulerAngles = new Vector3(0, 0, aimAngle - angle);
-        }
-        else
-        {
-            transform.eulerAngles = new Vector3(0, 0, aimAngle + angle);
-        }
+        transform.eulerAngles = new Vector3(0, 0, aimAngle + angle);
 
         if (timer > ammoDetails.rotationDuration)
         {
@@ -82,17 +56,7 @@ public class AmmoMelee : Ammo
         }
         alreadyCollided.Add(other.gameObject);
 
-        HealPlayer();
-
         DealDamage(other);
         PlayHitSound();
-    }
-
-    private void HealPlayer()
-    {
-        if (ammoDetails.healOnHit > 0)
-        {
-            GameManager.Instance.Player.health.Heal(ammoDetails.healOnHit);
-        }
     }
 }

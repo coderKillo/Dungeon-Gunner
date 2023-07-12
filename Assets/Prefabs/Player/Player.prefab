@@ -1676,7 +1676,6 @@ GameObject:
   - component: {fileID: 8848076093265053191}
   - component: {fileID: 7044908828904269710}
   - component: {fileID: 4968173095973270298}
-  - component: {fileID: 6195978319502668948}
   - component: {fileID: -8666510324317692839}
   - component: {fileID: 4042962357645546867}
   - component: {fileID: 7202128664892455419}
@@ -2057,8 +2056,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5606799528666889479}
-  weaponPositionTransform: {fileID: 4265378308118892525}
   polygonCollider2D: {fileID: 3410476941377813141}
+  weaponPositionTransform: {fileID: 4265378308118892525}
   animator: {fileID: 3912443771605409970}
   shootPositionTransform: {fileID: 8202063575545534639}
   shootEffectTransform: {fileID: 6341726664625727426}
@@ -2087,7 +2086,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireFeedback: {fileID: 5620488052944782777}
-  multiShotOffset: 10
+  multiShotAngle: 45
+  weaponDamageFactor: 1
+  weaponAttackSpeedFactor: 1
 --- !u!114 &4957230478223842205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2175,6 +2176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamageable: 1
+  evadeAttack: 0
 --- !u!114 &7044908828904269710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,19 +2207,9 @@ MonoBehaviour:
   spriteFlashInterval: 0.1
   spriteFlashColor: {r: 1, g: 1, b: 1, a: 1}
   triggerImmunityThreshold: 1
+  hitSoundEffect: {fileID: 0}
+  hitArmorSoundEffect: {fileID: 0}
   immunityTime: 0
---- !u!114 &6195978319502668948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4585357847043585033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf71fc239870544e9f8c735688f00e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-8666510324317692839
 MonoBehaviour:
   m_ObjectHideFlags: 0

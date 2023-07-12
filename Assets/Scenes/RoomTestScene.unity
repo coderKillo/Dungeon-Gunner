@@ -589,8 +589,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsToAdd:
   - {fileID: 11400000, guid: 6f18112e028d75b44aa8916bacf813e1, type: 2}
-  - {fileID: 11400000, guid: 6f18112e028d75b44aa8916bacf813e1, type: 2}
-  - {fileID: 11400000, guid: 1bf97d28f8f2bbb47b8f8cb6ff4fd6f6, type: 2}
+  - {fileID: 11400000, guid: 56403651a9412374f80c5d5430f9ddd7, type: 2}
+  - {fileID: 11400000, guid: ae07e99fdd3a661468ec77d6c2a100a3, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0

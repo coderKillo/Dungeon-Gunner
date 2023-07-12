@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d686016c18fdbd64087483396e1f2965, type: 3}
-  m_Name: AmmoDetails_RainbowChainsaw
+  m_Name: AmmoDetails_Melee_Enemy_Default
   m_EditorClassIdentifier: 
-  ammoName: Run Chainsaw
-  isPlayerAmmo: 1
+  ammoName: Melee Attack
+  isPlayerAmmo: 0
   ammoSprite: {fileID: 0}
   prefabArray:
-  - {fileID: 3415706278289267979, guid: e896b0219d6c23e4ca39842ef397e525, type: 3}
+  - {fileID: 3415706278289267979, guid: f5057b26dc250254eb3499fd5df48efe, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  damage: 2
-  critChance: 0.5
+  damage: 30
+  critChance: 0.2
   speedMin: 20
   speedMax: 20
-  range: 4
+  range: 3
   rotationSpeed: 0
   damageRadius: 0
   hitLimit: 0
@@ -44,9 +44,9 @@ MonoBehaviour:
   isMelee: 1
   startAngle: -90
   endAngle: -90
-  hitboxWidth: 2.5
-  rotationDuration: 0.15
+  hitboxWidth: 1.5
+  rotationDuration: 1.2
   dashDistance: 0
-  healOnHit: 1
+  healOnHit: 0
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 0}

@@ -26,6 +26,10 @@ MonoBehaviour:
   speedMax: 2
   range: 2.5
   rotationSpeed: 0
+  damageRadius: 0
+  hitLimit: 0
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
   spreadMin: 0
   spreadMax: 0
   spawnAmmoMin: 1
@@ -42,5 +46,7 @@ MonoBehaviour:
   endAngle: -135
   hitboxWidth: 1
   rotationDuration: 0.4
+  dashDistance: 0
+  healOnHit: 2
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 11400000, guid: 072ba8fb5fe54164c97c3fa8478a75c8, type: 2}

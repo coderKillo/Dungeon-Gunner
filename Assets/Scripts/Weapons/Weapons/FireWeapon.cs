@@ -5,6 +5,7 @@ using MoreMountains.Feedbacks;
 [RequireComponent(typeof(FireWeaponEvent))]
 [RequireComponent(typeof(WeaponFiredEvent))]
 [RequireComponent(typeof(ReloadWeaponEvent))]
+[RequireComponent(typeof(ChargeWeaponEvent))]
 [RequireComponent(typeof(ActiveWeapon))]
 [DisallowMultipleComponent]
 public class FireWeapon : MonoBehaviour

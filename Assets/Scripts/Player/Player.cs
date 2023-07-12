@@ -37,7 +37,6 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(PlayerDied))]
 [RequireComponent(typeof(PlayerDash))]
 [RequireComponent(typeof(PostHitImmunity))]
-[RequireComponent(typeof(ReceiveContactDamage))]
 [RequireComponent(typeof(PlayerPowerUp))]
 [RequireComponent(typeof(PlayerCardHand))]
 #endregion

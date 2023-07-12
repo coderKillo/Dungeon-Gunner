@@ -82,7 +82,6 @@ public class FrostStatusEffect : MonoBehaviour
         {
             case Stage.NotApplied:
                 {
-
                     StartEffect();
                 }
                 break;
@@ -127,6 +126,7 @@ public class FrostStatusEffect : MonoBehaviour
         _currentStage = Stage.Frozen;
 
         _iceBlockEffect.gameObject.SetActive(true);
+        _enemy.EnableEnemyAI(false);
     }
 
     private void IceBlockExplode()
@@ -155,6 +155,7 @@ public class FrostStatusEffect : MonoBehaviour
         _currentStage = Stage.NotApplied;
 
         _iceBlockEffect.gameObject.SetActive(false);
+        _enemy.EnableEnemyAI(true);
 
         _enemySpriteRenderer.material.SetFloat("_GreyscaleBlend", 0f);
         _enemySpriteRenderer.material.SetColor("_Color", Color.white);

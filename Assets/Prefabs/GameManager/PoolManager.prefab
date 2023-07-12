@@ -159,3 +159,6 @@ MonoBehaviour:
   - size: 10
     prefab: {fileID: 3415706278289267979, guid: e896b0219d6c23e4ca39842ef397e525, type: 3}
     componentTypeName: IFireable
+  - size: 20
+    prefab: {fileID: 3415706278289267979, guid: f5057b26dc250254eb3499fd5df48efe, type: 3}
+    componentTypeName: IFireable

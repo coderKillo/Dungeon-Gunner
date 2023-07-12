@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 [RequireComponent(typeof(MovementToPositionEvent))]
 [RequireComponent(typeof(WeaponFiredEvent))]
 [RequireComponent(typeof(AimWeaponEvent))]
+[RequireComponent(typeof(ChargeWeaponEvent))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class AnimateSpriteEnemy : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class AnimateSpriteEnemy : MonoBehaviour
     private WeaponFiredEvent _weaponFiredEvent;
     private MovementToPositionEvent _movementToPositionEvent;
     private AimWeaponEvent _aimWeaponEvent;
+    private ChargeWeaponEvent _chargeWeaponEvent;
     private SpriteRenderer _spriteRenderer;
 
     private Coroutine _animationCoroutine;
@@ -36,6 +38,7 @@ public class AnimateSpriteEnemy : MonoBehaviour
         _weaponFiredEvent = GetComponent<WeaponFiredEvent>();
         _movementToPositionEvent = GetComponent<MovementToPositionEvent>();
         _aimWeaponEvent = GetComponent<AimWeaponEvent>();
+        _chargeWeaponEvent = GetComponent<ChargeWeaponEvent>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -44,6 +47,7 @@ public class AnimateSpriteEnemy : MonoBehaviour
         _movementToPositionEvent.OnMovementToPosition += Enemy_OnMoveToPosition;
         _weaponFiredEvent.OnWeaponFired += Enemy_OnWeaponFired;
         _aimWeaponEvent.OnWeaponAim += Enemy_OnWeaponAim;
+        _chargeWeaponEvent.OnChargeWeapon += Enemy_OnWeaponCharge;
     }
 
     private void OnDisable()
@@ -60,13 +64,27 @@ public class AnimateSpriteEnemy : MonoBehaviour
 
     private void Enemy_OnWeaponFired(WeaponFiredEvent @event, WeaponFiredEventArgs args)
     {
-        PlayAnimation(_attackAnimation);
+        // Do Nothing
     }
 
     private void Enemy_OnMoveToPosition(MovementToPositionEvent @event, MovementToPositionArgs args)
     {
         PlayAnimationNoOverride(_moveAnimation);
     }
+
+    private void Enemy_OnWeaponCharge(ChargeWeaponEvent @event, ChargeWeaponEventArgs args)
+    {
+        if (args.active)
+        {
+            PlayAnimation(_moveAnimation);
+        }
+        else
+        {
+            PlayAnimation(_attackAnimation);
+
+        }
+    }
+
 
     [Button]
     private void PlayAnimation(List<Sprite> animation)
