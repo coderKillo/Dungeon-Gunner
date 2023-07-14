@@ -7,7 +7,7 @@ public class Portal : MonoBehaviour, IUseable
 {
     [SerializeField] private float spawnTime = 0.5f;
 
-    private bool isEnabled = false;
+    private Tween scaleAnimation;
 
     public static void SpawnPortal(Vector3 position)
     {
@@ -21,18 +21,16 @@ public class Portal : MonoBehaviour, IUseable
     private void Start()
     {
         transform.localScale = new Vector3(0f, 1f, 1f);
-        transform
-            .DOScaleX(1, spawnTime)
-            .OnComplete(() => { isEnabled = true; });
+        scaleAnimation = transform.DOScaleX(1, spawnTime);
+    }
+
+    private void OnDestroy()
+    {
+        scaleAnimation.Kill();
     }
 
     public void useItem()
     {
-        if (!isEnabled)
-        {
-            return;
-        }
-
         GameManager.Instance.SetGameState(GameState.levelCompleted);
     }
 }
