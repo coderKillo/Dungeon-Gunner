@@ -32,6 +32,6 @@ public class EnemyDeathEffect : MonoBehaviour
         effect.Initialize(_deathEffect);
         effect.gameObject.SetActive(true);
 
-        GameObject.Instantiate(_corpsePrefab, transform.position, Quaternion.identity);
+        GameObject.Instantiate(_corpsePrefab, transform.position, Quaternion.identity, transform.parent);
     }
 }

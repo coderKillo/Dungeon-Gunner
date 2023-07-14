@@ -21,6 +21,7 @@ public class GameManager : SingletonAbstract<GameManager>
     private GameState gameState = GameState.none;
     [ShowInInspector] public GameState GameState { get { return gameState; } }
     [ShowInInspector] public GameState PreviousGameState { get { return previousGameState; } }
+    [HideInInspector] static public Action<GameState> OnGameStateChange;
     public void SetGameState(GameState state)
     {
         if (state == gameState)
@@ -32,6 +33,8 @@ public class GameManager : SingletonAbstract<GameManager>
         gameState = state;
 
         HandleGameStateChange();
+
+        OnGameStateChange?.Invoke(gameState);
     }
 
     private Room currentRoom;

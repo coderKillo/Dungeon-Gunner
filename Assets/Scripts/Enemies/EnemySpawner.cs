@@ -20,12 +20,14 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
     {
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
         StaticEventHandler.OnDifficultyChange += StaticEventHandler_OnDifficultyChange;
+        GameManager.OnGameStateChange += GameManager_OnGameStateChange;
     }
 
     private void OnDisable()
     {
         StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
         StaticEventHandler.OnDifficultyChange -= StaticEventHandler_OnDifficultyChange;
+        GameManager.OnGameStateChange -= GameManager_OnGameStateChange;
     }
 
     private void StaticEventHandler_OnDifficultyChange(DifficultyChangedEventArgs args)
@@ -72,6 +74,17 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         SpawnEnemies();
     }
 
+    private void GameManager_OnGameStateChange(GameState state)
+    {
+        if (state == GameState.levelCompleted)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+        }
+    }
+
     private void SpawnEnemies()
     {
         if (room.spawnPositions.Length > 0)
@@ -108,7 +121,7 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         currentEnemies++;
         spawnedEnemies++;
 
-        var enemyGameObject = GameObject.Instantiate(enemyDetails.prefab, position, Quaternion.identity);
+        var enemyGameObject = GameObject.Instantiate(enemyDetails.prefab, position, Quaternion.identity, transform);
         enemyGameObject.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
 
         var enemy = enemyGameObject.GetComponent<Enemy>();
