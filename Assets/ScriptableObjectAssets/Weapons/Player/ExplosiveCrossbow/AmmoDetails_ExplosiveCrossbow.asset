@@ -20,7 +20,7 @@ MonoBehaviour:
   ammoMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  damage: 15
+  damage: 2
   critChance: 0.2
   speedMin: 60
   speedMax: 60
@@ -47,5 +47,6 @@ MonoBehaviour:
   hitboxWidth: 1
   rotationDuration: 1
   dashDistance: 0
+  healOnHit: 0
   hitVisualEffect: {fileID: 0}
   hitAudioEffect: {fileID: 11400000, guid: d310eba28330684408e244623c7a6d33, type: 2}
