@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 3100761920720320952, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9041efe3ed7ba2d4f8a0eb2e9688465c, type: 3}
+      objectReference: {fileID: -621479087, guid: 82fc470218cbc2c4eb0c231b1520c937, type: 3}
     - target: {fileID: 3606998228579270290, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1033,6 +1033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardsToAdd:
   - {fileID: 11400000, guid: 6f18112e028d75b44aa8916bacf813e1, type: 2}
+  - {fileID: 11400000, guid: b6d59aded221b8c4381e958abed076be, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0

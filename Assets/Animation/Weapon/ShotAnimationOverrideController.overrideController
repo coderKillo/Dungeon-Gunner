@@ -9,5 +9,5 @@ AnimatorOverrideController:
   m_Name: ShotAnimationOverrideController
   m_Controller: {fileID: 9100000, guid: da61f7adc5270be488c396b323ab60a7, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: d10d4ae0204684c4f900be4b75199433, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 096b7c864f1354b4b8811a6ae7acb0ed, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2162b0739e162af4591b4b4f4812a3bb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9249c2454341a854d9bd2ae7988ee748, type: 2}
