@@ -277,15 +277,18 @@ public class Card
     private IEnumerator ShotPowerUp(Player player)
     {
         var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-        var prevOnHitEffect = player.fireWeapon.OnHitEffect;
+        var onHit = new OnHit()
+        {
+            effect = details.OnHitEffect,
+            radius = details.onHitRadius,
+            damage = Mathf.RoundToInt(damage)
+        };
 
-        player.fireWeapon.OnHitEffect = details.OnHitEffect;
-        player.fireWeapon.OnHitDamage = Mathf.RoundToInt(damage);
-        player.fireWeapon.OnHitRadius = details.onHitRadius;
+        player.fireWeapon.AddOnHitEffect(details.title, onHit);
 
         yield return new WaitForSeconds(PowerUpDuration());
 
-        player.fireWeapon.OnHitEffect = prevOnHitEffect;
+        player.fireWeapon.RemoveOnHitEffect(details.title);
     }
 
     private IEnumerator LightningDashPowerUp(Player player)

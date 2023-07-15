@@ -31,9 +31,7 @@ public class Ammo : MonoBehaviour, IFireable
     private float chargeTimer;
     private bool ammoMaterialIsSet = false;
     private bool overrideAmmoMovement;
-    private GameObject onHitEffect;
-    private int onHitDamage = 0;
-    private float onHitRadius = 0;
+    private List<OnHit> onHitEffects = new List<OnHit>();
 
     public virtual void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {
@@ -45,6 +43,7 @@ public class Ammo : MonoBehaviour, IFireable
         this.isColliding = false;
         this.damage = damage;
         this.critChance = critChance;
+        this.onHitEffects.Clear();
 
         spriteRenderer.sprite = ammoDetails.ammoSprite;
 
@@ -221,22 +220,23 @@ public class Ammo : MonoBehaviour, IFireable
 
     protected void OnHit(Collider2D collider)
     {
-        if (onHitEffect == null)
+        if (onHitEffects.Count <= 0)
         {
             return;
         }
 
-        var ammoHitEffect = (IOnHit)PoolManager.Instance.ReuseComponent(onHitEffect, transform.position, Quaternion.identity);
-        ammoHitEffect.GetGameObject().SetActive(true);
-        ammoHitEffect.SetDamage(onHitDamage);
-        ammoHitEffect.SetRadius(onHitRadius);
-        ammoHitEffect.Hit(collider);
+        foreach (var onHit in onHitEffects)
+        {
+            var ammoHitEffect = (IOnHit)PoolManager.Instance.ReuseComponent(onHit.effect, transform.position, Quaternion.identity);
+            ammoHitEffect.GetGameObject().SetActive(true);
+            ammoHitEffect.SetDamage(onHit.damage);
+            ammoHitEffect.SetRadius(onHit.radius);
+            ammoHitEffect.Hit(collider);
+        }
     }
 
-    public void SetOnHitEffect(GameObject onHitEffect, int damage, float radius)
+    public void AddOnHitEffect(GameObject onHitEffect, int damage, float radius)
     {
-        this.onHitEffect = onHitEffect;
-        this.onHitDamage = damage;
-        this.onHitRadius = radius;
+        onHitEffects.Add(new OnHit() { effect = onHitEffect, damage = damage, radius = radius });
     }
 }

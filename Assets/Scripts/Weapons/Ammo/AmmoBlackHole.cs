@@ -61,7 +61,7 @@ public class AmmoBlackHole : MonoBehaviour, IFireable
         gameObject.SetActive(true);
     }
 
-    public void SetOnHitEffect(GameObject onHitEffect, int damage, float radius)
+    public void AddOnHitEffect(GameObject onHitEffect, int damage, float radius)
     {
     }
 }

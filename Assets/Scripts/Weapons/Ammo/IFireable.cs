@@ -8,5 +8,5 @@ public interface IFireable
 
     GameObject GetGameObject();
 
-    void SetOnHitEffect(GameObject onHitEffect, int damage, float radius);
+    void AddOnHitEffect(GameObject onHitEffect, int damage, float radius);
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
 
@@ -33,14 +34,9 @@ public class FireWeapon : MonoBehaviour
     private ActiveWeapon activeWeapon;
     private SpriteEffect fireWeaponEffect;
 
-    private GameObject onHitEffect;
-    public GameObject OnHitEffect { set { onHitEffect = value; } get { return onHitEffect; } }
-
-    private int onHitDamage;
-    public int OnHitDamage { set { onHitDamage = value; } }
-
-    private float onHitRadius;
-    public float OnHitRadius { set { onHitRadius = value; } }
+    private Dictionary<string, OnHit> onHitEffects = new Dictionary<string, OnHit>();
+    public void AddOnHitEffect(string name, OnHit effect) { onHitEffects.TryAdd(name, effect); }
+    public void RemoveOnHitEffect(string name) { onHitEffects.Remove(name); }
 
     enum WeaponState
     {
@@ -258,8 +254,8 @@ public class FireWeapon : MonoBehaviour
                 var offsetVector = HelperUtilities.GetVectorFromAngle(offsetAngle);
 
                 var ammo = (IFireable)PoolManager.Instance.ReuseComponent(prefab, activeWeapon.ShootPosition, Quaternion.identity);
-                SetOnHitEffect(ammo);
                 ammo.InitialAmmo(activeWeapon.CurrentAmmo, aimAngle + offsetAngle, weaponAimAngle + offsetAngle, speed, weaponAimDirectionVector + offsetVector, damage, critChance);
+                SetOnHitEffect(ammo);
             }
 
             yield return new WaitForSeconds(spawnInterval);
@@ -287,15 +283,11 @@ public class FireWeapon : MonoBehaviour
     {
         if (activeWeapon.CurrentAmmo.onHitPrefab != null)
         {
-            ammo.SetOnHitEffect(activeWeapon.CurrentAmmo.onHitPrefab, activeWeapon.CurrentAmmo.onHitDamage, activeWeapon.CurrentAmmo.damageRadius);
+            ammo.AddOnHitEffect(activeWeapon.CurrentAmmo.onHitPrefab, activeWeapon.CurrentAmmo.onHitDamage, activeWeapon.CurrentAmmo.damageRadius);
         }
-        else if (onHitEffect != null)
+        foreach (var onHit in onHitEffects.Values)
         {
-            ammo.SetOnHitEffect(onHitEffect, onHitDamage, onHitRadius);
-        }
-        else
-        {
-            ammo.SetOnHitEffect(null, 0, 0f);
+            ammo.AddOnHitEffect(onHit.effect, onHit.damage, onHit.radius);
         }
     }
 
