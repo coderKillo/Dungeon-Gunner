@@ -26,7 +26,7 @@ MonoBehaviour:
   speedMax: 1
   range: 0.1
   rotationSpeed: 0
-  damageRadius: 1
+  damageRadius: 2
   hitLimit: 0
   onHitPrefab: {fileID: 0}
   onHitDamage: 0
@@ -47,5 +47,6 @@ MonoBehaviour:
   hitboxWidth: 1
   rotationDuration: 1
   dashDistance: 0
+  healOnHit: 0
   hitVisualEffect: {fileID: 11400000, guid: 49c4f4e8a66e49544b27a2f5fe1d4019, type: 2}
   hitAudioEffect: {fileID: 0}

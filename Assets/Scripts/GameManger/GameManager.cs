@@ -16,6 +16,7 @@ public class GameManager : SingletonAbstract<GameManager>
     [SerializeField] private int currentLevelIndex = 0;
     [SerializeField] private int prestigeLevel = 0;
     public DungeonLevelSO CurrentLevel { get { return dungeonLevelList[currentLevelIndex]; } }
+    public int CurrentLevelNumber { get { return currentLevelIndex; } }
 
     private GameState previousGameState = GameState.none;
     private GameState gameState = GameState.none;

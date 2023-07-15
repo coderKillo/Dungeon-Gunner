@@ -67,4 +67,8 @@ static public class Settings
     #region SOUND
     public const int defaultVolume = 10;
     #endregion
+
+    #region SCALING
+    public const float enemyPointScaling = 5f;
+    #endregion
 }

@@ -1032,8 +1032,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsToAdd:
-  - {fileID: 11400000, guid: 6f18112e028d75b44aa8916bacf813e1, type: 2}
-  - {fileID: 11400000, guid: b6d59aded221b8c4381e958abed076be, type: 2}
+  - {fileID: 11400000, guid: 7f381f7a27f696940b712c6092506cb2, type: 2}
+  - {fileID: 11400000, guid: 262dc9ad8e5215d4b999f9b99bad6b28, type: 2}
+  - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
+  - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2090,7 +2092,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99964046
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000

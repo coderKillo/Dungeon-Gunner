@@ -140,7 +140,7 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         currentEnemies--;
 
         StaticEventHandler.CallEnemyDied(obj.gameObject.GetComponent<Enemy>());
-        StaticEventHandler.CallPointScoredEvent(args.points);
+        StaticEventHandler.CallPointScoredEvent(Mathf.RoundToInt(args.points * Settings.enemyPointScaling));
 
         if (currentEnemies <= 0 && spawnedEnemies >= totalEnemies)
         {

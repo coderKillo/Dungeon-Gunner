@@ -34,7 +34,14 @@ public class CardPickUpSpawner : MonoBehaviour
     {
         if (obj.room.nodeType.isBossRoom)
         {
-            SpawnCard(CardRarity.Epic);
+            if (GameManager.Instance.CurrentLevelNumber == 2 || GameManager.Instance.CurrentLevelNumber == 4)
+            {
+                SpawnCard(CardRarity.Legendary);
+            }
+            else
+            {
+                SpawnCard(CardRarity.Epic);
+            }
         }
         else
         {
@@ -58,7 +65,7 @@ public class CardPickUpSpawner : MonoBehaviour
 
         _cardSpawnPosition = HelperUtilities.GetNearestSpawnPoint(GameManager.Instance.PlayerPosition);
 
-        SpawnCard(CardRarity.Rare);
+        SpawnCard(CardRarity.Epic);
     }
 
 

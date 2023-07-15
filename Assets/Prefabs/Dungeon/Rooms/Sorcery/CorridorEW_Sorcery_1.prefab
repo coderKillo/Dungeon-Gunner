@@ -3162,6 +3162,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   moveableItemList: []
+  instantiateSelf: 0
 --- !u!114 &5954784530699930935
 MonoBehaviour:
   m_ObjectHideFlags: 0
