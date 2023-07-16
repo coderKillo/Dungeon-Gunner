@@ -29,9 +29,10 @@ MonoBehaviour:
   powerUpAbility: 10
   powerUpScaleAbility: 5
   isBuff: 1
+  stacks: 5
   powerUpColor: {r: 0, g: 0.43849897, b: 1, a: 1}
-  powerUpDuration: 30
-  powerUpScaleDuration: 30
+  powerUpDuration: 15
+  powerUpScaleDuration: 5
   isOnHit: 1
   OnHitEffect: {fileID: 3094952707187928390, guid: 2699bfa686ee92545bcfdd48d7d4e2ac, type: 3}
   onHitRadius: 5

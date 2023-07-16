@@ -19,36 +19,6 @@ public class Card
         Weapon weapon;
         switch (details.action)
         {
-            case CardAction.PowerUp:
-                switch (details.powerUpType)
-                {
-                    case CardPowerUp.BlackHole:
-                        var radius = details.powerUpAbility + (details.powerUpScaleAbility * level);
-                        details.powerUpSpell.ammo.range = Mathf.RoundToInt(radius);
-
-                        weapon = player.AddWeaponToPlayer(details.powerUpSpell);
-                        weapon.totalAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
-                        weapon.clipAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
-
-                        player.setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
-                        break;
-
-                    case CardPowerUp.FireBall:
-                        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-                        details.powerUpSpell.ammo.damage = Mathf.RoundToInt(damage);
-
-                        weapon = player.AddWeaponToPlayer(details.powerUpSpell);
-                        weapon.totalAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
-                        weapon.clipAmmo = Mathf.RoundToInt(value * weapon.weaponDetails.ammoCapacity);
-
-                        player.setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
-
             case CardAction.AddWeapon:
                 weapon = player.GetWeapon(weaponId);
 
@@ -78,21 +48,6 @@ public class Card
     {
         switch (details.action)
         {
-            case CardAction.PowerUp:
-                switch (details.powerUpType)
-                {
-                    case CardPowerUp.BlackHole:
-                        player.RemoveWeaponFromPlayer(details.powerUpSpell);
-                        break;
-                    case CardPowerUp.FireBall:
-                        player.RemoveWeaponFromPlayer(details.powerUpSpell);
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
-
             case CardAction.AddWeapon:
                 player.setActiveWeaponEvent.CallSetActiveWeaponEvent(null);
                 break;
@@ -163,161 +118,11 @@ public class Card
 
     private void ActivatePowerUp(CardPowerUp powerUpType, Color powerUpColor, Player player)
     {
-        if (details.powerUpDuration > 0f)
-        {
-            player.buffEvent.CallAddBuff(details.icon, details.powerUpColor, PowerUpDuration());
-        }
+        var powerUp = CardPowerUpManager.GetPowerUp(powerUpType);
+        powerUp.Initialize(details, level);
 
-        switch (powerUpType)
-        {
-            case CardPowerUp.Crit:
-                player.playerPowerUp.StartPowerUp(CritPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.Speed:
-                player.playerPowerUp.StartPowerUp(SpeedPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.MultiShot:
-                player.playerPowerUp.StartPowerUp(MultiShotPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.Reflect:
-                player.playerPowerUp.StartPowerUp(ReflectPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.BlackHole:
-                value = (float)player.activeWeapon.CurrentWeapon.totalAmmo / (float)player.activeWeapon.CurrentWeapon.weaponDetails.ammoCapacity;
-                break;
-            case CardPowerUp.FireBall:
-                value = (float)player.activeWeapon.CurrentWeapon.totalAmmo / (float)player.activeWeapon.CurrentWeapon.weaponDetails.ammoCapacity;
-                break;
-            case CardPowerUp.LightningShot:
-                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.ExplosiveShot:
-                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.FrostShot:
-                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.Berserk:
-                player.playerPowerUp.StartPowerUp(BerserkPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.VampiricShot:
-                player.playerPowerUp.StartPowerUp(ShotPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
-            case CardPowerUp.LightningDash:
-                player.playerPowerUp.StartPowerUp(LightningDashPowerUp(player), powerUpColor);
-                value = 0f;
-                break;
+        value -= 1f / details.stacks;
 
-            default:
-                break;
-        }
+        player.playerPowerUp.AddPowerUp(powerUpType, powerUp);
     }
-
-    private float PowerUpDuration()
-    {
-        return details.powerUpDuration + (details.powerUpScaleDuration * level);
-    }
-
-    private IEnumerator CritPowerUp(Player player)
-    {
-        var critChance = (details.powerUpAbility + (details.powerUpScaleAbility * level)) * 100f;
-
-        var weaponCritChanceFactor = player.fireWeapon.WeaponCritChanceFactor;
-        player.fireWeapon.WeaponCritChanceFactor = critChance;
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.fireWeapon.WeaponCritChanceFactor = weaponCritChanceFactor;
-    }
-
-    private IEnumerator SpeedPowerUp(Player player)
-    {
-        var moveSpeedFactor = details.powerUpAbility + (details.powerUpScaleAbility * level);
-
-        var moveSpeed = player.playerControl.MoveSpeed;
-        player.playerControl.MoveSpeed = moveSpeedFactor * moveSpeed;
-        player.health.evadeAttack = true;
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.playerControl.MoveSpeed = moveSpeed;
-        player.health.evadeAttack = false;
-    }
-
-    private IEnumerator MultiShotPowerUp(Player player)
-    {
-        var multiShot = Mathf.RoundToInt(details.powerUpAbility + (details.powerUpScaleAbility * level));
-
-        var weaponCritChanceFactor = player.fireWeapon.WeaponCritChanceFactor;
-        player.fireWeapon.MultiShot = multiShot;
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.fireWeapon.MultiShot = 1;
-    }
-
-    private IEnumerator ReflectPowerUp(Player player)
-    {
-        player.playerReflectAmmo.Enable();
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.playerReflectAmmo.Disable();
-    }
-
-    private IEnumerator ShotPowerUp(Player player)
-    {
-        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-        var onHit = new OnHit()
-        {
-            effect = details.OnHitEffect,
-            radius = details.onHitRadius,
-            damage = Mathf.RoundToInt(damage)
-        };
-
-        player.fireWeapon.AddOnHitEffect(details.title, onHit);
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.fireWeapon.RemoveOnHitEffect(details.title);
-    }
-
-    private IEnumerator LightningDashPowerUp(Player player)
-    {
-        var damage = details.powerUpAbility + (details.powerUpScaleAbility * level);
-
-        player.playerDash.Effect = GameResources.Instance.dashLightningEffect;
-        player.playerDash.Damage = Mathf.RoundToInt(damage);
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.playerDash.Effect = GameResources.Instance.dashSmokeEffect;
-        player.playerDash.Damage = Mathf.RoundToInt(0);
-    }
-
-    private IEnumerator BerserkPowerUp(Player player)
-    {
-        var power = details.powerUpAbility + (details.powerUpScaleAbility * level);
-        var damageFactor = player.fireWeapon.WeaponDamageFactor;
-        var attackSpeed = player.fireWeapon.WeaponAttackSpeedFactor;
-
-        player.fireWeapon.WeaponDamageFactor += power;
-        player.fireWeapon.WeaponAttackSpeedFactor *= Mathf.Clamp(1 - power, 0f, 2f);
-
-        yield return new WaitForSeconds(PowerUpDuration());
-
-        player.fireWeapon.WeaponDamageFactor = damageFactor;
-        player.fireWeapon.WeaponAttackSpeedFactor = attackSpeed;
-    }
-
 }
-

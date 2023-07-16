@@ -1,68 +1,60 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerPowerUp : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private float _colorChangePeriod;
+    private Dictionary<CardPowerUp, float> _powerUpTimer = new Dictionary<CardPowerUp, float>();
+    private Dictionary<CardPowerUp, ICardPowerUp> _activePowerUps = new Dictionary<CardPowerUp, ICardPowerUp>();
 
-    private List<Color> _colors = new List<Color>();
-    private int _currentColorIndex = 0;
-    private float _timer = 0f;
+    private Player _player;
 
-    public void StartPowerUp(IEnumerator powerUpCoroutine, Color effectColor)
+    private void Awake()
     {
-        StartCoroutine(PowerUpCoroutine(powerUpCoroutine, effectColor));
+        _player = GetComponent<Player>();
+    }
+
+    public void AddPowerUp(CardPowerUp type, ICardPowerUp powerUp)
+    {
+        if (_activePowerUps.ContainsKey(type))
+        {
+            _powerUpTimer[type] = powerUp.Duration();
+            _player.buffEvent.CallRefreshBuff(type, powerUp.Duration());
+
+            _activePowerUps[type].Deactivate(_player);
+            _activePowerUps[type].Activate(_player);
+        }
+        else
+        {
+            _powerUpTimer.Add(type, powerUp.Duration());
+            _activePowerUps.Add(type, powerUp);
+            _player.buffEvent.CallAddBuff(powerUp.Details.icon, type, powerUp.Details.powerUpColor, powerUp.Duration());
+
+            _activePowerUps[type].Activate(_player);
+        }
     }
 
     private void Update()
     {
-        if (_timer > 0f)
-        {
-            _timer -= Time.deltaTime;
-            return;
-        }
+        var powerUpsToRemove = new List<CardPowerUp>();
 
-        _timer = _colorChangePeriod;
-
-        if (_colors.Count > 0)
+        foreach (var type in _powerUpTimer.Keys.ToList())
         {
-            _currentColorIndex++;
-            if (_currentColorIndex >= _colors.Count)
+            _powerUpTimer[type] -= Time.deltaTime;
+            if (_powerUpTimer[type] < 0f)
             {
-                _currentColorIndex = 0;
+                powerUpsToRemove.Add(type);
             }
-            Debug.AssertFormat(_colors.Count > _currentColorIndex, "Failed, list size ({0}) is smaller then index {1}", ((byte)_colors.Count), _currentColorIndex);
-            SetColor(_colors[_currentColorIndex]);
         }
-        else
+
+        foreach (var type in powerUpsToRemove)
         {
-            ResetColor();
+            _activePowerUps[type].Deactivate(_player);
+
+            _activePowerUps.Remove(type);
+            _powerUpTimer.Remove(type);
         }
-    }
-
-    private void ResetColor()
-    {
-        _spriteRenderer.material.SetColor("_Color", Color.white);
-        _spriteRenderer.material.DisableKeyword("OUTBASE_ON");
-        _spriteRenderer.material.DisableKeyword("GREYSCALE_ON");
-    }
-
-    private void SetColor(Color color)
-    {
-        _spriteRenderer.material.SetColor("_Color", color);
-        _spriteRenderer.material.EnableKeyword("OUTBASE_ON");
-        _spriteRenderer.material.EnableKeyword("GREYSCALE_ON");
-    }
-
-    public IEnumerator PowerUpCoroutine(IEnumerator powerUpCoroutine, Color effectColor)
-    {
-        _colors.Add(effectColor);
-
-        yield return StartCoroutine(powerUpCoroutine);
-
-        _colors.Remove(effectColor);
     }
 }

@@ -46,6 +46,9 @@ public class CardSO : ScriptableObject
     [ShowIf("action", CardAction.PowerUp)]
     public bool isBuff;
 
+    [ShowIf("action", CardAction.PowerUp)]
+    public int stacks;
+
     [ShowIf("isBuff")]
     public Color powerUpColor;
 
@@ -89,20 +92,4 @@ public enum CardAction
     Ammo,
     AddWeapon,
     PowerUp
-}
-
-public enum CardPowerUp
-{
-    Crit,
-    Speed,
-    MultiShot,
-    Reflect,
-    BlackHole,
-    FireBall,
-    LightningShot,
-    ExplosiveShot,
-    FrostShot,
-    VampiricShot,
-    Berserk,
-    LightningDash
 }

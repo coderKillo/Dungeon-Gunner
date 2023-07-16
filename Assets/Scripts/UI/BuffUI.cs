@@ -11,10 +11,21 @@ public class BuffUI : MonoBehaviour
     [SerializeField] private Image _buffImage;
     [SerializeField] private Image _background;
 
-    public void Initialize(Sprite sprite, Color color, float duration)
+    private CardPowerUp _type;
+    public CardPowerUp Type { get { return _type; } }
+
+    public void Initialize(Sprite sprite, CardPowerUp type, Color color, float duration)
     {
+        _type = type;
         _buffImage.sprite = sprite;
         _background.color = color;
+
+        StartDurationTimer(duration);
+    }
+
+    public void StartDurationTimer(float duration)
+    {
+        StopAllCoroutines();
         StartCoroutine(DurationTimer(duration));
     }
 
