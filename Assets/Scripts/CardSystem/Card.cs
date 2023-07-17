@@ -84,7 +84,12 @@ public class Card
 
 
             case CardAction.PowerUp:
-                ActivatePowerUp(details.powerUpType, details.powerUpColor, player);
+                var powerUp = CardPowerUpManager.GetPowerUp(details.powerUpType);
+                powerUp.Initialize(details, level);
+
+                value -= 1f / details.stacks;
+
+                player.playerPowerUp.AddPowerUp(details.powerUpType, powerUp);
 
                 break;
 
@@ -114,15 +119,5 @@ public class Card
                 break;
         }
 
-    }
-
-    private void ActivatePowerUp(CardPowerUp powerUpType, Color powerUpColor, Player player)
-    {
-        var powerUp = CardPowerUpManager.GetPowerUp(powerUpType);
-        powerUp.Initialize(details, level);
-
-        value -= 1f / details.stacks;
-
-        player.playerPowerUp.AddPowerUp(powerUpType, powerUp);
     }
 }

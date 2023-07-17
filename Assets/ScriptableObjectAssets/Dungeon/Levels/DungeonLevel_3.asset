@@ -46,3 +46,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ef096ee565c1db428412788b78db818, type: 2}
   - {fileID: 11400000, guid: c9fcceacb401d73419bd96889c8ccebd, type: 2}
   - {fileID: 11400000, guid: 16a9990374aa2834bb080d5bb9d9a276, type: 2}
+  enemyPool: {fileID: 11400000, guid: bd692be1ca11b614795ffc51fbe38a39, type: 2}
+  bossPool: {fileID: 11400000, guid: ca59b86e1f2b1b94fbcd69573703c447, type: 2}
+  bossCount: 1

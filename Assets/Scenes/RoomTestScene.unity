@@ -1617,7 +1617,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99964046
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1851,6 +1851,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0793fa28c2ec1e24f9ed3229476f27b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseCredits: 30
+  creditCoefficientFactor: 1
+  enemyLevelCoefficientFactor: 3
+  enemyLevelDamageFactor: 0.03
+  enemyLevelHealthFactor: 0.2
+  spawnIntervalDuringWave: {x: 0.1, y: 1}
+  spawnIntervalBetweenWave: {x: 4.5, y: 9}
+  eliteCostFactor: 6
+  eliteDamageFactor: 2
+  eliteHealthFactor: 4
+  eliteScaling: 1.5
 --- !u!1 &1661702024
 GameObject:
   m_ObjectHideFlags: 0

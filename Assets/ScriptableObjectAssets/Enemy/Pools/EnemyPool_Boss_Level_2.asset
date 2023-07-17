@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7589ee9d9dfce4590f710e3c76d4d2, type: 3}
   m_Name: EnemyPool_Boss_Level_2
   m_EditorClassIdentifier: 
-  enemyList: []
+  enemyList:
+  - {fileID: 11400000, guid: 8777f84014c8e0e4a873465002813d1e, type: 2}
+  - {fileID: 11400000, guid: 3b9c589dae56a4e4eb9f73f113c3391a, type: 2}
+  - {fileID: 11400000, guid: 38c5d1ba8a9a36147b2d1d8536af16b7, type: 2}

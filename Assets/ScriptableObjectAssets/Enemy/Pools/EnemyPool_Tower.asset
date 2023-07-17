@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7589ee9d9dfce4590f710e3c76d4d2, type: 3}
   m_Name: EnemyPool_Tower
   m_EditorClassIdentifier: 
-  enemyList: []
+  enemyList:
+  - {fileID: 11400000, guid: 0ed6c674dd3772549a1bbf49c9f4a60f, type: 2}
+  - {fileID: 11400000, guid: 056cab6074ce14144a03db7ea84ea5b7, type: 2}
+  - {fileID: 11400000, guid: 70f78f3cb5442a54996b171074a7fc36, type: 2}
+  - {fileID: 11400000, guid: 7e71f747b5bb07c44bbad386f189b614, type: 2}
+  - {fileID: 11400000, guid: 26ea7fa248407ac4580dbb5393e7f171, type: 2}
+  - {fileID: 11400000, guid: 2ccb2a85854870c4094da4113a0f34d1, type: 2}

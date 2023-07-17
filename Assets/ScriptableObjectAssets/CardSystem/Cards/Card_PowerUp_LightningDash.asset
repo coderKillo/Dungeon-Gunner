@@ -24,9 +24,9 @@ MonoBehaviour:
   ammoAmount: 0
   weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
   weaponDamageFactorPerLevel: 0
-  powerUpType: 11
-  powerUpAbility: 10
-  powerUpScaleAbility: 5
+  powerUpType: 9
+  powerUpAbility: 20
+  powerUpScaleAbility: 10
   isBuff: 1
   stacks: 5
   powerUpColor: {r: 0, g: 0.7953818, b: 1, a: 1}

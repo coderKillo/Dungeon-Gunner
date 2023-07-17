@@ -120,7 +120,6 @@ public class MultiShotPowerUp : ICardPowerUp
 
     public override void Deactivate(Player player)
     {
-
         player.fireWeapon.MultiShot = 1;
     }
 }
@@ -134,7 +133,6 @@ public class ReflectPowerUp : ICardPowerUp
 
     public override void Deactivate(Player player)
     {
-
         player.playerReflectAmmo.Disable();
     }
 }

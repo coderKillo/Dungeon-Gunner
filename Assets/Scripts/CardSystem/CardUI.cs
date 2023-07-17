@@ -85,7 +85,10 @@ public class CardUI : MonoBehaviour
                 var power = (details.powerUpAbility + (details.powerUpScaleAbility * level));
                 var duration = details.powerUpDuration + (details.powerUpScaleDuration * level);
 
-                description.text = details.description.Replace("$1%", power * 100f + "%").Replace("$1", "" + power).Replace("$2", "" + duration);
+                description.text = details.description
+                    .Replace("$1%", power * 100f + "%")
+                    .Replace("$1", "" + power)
+                    .Replace("$2", "" + duration);
                 break;
 
             case CardAction.Ammo:
