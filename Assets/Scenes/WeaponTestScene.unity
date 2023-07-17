@@ -224,19 +224,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301640884879621674, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.20861351
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 5301640884879621674, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.20220944
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5301640884879621674, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.6666667
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5301640884879621674, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.6666667
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5329167430598858667, guid: 82d4f2b020de8c448823051d5e1d739a, type: 3}
       propertyPath: m_Enabled
@@ -1036,6 +1036,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 262dc9ad8e5215d4b999f9b99bad6b28, type: 2}
   - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
   - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
+  - {fileID: 11400000, guid: fc7e0ffa57feb1942b9de25cea1016fd, type: 2}
+  - {fileID: 11400000, guid: c12575ddd1c362a478dfee655612f322, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2092,7 +2094,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
+    width: 0.99964046
     height: 1
   near clip plane: 0.3
   far clip plane: 1000

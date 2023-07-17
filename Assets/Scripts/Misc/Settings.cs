@@ -35,7 +35,7 @@ static public class Settings
     #endregion
 
     #region DIFFICULTY
-    public const float difficultyFactor = 1.5f;
+    public const float difficultyFactor = 0.5f;
     #endregion
 
     #region ASTAR PATHFINDER PARAMETERS

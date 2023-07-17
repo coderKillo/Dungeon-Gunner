@@ -37,14 +37,7 @@ public class RoomTemplateSO : ScriptableObject
 
     [Space(10)]
     [Header("ENEMY DETAILS")]
-
-    public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
-    public List<RoomEnemySpawnParameters> enemySpawnParameterList;
-
-    [Space(10)]
-    [Header("CHEST DETAILS")]
-
-    public List<RoomChestSpawnParameters> chestSpawnParameterList;
+    public int maxConcurrentEnemies;
 
     public List<Doorway> GetDoorwayList()
     {

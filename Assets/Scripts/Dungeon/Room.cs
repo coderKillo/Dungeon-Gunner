@@ -17,10 +17,7 @@ public class Room
     public Vector2Int templateUpperBound;
 
     public Vector2Int[] spawnPositions;
-    public List<SpawnableObjectsByLevel<EnemyDetailsSO>> enemiesByLevelList;
-    public List<RoomEnemySpawnParameters> enemySpawnParameterList;
-
-    public List<RoomChestSpawnParameters> chestSpawnParameterList;
+    public int maxConcurrentEnemies;
 
     public string parentId;
     public List<string> childIdList;
@@ -51,45 +48,6 @@ public class Room
     {
         childIdList = new List<string>();
         doorwayList = new List<Doorway>();
-    }
-
-    public int GetNumbersOfEnemiesToSpawn(DungeonLevelSO level)
-    {
-        foreach (var enemySpawnParameter in enemySpawnParameterList)
-        {
-            if (enemySpawnParameter.dungeonLevel == level)
-            {
-                return enemySpawnParameter.TotalEnemies;
-            }
-        }
-
-        return 0;
-    }
-
-    public RoomChestSpawnParameters GetChestSpawnParameters(DungeonLevelSO level)
-    {
-        foreach (var chestSpawnParameter in chestSpawnParameterList)
-        {
-            if (chestSpawnParameter.dungeonLevel == level)
-            {
-                return chestSpawnParameter;
-            }
-        }
-
-        return null;
-    }
-
-    public RoomEnemySpawnParameters GetEnemySpawnParameter(DungeonLevelSO level)
-    {
-        foreach (var enemySpawnParameter in enemySpawnParameterList)
-        {
-            if (enemySpawnParameter.dungeonLevel == level)
-            {
-                return enemySpawnParameter;
-            }
-        }
-
-        return null;
     }
 
     public Vector2Int RandomSpawnPosition()

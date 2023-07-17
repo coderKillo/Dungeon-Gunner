@@ -15,20 +15,25 @@ MonoBehaviour:
   title: Fire Ball
   rarity: 2
   icon: {fileID: 21300000, guid: e2dd2c0b39f67d2459d58cc7b1e44669, type: 3}
+  iconSize: {x: 48, y: 48}
   iconMini: {fileID: -1210985138, guid: dd219861d3f64164ebfc97db03d25965, type: 3}
   description: shots a fireball that deals $1 damage.
-  action: 4
+  action: 3
   healAmount: 0
   shieldAmount: 0
   ammoAmount: 0
-  weapon: {fileID: 11400000, guid: 0e02ab2f490010c4cb385c7f62a292bc, type: 2}
-  weaponDamageFactorPerLevel: 0
+  weapon: {fileID: 11400000, guid: 9b157b2fe87a5384a91758744fe947d1, type: 2}
+  weaponDamageFactorPerLevel: 0.5
   powerUpType: 5
   powerUpAbility: 80
   powerUpScaleAbility: 20
   isBuff: 0
+  stacks: 0
   powerUpColor: {r: 1, g: 1, b: 1, a: 1}
   powerUpDuration: 0
   powerUpScaleDuration: 0
+  isOnHit: 0
+  OnHitEffect: {fileID: 0}
+  onHitRadius: 0
   isSpell: 1
-  powerUpSpell: {fileID: 11400000, guid: 9b157b2fe87a5384a91758744fe947d1, type: 2}
+  powerUpSpell: {fileID: 0}

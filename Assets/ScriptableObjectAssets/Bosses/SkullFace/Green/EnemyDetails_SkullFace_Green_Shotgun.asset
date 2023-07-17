@@ -15,6 +15,7 @@ MonoBehaviour:
   enemyName: SkullFace Green
   prefab: {fileID: 8220697058464618339, guid: 75e476ba6e1dfb543b3cd54e52c47915, type: 3}
   chaseDistance: 50
+  value: 1
   standardMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   materializeTime: 2
   materializeColor: {r: 8.829129, g: 0, b: 5.5470967, a: 1}
@@ -25,18 +26,9 @@ MonoBehaviour:
   firingDurationMin: 8
   firingDurationMax: 10
   firingLineOfSightRequire: 0
-  healthDetailList:
-  - dungeonLevel: {fileID: 11400000, guid: f09956bcaf4245648adf81645368f0a2, type: 2}
-    healthAmount: 300
-  - dungeonLevel: {fileID: 11400000, guid: e7b3c6cb4093e954f81d880ad3c6c1a7, type: 2}
-    healthAmount: 400
-  - dungeonLevel: {fileID: 11400000, guid: 78e08a79e32967e449f3f889e8c7f07b, type: 2}
-    healthAmount: 400
-  - dungeonLevel: {fileID: 11400000, guid: 153cf9471fb236f4f835d3803971d706, type: 2}
-    healthAmount: 400
-  - dungeonLevel: {fileID: 11400000, guid: 736d46f2917239345ac5c45dbdd30cc9, type: 2}
-    healthAmount: 500
-  - dungeonLevel: {fileID: 11400000, guid: b792f51e23191214697d805823a1efd1, type: 2}
-    healthAmount: 500
+  hasMeleeAttacks: 0
+  meleeRange: 1
+  meleeDamage: 10
+  baseHealth: 300
   isImmuneAfterHit: 0
   hitImmuneTime: 0

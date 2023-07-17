@@ -27,17 +27,17 @@ public class ChestSpawner : MonoBehaviour
 
         room.isAlreadyLooted = true;
 
-        var parameters = room.GetChestSpawnParameters(GameManager.Instance.CurrentLevel);
+        // var parameters = room.GetChestSpawnParameters(GameManager.Instance.CurrentLevel);
 
-        if (parameters == null)
-        {
-            return;
-        }
+        // if (parameters == null)
+        // {
+        //     return;
+        // }
 
-        if (RandomSpawnChest(parameters.SpawnChance))
-        {
-            SpawnChest(parameters);
-        }
+        // if (RandomSpawnChest(parameters.SpawnChance))
+        // {
+        //     SpawnChest(parameters);
+        // }
     }
 
     private bool RandomSpawnChest(int spawnChance)

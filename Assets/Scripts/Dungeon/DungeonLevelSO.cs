@@ -17,6 +17,12 @@ public class DungeonLevelSO : ScriptableObject
     [Header("ROOM GRAPHS FOR LEVEL")]
     public List<RoomNodeGraphSO> roomNodeGraphList;
 
+    [Space(10)]
+    [Header("ENEMY PARAMETER")]
+    public EnemyPoolSO enemyPool;
+    public EnemyPoolSO bossPool;
+    public int bossCount = 1;
+
 #if UNITY_EDITOR
 
     #region VALIDATION

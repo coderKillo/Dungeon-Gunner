@@ -17,6 +17,7 @@ public class GameManager : SingletonAbstract<GameManager>
     [SerializeField] private int prestigeLevel = 0;
     public DungeonLevelSO CurrentLevel { get { return dungeonLevelList[currentLevelIndex]; } }
     public int CurrentLevelNumber { get { return currentLevelIndex; } }
+    public int LevelCompleted { get { return currentLevelIndex + prestigeLevel * dungeonLevelList.Count; } }
 
     private GameState previousGameState = GameState.none;
     private GameState gameState = GameState.none;
@@ -272,7 +273,7 @@ public class GameManager : SingletonAbstract<GameManager>
     {
         prestigeLevel++;
 
-        StaticEventHandler.CallDifficultyChange(prestigeLevel * Settings.difficultyFactor);
+        StaticEventHandler.CallDifficultyChange(1 + prestigeLevel * Settings.difficultyFactor);
     }
 
     private IEnumerator LevelComplete()
@@ -310,10 +311,7 @@ public class GameManager : SingletonAbstract<GameManager>
         {
             levelText += $@" 
             
-Prestige {prestigeLevel}
-Monster Damage +{prestigeLevel * Settings.difficultyFactor * 100}%
-Monster Health +{prestigeLevel * Settings.difficultyFactor * 100}%
-Monster Spawn Amount +{prestigeLevel * Settings.difficultyFactor * 100}% ";
+Prestige {prestigeLevel} ";
         }
 
         displayMessage.DisplayText($"Level {levelIndex + 1}", levelText, 1f);

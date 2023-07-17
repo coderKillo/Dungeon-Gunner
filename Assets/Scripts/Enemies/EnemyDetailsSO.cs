@@ -11,6 +11,7 @@ public class EnemyDetailsSO : ScriptableObject
     public string enemyName;
     public GameObject prefab;
     public float chaseDistance = 50f;
+    public int value = 1;
 
     [Space(10)]
     [Header("MATERIAL DETAILS")]
@@ -41,7 +42,7 @@ public class EnemyDetailsSO : ScriptableObject
 
     [Space(10)]
     [Header("HEALTH DETAILS")]
-    public EnemyHealthDetails[] healthDetailList;
+    public int baseHealth;
     public bool isImmuneAfterHit = false;
     public int hitImmuneTime;
 

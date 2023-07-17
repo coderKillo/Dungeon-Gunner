@@ -35,8 +35,8 @@ public class EnemySpawnTest : MonoBehaviour
             return;
         }
 
-        spawnableObjectsByLevelList = roomTemplate.enemiesByLevelList;
-        randomSpawnableObject = new RandomSpawnableObject<EnemyDetailsSO>(spawnableObjectsByLevelList);
+        // spawnableObjectsByLevelList = roomTemplate.enemiesByLevelList;
+        // randomSpawnableObject = new RandomSpawnableObject<EnemyDetailsSO>(spawnableObjectsByLevelList);
     }
 
     void Update()

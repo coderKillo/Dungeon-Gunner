@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
 
         SetEnemyAnimationSpeed();
 
-        SetEnemyStartingHealth(dungeonLevel);
+        SetEnemyStartingHealth();
 
         SetEnemyStartingWeapon();
 
@@ -145,19 +145,9 @@ public class Enemy : MonoBehaviour
         setActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
     }
 
-    private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
+    private void SetEnemyStartingHealth()
     {
-        health.StartingHealth = Settings.defaultEnemyHealth;
-
-        foreach (var healthDetail in enemyDetails.healthDetailList)
-        {
-            if (healthDetail.dungeonLevel != dungeonLevel)
-            {
-                continue;
-            }
-
-            health.StartingHealth = healthDetail.healthAmount;
-        }
+        health.StartingHealth = enemyDetails.baseHealth;
     }
 
     private IEnumerator MaterializeEnemy()

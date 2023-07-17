@@ -1,20 +1,53 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [DisallowMultipleComponent]
 public class EnemySpawner : SingletonAbstract<EnemySpawner>
 {
-    private int totalEnemies;
-    private int spawnedEnemies;
-    private int concurrentEnemies;
-    private int currentEnemies;
-    private Room room;
-    private RoomEnemySpawnParameters spawnParameters;
+    [Space(10)]
+    [Header("Credits")]
+    [SerializeField] private int baseCredits = 50;
+    [SerializeField] private float creditCoefficientFactor = 0.25f;
+    [ShowInInspector][ReadOnly] private int currentRoomCredits = 0;
 
-    private float enemyHealthDifficultlyFactor = 1f;
-    private float enemyDamageDifficultlyFactor = 1f;
-    private float enemyWaveSizeDifficultlyFactor = 1f;
+    [Space(10)]
+    [Header("Level")]
+    [SerializeField] private float enemyLevelCoefficientFactor = 3f;
+    [SerializeField] private float enemyLevelDamageFactor = 0.03f;
+    [SerializeField] private float enemyLevelHealthFactor = 0.2f;
+    [ShowInInspector][ReadOnly] private int enemyLevel = 1;
+
+    [Space(10)]
+    [Header("Spawn")]
+    [SerializeField] private Vector2 spawnIntervalDuringWave = new Vector3(0.1f, 1f);
+    private float RandomSpawnIntervalDuringWave { get { return Random.Range(spawnIntervalDuringWave.x, spawnIntervalDuringWave.y); } }
+    [SerializeField] private Vector2 spawnIntervalBetweenWave = new Vector3(4.5f, 9f);
+    private float RandomSpawnIntervalBetweenWave { get { return Random.Range(spawnIntervalBetweenWave.x, spawnIntervalBetweenWave.y); } }
+
+    [Space(10)]
+    [Header("Elite")]
+    [SerializeField] private int eliteCostFactor = 6;
+    [SerializeField] private float eliteDamageFactor = 2f;
+    [SerializeField] private float eliteHealthFactor = 4f;
+    [SerializeField] private float eliteScaling = 1.5f;
+
+    [Space(10)]
+    [Header("Difficulty")]
+    [ShowInInspector][ReadOnly] private float difficulty = 1f;
+    [ShowInInspector][ReadOnly] private int minutesPlayed = 0;
+    [ShowInInspector][ReadOnly] private float coefficient = 1.1f;
+
+    private int spawnedEnemies;
+    private int currentEnemies;
+
+    private Room room;
+
+    private void Start()
+    {
+        OnMinutePassed();
+        InvokeRepeating(nameof(OnMinutePassed), 60f, 60f);
+    }
 
     private void OnEnable()
     {
@@ -32,19 +65,14 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
 
     private void StaticEventHandler_OnDifficultyChange(DifficultyChangedEventArgs args)
     {
-        enemyDamageDifficultlyFactor = args.difficulty;
-        enemyHealthDifficultlyFactor = args.difficulty;
-        enemyWaveSizeDifficultlyFactor = args.difficulty;
+        difficulty = args.difficulty;
     }
 
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs obj)
     {
-        totalEnemies = 0;
-        spawnedEnemies = 0;
-        currentEnemies = 0;
         room = obj.room;
 
-        if (room.nodeType.isCorridorEW || room.nodeType.isCorridorNS || room.nodeType.isEntrance)
+        if (room.nodeType.isCorridorEW || room.nodeType.isCorridorNS || room.nodeType.isEntrance || room.nodeType.isChestRoom)
         {
             return;
         }
@@ -54,24 +82,13 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
             return;
         }
 
-        spawnParameters = room.GetEnemySpawnParameter(GameManager.Instance.CurrentLevel);
-        totalEnemies = Mathf.RoundToInt(spawnParameters.TotalEnemies * enemyWaveSizeDifficultlyFactor);
-        concurrentEnemies = Mathf.RoundToInt(spawnParameters.ConcurrentEnemies * enemyWaveSizeDifficultlyFactor);
-
-        if (totalEnemies == 0)
+        if (room.spawnPositions.Length <= 0)
         {
-            room.isClearedOfEnemies = true;
-
-            StaticEventHandler.CallRoomEnemiesDefeated(room);
-
+            Debug.LogWarning($"no spawn positions are set in room: {room.instantiatedRoom.name}");
             return;
         }
 
-        room.instantiatedRoom.LockDoors();
-
-        StaticEventHandler.CallRoomEnemiesEngaging(room);
-
-        SpawnEnemies();
+        StartSpawnEnemies();
     }
 
     private void GameManager_OnGameStateChange(GameState state)
@@ -85,52 +102,157 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         }
     }
 
-    private void SpawnEnemies()
+    [Button]
+    private void OnMinutePassed()
     {
-        if (room.spawnPositions.Length > 0)
+        minutesPlayed++;
+        CalculateCoefficient();
+        CalculateLevel();
+    }
+
+    [Button]
+    private void StartSpawnEnemies()
+    {
+        spawnedEnemies = 0;
+        currentEnemies = 0;
+        currentRoomCredits = Mathf.RoundToInt(coefficient * baseCredits);
+
+        room.instantiatedRoom.LockDoors();
+
+        StaticEventHandler.CallRoomEnemiesEngaging(room);
+
+        var currentLevel = GameManager.Instance.CurrentLevel;
+        if (room.nodeType.isBossRoom)
         {
-            StartCoroutine(SpawnEnemiesRoutine());
+            SpawnBosses(currentLevel.bossPool, currentLevel.bossCount);
+        }
+        else
+        {
+            SpawnEnemies(currentLevel.enemyPool);
         }
     }
 
-    private IEnumerator SpawnEnemiesRoutine()
+    private void SpawnEnemies(EnemyPoolSO pool)
+    {
+        StartCoroutine(SpawnEnemiesRoutine(pool));
+    }
+
+    private void SpawnBosses(EnemyPoolSO pool, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            var enemyDetails = pool.enemyList[Random.Range(0, pool.enemyList.Count)];
+            CreateEnemy(enemyDetails, i);
+        }
+
+        currentRoomCredits = 0;
+    }
+
+    private IEnumerator SpawnEnemiesRoutine(EnemyPoolSO pool)
+    {
+        var credits = Mathf.RoundToInt(currentRoomCredits * 0.3f);
+        var time = 0f;
+
+        while (true)
+        {
+            credits += Mathf.RoundToInt(((1 + creditCoefficientFactor * coefficient)) * time);
+            Debug.Log(credits);
+            time = 0f;
+
+            if (currentEnemies < room.maxConcurrentEnemies)
+            {
+                var enemyDetails = FindEnemyWithinBudget(credits, pool);
+                while (enemyDetails != null)
+                {
+                    var cost = enemyDetails.value;
+
+                    var enemy = CreateEnemy(enemyDetails, spawnedEnemies);
+
+                    if (credits > cost * eliteCostFactor)
+                    {
+                        enemy.transform.localScale = new Vector3(eliteScaling, eliteScaling, 1f);
+                        enemy.fireWeapon.WeaponDamageFactor *= eliteDamageFactor;
+                        enemy.health.StartingHealth = Mathf.RoundToInt(eliteHealthFactor * enemy.health.StartingHealth);
+
+                        cost *= eliteCostFactor;
+                    }
+
+                    credits -= cost;
+                    currentRoomCredits -= cost;
+
+                    if (FindEnemyWithinBudget(currentRoomCredits, pool) == null)
+                    {
+                        goto endSpawn;
+                    }
+
+                    enemyDetails = FindEnemyWithinBudget(credits, pool);
+
+                    var waitDuringWaves = RandomSpawnIntervalDuringWave;
+                    time += waitDuringWaves;
+                    yield return new WaitForSeconds(waitDuringWaves);
+                }
+            }
+
+            var waitBetweenWaves = RandomSpawnIntervalBetweenWave;
+            time += waitBetweenWaves;
+            yield return new WaitForSeconds(waitBetweenWaves);
+        }
+
+    endSpawn:
+        currentRoomCredits = 0;
+    }
+
+    private EnemyDetailsSO FindEnemyWithinBudget(int credits, EnemyPoolSO pool)
+    {
+        var affordableEnemies = pool.enemyList.FindAll((x) => x.value < credits);
+        if (affordableEnemies.Count == 0)
+        {
+            return null;
+        }
+
+        return affordableEnemies[Random.Range(0, affordableEnemies.Count)];
+    }
+
+    private Enemy CreateEnemy(EnemyDetailsSO enemyDetails, int spawnNumber)
     {
         var grid = room.instantiatedRoom.grid;
+        var cellPosition = (Vector3Int)room.RandomSpawnPosition();
+        var worldPosition = grid.CellToWorld(cellPosition) + UnityEngine.Random.insideUnitSphere;
 
-        var randomSpawnableObject = new RandomSpawnableObject<EnemyDetailsSO>(room.enemiesByLevelList);
-
-        for (int spawnNumber = 0; spawnNumber < totalEnemies; spawnNumber += concurrentEnemies)
-        {
-            int waveSize = Math.Min((totalEnemies - spawnNumber), concurrentEnemies);
-            for (int i = 0; i < waveSize; i++)
-            {
-                var cellPosition = (Vector3Int)room.RandomSpawnPosition();
-
-                CreateEnemy(randomSpawnableObject.GetItem(), grid.CellToWorld(cellPosition) + UnityEngine.Random.insideUnitSphere, spawnNumber);
-            }
-
-            while (currentEnemies > 0)
-            {
-                yield return new WaitForSeconds(spawnParameters.SpawnInterval);
-            }
-        }
-    }
-
-    private void CreateEnemy(EnemyDetailsSO enemyDetails, Vector3 position, int spawnNumber)
-    {
         currentEnemies++;
         spawnedEnemies++;
 
-        var enemyGameObject = GameObject.Instantiate(enemyDetails.prefab, position, Quaternion.identity, transform);
+        var enemyGameObject = GameObject.Instantiate(enemyDetails.prefab, worldPosition, Quaternion.identity, transform);
         enemyGameObject.GetComponent<DestroyedEvent>().OnDestroyed += DestroyedEvent_OnDestroyed;
 
         var enemy = enemyGameObject.GetComponent<Enemy>();
         enemy.Initialize(enemyDetails, spawnNumber, GameManager.Instance.CurrentLevel);
-        enemy.fireWeapon.WeaponDamageFactor = enemyDamageDifficultlyFactor;
-        enemy.dealContactDamage.Damage = Mathf.RoundToInt(Settings.defaultContactDamage * enemyDamageDifficultlyFactor);
-        enemy.health.StartingHealth = Mathf.RoundToInt(enemy.health.StartingHealth * enemyHealthDifficultlyFactor);
+        enemy.fireWeapon.WeaponDamageFactor = GetEnemyDamageFactor();
+        enemy.health.StartingHealth = GetEnemyHealth(enemyDetails.baseHealth);
 
         StaticEventHandler.CallEnemySpawned(enemy);
+
+        return enemy;
+    }
+
+    private void CalculateCoefficient()
+    {
+        coefficient = (1f + minutesPlayed * 0.05f * difficulty) * Mathf.Pow(1.15f, (float)GameManager.Instance.LevelCompleted);
+    }
+
+    private void CalculateLevel()
+    {
+        enemyLevel = Mathf.RoundToInt(1f + (coefficient - 1f) * enemyLevelCoefficientFactor);
+    }
+
+    private int GetEnemyHealth(int baseHealth)
+    {
+        return baseHealth + Mathf.RoundToInt(enemyLevel * (float)baseHealth * enemyLevelHealthFactor);
+    }
+
+    private float GetEnemyDamageFactor()
+    {
+        return 1f + (float)enemyLevel * enemyLevelDamageFactor;
     }
 
     private void DestroyedEvent_OnDestroyed(DestroyedEvent obj, DestroyedEventArgs args)
@@ -142,7 +264,7 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         StaticEventHandler.CallEnemyDied(obj.gameObject.GetComponent<Enemy>());
         StaticEventHandler.CallPointScoredEvent(Mathf.RoundToInt(args.points * Settings.enemyPointScaling));
 
-        if (currentEnemies <= 0 && spawnedEnemies >= totalEnemies)
+        if (currentEnemies <= 0 && currentRoomCredits <= 0)
         {
             room.isClearedOfEnemies = true;
         }
