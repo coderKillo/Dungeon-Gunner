@@ -31,8 +31,6 @@ public class Health : MonoBehaviour
     private Enemy enemy;
 
     [ShowInInspector] public bool isDamageable = true;
-    [ShowInInspector] public bool evadeAttack = false;
-
 
     [ShowInInspector] private int currentHealth;
     [ShowInInspector] private int currentArmor;
@@ -122,21 +120,6 @@ public class Health : MonoBehaviour
     private void CallHealthEvent(int damageAmount, int healAmount, bool isCrit)
     {
         healthEvent.CallHealthEventChanged(((float)currentHealth / (float)startingHealth), currentHealth, damageAmount, healAmount, startingHealth, ((float)currentArmor / (float)maxArmor), currentArmor, maxArmor, isCrit);
-    }
-
-    public bool EvadeAttack()
-    {
-        if (player && player.IsDashing())
-        {
-            return true;
-        }
-
-        if (evadeAttack)
-        {
-            return true;
-        }
-
-        return false;
     }
 
     private bool IsDamageable()

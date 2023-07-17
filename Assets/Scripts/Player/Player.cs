@@ -37,6 +37,7 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(PlayerDied))]
 [RequireComponent(typeof(PlayerDash))]
 [RequireComponent(typeof(PostHitImmunity))]
+[RequireComponent(typeof(Evasion))]
 [RequireComponent(typeof(PlayerPowerUp))]
 [RequireComponent(typeof(PlayerCardHand))]
 #endregion
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public ActiveWeapon activeWeapon;
     [HideInInspector] public PostHitImmunity postHitImmunity;
+    [HideInInspector] public Evasion evasion;
     [HideInInspector] public FireWeapon fireWeapon;
     #region EVENTS
     [HideInInspector] public AimWeaponEvent aimWeaponEvent;
@@ -80,13 +82,14 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
         playerControl = GetComponent<PlayerControl>();
         playerPowerUp = GetComponent<PlayerPowerUp>();
-        playerReflectAmmo = GetComponent<PlayerReflectAmmo>();
+        playerReflectAmmo = GetComponentInChildren<PlayerReflectAmmo>();
         playerDash = GetComponent<PlayerDash>();
         playerCardHand = GetComponent<PlayerCardHand>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         activeWeapon = GetComponent<ActiveWeapon>();
         postHitImmunity = GetComponent<PostHitImmunity>();
+        evasion = GetComponent<Evasion>();
         fireWeapon = GetComponent<FireWeapon>();
         #region EVENTS
         idleEvent = GetComponent<IdleEvent>();
@@ -103,6 +106,8 @@ public class Player : MonoBehaviour
         chargeWeaponEvent = GetComponent<ChargeWeaponEvent>();
         buffEvent = GetComponent<BuffEvent>();
         #endregion
+
+        playerReflectAmmo.gameObject.SetActive(false);
     }
 
     public void Initialize(PlayerDetailsSO details)

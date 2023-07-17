@@ -156,7 +156,6 @@ public class EnemySpawner : SingletonAbstract<EnemySpawner>
         while (true)
         {
             credits += Mathf.RoundToInt(((1 + creditCoefficientFactor * coefficient)) * time);
-            Debug.Log(credits);
             time = 0f;
 
             if (currentEnemies < room.maxConcurrentEnemies)

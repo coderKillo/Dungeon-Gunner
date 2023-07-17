@@ -97,14 +97,13 @@ public class SpeedPowerUp : ICardPowerUp
         var moveSpeedFactor = _details.powerUpAbility + (_details.powerUpScaleAbility * _level);
 
         player.playerControl.MoveSpeed = moveSpeedFactor * _moveSpeed;
-        player.health.evadeAttack = true;
+        player.evasion.evadeIncomingAttacks = true;
     }
 
     public override void Deactivate(Player player)
     {
-
         player.playerControl.MoveSpeed = _moveSpeed;
-        player.health.evadeAttack = false;
+        player.evasion.evadeIncomingAttacks = false;
     }
 }
 
@@ -128,12 +127,12 @@ public class ReflectPowerUp : ICardPowerUp
 {
     public override void Activate(Player player)
     {
-        player.playerReflectAmmo.Enable();
+        player.playerReflectAmmo.gameObject.SetActive(true);
     }
 
     public override void Deactivate(Player player)
     {
-        player.playerReflectAmmo.Disable();
+        player.playerReflectAmmo.gameObject.SetActive(false);
     }
 }
 

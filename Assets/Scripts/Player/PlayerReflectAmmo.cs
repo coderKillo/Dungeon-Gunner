@@ -12,31 +12,33 @@ public class PlayerReflectAmmo : MonoBehaviour
     [SerializeField] private Material _ammoMaterial;
 
     private Health _health;
-    private bool _enable = false;
+    private AimWeaponEvent _aimWeaponEvent;
 
     private void Awake()
     {
-        _health = GetComponent<Health>();
+        _health = GetComponentInParent<Health>();
+        _aimWeaponEvent = GetComponentInParent<AimWeaponEvent>();
     }
 
-    public void Enable()
+    private void OnEnable()
     {
+        _aimWeaponEvent.OnWeaponAim += AimWeaponEvent_OnWeaponAim;
         _health.isDamageable = false;
-        _enable = true;
     }
 
-    public void Disable()
+    private void OnDisable()
     {
+        _aimWeaponEvent.OnWeaponAim -= AimWeaponEvent_OnWeaponAim;
         _health.isDamageable = true;
-        _enable = false;
+    }
+
+    private void AimWeaponEvent_OnWeaponAim(AimWeaponEvent @event, AimWeaponEventArgs args)
+    {
+        transform.localEulerAngles = new Vector3(0f, 0f, args.aimAngle);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!_enable)
-        {
-            return;
-        }
         if (other.tag != Settings.enemyAmmoTag)
         {
             return;

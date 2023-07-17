@@ -163,13 +163,14 @@ public class Ammo : MonoBehaviour, IFireable
     protected bool DealDamage(Collider2D collider)
     {
         var health = collider.GetComponent<Health>();
+        var evasion = collider.GetComponent<Evasion>();
 
         if (health == null)
         {
             return true;
         }
 
-        if (health.EvadeAttack())
+        if (evasion && evasion.EvadeAttack(fireDirectionVector))
         {
             return false;
         }

@@ -1032,12 +1032,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsToAdd:
-  - {fileID: 11400000, guid: 7f381f7a27f696940b712c6092506cb2, type: 2}
-  - {fileID: 11400000, guid: 262dc9ad8e5215d4b999f9b99bad6b28, type: 2}
-  - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
-  - {fileID: 11400000, guid: 625ec82e118464c49ad5f6fc79372471, type: 2}
-  - {fileID: 11400000, guid: fc7e0ffa57feb1942b9de25cea1016fd, type: 2}
-  - {fileID: 11400000, guid: c12575ddd1c362a478dfee655612f322, type: 2}
+  - {fileID: 11400000, guid: 1bf97d28f8f2bbb47b8f8cb6ff4fd6f6, type: 2}
+  - {fileID: 11400000, guid: 83a5c3e4757b70e468588826f5ae703a, type: 2}
+  - {fileID: 11400000, guid: 1bf97d28f8f2bbb47b8f8cb6ff4fd6f6, type: 2}
+  - {fileID: 11400000, guid: 83a5c3e4757b70e468588826f5ae703a, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2094,7 +2092,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99964046
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2597,7 +2595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b197bd7a4719a6347bbd57c5235ef2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyDetails: {fileID: 11400000, guid: aa2e367d9abfabe4f8f4b1b711cea9f2, type: 2}
+  _enemyDetails: {fileID: 11400000, guid: 0ed6c674dd3772549a1bbf49c9f4a60f, type: 2}
   _spawnLocation:
   - {fileID: 1740016919}
   - {fileID: 74266516}
