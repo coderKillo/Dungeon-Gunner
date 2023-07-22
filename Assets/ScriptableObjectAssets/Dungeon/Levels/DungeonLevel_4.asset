@@ -17,12 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 93d5a19f4b6aace49922793f3fb19975, type: 2}
   - {fileID: 11400000, guid: a78e57a22b8441a4d920713690bfbe82, type: 2}
   - {fileID: 11400000, guid: f3e9b41bf268eac4ea960aa8e5af4804, type: 2}
-  - {fileID: 11400000, guid: 56752574f921b034eaa3d3e844ff1ad3, type: 2}
-  - {fileID: 11400000, guid: b5d6b7a750a3fb74ba1347c9eda016bd, type: 2}
-  - {fileID: 11400000, guid: f4755a924f6e29844930cae6d7326eae, type: 2}
-  - {fileID: 11400000, guid: 7cc8b7445e8ed3e4ea17478076e19828, type: 2}
-  - {fileID: 11400000, guid: c4809859434775c4db43c4fe08eedbac, type: 2}
-  - {fileID: 11400000, guid: 75f657f003d20ca41a404ce258480556, type: 2}
   - {fileID: 11400000, guid: 280684b62d7b40f42906e2da772c5afe, type: 2}
   - {fileID: 11400000, guid: 906fd97f0f6852c44910d1255177abb9, type: 2}
   - {fileID: 11400000, guid: 934158f41bf0ecc40a7065c7a6102b98, type: 2}
@@ -34,6 +28,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c98dffe00f9083e4c92a8c220c948709, type: 2}
   - {fileID: 11400000, guid: c329a45518fe1754391d287e7aaa02ed, type: 2}
   - {fileID: 11400000, guid: 8f2e8c1257758b0489ad62ed09d9091f, type: 2}
+  - {fileID: 11400000, guid: 1608f5f3e42fe2942b9396bfafb582c0, type: 2}
+  - {fileID: 11400000, guid: 4aca8e4e99336ec47ac98f49fbf847af, type: 2}
   roomNodeGraphList:
   - {fileID: 11400000, guid: 11de397a70e6b7742a2da836362496c3, type: 2}
   - {fileID: 11400000, guid: 82bfc02392da17744ad521d0770fef7b, type: 2}
