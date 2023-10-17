@@ -48,7 +48,7 @@ static public class Settings
 
     #region HEALTH PARAMETERS
     public const int defaultEnemyHealth = 20;
-    public const int playerIncreaseHealthOnLevelUp = 20;
+    public const int playerIncreaseHealthOnLevelUp = 5;
     #endregion
 
     #region CONTACT DAMAGE PARAMETERS
