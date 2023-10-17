@@ -6,8 +6,6 @@ using Sirenix.OdinInspector;
 
 public class CardSystem : SingletonAbstract<CardSystem>
 {
-    [SerializeField] private CardDeckSO playerDeck;
-
     private CardSystemLevel _cardLevel;
     public CardSystemLevel Level { get { return _cardLevel; } }
     private CardHand _cardHand;
@@ -51,11 +49,6 @@ public class CardSystem : SingletonAbstract<CardSystem>
     public void Draw(CardRarity rarity = CardRarity.Common)
     {
         _cardDraw.Draw(rarity);
-    }
-
-    public CardSO[] CardDeck()
-    {
-        return playerDeck.deck.ToArray();
     }
     #endregion
 

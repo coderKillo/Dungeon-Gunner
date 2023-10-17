@@ -11,7 +11,14 @@ public class CardSystemSettings : SerializedMonoBehaviour
     [SerializeField] private Dictionary<CardRarity, int> _rarityRatio;
     [SerializeField] private float _rationIncreasePerLevel = 1.012f;
 
+    private CardDeck _cardDeck;
+
     private float _currentRatioIncrease = 1f;
+
+    private void Awake()
+    {
+        _cardDeck = GetComponent<CardDeck>();
+    }
 
     private void OnEnable()
     {
@@ -33,7 +40,7 @@ public class CardSystemSettings : SerializedMonoBehaviour
         return GameResources.Instance.rarityColorLookup.GetValueOrDefault(rarity, Color.gray);
     }
 
-    public CardSO PickRandomCard(CardSO[] cards)
+    public CardSO PickRandomCard()
     {
         var roll = Random.Range(0, 100);
         var selectedRarity = CardRarity.Common;
@@ -47,28 +54,11 @@ public class CardSystemSettings : SerializedMonoBehaviour
             }
         }
 
-        return PickRandomCardWithSpecificRarity(cards, selectedRarity);
+        return PickRandomCardWithSpecificRarity(selectedRarity);
     }
 
-    public CardSO PickRandomCardWithSpecificRarity(CardSO[] cards, CardRarity rarity)
+    public CardSO PickRandomCardWithSpecificRarity(CardRarity rarity)
     {
-        var selectedRarityCards = new List<CardSO>();
-
-        foreach (var card in cards)
-        {
-            if (card.rarity != rarity)
-            {
-                continue;
-            }
-
-            selectedRarityCards.Add(card);
-        }
-
-        if (selectedRarityCards.Count <= 0)
-        {
-            return cards[Random.Range(0, cards.Length)];
-        }
-
-        return selectedRarityCards[Random.Range(0, selectedRarityCards.Count)];
+        return _cardDeck.PickCard(rarity);
     }
 }

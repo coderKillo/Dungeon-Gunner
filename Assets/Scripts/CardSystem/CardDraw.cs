@@ -63,21 +63,20 @@ public class CardDraw : MonoBehaviour
         }
 
         _draw.Clear();
-        var cards = _cardSystem.CardDeck();
 
         for (int i = 0; i < Settings.cardDrawSize; i++)
         {
             var card = new Card();
             card.id = Guid.NewGuid();
             card.level = _cardSystemLevel.GetRandomCardSpawnLevel();
-            card.details = GetUniqueDetails(cards);
+            card.details = GetUniqueDetails();
 
             _draw.Add(card);
         }
 
         if (!ContainsRarity(priority))
         {
-            _draw[UnityEngine.Random.Range(0, Settings.cardDrawSize)].details = _cardSystemSettings.PickRandomCardWithSpecificRarity(cards, priority);
+            _draw[UnityEngine.Random.Range(0, Settings.cardDrawSize)].details = _cardSystemSettings.PickRandomCardWithSpecificRarity(priority);
         }
 
         StartCoroutine(PlayDrawSound());
@@ -106,15 +105,15 @@ public class CardDraw : MonoBehaviour
         }
     }
 
-    private CardSO GetUniqueDetails(CardSO[] cards)
+    private CardSO GetUniqueDetails()
     {
-        var details = _cardSystemSettings.PickRandomCard(cards);
+        var details = _cardSystemSettings.PickRandomCard();
 
         int maxRetry = 10;
         int j = 0;
         while (ContainsDetails(details) && j < maxRetry)
         {
-            details = _cardSystemSettings.PickRandomCardWithSpecificRarity(cards, details.rarity);
+            details = _cardSystemSettings.PickRandomCardWithSpecificRarity(details.rarity);
             j++;
         }
 

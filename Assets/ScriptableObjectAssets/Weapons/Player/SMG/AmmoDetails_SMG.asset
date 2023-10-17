@@ -20,12 +20,16 @@ MonoBehaviour:
   ammoMaterial: {fileID: 2100000, guid: 5c86445c1f630c141ab88b05539eca5d, type: 2}
   chargeTime: 0
   chargeMaterial: {fileID: 0}
-  damage: 5
+  damage: 4
   critChance: 0.1
   speedMin: 20
   speedMax: 25
   range: 15
   rotationSpeed: 1
+  damageRadius: 0
+  hitLimit: 0
+  onHitPrefab: {fileID: 0}
+  onHitDamage: 0
   spreadMin: 0.3
   spreadMax: 1.5
   spawnAmmoMin: 1
@@ -37,5 +41,12 @@ MonoBehaviour:
   trailMaterial: {fileID: 2100000, guid: 5c86445c1f630c141ab88b05539eca5d, type: 2}
   trailStartWidth: 0.1
   trailEndWidth: 0.001
+  isMelee: 0
+  startAngle: 45
+  endAngle: -135
+  hitboxWidth: 1
+  rotationDuration: 1
+  dashDistance: 0
+  healOnHit: 0
   hitVisualEffect: {fileID: 11400000, guid: 5073884aab674814ebd0cf21737cb248, type: 2}
   hitAudioEffect: {fileID: 0}
