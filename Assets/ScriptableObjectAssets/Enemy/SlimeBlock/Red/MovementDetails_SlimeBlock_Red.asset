@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23be8ea371f32fe438e16bd408833ec4, type: 3}
   m_Name: MovementDetails_SlimeBlock_Red
   m_EditorClassIdentifier: 
-  minMoveSpeed: 2
-  maxMoveSpeed: 5
-  rollSpeed: 0
-  rollDistance: 0
-  rollCooldown: 0
+  minMoveSpeed: 4
+  maxMoveSpeed: 6
+  dashSpeed: 0
+  dashSpeedMultiplier:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dashTime: 0
+  dashCooldown: 0

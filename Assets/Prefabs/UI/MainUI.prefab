@@ -1377,7 +1377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 4050433499372674559}
-  scoreChangeInterval: 0.01
+  scoreChangeInterval: 0.001
 --- !u!1 &4050433499997491532
 GameObject:
   m_ObjectHideFlags: 0

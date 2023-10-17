@@ -110,7 +110,7 @@ public class PlayerCardHand : MonoBehaviour
 
     private int GetPointFromCard(Card card)
     {
-        var points = card.level;
+        var points = 1 + 0.2f * card.level;
 
         switch (card.details.rarity)
         {

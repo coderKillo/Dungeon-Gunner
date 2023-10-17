@@ -50,12 +50,11 @@ public class CardPowerUpManager
                 return new MultiShotPowerUp();
             case CardPowerUp.Reflect:
                 return new ReflectPowerUp();
-            case CardPowerUp.LightningShot:
-                return new LightningDashPowerUp();
             case CardPowerUp.LightningDash:
                 return new LightningDashPowerUp();
             case CardPowerUp.Berserk:
                 return new BerserkPowerUp();
+            case CardPowerUp.LightningShot:
             case CardPowerUp.VampiricShot:
             case CardPowerUp.FrostShot:
             case CardPowerUp.ExplosiveShot:
