@@ -605,8 +605,8 @@ MonoBehaviour:
   enemyLevelCoefficientFactor: 3
   enemyLevelDamageFactor: 0.03
   enemyLevelHealthFactor: 0.2
-  spawnIntervalDuringWave: {x: 0.1, y: 1}
-  spawnIntervalBetweenWave: {x: 4.5, y: 9}
+  spawnIntervalDuringWave: {x: 0.1, y: 0.3}
+  spawnIntervalBetweenWave: {x: 3, y: 5}
   eliteCostFactor: 6
   eliteDamageFactor: 2
   eliteHealthFactor: 4
@@ -4791,9 +4791,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.79568344
-    width: 0.34546927
-    height: 0.3455935
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

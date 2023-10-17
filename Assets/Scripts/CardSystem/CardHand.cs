@@ -41,6 +41,8 @@ public class CardHand : MonoBehaviour
         SoundEffectManager.Instance.PlaySoundEffect(_addCardSound);
 
         UpdateHand();
+
+        Next();
     }
 
     public void Remove(Card card)

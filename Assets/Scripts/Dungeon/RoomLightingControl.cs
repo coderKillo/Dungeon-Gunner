@@ -81,17 +81,10 @@ public class RoomLightingControl : MonoBehaviour
 
     private void FadeInEnvironment()
     {
-        foreach (var renderer in environmentParentObject.GetComponentsInChildren<SpriteRenderer>())
+        foreach (var control in environmentParentObject.GetComponentsInChildren<EnvironmentLightningControl>())
         {
-            var material = new Material(GameResources.Instance.variableLitShader);
+            control.FadeIn();
 
-            renderer.material = material;
-            material
-                .DOFloat(1f, "Alpha_Slider", Settings.fateInTime)
-                .OnComplete(() =>
-                {
-                    renderer.material = GameResources.Instance.litMaterial;
-                });
         }
     }
 }

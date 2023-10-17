@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23be8ea371f32fe438e16bd408833ec4, type: 3}
   m_Name: MovementDetails_Default_Melee
   m_EditorClassIdentifier: 
-  minMoveSpeed: 3
-  maxMoveSpeed: 5
+  minMoveSpeed: 8
+  maxMoveSpeed: 10
   dashSpeed: 0
   dashSpeedMultiplier:
     serializedVersion: 2

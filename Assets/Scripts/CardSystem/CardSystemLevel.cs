@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class CardSystemLevel : MonoBehaviour
@@ -15,7 +16,7 @@ public class CardSystemLevel : MonoBehaviour
 
     private CardSystem _cardSystem;
 
-    private float _levelPercentage = 0f;
+    private int _currentPoints = 0;
     private int _level = 1;
 
     public int GetRandomCardSpawnLevel()
@@ -52,20 +53,20 @@ public class CardSystemLevel : MonoBehaviour
     private void Start()
     {
         OnLevelChange?.Invoke(_level);
-        OnLevelPercentageChange?.Invoke(_levelPercentage);
+        OnLevelPercentageChange?.Invoke(0f);
     }
 
     private void StaticEventHandler_OnPointsScored(PointsScoredArgs obj)
     {
-        _levelPercentage += (float)obj.points / (float)_pointsPerLevel;
+        _currentPoints += obj.points;
 
-        if (_levelPercentage >= 1)
+        while (_currentPoints >= _pointsPerLevel)
         {
-            _levelPercentage -= 1;
+            _currentPoints -= _pointsPerLevel;
             LevelUp();
         }
 
-        OnLevelPercentageChange?.Invoke(_levelPercentage);
+        OnLevelPercentageChange?.Invoke((float)_currentPoints / (float)_pointsPerLevel);
     }
 
     private void LevelUp()
@@ -75,6 +76,8 @@ public class CardSystemLevel : MonoBehaviour
         _level++;
         OnLevelChange?.Invoke(_level);
 
+        UpdatePointsPerLevel();
+
         if (_level % _epicCardSpawnLevelInterval == 0)
         {
             _cardSystem.Draw(CardRarity.Epic);
@@ -83,5 +86,10 @@ public class CardSystemLevel : MonoBehaviour
         {
             _cardSystem.Draw(CardRarity.Common);
         }
+    }
+
+    private void UpdatePointsPerLevel()
+    {
+        _pointsPerLevel = Mathf.RoundToInt(1000 * (1 + Mathf.Log(_level, 3)));
     }
 }

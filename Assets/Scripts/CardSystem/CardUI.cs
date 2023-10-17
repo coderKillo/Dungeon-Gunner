@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
 
 public class CardUI : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class CardUI : MonoBehaviour
     [SerializeField] private MMF_Player _newCardFeedback;
     public MMF_Player NewCardFeedback { get { return _newCardFeedback; } }
 
+    [Space(10)]
+    [Header("Debug")]
+    public CardSO _debugDetails;
+
     [HideInInspector] public CardSO details;
     [HideInInspector] public Guid id;
     [HideInInspector] public int level;
@@ -55,6 +60,7 @@ public class CardUI : MonoBehaviour
         NewCardFeedback.Initialization();
     }
 
+    [Button]
     public void Initialize(CardSO details, Guid id, int level, float value)
     {
         this.title.text = details.title;
@@ -150,5 +156,13 @@ public class CardUI : MonoBehaviour
 
         NewCardFeedback.InitialDelay = delay;
         NewCardFeedback.PlayFeedbacks();
+    }
+
+    private void OnValidate()
+    {
+        if (_debugDetails != null)
+        {
+            Initialize(_debugDetails, new Guid(), 1, 1f);
+        }
     }
 }
