@@ -600,13 +600,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0793fa28c2ec1e24f9ed3229476f27b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCredits: 30
-  creditCoefficientFactor: 1
+  baseCredits: 50
+  creditCoefficientFactor: 1.2
   enemyLevelCoefficientFactor: 3
   enemyLevelDamageFactor: 0.03
   enemyLevelHealthFactor: 0.2
   spawnIntervalDuringWave: {x: 0.1, y: 0.3}
-  spawnIntervalBetweenWave: {x: 3, y: 5}
+  spawnIntervalBetweenWave: {x: 2, y: 3}
   eliteCostFactor: 6
   eliteDamageFactor: 2
   eliteHealthFactor: 4
