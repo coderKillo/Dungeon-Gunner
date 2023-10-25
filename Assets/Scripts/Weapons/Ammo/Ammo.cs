@@ -31,7 +31,7 @@ public class Ammo : MonoBehaviour, IFireable
     private float chargeTimer;
     private bool ammoMaterialIsSet = false;
     private bool overrideAmmoMovement;
-    private List<OnHit> onHitEffects = new List<OnHit>();
+    protected List<OnHit> onHitEffects = new List<OnHit>();
 
     public virtual void InitialAmmo(AmmoDetailsSO ammoDetails, float aimAngel, float weaponAngle, float speed, Vector3 weaponAimDirection, int damage, float critChance, bool overrideAmmoMovement = false)
     {

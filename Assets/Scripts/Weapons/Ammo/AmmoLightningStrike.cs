@@ -20,6 +20,7 @@ public class AmmoLightningStrike : Ammo
         this.radius = ammoDetails.damageRadius;
         this.maxHitCount = ammoDetails.hitLimit;
         this.fireDirectionVector = HelperUtilities.GetVectorFromAngle(aimAngel);
+        this.onHitEffects.Clear();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 

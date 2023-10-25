@@ -26,6 +26,7 @@ public class AmmoAirStrike : Ammo
         this.fireDirectionVector = HelperUtilities.GetVectorFromAngle(aimAngel);
         this.disable = false;
         this.explosionDistance = 0f;
+        this.onHitEffects.Clear();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 

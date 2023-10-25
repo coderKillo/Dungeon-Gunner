@@ -27,6 +27,7 @@ public class AmmoMeleeEnemy : Ammo
         this.critChance = critChance;
         this.aimAngle = aimAngel;
         this.timer = 0f;
+        this.onHitEffects.Clear();
 
         boxCollider.size = new Vector2(ammoDetails.hitboxWidth, this.range);
         boxCollider.offset = new Vector2(0f, this.range / 2f);

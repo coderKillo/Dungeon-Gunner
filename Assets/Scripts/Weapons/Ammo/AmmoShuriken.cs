@@ -24,6 +24,7 @@ public class AmmoShuriken : Ammo
         this.alreadyCollided = new List<GameObject>();
         this.fireDirectionVector = HelperUtilities.GetVectorFromAngle(aimAngel);
         this.isFlyingBack = false;
+        this.onHitEffects.Clear();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 

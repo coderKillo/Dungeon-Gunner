@@ -17,6 +17,7 @@ public class AmmoTargetLocation : Ammo
         this.damage = damage;
         this.critChance = critChance;
         this.radius = ammoDetails.damageRadius;
+        this.onHitEffects.Clear();
 
         var target = HelperUtilities.GetWorldMousePosition();
 

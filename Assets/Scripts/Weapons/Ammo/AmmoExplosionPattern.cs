@@ -28,6 +28,7 @@ public class AmmoExplosionPattern : Ammo
         this.critChance = critChance;
         this.fireDirectionVector = HelperUtilities.GetVectorFromAngle(aimAngel);
         this.aimAngel = aimAngel;
+        this.onHitEffects.Clear();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 

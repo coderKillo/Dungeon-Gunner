@@ -25,6 +25,7 @@ public class AmmoLaser : Ammo
         this.fireDirectionVector = HelperUtilities.GetVectorFromAngle(aimAngel);
         this.lifetime = ammoDetails.trailLifetime;
         this.radius = ammoDetails.trailStartWidth;
+        this.onHitEffects.Clear();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 

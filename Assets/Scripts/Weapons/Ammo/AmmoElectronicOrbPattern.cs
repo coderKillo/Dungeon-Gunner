@@ -69,6 +69,7 @@ public class AmmoElectronicOrbPattern : Ammo
         this.damage = damage;
         this.critChance = critChance;
         this.fireDirectionVector = HelperUtilities.GetVectorFromAngle(aimAngel);
+        this.onHitEffects.Clear();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 

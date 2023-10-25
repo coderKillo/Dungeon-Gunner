@@ -13,6 +13,7 @@ public class AmmoExplosion : Ammo
         this.range = ammoDetails.range;
         this.damage = damage;
         this.critChance = critChance;
+        this.onHitEffects.Clear();
 
         transform.eulerAngles = new Vector3(0, 0, aimAngel);
 
