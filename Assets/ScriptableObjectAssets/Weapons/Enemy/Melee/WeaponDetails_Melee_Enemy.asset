@@ -28,6 +28,6 @@ MonoBehaviour:
   projectileFired: 1
   fireSoundEffect: {fileID: 0}
   reloadSoundEffect: {fileID: 0}
-  fireVisualEffect: {fileID: 0}
+  fireVisualEffect: {fileID: 11400000, guid: 05304a7f3f9035f478043dbc871b8bcb, type: 2}
   shotAnimation: {fileID: 0}
   chargeAnimation: {fileID: 0}

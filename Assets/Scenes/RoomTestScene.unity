@@ -588,9 +588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsToAdd:
-  - {fileID: 11400000, guid: 6f18112e028d75b44aa8916bacf813e1, type: 2}
-  - {fileID: 11400000, guid: 56403651a9412374f80c5d5430f9ddd7, type: 2}
-  - {fileID: 11400000, guid: ae07e99fdd3a661468ec77d6c2a100a3, type: 2}
+  - {fileID: 11400000, guid: 7e56c93b45df6d5409be6d96a5d685c7, type: 2}
+  - {fileID: 11400000, guid: 1f583b4dc171eb949a9e02deeec2e588, type: 2}
 --- !u!1001 &754013588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1767,8 +1766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0793fa28c2ec1e24f9ed3229476f27b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCredits: 30
-  creditCoefficientFactor: 1
+  baseCredits: 50
+  creditCoefficientFactor: 1.2
   enemyLevelCoefficientFactor: 3
   enemyLevelDamageFactor: 0.03
   enemyLevelHealthFactor: 0.2

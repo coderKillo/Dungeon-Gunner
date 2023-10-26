@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,14 +61,27 @@ public class EnemyWeaponAI : MonoBehaviour
             aimDirection, playerAngle, weaponAngle, weaponDirectionVector
         );
 
-        if (HasMeleeAttack() && PlayerInMeleeRange())
+        if (HasWeapon())
         {
-            enemy.weaponFiredEvent.CallWeaponFiredEvent(null);
-        }
-        else if (HasWeapon() && PlayerInRange())
-        {
+            if (!PlayerInRange())
+            {
+                return;
+            }
+
             if (enemyDetails.firingLineOfSightRequire && !PlayerInLineOfSight(weaponDirectionVector))
             {
+                return;
+            }
+
+            if (enemy == null)
+            {
+                Debug.Log("no enemy");
+                return;
+            }
+
+            if (enemy.fireWeaponEvent == null)
+            {
+                Debug.Log("no enemy fire weapon event");
                 return;
             }
 

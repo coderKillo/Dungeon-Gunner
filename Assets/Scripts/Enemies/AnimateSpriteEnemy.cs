@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
@@ -80,8 +81,8 @@ public class AnimateSpriteEnemy : MonoBehaviour
         }
         else
         {
+            Debug.Log("attack animation");
             PlayAnimation(_attackAnimation);
-
         }
     }
 
