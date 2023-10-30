@@ -19,6 +19,7 @@ public class BossHealthUI : MonoBehaviour
     {
         StaticEventHandler.OnRoomEnemiesEngaging -= StaticEventHandler_OnRoomEnemiesEngaging;
         StaticEventHandler.OnRoomEnemiesDefeated -= StaticEventHandler_OnEnemiesDefeated;
+        StaticEventHandler.OnEnemySpawned -= StaticEventHandler_OnEnemySpawned;
     }
 
     private void StaticEventHandler_OnRoomEnemiesEngaging(RoomEnemiesEngagingEventArgs obj)

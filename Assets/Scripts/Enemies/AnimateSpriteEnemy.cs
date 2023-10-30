@@ -81,7 +81,6 @@ public class AnimateSpriteEnemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("attack animation");
             PlayAnimation(_attackAnimation);
         }
     }
