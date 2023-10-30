@@ -2436,19 +2436,19 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 2536835609764298756
-  - rid: 2536835609764298757
+  - rid: 2536835609764298758
+  - rid: 2536835609764298759
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
     version: 2
     RefIds:
-    - rid: 2536835609764298756
+    - rid: 2536835609764298758
       type: {class: MMF_PositionShake, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: 1864412767
+        UniqueID: 69034932
         Label: Position Shake
         ChannelMode: 0
         Channel: 1
@@ -2514,7 +2514,7 @@ MonoBehaviour:
         ResetShakerValuesAfterShake: 1
         ResetTargetValuesAfterShake: 1
         ShakeSpeed: 30
-        ShakeRange: 50
+        ShakeRange: 30
         ShakeMainDirection: {x: 0, y: -1, z: 0}
         RandomizeDirection: 0
         ShakeAltDirection: {x: 0, y: 1, z: 0}
@@ -2549,11 +2549,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 2536835609764298757
+    - rid: 2536835609764298759
       type: {class: MMF_ScaleShake, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -887584759
+        UniqueID: 1709808067
         Label: Scale Shake
         ChannelMode: 0
         Channel: 0
