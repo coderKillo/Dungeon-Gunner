@@ -13,7 +13,7 @@ public class Cheats : MonoBehaviour
     [SerializeField] private KeyCode _scoreKey;
     [SerializeField] private KeyCode _ammoKey;
 
-    const int SCORE_AMOUNT = 200;
+    const int SCORE_AMOUNT = 2000;
     const int HEAL_AMOUND = 300;
     const int SHIELD_AMOUND = 300;
 

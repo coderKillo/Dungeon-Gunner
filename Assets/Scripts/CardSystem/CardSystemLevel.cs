@@ -90,6 +90,6 @@ public class CardSystemLevel : MonoBehaviour
 
     private void UpdatePointsPerLevel()
     {
-        _pointsPerLevel = Mathf.RoundToInt(1000 * (1 + Mathf.Log(_level, 3)));
+        _pointsPerLevel = Mathf.RoundToInt(1000 * (1 + _level * Mathf.Log10(_level)));
     }
 }
