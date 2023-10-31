@@ -97636,7 +97636,7 @@ GameObject:
   - component: {fileID: 4426493567979790930}
   - component: {fileID: 4123676006802421890}
   - component: {fileID: 2677051539317002615}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap3_Decoration2
   m_TagString: decoration2Tilemap
   m_Icon: {fileID: 0}

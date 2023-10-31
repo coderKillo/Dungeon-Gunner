@@ -109,7 +109,6 @@ public class PlayerDash : MonoBehaviour
     {
         if (_contactDamage > 0)
         {
-            Debug.Log(_contactDamage);
             DealDamage(direction, _contactDamage);
         }
 
@@ -224,8 +223,6 @@ public class PlayerDash : MonoBehaviour
     {
         var dashVector = direction.normalized * _playerControl.MovementDetails.dashSpeed * _playerControl.MovementDetails.dashTime;
         var colliders = Physics2D.CircleCastAll(new Vector2(_contactDamageStartLocation.position.x, _contactDamageStartLocation.position.y), _contactDamageCollisionRadius, dashVector, dashVector.magnitude, _contactDamageMask);
-
-        Debug.Log(colliders.Length);
 
         foreach (var hit in colliders)
         {

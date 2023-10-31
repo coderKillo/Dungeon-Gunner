@@ -58991,7 +58991,7 @@ GameObject:
   - component: {fileID: 6238351256467113784}
   - component: {fileID: 3040459214771773517}
   - component: {fileID: 5614553941215994341}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap3_Decoration2
   m_TagString: decoration2Tilemap
   m_Icon: {fileID: 0}
