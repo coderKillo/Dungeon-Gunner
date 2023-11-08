@@ -112,8 +112,8 @@ Material:
     - _DistortTexXSpeed: 5
     - _DistortTexYSpeed: 5
     - _EditorDrawers: 6
-    - _FadeAmount: 1
-    - _FadeBurnGlow: 65.9
+    - _FadeAmount: 0.26
+    - _FadeBurnGlow: 22
     - _FadeBurnTransition: 0.107
     - _FadeBurnWidth: 0
     - _FishEyeUvAmount: 0.35
@@ -178,12 +178,12 @@ Material:
     - _OnlyInnerOutline: 0
     - _OnlyOutline: 0
     - _Outline8Directions: 1
-    - _OutlineAlpha: 1
+    - _OutlineAlpha: 0.41
     - _OutlineDistortAmount: 0.5
     - _OutlineDistortTexXSpeed: 5
     - _OutlineDistortTexYSpeed: 5
     - _OutlineDistortToggle: 0
-    - _OutlineGlow: 9.2
+    - _OutlineGlow: 39
     - _OutlineIsPixel: 0
     - _OutlinePixelWidth: 1
     - _OutlineTexGrey: 0
@@ -240,7 +240,7 @@ Material:
     - _ColorSwapBlue: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
-    - _FadeBurnColor: {r: 0.9056604, g: 0, b: 0.01789856, a: 1}
+    - _FadeBurnColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 0, b: 1, a: 1}

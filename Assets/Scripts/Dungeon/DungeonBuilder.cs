@@ -119,12 +119,13 @@ public class DungeonBuilder : SingletonAbstract<DungeonBuilder>
 
     private bool BuildRandomDungeon(RoomNodeGraphSO graph)
     {
+        Debug.Log($"start build with graph: {graph.name}");
+
         var roomNodeQueue = new Queue<RoomNodeSO>();
 
         var entranceNode = graph.GetRoomNode(typeList.list.Find(x => x.isEntrance));
         if (entranceNode == null)
         {
-            Debug.Log("No Entrance Node");
             return false;
         }
 

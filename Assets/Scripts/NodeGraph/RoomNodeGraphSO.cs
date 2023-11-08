@@ -9,12 +9,12 @@ public class RoomNodeGraphSO : ScriptableObject
     [HideInInspector] public List<RoomNodeSO> nodeList = new List<RoomNodeSO>();
     [HideInInspector] public Dictionary<string, RoomNodeSO> nodeDictionary = new Dictionary<string, RoomNodeSO>();
 
-#if UNITY_EDITOR
     private void Awake()
     {
         LoadListToDictionary();
     }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         LoadListToDictionary();
@@ -47,12 +47,20 @@ public class RoomNodeGraphSO : ScriptableObject
         return null;
     }
 
-    public IEnumerable<RoomNodeSO> GetChildRoomNode(RoomNodeSO parent)
+    public List<RoomNodeSO> GetChildRoomNode(RoomNodeSO parent)
     {
+        var children = new List<RoomNodeSO>();
+
         foreach (var id in parent.childIdList)
         {
-            yield return GetRoomNode(id);
+            var child = GetRoomNode(id);
+            if (child != null)
+            {
+                children.Add(child);
+            }
         }
+
+        return children;
     }
 
     public RoomNodeSO GetRoomNode(string id)

@@ -346,8 +346,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.9998679
-    height: 0.99999994
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -7847,7 +7847,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501979864}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 653499a0f1d9cf64f8650f86912dfad4, type: 2}
   m_CullingMode: 0
